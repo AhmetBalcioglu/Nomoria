@@ -2,7 +2,7 @@
 
 @section('page_title', 'Ana Sayfa - Nomoria')
 
-@section('page_description', 'Nomoria Ana Sayfasıdır.')
+@section('page_description', 'Nomoria ana sayfasıdır.')
 
 @section('page_head_css')
 
