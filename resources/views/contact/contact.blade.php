@@ -10,7 +10,7 @@
 
 @section('content')
 
-    @include('layouts.sections.about._contact')
+    @include('layouts.sections.contact._contact')
 
 @endsection
 
