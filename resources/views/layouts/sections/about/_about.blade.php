@@ -1,0 +1,5 @@
+{{-- 
+
+todo: Hakkımızda sayfası yapılacak
+
+--}}
