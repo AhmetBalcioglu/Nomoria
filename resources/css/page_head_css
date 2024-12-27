@@ -2,6 +2,7 @@
     display: block;
     position: relative;
     margin: 20px auto;
+    margin-left: 20px;
     width: 250px;
     height: 250px;
     background-color: #01C5B3;
@@ -16,7 +17,7 @@
 }
 
 .portfolio-job__header {
-    padding-top: 80px;
+    padding-top: 40px;
     color: white;
     font-size: 3em;
 }
