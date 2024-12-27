@@ -2,7 +2,7 @@
     <div class="row align-items-center" style="height: 100%;">
         <div class="col-md-6 offset-md-3">
             <h1>Şifre Yenile</h1>
-            @if(session('success'))
+            @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
@@ -19,6 +19,8 @@
                     <div class="col-md-12">
                         <label for="password">Yeni Şifre:</label>
                         <input type="password" id="password" name="password" required class="form-control">
+                        <input type="checkbox" id="showPasswordInput" onclick="showPassword()">
+                        <label for="showPasswordInput">Şifreyi Göster</label>
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -34,10 +36,10 @@
                     </div>
                 </div>
             </form>
-            @if($errors->any())
+            @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
-                        @foreach($errors->all() as $error)
+                        @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
                     </ul>

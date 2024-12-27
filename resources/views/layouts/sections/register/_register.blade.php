@@ -39,12 +39,14 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="password">Şifreniz:</label>
-                        <input type="text" name="password" id="password" class="form-control">
+                        <input type="password" name="password" id="password" class="form-control">
+                        <input type="checkbox" id="showPasswordInput" onclick="showPassword()">
+                        <label for="showPasswordInput">Şifreyi Göster</label>
                     </div>
                 </div>
-               
-                <button class="btn btn-primary mt-5 mb-5" >Kayıt Ol</button>
-                
+
+                <button class="btn btn-primary mt-5 mb-5">Kayıt Ol</button>
+
             </form>
         </div>
     </div>

@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('page_title', 'Forgot Password - Nomoria')
+@section('page_title', 'Login - Nomoria')
 
-@section('page_description', 'Nomoria Forgot Password sayfasıdır.')
+@section('page_description', 'Nomoria login sayfasıdır.')
 
 @section('page_head_css')
 
@@ -10,7 +10,7 @@
 
 @section('content')
 
-    @include('layouts.sections.newPassword._newPassword')
+    @include('layouts.sections.login._login')
 
 @endsection
 
@@ -18,15 +18,11 @@
     <script>
         function showPassword() {
             var passwordInput = document.getElementById('password');
-            var passwordConfirmationInput = document.getElementById('password_confirmation');
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                passwordConfirmationInput.type = 'text';
             } else {
                 passwordInput.type = 'password';
-                passwordConfirmationInput.type = 'password';
             }
-
         }
     </script>
 @endsection
