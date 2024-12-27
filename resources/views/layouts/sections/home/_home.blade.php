@@ -1,142 +1,199 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            Chatboot Kısmı
-            <div class="row">
-                <div class="col-md-12" style="background-color: red" width="100%" height="800 px">
-                    <form action="">
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label"> Kullanıcı adınız:</label>
-                            <input type="email" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Kullanıcı adınızı yazınız..">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlTextarea1" class="form-label">Merhaba, Nasıl yazdımcı
-                                olabilirim?</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <button type="button" class="btn btn-warning">Gönder</button>
+<style>
+    .slider {
+        width: 100%;
+        height: 500px;
+        overflow: hidden;
+    }
 
-                    </form>
+    .carousel-inner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    * {
+        font-size: 62, 5%;
+    }
+</style>
+
+
+
+<div class="d-flex container">
+
+    <div class="col-md-10">
+        <h2 class="text-center mb-5 mt-5">Kampanyalı Restoranlar</h2>
+        <div class="slider  d-flex">
+
+            <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ asset('img/k1.png') }}" class="d-block w-100 img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('img/k2.png') }}" class="d-block w-100 img-fluid" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ asset('img/k3.png') }}" class="d-block w-100 img-fluid" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+        <h2 class="text-center mb-5 mt-5">En cok Tercih Edilen</h2>
+        <div class="d-flex best" id="best_rezervasyon">
+
+            <div class="col-md-2 border border-dark border-1
+             p-2 mx-3 card card-body"
+                style="height: 15rem;">
+                <p class="text-center"><b>Doğum Günü Rezervasyonları</b></p>
+                <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                    class="d-block w-100 border border-dark border-1
+                     mt-4" alt="">
+            </div>
+
+            <div class="col-md-2 border border-dark border-1
+             p-2 mx-3 card card-body">
+                <p class="text-center"><b>İş Yemeği Rezervasyonları</b></p>
+                <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                    class="d-block w-100 border border-dark border-1
+                     mt-4" alt="">
+            </div>
+
+            <div class="col-md-2 border border-dark border-1
+             p-2 mx-3 card card-body">
+                <p class="text-center"><b>Tek Kişilik Rezervasyonlar</b></p>
+                <img src="{{ asset('img/div_img.png') }}" width="50% " height="50%"
+                    class="d-block w-100 border border-dark border-1
+                     mt-4" alt="">
+            </div>
+
+            <div class="col-md-2 border border-dark border-1
+             p-2 mx-3 card card-body">
+                <p class="text-center"><b>Özel Gün Rezervasyonları</b></p>
+                <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                    class="d-block w-100 border border-dark border-1
+                     mt-4" alt="">
+            </div>
+
+            <div class="col-md-2 border border-dark border-1
+             p-2 mx-3 card card-body">
+                <p class="text-center"><b>Kutlama Yemeği Rezervasyonları</b></p>
+                <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                    class="d-block w-100 border border-dark border-1
+                     mt-4" alt="">
+            </div>
+
+        </div>
+        <div class="menubest" id="Menu_İcerigi_restoran">
+
+
+            <h2 class="text-center mb-5 mt-5">Menü İçeriğine Göre Tercih Edilen</h2>
+            <div class="d-flex best" id="best_rezervasyon">
+
+                <div class="col-md-2 border border-dark border-1
+                 p-2 mx-3 card card-body"
+                    style="height: 15rem;">
+                    <p class="text-center"><b>Doğum Günü Rezervasyonları</b></p>
+                    <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                        class="d-block w-100 border border-dark border-1
+                         mt-4" alt="">
+                </div>
+
+                <div class="col-md-2 border border-dark border-1
+                 p-2 mx-3 card card-body">
+                    <p class="text-center"><b>İş Yemeği Rezervasyonları</b></p>
+                    <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                        class="d-block w-100 border border-dark border-1
+                         mt-4" alt="">
+                </div>
+
+                <div class="col-md-2 border border-dark border-1
+                 p-2 mx-3 card card-body">
+                    <p class="text-center"><b>Tek Kişilik Rezervasyonlar</b></p>
+                    <img src="{{ asset('img/div_img.png') }}" width="50% " height="50%"
+                        class="d-block w-100 border border-dark border-1
+                         mt-4" alt="">
+                </div>
+
+                <div class="col-md-2 border border-dark border-1
+                 p-2 mx-3 card card-body">
+                    <p class="text-center"><b>Özel Gün Rezervasyonları</b></p>
+                    <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                        class="d-block w-100 border border-dark border-1
+                         mt-4"
+                        alt="">
+                </div>
+
+                <div class="col-md-2 border border-dark border-1
+                 p-2 mx-3 card card-body">
+                    <p class="text-center"><b>Kutlama Yemeği Rezervasyonları</b></p>
+                    <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                        class="d-block w-100 border border-dark border-1
+                         mt-4"
+                        alt="">
+                </div>
+
+
+            </div>
+            <div class="fiyat" id="Fiyata_gore_restoran">
+
+
+
+                <h2 class="text-center mb-5 mt-5">Fiyata Göre Tercih Edilen</h2>
+                <div class="d-flex best" id="best_rezervasyon">
+
+                    <div class="col-md-2 border-2 p-2 mx-3 card card-body border border-dark border-1"
+                        style="height: 15rem;">
+                        <p class="text-center"><b>Doğum Günü Rezervasyonları</b></p>
+                        <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                            class="d-block w-100 border border-dark border-2 mt-4" alt="">
+                    </div>
+
+                    <div class="col-md-2 border-2 p-2 mx-3 card card-body">
+                        <p class="text-center"><b>İş Yemeği Rezervasyonları</b></p>
+                        <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                            class="d-block w-100 border border-dark border-2 mt-4" alt="">
+                    </div>
+
+                    <div class="col-md-2  border-2 p-2 mx-3 card card-body">
+                        <p class="text-center"><b>Tek Kişilik Rezervasyonlar</b></p>
+                        <img src="{{ asset('img/div_img.png') }}" width="50% " height="50%"
+                            class="d-block w-100 border border-dark border-2 mt-4" alt="">
+                    </div>
+
+                    <div class="col-md-2 border border-dark border-2 p-2 mx-3 card card-body">
+                        <p class="text-center"><b>Özel Gün Rezervasyonları</b></p>
+                        <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                            class="d-block w-100 border border-dark border-2 mt-4" alt="">
+                    </div>
+
+                    <div class="col-md-2 border border-dark border-2 p-2 mx-3 card card-body">
+                        <p class="text-center"><b>Kutlama Yemeği Rezervasyonları</b></p>
+                        <img src="{{ asset('img/div_img.png') }}" width="50%" height="50%"
+                            class="d-block w-100 border border-dark border-2 mt-4" alt="">
+                    </div>
 
                 </div>
-            </div>
-
-        </div>
-        {{-- soruda diyo ya ne tür mekan değil de ne için randevu oluşturacaksınız diye
-        Romantik randevu
-        Aile Buluşması
-        İş Toplantısı
-        Kutlama
-        Sosyal Etkinlik (Eğlence mekanları-workshop mekanları gibi)
-        Öğrenci 
-        Özel bir randevu isteğim yok -- Öneri ? -- (Yapay zekaya yönlendir)
- --}}
-
-
-        <div class="col-md-2 portfolio-jobs" id="deneme">
-
-            <a class="portfolio-job" target="_blank" href="ozelgun.blade.php">
-                <p class="portfolio-job__header text-center">Kutlama</p>
-
-                <p class="portfolio-job__description">
-                    <span class="portfolio-job__description-header text-center">Kutlama Konseptine uygun
-                        Restorantlar</span>
-                    <span class="delimiter"></span>
-                    <span class="portfolio-job__description-text text-center">Restaurant web-site</span>
-                </p>
-            </a>
-
-        </div>
-        <div class="col-md-2 portfolio-jobs ">
-
-
-
-            <a class="portfolio-job" target="_blank" href="ozelgun.blade.php">
-                <p class="portfolio-job__header text-center"> Aile Buluşması</p>
-
-                <p class="portfolio-job__description">
-                    <span class="portfolio-job__description-header text-center"> Aile Buluşması Konsept
-                        Restaurantları</span>
-                    <span class="delimiter"></span>
-                    <span class="portfolio-job__description-text text-center">Restaurant web-site</span>
-                </p>
-            </a>
-
-
-
-        </div>
-        <div class="col-md-2">
-            <div class="col-md-2 portfolio-jobs ">
-
-
-
-                <a class="portfolio-job" target="_blank" href="ozelgun.blade.php">
-                    <p class="portfolio-job__header text-center"> İş Toplantısı</p>
-
-                    <p class="portfolio-job__description">
-                        <span class="portfolio-job__description-header text-center"> İş Toplantısı Konsept
-                            Restaurantları</span>
-                        <span class="delimiter"></span>
-                        <span class="portfolio-job__description-text text-center">Restaurant web-site</span>
-                    </p>
-                </a>
-
-
-
 
             </div>
-
         </div>
-        <div class="row portfolio-jobs">
-            <div class="col-md-4 "></div>
-            <div class="col-md-2">
-
-
-                <a class="portfolio-job" target="_blank" href="ozelgun.blade.php">
-                    <p class="portfolio-job__header text-center"> Sosyal Etkinlik</p>
-
-                    <p class="portfolio-job__description">
-                        <span class="portfolio-job__description-header text-center"> Sosyal Etkinlik
-                            Restaurantları</span>
-                        <span class="delimiter"></span>
-                        <span class="portfolio-job__description-text text-center">Restaurant web-site</span>
-                    </p>
-                </a>
-
-
-
-
-            </div>
-            <div class="col-md-2">
-                <a class="portfolio-job" target="_blank" href="ozelgun.blade.php">
-                    <p class="portfolio-job__header text-center"> Sosyal Etkinlik</p>
-
-                    <p class="portfolio-job__description">
-                        <span class="portfolio-job__description-header text-center"> Sosyal Etkinlik
-                            Restaurantları</span>
-                        <span class="delimiter"></span>
-                        <span class="portfolio-job__description-text text-center">Restaurant web-site</span>
-                    </p>
-                </a>
-
-            </div>
-            <div class="col-md-2">
-                <a class="portfolio-job" target="_blank" href="ozelgun.blade.php">
-                    <p class="portfolio-job__header text-center"> Sosyal Etkinlik</p>
-
-                    <p class="portfolio-job__description">
-                        <span class="portfolio-job__description-header text-center"> Sosyal Etkinlik
-                            Restaurantları</span>
-                        <span class="delimiter"></span>
-                        <span class="portfolio-job__description-text text-center">Restaurant web-site</span>
-                    </p>
-                </a>
-
-            </div>
-
-        </div>
-
 
 
     </div>
+    <div class="d-flex col-md-2" id="reklam">
+        <img src="{{ asset('img/yan_reklam.png') }}" width="100% " height="100%" class="d-block w-100"
+            alt="">
+
+    </div>
+
+</div>
