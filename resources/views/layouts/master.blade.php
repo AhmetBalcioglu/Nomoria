@@ -22,12 +22,22 @@
 <body>
 
     @if (session('success'))
+        <script>
+            setTimeout(function() {
+                $('.alert-success').fadeOut(500);
+            }, 5000);
+        </script>
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
 
     @if (session('error'))
+        <script>
+            setTimeout(function() {
+                $('.alert-danger').fadeOut(500);
+            }, 5000);
+        </script>
         <div class="alert alert-danger">
             {{ session('error') }}
         </div>
