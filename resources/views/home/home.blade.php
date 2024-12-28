@@ -6,6 +6,24 @@
 
 @section('page_head_css')
 
+    <style>
+        .slider {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        * {
+            font-size: 62, 5%;
+        }
+    </style>
+
 @endsection
 
 @section('content')

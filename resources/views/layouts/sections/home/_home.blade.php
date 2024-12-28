@@ -1,23 +1,3 @@
-<style>
-    .slider {
-        width: 100%;
-        height: 500px;
-        overflow: hidden;
-    }
-
-    .carousel-inner img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    * {
-        font-size: 62, 5%;
-    }
-</style>
-
-
-
 <div class="d-flex container">
 
     <div class="col-md-10">
