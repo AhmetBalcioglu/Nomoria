@@ -26,8 +26,7 @@
         .fixed-right {
             position: fixed;
             right: 0;
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: 0;
             z-index: 1000;
         }
     </style>
