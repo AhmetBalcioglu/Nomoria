@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="@yield('page_description')">
     <title>@yield('page_title')</title>
-    
+
     <link rel="stylesheet" href="{{ asset('HomePage_css/page_head.css') }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
