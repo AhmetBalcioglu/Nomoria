@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="@yield('page_description')">
     <title>@yield('page_title')</title>
-    
+
     <link rel="stylesheet" href="{{ asset('HomePage_css/page_head.css') }}">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -21,12 +21,25 @@
 
 <body>
 
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> {{-- jQuery --}}
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> {{-- jQuery
+    --}}
 
     @yield('page_body_js')
 

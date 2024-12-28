@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -37,7 +38,7 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
         $user->email = $request->input('email');
-        $user->password = $request->input('password'); //TODO:hashlenecek
+        $user->password = Hash::make($request->input('password'));
         $user->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $user->updated_at = Carbon::now()->format('Y-m-d H:i:s'); 
 
@@ -57,9 +58,9 @@ class UserController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
     
-        $user = Users::where('email', $email)->where('password', $password)->first();
+        $user = Users::where('email', $email)->first();
     
-        if ($user) {
+        if ($user && Hash::check($password, $user->password)) {
             return redirect('/')->with('success', 'Giriş Başarılı!');
         } else {
             return redirect('/login')->with('error', 'Email veya Şifre hatalı!')->withInput();
