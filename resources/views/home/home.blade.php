@@ -10,6 +10,7 @@
 
 @section('content')
 
+    {{-- @include('home.deneme') --}}
     @include('layouts.sections.home._home')
 
 @endsection
