@@ -7,6 +7,7 @@
 @section('page_head_css')
 
     <style>
+
         .slider {
             width: 100%;
             height: 500px;

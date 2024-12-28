@@ -12,8 +12,9 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-
     @yield('page_head_css')
+
+
 
 </head>
 
