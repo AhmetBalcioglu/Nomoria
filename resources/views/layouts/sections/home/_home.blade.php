@@ -176,12 +176,4 @@
     <img src="{{ asset('img/yan_reklam.png') }}" alt="">
 </div>
 
-<style>
-    .fixed-right {
-        position: fixed;
-        right: 0;
-        top: 86%;
-        transform: translateY(-50%);
-        z-index: 1000;
-    }
-</style>
+

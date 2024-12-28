@@ -22,6 +22,14 @@
         * {
             font-size: 62, 5%;
         }
+
+        .fixed-right {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
     </style>
 
 @endsection
