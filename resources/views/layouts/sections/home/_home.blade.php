@@ -170,10 +170,18 @@
 
 
     </div>
-    <div class="d-flex col-md-2" id="reklam">
-        <img src="{{ asset('img/yan_reklam.png') }}" width="100% " height="100%" class="d-block w-100"
-            alt="">
-
-    </div>
 
 </div>
+<div class="fixed-right" id="reklam">
+    <img src="{{ asset('img/yan_reklam.png') }}" alt="">
+</div>
+
+<style>
+    .fixed-right {
+        position: fixed;
+        right: 0;
+        top: 86%;
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+</style>
