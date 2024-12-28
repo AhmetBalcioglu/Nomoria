@@ -2,7 +2,7 @@
 
     <div class="col-md-10">
         <h2 class="text-center mb-5 mt-5">Kampanyalı Restoranlar</h2>
-        <div class="slider  d-flex">
+        <div class="slider">
 
             <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
                 <div class="carousel-inner">
