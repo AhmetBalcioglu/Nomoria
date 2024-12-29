@@ -160,4 +160,17 @@
 
 @section('page_body_js')
 
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("popup").style.display = "block";
+            }, 500);
+        }
+
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+    </script>
+
 @endsection

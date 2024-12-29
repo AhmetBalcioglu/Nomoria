@@ -132,15 +132,4 @@
     </div>
 </div>
 
-<script>
-    window.onload = function() {
-        setTimeout(function() {
-            document.getElementById("popup").style.display = "block";
-        }, 500);
-    }
 
-
-    function closePopup() {
-        document.getElementById("popup").style.display = "none";
-    }
-</script>
