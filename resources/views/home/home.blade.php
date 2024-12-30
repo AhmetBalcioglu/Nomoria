@@ -18,6 +18,6 @@
 
 @section('page_body_js')
 
-    @vite('resources/js/about/_home.js')
+    @vite('resources/js/home/_home.js')
 
 @endsection
