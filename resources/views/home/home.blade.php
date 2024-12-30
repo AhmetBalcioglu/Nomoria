@@ -6,33 +6,18 @@
 
 @section('page_head_css')
 
-    <style>
-        .slider {
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-        }
-
-        .carousel-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        * {
-            font-size: 62, 5%;
-        }
-    </style>
+    @vite('resources/css/home/_home.scss')
 
 @endsection
 
 @section('content')
 
-    {{-- @include('home.deneme') --}}
     @include('layouts.sections.home._home')
 
 @endsection
 
 @section('page_body_js')
+
+    @vite('resources/js/about/_home.js')
 
 @endsection

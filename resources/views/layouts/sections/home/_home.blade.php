@@ -1,5 +1,4 @@
 <div class="d-flex container">
-    <button id='helloBtn'>HELLO</button>
     <div class="col-md-10">
         <h2 class="text-center mb-5 mt-5">Kampanyalı Restoranlar</h2>
         <div class="slider  d-flex">
@@ -29,7 +28,7 @@
             </div>
 
         </div>
-        <h2 class="text-center mb-5 mt-5">En cok Tercih Edilen</h2>
+        <h2 class="text-center mb-5 mt-5">En Çok Tercih Edilen</h2>
         <div class="d-flex best" id="best_rezervasyon">
 
             <div class="col-md-2 border border-dark border-1
@@ -170,10 +169,4 @@
 
 
     </div>
-    <div class="d-flex col-md-2" id="reklam">
-        <img src="{{ asset('img/yan_reklam.png') }}" width="100% " height="100%" class="d-block w-100"
-            alt="">
-
-    </div>
-
 </div>
