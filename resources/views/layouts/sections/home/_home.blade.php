@@ -126,10 +126,8 @@
     <div class="popup-content">
         <img src="{{ asset('img/div_img.png') }}" alt="">
         <h4>Hemen üye ol</h4>
-        <p>Beğendiğin restaurantları favorilerine ekle. </p>
+        <p>Beğendiğin restoranları favorilerine ekle. </p>
         <p>kampanylardan haberin olsun!</p>
-        <button class="btn btn-danger">ÜYE OL</button>
+        <button class="btn btn-danger"><a href="/register" class="icon-link">ÜYE OL</a></button>
     </div>
 </div>
-
-

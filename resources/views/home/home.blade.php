@@ -153,13 +153,14 @@
 
 @section('content')
 
-    {{-- @include('home.deneme') --}}
+
     @include('layouts.sections.home._home')
 
 @endsection
 
 @section('page_body_js')
 
+    {{-- Anasayfaya giriş yapıldıgında ekranda gözüken Hemen üye ol popup kodu  --}}
     <script>
         window.onload = function() {
             setTimeout(function() {

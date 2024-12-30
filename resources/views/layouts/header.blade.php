@@ -120,12 +120,14 @@
     }
 </style>
 
+{{-- Logo --}}
 
 <header class="header d-flex justify-content-between align-items-center p-3 custom-header">
     <div class="col-md-2 d-flex align-items-center">
         <img src="{{ asset('img/logo_1.jpeg') }}" alt="logo" class="logo">
     </div>
 
+    {{-- Navbar kısmı --}}
     <nav class="navbar navbar-expand-lg navbar-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -149,6 +151,7 @@
         </div>
     </nav>
 
+    {{-- Login kısmı --}}
     <div class="d-block col-md-4">
         <div class="d-flex flex-column align-items-end">
             <div class="mb-2">
@@ -160,6 +163,7 @@
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                             </svg>
                         </a>
+                        {{-- Register (ÜKayıt ol) --}}
                     </div>
                     <div class="col-md-2">
                         <a href="/register" class="icon-link">
@@ -171,6 +175,7 @@
                             </svg>
                         </a>
                     </div>
+                    {{-- Rezervasyonlarım butonu  --}}
                     <div class="col-md-2">
                         <button style="font-size: 90%;" type="button" class="btn btn-warning me-2 custom-button">
                             Rezervasyonlarım
@@ -178,13 +183,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button type="button" class="btn btn-outline-secondary me-2 custom-button">
-                        <i class="bi bi-heart"></i>
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary custom-button">
-                        <i class="bi bi-calendar2-check"></i>
-                    </button>
+                    <br>
                 </div>
+
+                {{-- Arama kısmı --}}
+
                 <form class="d-flex me-5">
                     <input class="form-control me-2 small-input w-75" type="search" placeholder="Arama yapın"
                         aria-label="Search">
@@ -196,10 +199,11 @@
     </div>
 </header>
 
+{{-- Sayfa aşağı doğru hareket etse bile haader kısmı en üstte sabit kalsın diye yazılan kod --}}
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         const header = document.querySelector(".header");
-        window.addEventListener("scroll", function () {
+        window.addEventListener("scroll", function() {
             if (window.scrollY > 0) {
                 header.classList.add("scrolled");
             } else {
