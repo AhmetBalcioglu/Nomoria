@@ -1,130 +1,9 @@
-<style>
-    .header {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background: linear-gradient(90deg, #df3c00, #ff6600);
-        border-radius: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 15px;
-        margin: 1% 2% 0 2%;
-        transition: all 0.3s ease;
-        height: 120px;
-    }
-
-    .header.scrolled {
-        margin: 0;
-        border-radius: 0;
-        padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .custom-header {
-        border-bottom: none;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .custom-link {
-        color: #ffffff;
-        font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-
-    .custom-link:hover {
-        background-color: #ffffff;
-        color: #ff6600;
-        transform: scale(1.1);
-    }
-
-    .small-input {
-        height: 40px;
-        font-size: 16px;
-        border-radius: 20px;
-        border: 1px solid #ffa726;
-        padding: 5px 15px;
-    }
-
-    .btn-warning {
-        background-color: #ffffff;
-        color: #ff6600;
-        font-weight: bold;
-        border: 1px solid #ff6600;
-        border-radius: 20px;
-        padding: 10px 20px;
-        transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn-warning:hover {
-        background-color: #ff6600;
-        color: #ffffff;
-        transform: scale(1.1);
-    }
-
-    .btn-outline-secondary {
-        border: none;
-        background-color: transparent;
-        color: #ffffff;
-        transition: color 0.3s ease;
-    }
-
-    .btn-outline-secondary:hover {
-        color: #ff6600;
-    }
-
-    .navbar-toggler {
-        border-color: #ffffff;
-    }
-
-    .navbar-toggler-icon {
-        background-color: #faf8f8;
-    }
-
-    @media (max-width: 768px) {
-        .header {
-            flex-direction: column;
-        }
-
-        .navbar-nav {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .small-input {
-            width: 100%;
-        }
-    }
-
-    .custom-button:active {
-        transform: scale(0.95);
-    }
-
-    .logo {
-        max-width: 70%;
-        border: 0.2px solid lightgray;
-        border-radius: 10px;
-    }
-
-    .icon-link {
-        color: #ffffff;
-    }
-
-    svg:hover {
-        transform: scale(1.5);
-        background-color: #ffffff;
-        color: #ff6600;
-        border-radius: 5px;
-        width: 5%;
-        height: 5%;
-    }
-</style>
-
 {{-- Logo --}}
-
 <header class="header d-flex justify-content-between align-items-center p-3 custom-header">
     <div class="col-md-2 d-flex align-items-center">
-        <img src="{{ asset('img/logo_1.jpeg') }}" alt="logo" class="logo">
+        <a href="{{ url('/') }}">
+            <img src="{{ asset('img/logo_1.jpeg') }}" alt="logo" class="logo">
+        </a>
     </div>
 
     {{-- Navbar kısmı --}}
@@ -163,7 +42,8 @@
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                             </svg>
                         </a>
-                        {{-- Register (ÜKayıt ol) --}}
+
+                        {{-- Register (Kayıt ol) --}}
                     </div>
                     <div class="col-md-2">
                         <a href="/register" class="icon-link">
@@ -175,6 +55,7 @@
                             </svg>
                         </a>
                     </div>
+
                     {{-- Rezervasyonlarım butonu  --}}
                     <div class="col-md-2">
                         <button style="font-size: 90%;" type="button" class="btn btn-warning me-2 custom-button">
@@ -187,10 +68,9 @@
                 </div>
 
                 {{-- Arama kısmı --}}
-
                 <form class="d-flex me-5">
-                    <input class="form-control me-2 small-input w-75" type="search" placeholder="Arama yapın"
-                        aria-label="Search">
+                    <input id="searchBar" name="searchBar" class="form-control me-2 small-input w-75" type="search"
+                        placeholder="Arama yapın" aria-label="Search">
                     <button class="btn btn-warning btn-sm" type="submit">Ara</button>
                 </form>
             </div>
@@ -198,17 +78,3 @@
         </div>
     </div>
 </header>
-
-{{-- Sayfa aşağı doğru hareket etse bile haader kısmı en üstte sabit kalsın diye yazılan kod --}}
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const header = document.querySelector(".header");
-        window.addEventListener("scroll", function() {
-            if (window.scrollY > 0) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
-            }
-        });
-    });
-</script>
