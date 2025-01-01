@@ -1,3 +1,5 @@
+@extends('layouts.master')
+
 @section('page_title', 'Ana Sayfa - Nomoria')
 
 @section('page_description', 'Nomoria ana sayfasıdır.')
