@@ -14,12 +14,7 @@
 
 </head>
 
-
-
 <body>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> {{-- jQuery --}}
 
     {{-- Eğer session'da bir mesaj varsa ekrana yazsın --}}
     @if (session('success'))
@@ -49,7 +44,7 @@
     @include('layouts.footer')
 
 
-
+    <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
     @yield('page_body_js')
 
 </body>
