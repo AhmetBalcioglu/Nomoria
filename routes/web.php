@@ -22,4 +22,6 @@ Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
-Route::get('/restaurants/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
+// Route::get('/restaurants/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
+
+Route::post('/restaurants/create', [RestaurantController::class, 'create'])->name('create');

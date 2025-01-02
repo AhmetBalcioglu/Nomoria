@@ -61,8 +61,6 @@ class RestaurantController extends Controller
         $request->file('image')->move($destinationPath, $image);
 
         // Restoran oluşturma
-
-
         $restaurant = new Restaurant();
         $restaurant->guid = Str::uuid();
         $restaurant->image = "/images/" . $image;
@@ -73,13 +71,7 @@ class RestaurantController extends Controller
         $restaurant->email = $request->email;
         $restaurant->save();
 
-        // JSON yanıt
-        return response()->json([
-            'success' => true,
-            'message' => 'Restoran başarıyla oluşturuldu.',
-            'data' => $restaurant,
-        ], 201)->withHeaders([
-                    'Location' => route('home'),
-                ]);
+        // Form-data yanıt
+        return redirect()->route('home')->with('success', 'Restoran başarıyla oluşturuldu.');
     }
 }
