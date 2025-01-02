@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\File;
 
 class RestaurantController extends Controller
 {
@@ -35,5 +38,48 @@ class RestaurantController extends Controller
         }
 
         return view('layouts.sections.restaurants.index', compact('restaurants'));
+    }
+
+    public function create(Request $request)
+    {
+        // Validasyon
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'address' => 'nullable|string',
+            'phone' => 'nullable|string|max:15',
+            'email' => 'nullable|email|max:255',
+        ]);
+
+        // Görsel yükleme
+        $image = time() . '.' . $request->file('image')->getClientOriginalExtension();
+        $destinationPath = public_path('images');
+        if (!File::exists($destinationPath)) {
+            File::makeDirectory($destinationPath, 0755, true, true);
+        }
+        $request->file('image')->move($destinationPath, $image);
+
+        // Restoran oluşturma
+
+
+        $restaurant = new Restaurant();
+        $restaurant->guid = Str::uuid();
+        $restaurant->image = "/images/" . $image;
+        $restaurant->name = $request->name;
+        $restaurant->description = $request->description;
+        $restaurant->address = $request->address;
+        $restaurant->phone = $request->phone;
+        $restaurant->email = $request->email;
+        $restaurant->save();
+
+        // JSON yanıt
+        return response()->json([
+            'success' => true,
+            'message' => 'Restoran başarıyla oluşturuldu.',
+            'data' => $restaurant,
+        ], 201)->withHeaders([
+                    'Location' => route('home'),
+                ]);
     }
 }
