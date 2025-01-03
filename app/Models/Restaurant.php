@@ -22,9 +22,10 @@ class Restaurant extends Model
         'address',
         'phone',
         'email',
+        'capacity',  // Kapasite
     ];
 
-    // Yabancı anahtar ilişkilerini tanımlayabilirsiniz
+
     public function reviews()
     {
         return $this->hasMany(Review::class, 'restaurant_id', 'restaurantID');
