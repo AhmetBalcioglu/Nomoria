@@ -26,6 +26,9 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">İletişim</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-link" href="{{ url('/admin') }}">Admin Panel</a>
+                </li>
             </ul>
         </div>
     </nav>

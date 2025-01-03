@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -23,3 +24,4 @@ Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name(
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurants/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
+Route::get('/admin', [AdminController::class, 'index']);
