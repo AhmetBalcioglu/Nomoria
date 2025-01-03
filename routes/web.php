@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
+use App\Http\Controllers\DiscountController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
@@ -36,3 +37,6 @@ Route::prefix('restaurants')->group(function () {
 
 // Details Route
 Route::get('/details', [DetailsController::class, 'index']);
+
+//discount Route
+Route::get('/discount', [DiscountController::class, 'discount']);
