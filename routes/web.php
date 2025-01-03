@@ -8,6 +8,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\DetailsController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
@@ -23,10 +24,10 @@ Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name(
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
 // Route::get('/restaurants/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
-
 Route::get('/restaurants/create', [RestaurantController::class, 'createPage'])->name('createPage');
 Route::post('/restaurants/create', [RestaurantController::class, 'create'])->name('create');
 Route::delete('/restaurants/delete/{id}', [RestaurantController::class, 'delete'])->name('delete');
 Route::post('/restaurants/update/{id}', [RestaurantController::class, 'update'])->name('update');
 Route::get('/restaurants/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
-
+Route::get('/restaurants/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
+Route::get('/details', [DetailsController::class, 'index']);

@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+use App\Models\Restaurant;
 
 class RestaurantController extends Controller
 {
@@ -33,6 +34,7 @@ class RestaurantController extends Controller
             $restaurants = json_decode($response->getBody()->getContents(), true)['results'];
         } catch (\Exception $e) {
             return view('error', ['message' => 'API İsteği Hatası: ' . $e->getMessage()]);
+
         }
 
         return view('layouts.sections.restaurants.index', compact('restaurants'));
@@ -150,6 +152,13 @@ class RestaurantController extends Controller
         $restaurants = Restaurant::all();
         return view('restaurants.restaurants', compact('restaurants'));
     }
+    //test
+    public function show($id)
+{
+    $restaurant = Restaurant::with('menus')->findOrFail($id); // İlişkili menüleri yükler
+
+    return view('restaurant.show', compact('restaurant'));
+}
 
 }
 

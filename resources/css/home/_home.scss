@@ -1,31 +1,13 @@
-.slider {
-    width: 100%;
-    height: 600px;
-    overflow: hidden;
-}
-
-.carousel-inner {
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: fill;
-    }
-}
-
-* {
-    font-size: 62, 5%;
-}
-
-.fixed-right {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    z-index: 1000;
-}
+$background-color: #f4f2f2;
+$font-family: 'Arial', sans-serif;
+$card-bg-color: #fbfafa;
+$card-hover-bg-color: #f5f7fa;
+$card-border-color: #ece9e9;
+$text-color: #555;
 
 body {
-    background-color: #f4f2f2;
-    font-family: 'Arial', sans-serif;
+    background-color: $background-color;
+    font-family: $font-family;
 }
 
 .slider-wrapper {
@@ -39,6 +21,14 @@ body {
     width: 100%;
 }
 
+.carousel-inner {
+    img {
+        height: 300px;
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -49,21 +39,21 @@ body {
 .card {
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
-    border: 1px solid #ece9e9;
+    border: 1px solid $card-border-color;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fbfafa;
+    background-color: $card-bg-color;
     overflow: hidden;
-    width: 18%;
+    width: 18%; // Kartların genişliği
 
     &:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        background-color: #f5f7fa;
+        background-color: $card-hover-bg-color;
     }
 
     p {
         font-size: 0.9rem;
-        color: #555;
+        color: $text-color;
         margin: 10px 0;
         text-align: center;
     }
@@ -77,13 +67,14 @@ body {
 }
 
 h2 {
-    font-family: 'Arial', sans-serif;
+    font-family: $font-family;
     color: #333;
     letter-spacing: 0.5px;
     margin: 1.5rem 0;
     text-align: center;
 }
 
+// Popup
 .popup {
     display: none;
     position: fixed;
@@ -101,16 +92,8 @@ h2 {
     img {
         max-width: 100%;
         margin-top: 2rem;
-
-        .popup-content {
-            font-size: 1rem;
-            color: #333;
-        }
     }
-}
 
-
-.popup {
     .close-btn {
         position: absolute;
         top: 10px;
@@ -120,8 +103,20 @@ h2 {
         border: none;
         cursor: pointer;
     }
+
+    .popup-content {
+        font-size: 1rem;
+        color: #333;
+    }
 }
 
+.carousel-inner {
+    img {
+        height: 30rem;
+        object-fit: inherit;
+    }
+    border: 1px solid black;
+}
 
 @keyframes fadeIn {
     from {
