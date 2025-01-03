@@ -26,3 +26,7 @@ Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restau
 
 Route::get('/restaurants/create', [RestaurantController::class, 'createPage'])->name('createPage');
 Route::post('/restaurants/create', [RestaurantController::class, 'create'])->name('create');
+Route::delete('/restaurants/delete/{id}', [RestaurantController::class, 'delete'])->name('delete');
+Route::post('/restaurants/update/{id}', [RestaurantController::class, 'update'])->name('update');
+Route::get('/restaurants/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
+

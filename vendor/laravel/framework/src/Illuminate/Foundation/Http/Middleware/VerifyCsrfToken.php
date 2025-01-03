@@ -41,6 +41,9 @@ class VerifyCsrfToken
      */
     protected $except = [
         '/restaurants/create',
+        '/restaurants/delete/1',
+        '/restaurants/update/1',
+
     ];
 
     /**
