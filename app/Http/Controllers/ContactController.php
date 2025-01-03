@@ -28,6 +28,6 @@ class ContactController extends Controller
             'message' => $validated['message'],
         ]);
 
-        return redirect()->route('contact')->with('success', 'Mesaj Başarıyla Kaydedildi');
+        return redirect()->back()->with('success', 'Mesaj Başarıyla Kaydedildi');
     }
 }
