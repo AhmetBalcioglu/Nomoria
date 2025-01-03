@@ -22,12 +22,17 @@ Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name(
 Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
-Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
-// Route::get('/restaurants/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
-Route::get('/restaurants/create', [RestaurantController::class, 'createPage'])->name('createPage');
-Route::post('/restaurants/create', [RestaurantController::class, 'create'])->name('create');
-Route::delete('/restaurants/delete/{id}', [RestaurantController::class, 'delete'])->name('delete');
-Route::post('/restaurants/update/{id}', [RestaurantController::class, 'update'])->name('update');
-Route::get('/restaurants/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
-Route::get('/restaurants/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
+
+// Restaurant Routes
+Route::prefix('restaurants')->group(function () {
+    Route::get('/', [RestaurantController::class, 'index'])->name('restaurants.index');
+    Route::get('/create', [RestaurantController::class, 'createPage'])->name('createPage');
+    Route::post('/create', [RestaurantController::class, 'create'])->name('create');
+    Route::delete('/delete/{id}', [RestaurantController::class, 'delete'])->name('delete');
+    Route::post('/update/{id}', [RestaurantController::class, 'update'])->name('update');
+    Route::get('/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
+    Route::get('/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
+});
+
+// Details Route
 Route::get('/details', [DetailsController::class, 'index']);
