@@ -18,8 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');      // Kullanıcı ID
             $table->text('review');                    // Yorum içeriği
             $table->unsignedTinyInteger('rating');     // Puan (1-5 arasında)
-            $table->timestamps(); // created_at, updated_at, deleted_at'yi otomatik ekler
-            $table->softDeletes(); // deleted_at için soft delete desteği ekler
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
