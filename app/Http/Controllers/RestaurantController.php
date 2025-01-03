@@ -71,6 +71,7 @@ class RestaurantController extends Controller
         $restaurant->address = $request->address;
         $restaurant->phone = $request->phone;
         $restaurant->email = $request->email;
+        $restaurant->capacity = $request->capacity;
         $restaurant->created_at = Carbon::now();
         $restaurant->updated_at = null; // Explicitly set updated_at to null
 
@@ -114,6 +115,7 @@ class RestaurantController extends Controller
             $restaurant->address = $request->address;
             $restaurant->phone = $request->phone;
             $restaurant->email = $request->email;
+            $restaurant->capacity = $request->capacity;
             $restaurant->updated_at = Carbon::now();
 
             if ($restaurant->save()) {
