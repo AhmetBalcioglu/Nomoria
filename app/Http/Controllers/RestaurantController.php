@@ -78,4 +78,43 @@ class RestaurantController extends Controller
         // Form-data yanıt
         return redirect()->route('home')->with('success', 'Restoran başarıyla oluşturuldu.');
     }
+
+    public function delete(Request $request, $id){
+        $restaurant = Restaurant::find($id);
+
+        if ($restaurant) {
+            $restaurant->delete();
+            return redirect()->route('home.home')->with('success', 'Restoran başarıyla silindi.');
+        } else {
+            return redirect()->route('home.home')->with('error', 'Restoran bulunamadı.');
+        }
+    }
+
+    public function update(Request $request, $id){
+        $restaurant = Restaurant::find($id);
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'address' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:15',
+            'email' => 'nullable|email|max:255',
+        ]);
+
+        $restaurant->name = $request->input('name');
+        $restaurant->description = $request->input('description', $restaurant->description);
+        $restaurant->address = $request->input('address', $restaurant->address);
+        $restaurant->phone = $request->input('phone', $restaurant->phone);
+        $restaurant->email = $request->input('email', $restaurant->email);
+
+        if ($restaurant) {
+            $restaurant->update();
+            return redirect()->route('home.home')->with('success', 'Restoran başarıyla güncellendi.');
+        } else {
+            return redirect()->route('home.home')->with('error', 'Restoran güncellenemedi.');
+        }
+        
+ 
+    }
+
 }
