@@ -10,7 +10,7 @@ class Restaurant extends Model
 {
     use HasFactory, SoftDeletes; // Soft delete özelliğini ekler
 
-    protected $table = 'restaurants'; // Tablo adı (laravel varsayılan olarak model isminin çoğulunu kullanır)
+    protected $table = 'restaurants'; 
     protected $primaryKey = 'restaurantID'; // Birincil anahtar
 
     // Fillable alanlar
