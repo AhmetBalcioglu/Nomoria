@@ -47,7 +47,6 @@ class RestaurantController extends Controller
     {
         // Validasyon
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'address' => 'nullable|string',

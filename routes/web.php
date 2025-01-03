@@ -9,7 +9,7 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
@@ -24,4 +24,5 @@ Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->n
 Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
 // Route::get('/restaurants/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
 
+Route::get('/restaurants/create', [RestaurantController::class, 'createPage'])->name('createPage');
 Route::post('/restaurants/create', [RestaurantController::class, 'create'])->name('create');
