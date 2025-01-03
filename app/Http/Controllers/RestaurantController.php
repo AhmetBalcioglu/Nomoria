@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
-
+use Carbon\Carbon;
 class RestaurantController extends Controller
 {
     public function index(Request $request)
@@ -40,6 +40,9 @@ class RestaurantController extends Controller
         return view('layouts.sections.restaurants.index', compact('restaurants'));
     }
 
+    public function createPage(){
+        return view('restaurants.restaurant');
+    }
     public function create(Request $request)
     {
         // Validasyon
@@ -69,8 +72,10 @@ class RestaurantController extends Controller
         $restaurant->address = $request->address;
         $restaurant->phone = $request->phone;
         $restaurant->email = $request->email;
+        $restaurant->created_at = Carbon::now();
+        $restaurant->updated_at = Carbon::now();
         $restaurant->save();
-
+        
         // Form-data yanıt
         return redirect()->route('home')->with('success', 'Restoran başarıyla oluşturuldu.');
     }
