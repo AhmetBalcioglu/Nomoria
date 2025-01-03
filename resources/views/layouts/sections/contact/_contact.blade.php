@@ -27,7 +27,8 @@
     </div>
     <div class="contact-form">
         <!--<h1 style="text-align: center;">Bize Ulaşın</h1>-->
-        <form action="#" method="POST">
+        <form action="{{ route('contact.send') }}" method="POST">
+            @csrf
             <input type="text" name="name" placeholder="Adınız" required>
             <input type="text" name="surname" placeholder="Soyadınız" required>
             <input type="email" name="email" placeholder="E-mail Adresiniz" required>

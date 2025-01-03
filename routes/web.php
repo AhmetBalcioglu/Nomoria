@@ -38,5 +38,8 @@ Route::prefix('restaurants')->group(function () {
 // Details Route
 Route::get('/details', [DetailsController::class, 'index']);
 
+// Contact Route
+Route::post('/contact/send',[ContactController::class,'send'])->name('contact.send');
+
 //discount Route
 Route::get('/discount', [DiscountController::class, 'discount']);
