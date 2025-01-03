@@ -6,6 +6,8 @@
 
 @section('page_head_css')
 
+    @vite('resources/css/contact/_contact.scss')
+
 @endsection
 
 @section('content')
