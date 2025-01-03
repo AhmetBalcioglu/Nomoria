@@ -10,13 +10,19 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="{{ asset('img/k1.png') }}" class="d-block w-100 img-fluid" alt="...">
+                            <img src="{{ asset('img/kampanya_gorsel/fastfood.png') }}" class="d-block w-100 img-fluid" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/k2.png') }}" class="d-block w-100 img-fluid" alt="...">
+                            <img src="{{ asset('img/kampanya_gorsel/steak.png') }}" class="d-block w-100 img-fluid" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/k3.png') }}" class="d-block w-100 img-fluid" alt="...">
+                            <img src="{{ asset('img/kampanya_gorsel/fish.png') }}" class="d-block w-100 img-fluid" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('img/kampanya_gorsel/vegan.png') }}" class="d-block w-100 img-fluid" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{ asset('img/kampanya_gorsel/alcohol.png') }}" class="d-block w-100 img-fluid" alt="...">
                         </div>
                     </div>
 

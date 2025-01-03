@@ -113,8 +113,9 @@ h2 {
 .carousel-inner {
     img {
         height: 30rem;
-        object-fit: fill;
+        object-fit: inherit;
     }
+    border: 1px solid black;
 }
 
 @keyframes fadeIn {
