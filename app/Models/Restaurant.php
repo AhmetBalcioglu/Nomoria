@@ -25,8 +25,22 @@ class Restaurant extends Model
         'capacity'
     ];
 
+    // Yorumlar (Reviews) ilişkisi
     public function reviews()
     {
-        return $this->hasMany(Review::class, 'restaurant_id', 'restaurantID');
+        return $this->hasMany(Review::class, 'restaurantID', 'restaurantID');
     }
+
+    // Rezervasyonlar (Reservations) ilişkisi
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'restaurantID', 'restaurantID');
+    }
+
+    // Kapasiteyi almak için fonksiyon
+    public function getCapacity()
+    {
+        return $this->capacity;  // Restoran kapasitesini döndürür
+    }
+
 }
