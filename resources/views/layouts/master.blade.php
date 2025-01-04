@@ -12,6 +12,7 @@
 
     @yield('page_head_css')
 
+
 </head>
 
 <body>
@@ -42,6 +43,7 @@
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
+
 
 
     <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
