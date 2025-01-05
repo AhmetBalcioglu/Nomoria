@@ -38,7 +38,7 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
         cursor: pointer;
 
         &:hover {
-            background-color: darken($secondary-color, 10%);
+            background-color: rgba($secondary-color, 0.6);
         }
     }
 
