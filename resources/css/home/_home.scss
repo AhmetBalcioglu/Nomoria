@@ -29,23 +29,12 @@ body {
     }
 }
 
-
-
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: flex-start;
-}
-
 .card {
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
     border: 1px solid #ece9e9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #fbfafa;
-    overflow: hidden;
-    width: 18%; // Kartların genişliği
 
     &:hover {
         transform: translateY(-5px);
@@ -63,8 +52,6 @@ body {
     img {
         border-radius: 10px 10px 0 0;
         object-fit: cover;
-        height: 150px;
-        width: 100%;
     }
 }
 
