@@ -11,12 +11,14 @@
                     <div class="carousel-inner">
                         <div class="carousel-item ">
 
-                            <img src="{{ asset('img/kampanya_gorsel/fastfood.png') }}" class="d-block w-100 img-fluid"
-                                alt="...">
+                            <a class="nav-link custom-link" href="{{ url('/discount') }}"><img
+                                    src="{{ asset('img/kampanya_gorsel/fastfood.png') }}"
+                                    class="d-block w-100 img-fluid" alt="..."></a>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/kampanya_gorsel/steak.png') }}" class="d-block w-100 img-fluid"
-                                alt="...">
+                            <a class="nav-link custom-link" href="{{ url('/discount') }}"><img
+                                    src="{{ asset('img/kampanya_gorsel/steak.png') }}" class="d-block w-100 img-fluid"
+                                    alt="..."></a>
                         </div>
                         <div class="carousel-item active">
                             <a class="nav-link custom-link" href="{{ url('/discount') }}"> <img
@@ -24,12 +26,14 @@
                                     alt="..."> </a>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/kampanya_gorsel/vegan.png') }}" class="d-block w-100 img-fluid"
-                                alt="...">
+                            <a class="nav-link custom-link" href="{{ url('/discount') }}"><img
+                                    src="{{ asset('img/kampanya_gorsel/vegan.png') }}" class="d-block w-100 img-fluid"
+                                    alt="..."></a>
                         </div>
                         <div class="carousel-item">
-                            <img src="{{ asset('img/kampanya_gorsel/alcohol.png') }}" class="d-block w-100 img-fluid"
-                                alt="...">
+                            <a class="nav-link custom-link" href="{{ url('/discount') }}"> <img
+                                    src="{{ asset('img/kampanya_gorsel/alcohol.png') }}" class="d-block w-100 img-fluid"
+                                    alt="..."></a>
                         </div>
                     </div>
 
@@ -147,7 +151,7 @@
         <h4>Hemen üye ol</h4>
         <p>Beğendiğin restoranları favorilerine ekle. </p>
         <p>Lezzetli Fırsatları Kaçırma!</p>
-        <button class="btn btn-danger">ÜYE OL</button>
+        <button onclick="window.location.href = '/register' " class="btn btn-danger">ÜYE OL</button>
     </div>
 </div>
 
