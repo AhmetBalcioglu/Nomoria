@@ -23,7 +23,7 @@ body {
 
 .carousel-inner {
     img {
-        height: 300px;
+        height: 200px;
         object-fit: cover;
         width: 100%;
     }
@@ -102,14 +102,6 @@ h2 {
     }
 }
 
-.carousel-inner {
-    img {
-        height: 30rem;
-        object-fit: inherit;
-    }
-
-    border: 1px solid black;
-}
 
 @keyframes fadeIn {
     from {

@@ -51,68 +51,93 @@
     </div>
 
     {{-- En Çok Tercih Edilen --}}
-    <div class="row">
-        <div class="col-sm-6 col-md-2 card card-body mb-5asd m-2">
-            <p class="text-center"><b>Kutlama Yemeği Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
+    <div class="row mb-5">
+        <div class="d-flex best">
+
+            <div class="col-md-2   p-2 mx-3 card card-body">
+                <p class="text-center"><b>Özel Günler</b></p>
+                <img src="{{ asset('img/homepage_img/ozengun.jpg') }}" width="50%" height="50%"
+                    class="d-block w-100   
                      my-4" alt="">
-        </div>
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Kutlama Yemeği Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
+            </div>
+
+            <div class="col-md-2   p-2 mx-3 card card-body">
+                <p class="text-center"><b>Kutlamalar</b></p>
+                <img src="{{ asset('img/homepage_img/kutlama.jpg') }}" width="50%" height="50%"
+                    class="d-block w-100   
                      my-4" alt="">
-        </div>
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Kutlama Yemeği Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
+            </div>
+
+            <div class="col-md-2   p-2 mx-3 card card-body">
+                <p class="text-center"><b>İş Yemekleri</b></p>
+                <img src="{{ asset('img/homepage_img/is.jpg') }}" width="50% " height="50%"
+                    class="d-block w-100   
                      my-4" alt="">
-        </div>
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Kutlama Yemeği Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
+            </div>
+
+            <div class="col-md-2   p-2 mx-3 card card-body">
+                <p class="text-center"><b>Tek Kişilik</b></p>
+                <img src="{{ asset('img/homepage_img/tek_kisi.jpg') }}" width="50%" height="50%"
+                    class="d-block w-100   
                      my-4" alt="">
-        </div>
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Kutlama Yemeği Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
-                     my-4"
-                alt="">
+            </div>
+
+            <div class="col-md-2   
+             p-2 mx-3 card card-body">
+                <p class="text-center"><b>Dünya Mutfağı</b></p>
+                <img src="{{ asset('img/homepage_img/dunya_mutfagi.jpg') }}" width="50%" height="50%"
+                    class="d-block w-100   
+                     my-4" alt="">
+            </div>
+
         </div>
     </div>
 
     {{-- Menü İçeriğine Göre Tercih Edilen --}}
-    <div class="row">
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Et Yemekleri Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
-                         my-4"
-                alt="">
-        </div>
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Et Yemekleri Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
-                         my-4"
-                alt="">
-        </div>
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Et Yemekleri Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
-                         my-4"
-                alt="">
-        </div>
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Et Yemekleri Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
-                         my-4"
-                alt="">
-        </div>
-        <div class="col-sm-6 col-md-2 card card-body mb-5 m-2">
-            <p class="text-center"><b>Et Yemekleri Rezervasyonları</b></p>
-            <img src="{{ asset('img/div_img.png') }}" class="d-block w-100   
-                         my-4"
-                alt="">
+    <div class="row mb-5">
+        <div class="menubest">
+            <div class="d-flex best">
+
+                <div class="col-md-2   p-2 mx-3 card card-body">
+                    <p class="text-center"><b>Et Menüleri</b></p>
+                    <img src="{{ asset('img/homepage_img/et.jpg') }}" width="50%" height="50%"
+                        class="d-block w-100   
+                         my-4" alt="">
+                </div>
+
+                <div class="col-md-2  p-2 mx-3 card card-body">
+                    <p class="text-center"><b>Balık Menüleri</b></p>
+                    <img src="{{ asset('img/homepage_img/balik.jpg') }}" width="50%" height="50%"
+                        class="d-block w-100   
+                         my-4" alt="">
+                </div>
+
+                <div class="col-md-2   p-2 mx-3 card card-body">
+                    <p class="text-center"><b>Fast Food Menüleri</b></p>
+                    <img src="{{ asset('img/homepage_img/fastfood.jpg') }}" width="50% " height="50%"
+                        class="d-block w-100   
+                         my-4" alt="">
+                </div>
+
+                <div class="col-md-2   p-2 mx-3 card card-body">
+                    <p class="text-center"><b>Vegan Menüler</b></p>
+                    <img src="{{ asset('img/homepage_img/vegan.png') }}" width="50%" height="50%"
+                        class="d-block w-100   
+                         my-4" alt="">
+                </div>
+
+                <div class="col-md-2   p-2 mx-3 card card-body">
+                    <p class="text-center"><b>Alkollü Menüler</b></p>
+                    <img src="{{ asset('img/homepage_img/alkol.jpg') }}" width="50%" height="50%"
+                        class="d-block w-100   
+                         my-4" alt="">
+                </div>
+
+            </div>
         </div>
     </div>
+
+
 
 </div>
 <div id="popup" class="popup">
