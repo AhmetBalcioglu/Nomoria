@@ -6,6 +6,8 @@
 
 @section('page_head_css')
 
+    @vite('resources/css/register/_register.scss')
+
 @endsection
 
 @section('content')
