@@ -1,5 +1,6 @@
-
 footer {
+    position: relative;
+    z-index: 2500;
     background-color: #333;
     color: #fff;
     padding: 20px 10px;
@@ -19,6 +20,7 @@ footer {
     flex: 1 1 calc(33.333% - 20px);
     margin: 10px;
     min-width: 250px;
+
 }
 
 .footer-section h3 {
