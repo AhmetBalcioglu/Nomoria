@@ -21,7 +21,7 @@
                     <a class="nav-link custom-link" href="{{ url('/about') }}">Hakkımızda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link custom-link" href="{{ url('/restaurants') }}">Restoranlar</a>
+                    <a class="nav-link custom-link" href="{{ url('/details') }}">Restoranlar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">İletişim</a>
