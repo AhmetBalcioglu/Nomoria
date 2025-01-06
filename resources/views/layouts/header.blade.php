@@ -25,12 +25,7 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">İletişim</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link custom-link" href="{{ url('/login') }}">Giriş Yap</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link custom-link" href="{{ url('/register') }}">Kayıt Ol</a>
-                </li>
+            
             </ul>
         </div>
     </nav>
