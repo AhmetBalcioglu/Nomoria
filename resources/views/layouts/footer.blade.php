@@ -2,8 +2,7 @@
       <div class="footer-container">
           <div class="footer-section">
               <h3>Hakkımızda</h3>
-              <p>Lezzetli yemekler ve kaliteli hizmet için en doğru adres. Restoranımızda rezervasyon yaparak keyifli
-                  bir deneyim yaşayabilirsiniz.</p>
+              <p>Lezzet dolu anılara ilk adımı atmaya ne dersiniz? Anında rezervasyon yaparak unutulmaz lezzet yolculuklarına bizimle başlayabilirsiniz.</p>
           </div>
           <div class="footer-section">
               <h3>İletişim</h3>
