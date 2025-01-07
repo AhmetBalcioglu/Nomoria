@@ -4,7 +4,6 @@ $card-bg-color: #fbfafa;
 $card-hover-bg-color: #f5f7fa;
 $card-border-color: #ece9e9;
 $text-color: #555;
-
 body {
     background-color: $background-color;
     font-family: $font-family;
@@ -20,7 +19,6 @@ body {
     margin-bottom: 20px;
     width: 100%;
 }
-
 .carousel-inner {
     img {
         height: 200px;
@@ -28,36 +26,28 @@ body {
         width: 100%;
     }
 }
-
 .card {
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
     border: 1px solid #ece9e9;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     background-color: #fbfafa;
-
     &:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         background-color: #f5f7fa;
     }
-
     p {
         font-size: 0.9rem;
         color: #555;
         margin: 10px 0;
         text-align: center;
     }
-
     img {
         border-radius: 10px 10px 0 0;
         object-fit: cover;
     }
 }
-
-
-
-
 h2 {
     font-family: $font-family;
     color: #333;
@@ -65,7 +55,6 @@ h2 {
     margin: 1.5rem 0;
     text-align: center;
 }
-
 // Popup
 .popup {
     display: none;
@@ -80,12 +69,10 @@ h2 {
     width: 300px;
     max-width: 90%;
     animation: fadeIn 0.8s ease-in-out;
-
     img {
         max-width: 100%;
         margin-top: 2rem;
     }
-
     .close-btn {
         position: absolute;
         top: 10px;
@@ -95,20 +82,16 @@ h2 {
         border: none;
         cursor: pointer;
     }
-
     .popup-content {
         font-size: 1rem;
         color: #333;
     }
 }
-
-
 @keyframes fadeIn {
     from {
         opacity: 0;
         transform: translateY(-20px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);

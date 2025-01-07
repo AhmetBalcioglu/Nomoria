@@ -21,3 +21,5 @@
 @vite('resources/js/details/_details.js')
 
 @endsection
+
+
