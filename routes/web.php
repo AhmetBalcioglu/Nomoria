@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\ReservationController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
@@ -39,7 +41,10 @@ Route::prefix('restaurants')->group(function () {
 Route::get('/details', [DetailsController::class, 'index']);
 
 // Contact Route
-Route::post('/contact/send',[ContactController::class,'send'])->name('contact.send');
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
 
 //discount Route
 Route::get('/discount', [DiscountController::class, 'discount']);
+//reservation Route
+Route::get('/reservations', [ReservationController::class, 'index']);
+
