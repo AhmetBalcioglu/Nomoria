@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -47,5 +48,6 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::get('/discount', [DiscountController::class, 'discount']);
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
+
 
 
