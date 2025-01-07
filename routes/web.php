@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -48,3 +49,5 @@ Route::get('/discount', [DiscountController::class, 'discount']);
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
 
+// Admin Page
+Route::get('/admin', [AdminController::class, 'index']);
