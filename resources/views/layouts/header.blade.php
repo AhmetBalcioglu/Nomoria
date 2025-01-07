@@ -25,7 +25,11 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">İletişim</a>
                 </li>
-            
+
+                <li class="nav-item">
+                    <a class="nav-link custom-link" href="{{ route('addRestaurant')  }}">Restoran Ekleme </a>
+                </li>
+
             </ul>
         </div>
     </nav>

@@ -35,6 +35,7 @@ Route::prefix('restaurants')->group(function () {
     Route::post('/update/{id}', [RestaurantController::class, 'update'])->name('update');
     Route::get('/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
     Route::get('/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
+
 });
 
 // Details Route
@@ -47,4 +48,4 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::get('/discount', [DiscountController::class, 'discount']);
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
-
+Route::get('/addRestaurant', [\App\Http\Controllers\AddRestaurantController::class, 'index'])->name('addRestaurant');
