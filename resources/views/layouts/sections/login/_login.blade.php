@@ -9,7 +9,7 @@
         {{ session('error') }}
     </div>
 @endif
-<div class="container">
+<div class="container container1">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-6 d-flex align-items-center justify-content-center">
             <img src="{{ asset('img/logo_1.jpeg') }}" alt="logo" class="logo img-fluid">

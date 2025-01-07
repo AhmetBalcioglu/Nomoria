@@ -7,7 +7,7 @@
         </ul>
     </div>
 @endif
-<div class="container">
+<div class="container container1">
 
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-6 d-flex align-items-center justify-content-center">
@@ -27,7 +27,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row mt-5 mb-5">
 
         <form action="{{ route('register') }}" method="POST">

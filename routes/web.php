@@ -28,7 +28,7 @@ Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->n
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
-    Route::get('/', [RestaurantController::class, 'index'])->name('restaurants.index');
+
     Route::get('/create', [RestaurantController::class, 'createPage'])->name('createPage');
     Route::post('/create', [RestaurantController::class, 'create'])->name('create');
     Route::delete('/delete/{id}', [RestaurantController::class, 'delete'])->name('delete');
@@ -47,4 +47,5 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::get('/discount', [DiscountController::class, 'discount']);
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
+
 
