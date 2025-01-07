@@ -1,0 +1,100 @@
+$background-color: #f5f5f5;
+$text-color: #333;
+$card-bg-color: #fff;
+$border-color: #ddd;
+$button-bg-color: #df3c00;
+$button-hover-bg-color: #b3925a;
+$primary-color: #4a90e2;
+$secondary-color: #50e3c2;
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+    color: $text-color;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info, .contact-form {
+    flex: 1;
+    background-color: $card-bg-color;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h1, p {
+        margin-top: 0;
+    }
+}
+
+.contact-info {
+    text-align: left;
+
+    .social-icons {
+        margin-top: 20px;
+
+        a {
+            img {
+                width: 24px;
+                margin-right: 10px;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+}
+
+.contact-form {
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid $border-color;
+            border-radius: 6px;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                border-color: $primary-color;
+                outline: none;
+            }
+        }
+
+        button {
+            padding: 15px;
+            background-color: $button-bg-color;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+
+            &:hover {
+                background-color: $button-hover-bg-color;
+                transform: translateY(-2px);
+            }
+        }
+    }
+}

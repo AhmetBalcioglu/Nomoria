@@ -39,7 +39,12 @@ class VerifyCsrfToken
      *
      * @var array<int, string>
      */
-    protected $except = [];
+    protected $except = [
+        '/restaurants/create',
+        '/restaurants/delete/1',
+        '/restaurants/update/1',
+
+    ];
 
     /**
      * The globally ignored URIs that should be excluded from CSRF verification.

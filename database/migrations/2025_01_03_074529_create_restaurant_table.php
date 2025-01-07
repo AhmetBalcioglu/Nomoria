@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('address');
             $table->integer(column: 'phone');
             $table->string('email')->unique();
+            $table->integer('capacity');  // Restoran kapasitesi
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
