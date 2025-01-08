@@ -147,18 +147,6 @@ class RestaurantController extends Controller
         }
     }
 
-    public function allRestaurants()
-    {
-        $restaurants = Restaurant::all();
-        return view('restaurants.restaurants', compact('restaurants'));
-    }
-    //test
-    public function show($id)
-{
-    $restaurant = Restaurant::with('menus')->findOrFail($id); // İlişkili menüleri yükler
-
-    return view('restaurant.show', compact('restaurant'));
-}
 
 }
 
