@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page_title' , 'Restoran Ekleme - Nomoria')
+@section('page_title', 'Restoran Ekleme - Nomoria')
 
 @section('page_description', 'Nomoria Restoran Ekleme sayfasıdır.')
 
@@ -8,18 +8,17 @@
 
     @vite ('resources/css/addRestaurant/_addRestaurant.scss')
 
-    @section('content')
+@endsection
 
-        @include('layouts.sections.addRestaurant._addRestaurant')
+@section('content')
 
-    @endsection
+    @include('layouts.sections.addRestaurant._addRestaurant')
 
-
-
-         @vite('resources/js/addRestaurant/addRestaurant.js')
+@endsection
 
 
+@section('page_body_js')
 
+    @vite('resources/js/addRestaurant/addRestaurant.js')
 
-
-
+@endsection
