@@ -34,7 +34,8 @@
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
+    @yield('page_body_js')
     <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
-    @yield('page_body_js')      
+
 </body>
 </html>
