@@ -1,3 +1,16 @@
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
 <div class="login-body">
 <div class="login-container">
     <div class="logo"></div>
@@ -17,11 +30,11 @@
             <span>Beni hatırla</span>
 
         </div>
-        <button type="button" class="login-button">Giriş yap</button>
+        <button type="submit" class="login-button">Giriş yap</button>
 
     </form>
 
-            <p>Henüz hesabın yok mu? <a href="route">Hesap aç</a></p>
+            <p>Henüz hesabın yok mu? <a href="{{ route('register') }}">Hesap aç</a></p>
 
             <div class="divider">
                 <span>VEYA</span>
