@@ -32,7 +32,8 @@
                     <option value="" disabled selected>Kategori Seçiniz</option>
                     <option value="japon-mutfagi">Japon Mutfağı</option>
                     <option value="kore-mutfagi">Kore Mutfağı</option>
-                    <option value="dogu-anadolu-mutfagi">Doğu Anadolu Mutfağı</option>
+                    <option value="türk-mutfagi">Türk Mutfağı</option>
+                    <option value="italya-mutfagi">Italya Mutfağı</option>
                 </select>
             </div>
         </div>
