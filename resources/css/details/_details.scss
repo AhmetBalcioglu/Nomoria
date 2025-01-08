@@ -21,46 +21,122 @@
 
 
 
-
-
-
-
-
-
-.sidebar {
+  .sidebar {
     width: 300px;
     background-color: #ffffff;
     padding: 20px;
-    height: 100%;
+    height: 90vh;
     overflow-y: auto;
     position: fixed;
-    z-index: 2000;
-    padding-bottom: 10%;
 
-    .category-title {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: #f0952d;
-        margin-top: 20px;
-    }
 
-    a {
-        color: #adb5bd;
-        text-decoration: none;
-        display: block;
-        margin: 5px 0;
+  .filter-container {
+    margin-bottom: 20px;
+  }
 
-        &:hover {
-            color: #df3c00;
-        }
-    }
-
+  label {
+    font-size: 16px;
+    margin-right: 10px;
 }
 
-input[type="checkbox"]:checked {
-    background-color: #ff5722; /* Seçili olduğunda istediğiniz renk */
-    border-color: #ff5722;
+select {
+    font-size: 16px;
+    padding: 5px;
+    background-color: white;
+    width: 220px; /* Görünümü sabit tutmak için genişlik */
+    max-height: 150px; /* İlk 5 seçenek kadar yükseklik */
+    overflow-y: auto; /* Taşan içerik için kaydırma çubuğu */
+}
+
+
+
+#selected-district {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #f0952d;
+}
+  
+
+    .baslik {
+      font-size: 1.5em;
+      margin-bottom: 1em;
+      color: #333;
+      font-weight: bold;
+    }
+
+
+    .category-title {
+      font-size: 1.2em;
+      margin: 0.5em 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: #f0952d;
+  
+      svg {
+        margin-left: 0.5em;
+        transition: transform 0.3s;
+      }
+  
+      &.collapsed svg {
+        transform: rotate(-180deg);
+      }
+    }
+
+    .a{
+            color: #adb5bd;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        
+    }
+   
+  
+    .checkbox-container {
+      display: none;
+      margin-left: 1.5em;
+  
+      &.expanded {
+        display: block;
+      }
+  
+      input[type="checkbox"] {
+        margin-right: 0.5em;
+      }
+  
+      label {
+        font-size: 1em;
+        margin-bottom: 0.5em;
+        display: inline-block;
+      }
+    }
+  
+    input[type="checkbox"] {
+      accent-color: #ff6f00;
+    }
+  
+    label {
+      font-size: 1em;
+      cursor: pointer;
+    }
+  
+    // Additional hover styles
+    .category-title:hover {
+      color: #deba80;
+    }
+
+    
+  .btn{
+    background-color: #deba80;
+    color: black;
+    width: 250px;
   }
+
+  .btn:hover{
+    background-color: #555;
+  }
+  }
+  
 
 .baslik {
     color: #3d3a3a;

@@ -22,9 +22,10 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'comment'=>'required',
-            'rating'=>'required'
+            'restaurant_id' => 'required',
+            'user_name' => 'required',
+            'rating' => 'required',
+            'comment' => 'required'
         ]);
 
         Comment::create($request->all());
