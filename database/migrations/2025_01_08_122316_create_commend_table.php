@@ -8,16 +8,18 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('restaurantID');
-            $table->string('user_name');
-            $table->integer('rating')->between(1, 5);
-            $table->text('comment')->nullable();
-            $table->timestamps();
+        if (!Schema::hasTable('comments')) {
+            Schema::create('comments', function (Blueprint $table) {
+                $table->id();
+                $table->unsignedBigInteger('restaurantID');
+                $table->string('user_name');
+                $table->integer('rating');
+                $table->text('comment')->nullable();
+                $table->timestamps();
 
-            $table->foreign('restaurantID')->references('id')->on('restaurants')->onDelete('cascade');
-        });
+                $table->foreign('restaurantID')->references('id')->on('restaurants')->onDelete('cascade');
+            });
+        }
     }
 
     public function down()
