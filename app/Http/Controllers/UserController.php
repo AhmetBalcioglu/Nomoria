@@ -60,12 +60,23 @@ class UserController extends Controller
         $password = $request->input('password');
 
         $user = Users::where('email', $email)->first();
+        $allUsers = Users::all()->toArray();
+        $userRole = $user->role;
 
         if ($user && Hash::check($password, $user->password)) {
+            Session::put('role', $userRole);
+            Session::put('name', $user->name);
+            Session::put('surname', $user->surname);
             return redirect('/')->with('success', 'Giriş Başarılı!');
         } else {
             return redirect('/login')->with('error', 'Email veya Şifre hatalı!')->withInput();
         }
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        return redirect('/')->with('success', 'Çıkış Başarılı!');
     }
 
     public function forgotPassword(Request $request)

@@ -27,7 +27,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link custom-link" href="{{ route('addRestaurant')  }}">Restoran Ekleme </a>
+                    <a class="nav-link custom-link" href="{{ route('addRestaurant') }}">Restoran Ekleme </a>
                 </li>
 
             </ul>
@@ -36,18 +36,44 @@
     <!-- Login Section -->
     <div class="col-4 d-flex flex-column align-items-end">
         <div class="d-flex align-items-center justify-content-end">
-            <button class="btn btn-primary custom-button me-2">Rezervasyonlarım</button>
-            <button class="btn btn-secondary custom-button me-2">Favorilerim</button>
-            <div class="dropdown">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill mt-1 mx-1"
-                    viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24" height="24">
-                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                </svg>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item processOptions" href="/login">Giriş Yap</a></li>
-                    <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
-                </ul>
-            </div>
+            @if (session()->has('role') && session()->get('role') == 'customer')
+                <button class="btn btn-primary custom-button me-2">Rezervasyonlarım</button>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
+            @endif
+
+            @if (session()->has('role') && session()->get('role') == 'customer')
+                <button class="btn btn-secondary custom-button me-2">Sepetim</button>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Sepetim</a>
+            @endif
+
+            @if (session()->has('role') && session()->get('role') == 'customer')
+                <a class="btn btn-secondary custom-button me-2">Favorilerim</a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
+            @endif
+
+
+
+
+            @if (!session()->has('role'))
+                <div class="dropdown">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill mt-1 mx-1"
+                        viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24"
+                        height="24">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                    </svg>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item processOptions" href="/login">Giriş Yap</a></li>
+                        <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
+                    </ul>
+                </div>
+            @endif
+            @if (session()->has('role') && session()->get('role') == 'customer')
+                <a href="{{ route('logout') }}" class="btn btn-secondary custom-button me-2 information">Çıkış Yap</a>
+                <h3>{{ session()->get('name') }} {{ session()->get('surname') }}</h3>
+            @endif
         </div>
         <form class="d-flex mt-2">
             <input id="searchBar" name="searchBar" class="form-control me-2" type="search" placeholder="Arama yapın"
