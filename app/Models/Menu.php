@@ -1,17 +1,16 @@
 <?php
 
-
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    use HasFactory;
+    // Factory kullanmıyoruz, HasFactory trait'i eklemiyoruz.
 
-    protected $table = 'menus';
-    protected $primaryKey = 'menuID';
+    protected $table = 'menus'; // Tablo ismi
+    protected $primaryKey = 'menuID'; // Birincil anahtar
+    public $timestamps = true; // Zaman damgası (created_at, updated_at)
 
     protected $fillable = [
         'restaurantID',
@@ -20,7 +19,7 @@ class Menu extends Model
         'price',
     ];
 
-    // Restoran ile ilişki (Bir menü bir restorana aittir)
+    // İlişkiler
     public function restaurant()
     {
         return $this->belongsTo(Restaurant::class, 'restaurantID', 'restaurantID');

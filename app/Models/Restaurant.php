@@ -42,5 +42,10 @@ class Restaurant extends Model
     {
         return $this->capacity;  // Restoran kapasitesini döndürür
     }
+// Bir restoranın birden fazla menüsü olabilir (menüler ile ilişki)
+public function menus()
+{
+    return $this->hasMany(Menu::class, 'restaurantID', 'restaurantID');
+}
 
 }

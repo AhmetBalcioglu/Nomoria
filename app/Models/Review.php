@@ -16,7 +16,7 @@ class Review extends Model
 
     // Fillable alanları tanımla
     protected $fillable = [
-        'restaurant_id',
+        'restaurantID',
         'user_id',
         'review',
         'rating',
@@ -25,7 +25,7 @@ class Review extends Model
     // Yabancı anahtar ilişkileri
     public function restaurant()
     {
-        return $this->belongsTo(Restaurant::class, 'restaurant_id', 'id');
+        return $this->belongsTo(Restaurant::class, 'restaurantID', 'id');
     }
 
 

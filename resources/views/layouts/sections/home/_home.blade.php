@@ -136,7 +136,7 @@
                         class="d-block w-100   
                          my-4" alt="">
                 </div>
-            
+
 
             </div>
         </div>
@@ -145,26 +145,15 @@
 
 
 </div>
-<div id="popup" class="popup">
-    <button class="close-btn" onclick="closePopup()">×</button>
-    <div class="popup-content">
-        <img src="{{ asset('img/div_img.png') }}" alt="">
-        <h4>Hemen üye ol</h4>
-        <p>Beğendiğin restoranları favorilerine ekle. </p>
-        <p>Lezzetli Fırsatları Kaçırma!</p>
-        <button onclick="window.location.href = '/register' " class="btn btn-danger">ÜYE OL</button>
+@if (!(session()->has('role') && session()->get('role') == 'customer'))
+    <div id="popup" class="popup">
+        <button class="close-btn">×</button>
+        <div class="popup-content">
+            <img src="{{ asset('img/div_img.png') }}" alt="">
+            <h4>Hemen üye ol</h4>
+            <p>Beğendiğin restoranları favorilerine ekle. </p>
+            <p>Lezzetli Fırsatları Kaçırma!</p>
+            <button onclick="window.location.href = '/register' " class="btn btn-danger">ÜYE OL</button>
+        </div>
     </div>
-</div>
-
-<script>
-    window.onload = function() {
-        setTimeout(function() {
-            document.getElementById("popup").style.display = "block";
-        }, 500);
-    }
-
-
-    function closePopup() {
-        document.getElementById("popup").style.display = "none";
-    }
-</script>
+@endif
