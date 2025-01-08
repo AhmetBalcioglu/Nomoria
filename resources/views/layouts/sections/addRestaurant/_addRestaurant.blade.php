@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container mt-2">
+<div class="container container1 mt-3 mb-5">
 
         <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal bg-light p-5 rounded-lg shadow-lg custom-form">
             @csrf
@@ -12,6 +13,13 @@
                     <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Restoran adını giriniz" required>
                 </div>
             </div>
+        <div class="row mb-3">
+            <h1 class="text-center text-dark">Restoran Ekle</h1>
+            <label for="name" class="col-sm-3 col-form-label text-dark">Restoran Adı</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control custom-input" id="name" name="name" placeholder="Restoran adını giriniz" required>
+            </div>
+        </div>
 
             <div class="row mb-3">
                 <label for="address" class="col-sm-3 col-form-label text-dark">Adres</label>

@@ -8,15 +8,19 @@
 
     @vite ('resources/css/addRestaurant/_addRestaurant.scss')
 
-    @section('content')
+@endsection
 
-        @include('layouts.sections.addRestaurant._addRestaurant')
+@section('content')
 
-    @endsection
+    @include('layouts.sections.addRestaurant._addRestaurant')
 
+@endsection
 
+@section('page_body_js')
 
-         @vite('resources/js/addRestaurant/addRestaurant.js')
+    @vite('resources/js/addRestaurant/addRestaurant.js')
+
+@endsection
 
 
 
