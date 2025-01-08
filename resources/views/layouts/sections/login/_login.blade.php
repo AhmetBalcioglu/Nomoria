@@ -1,3 +1,4 @@
+<div class="login-body">
 <div class="login-container">
     <div class="logo"></div>
     <h1>Giriş Yap</h1>
@@ -9,22 +10,27 @@
             <button type="button" class="show-password">&#128065;</button>
         </div>
         <div class="remember-me">
-            <label for="">
+            <label  class="remember-checkbox">
                 <input type="checkbox" name="remember" id="remember">
-                Beni Hatırla
+
             </label>
+            <span>Beni hatırla</span>
+
         </div>
+        <button type="button" class="login-button">Giriş yap</button>
+
     </form>
 
             <p>Henüz hesabın yok mu? <a href="route">Hesap aç</a></p>
 
-            <div>
+            <div class="divider">
                 <span>VEYA</span>
             </div>
             <div class="social-login">
-               
-<button class="google-btn">Google ile Giriş yap</button>        
+
+<button class="google-btn">Google ile Giriş yap</button>
 <button class="apple-btn">Apple ile Giriş yap</button>
-        
+
+</div>
 </div>
 </div>
