@@ -1,4 +1,4 @@
-<div class="container mt-2">
+<div class="container-add mt-2">
 
     <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal bg-light p-5 rounded-lg shadow-lg custom-form">
         @csrf
