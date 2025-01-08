@@ -1,4 +1,4 @@
-.container {
+/*.container {
     background-color: #ed4f15;
     border-radius: 10px;
     margin-top: 5%;
@@ -21,7 +21,98 @@
 
 .reply:focus {
     outline: none;
-    box-shadow: 0 0 10px 2px rgba(255, 191, 0, 0.8); /* Açık turuncu renk */
-    border-color: rgba(255, 191, 0, 0.8); /* Açık turuncu sınır rengi */
+    box-shadow: 0 0 10px 2px rgba(255, 191, 0, 0.8); // Açık turuncu renk 
+    border-color: rgba(255, 191, 0, 0.8); }
+//Açık turuncu sınır rengi 
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: image(url(..logo.png) no-repeat center center fixed);
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper {
+    width: 420px;
+    background: transparent;
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px;
+    border: 2pc solid rgb(255, 255, 255, 0.3);
+    backdrop-filter: blur(35px);
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.2);
+}*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: image(url(/public/img/logo_1.jpeg) no-repeat center center fixed);
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+header,
+footer {
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); // Adjust the background color as needed
+    color: white;
+    text-align: center;
+}
+
+.container {
+    background-color: transparent; // Changed to transparent
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 50%;
+    padding: 100px;
+}
+
+.logo {
+    width: 60%;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.reply:focus {
+    outline: none;
+    box-shadow: 0 0 10px 2px rgba(255, 191, 0, 0.8); // Açık turuncu renk 
+    border-color: rgba(255, 191, 0, 0.8); // Açık turuncu sınır rengi 
+}
+
+.wrapper {
+    width: 420px;
+    background: transparent;
+    color: white;
+    border-radius: 10px;
+    padding: 30px 40px;
+    border: 2pc solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(35px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
