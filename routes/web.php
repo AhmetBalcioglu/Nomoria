@@ -11,7 +11,8 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ReservationController;
-
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AddRestaurantController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
@@ -48,4 +49,6 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::get('/discount', [DiscountController::class, 'discount']);
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
-Route::get('/addRestaurant', [\App\Http\Controllers\AddRestaurantController::class, 'index'])->name('addRestaurant');
+Route::get('/addRestaurant', [AddRestaurantController::class, 'index'])->name('addRestaurant');
+Route::post('/comments', [CommentController::class, 'store']);
+Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);
