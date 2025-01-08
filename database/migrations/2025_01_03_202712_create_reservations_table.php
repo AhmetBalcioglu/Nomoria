@@ -13,7 +13,20 @@ class CreateReservationsTable extends Migration
      */
     public function up()
     {
+        Schema::create('reservations', function (Blueprint $table) {
+            $table->id('reservationID'); // Rezervasyon ID
+            $table->unsignedBigInteger('restaurantID'); // Restoran ID (foreign key)
+            $table->unsignedBigInteger('userID'); // Kullanıcı ID (foreign key)
+            $table->dateTime('reservation_time'); // Rezervasyon tarihi ve saati
+            $table->integer('guest_count'); // Misafir sayısı
+            $table->string('status')->default('pending'); // Rezervasyon durumu (pending, confirmed, canceled vb.)
+            $table->timestamps();
+            $table->softDeletes(); // Silinen rezervasyonları işaretler
 
+            // Yabancı anahtarlar
+            $table->foreign('restaurantID')->references('restaurantID')->on('restaurant')->onDelete('cascade');
+            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
+        });
     }
 
     /**

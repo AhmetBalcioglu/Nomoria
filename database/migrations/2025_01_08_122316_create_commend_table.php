@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('restaurant_id');
+            $table->unsignedBigInteger('restaurantID');
             $table->string('user_name');
             $table->integer('rating')->between(1, 5);
             $table->text('comment')->nullable();
             $table->timestamps();
 
-            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+            $table->foreign('restaurantID')->references('id')->on('restaurants')->onDelete('cascade');
         });
     }
 
