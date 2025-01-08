@@ -1,13 +1,11 @@
 
-</div>
-<footer class="custom-footer text-white ">
+<footer class="custom-footer text-white">
     <div class="container">
         <div class="row align-items-center">
             <!-- Sol Bölüm: Logo ve İsim -->
-            <div class="col-md-4 text-center text-md-start mb-2 mb-md-0 ">
-                <div class="footer-logo d-flex align-items-center justify-content-center justify-content-md-start text-center mt5">
-                    <img src="{{ asset('img/logo_1.jpeg') }}" alt="Logo" class="img-fluid me-2" style="height: 3rem;">
-
+            <div class="col-md-4 text-center text-md-start mb-2 mb-md-0">
+                <div class="footer-logo d-flex align-items-center justify-content-center justify-content-md-start mt-5">
+                    <img src="{{ asset('img/logo_1.jpeg') }}" alt="Logo" class="img-fluid me-2" style="height: 5rem;">
                 </div>
                 <p class="mt-2">Hayatınıza lezzet katıyoruz!</p>
             </div>
@@ -30,32 +28,34 @@
                     <a href="https://instagram.com" target="_blank" class="footer-social" aria-label="Instagram">
                         <i class="bi bi-instagram"></i>
                     </a>
-                    <a href="https://twitter.com" target="_blank" class="footer-social" aria-label="Twitter">
-                        <i class="bi bi-twitter"></i>
+                    <a href="https://x.com" target="_blank" class="footer-social" aria-label="X">
+                        <i class="bi bi-x"></i>
                     </a>
                     <a href="https://linkedin.com" target="_blank" class="footer-social" aria-label="LinkedIn">
                         <i class="bi bi-linkedin"></i>
                     </a>
                 </div>
             </div>
-        </div>
+        </div>    
 
         <!-- Alt Kısım -->
         <div class="row mt-4">
             <div class="col text-center">
                 <small>© 2025 Nomoria. Tüm Hakları Saklıdır. | <a href="#privacy" class="footer-link">Gizlilik Politikası</a></small>
             </div>
-        </div>
+        </div>    
     </div>
 </footer>
 
+
+
 <style>
     .custom-footer {
-
         background-color: #1b1b1b;
         border-top: 5px solid #f46c2c;
     }
     .footer-logo {
+
     ;
     }
     .footer-logo h3 {
