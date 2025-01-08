@@ -43,12 +43,6 @@
             @endif
 
             @if (session()->has('role') && session()->get('role') == 'customer')
-                <button class="btn btn-secondary custom-button me-2">Sepetim</button>
-            @else
-                <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Sepetim</a>
-            @endif
-
-            @if (session()->has('role') && session()->get('role') == 'customer')
                 <a class="btn btn-secondary custom-button me-2">Favorilerim</a>
             @else
                 <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
