@@ -12,6 +12,7 @@ use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ReservationController;
 
+use App\Http\Controllers\CommentController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
@@ -25,6 +26,7 @@ Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name(
 Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
+
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {

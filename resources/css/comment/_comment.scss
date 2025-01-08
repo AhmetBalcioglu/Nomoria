@@ -1,0 +1,17 @@
+
+$star-color: lightgray;
+$star-selected-color: gold;
+
+.star {
+    font-size: 20px;
+    color: $star-color;
+    cursor: pointer;
+
+    &.selected {
+        color: $star-selected-color;
+    }
+
+    &.hover {
+        color: $star-selected-color;
+    }
+}
