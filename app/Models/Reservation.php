@@ -29,7 +29,7 @@ class Reservation extends Model
 
     public function user()
     {
-        return $this->belongsTo(Users::class, 'userID', 'id');
+        return $this->belongsTo(User::class, 'userID', 'id');  // `Users` yerine `User` modelini kullanın
     }
 
     // Kapasite kontrolü
@@ -48,5 +48,4 @@ class Reservation extends Model
 
         return true; // Eğer limit aşılmadıysa, rezervasyon yapılabilir
     }
-    
 }
