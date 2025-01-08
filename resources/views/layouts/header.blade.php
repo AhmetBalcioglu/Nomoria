@@ -189,7 +189,7 @@
                 {{-- Arama kısmı --}}
 
                 <form class="d-flex me-5">
-                    <input class="form-control me-2 small-input w-75" type="search" placeholder="Arama yapın"
+                    <input class="form-control me-2 small-input w-75" type="search" placeholder="Arama yapınız"
                         aria-label="Search">
                     <button class="btn btn-warning btn-sm" type="submit">Ara</button>
                 </form>
