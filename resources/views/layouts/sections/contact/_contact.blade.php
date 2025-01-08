@@ -15,7 +15,7 @@
             </a>
             <a href="https://x.com" target="_blank" aria-label="x.com">
                 <svg xmlns="http://www.w3.org/2000/svg"width="30" height="30" fill="#df3c00" class="bi bi-x" viewBox="0 0 100 100"  >
-                    <path d="M10 10 L90 90 M90 10 L10 90" stroke="black"stroke-width="15" fill="none"/>
+                    <path d="M10 10 L90 90 M90 10 L10 90" stroke=" #ed4f15"stroke-width="15" fill="none"/>
                   </svg>
                   
                   
