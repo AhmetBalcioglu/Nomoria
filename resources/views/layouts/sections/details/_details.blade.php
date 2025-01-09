@@ -51,9 +51,11 @@
     <h2 class="baslik">Mekan Türü</h2>
     <div>
         <div class="category-title collapsible" id="mekan-turu-title"> Seçiniz
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
-            </svg>   
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path
+                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+            </svg>
         </div>
         <div class="checkbox-container" style="display: none;">
             <input id="sea-view" type="checkbox">
@@ -67,7 +69,7 @@
         </div>
     </div>
 
-    
+
 
 
     <h2 class="baslik">Konsepte Göre</h2>
@@ -78,8 +80,10 @@
 
     <div>
         <div class="category-title collapsible" id="world-cuisine-title">Dünya Mutfağı
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path
+                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
             </svg>
         </div>
         <div class="checkbox-container" style="display: none;">
@@ -114,8 +118,10 @@
 
     <div>
         <div class="category-title collapsible" id="meat-dishes-title">Et Yemekleri
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path
+                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
             </svg>
         </div>
         <div class="checkbox-container" style="display: none;">
@@ -132,8 +138,10 @@
 
     <div>
         <div class="category-title collapsible" id="fish-dishes-title">Balık
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path
+                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
             </svg>
         </div>
         <div class="checkbox-container" style="display: none;">
@@ -150,8 +158,10 @@
 
     <div>
         <div class="category-title collapsible" id="fast-food-title">Fast Food
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path
+                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
             </svg>
         </div>
         <div class="checkbox-container" style="display: none;">
@@ -168,8 +178,10 @@
 
     <div>
         <div class="category-title collapsible" id="vegan-dishes-title">Vegan
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path
+                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
             </svg>
         </div>
         <div class="checkbox-container" style="display: none;">
@@ -186,8 +198,10 @@
 
     <div>
         <div class="category-title collapsible" id="alcoholic-places-title">Alkollü Mekanlar
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-caret-down" viewBox="0 0 16 16">
+                <path
+                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
             </svg>
         </div>
         <div class="checkbox-container" style="display: none;">
@@ -208,157 +222,24 @@
 
 
 <div class="container my-4">
-    <div class="row">
-        <!-- Restoran Kartı 1 -->
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b1.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı</h5>
-                    <p>İki kişilik menüde %20 indirim!</p>
-                    <p>📍 İstanbul, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
+    <div class="row" id="restaurant-cards">
+
+        @foreach ($restaurants as $restaurant)
+            {{-- Restoran Card --}}
+            <div class="col-md-3 mb-5">
+                <div class="restaurant-card">
+                    <img src="{{ asset('img/balik/b1.jpg') }}" alt="Restoran">
+                    <div class="restaurant-card-body">
+                        <h5></h5>
+                        {{ $restaurant['name'] }}
+                        <p>İki kişilik menüde %20 indirim!</p>
+                        <p>📍 {{ $restaurant['address'] }}</p>
+                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
 
-        <!-- Restoran Kartı 2 -->
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b2.png') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 2</h5>
-                    <p>Pizza ve tatlı menüsünde %30 indirim!</p>
-                    <p>📍 Ankara, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Restoran Kartı 3 -->
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 3</h5>
-                    <p>Üç kişilik menüde ücretsiz içecek!</p>
-                    <p>📍 İzmir, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 3</h5>
-                    <p>Üç kişilik menüde ücretsiz içecek!</p>
-                    <p>📍 İzmir, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 3</h5>
-                    <p>Üç kişilik menüde ücretsiz içecek!</p>
-                    <p>📍 İzmir, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 3</h5>
-                    <p>Üç kişilik menüde ücretsiz içecek!</p>
-                    <p>📍 İzmir, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 3</h5>
-                    <p>Üç kişilik menüde ücretsiz içecek!</p>
-                    <p>📍 İzmir, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 3</h5>
-                    <p>Üç kişilik menüde ücretsiz içecek!</p>
-                    <p>📍 İzmir, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-         <!-- Restoran Kartı 1 -->
-         <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b1.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı</h5>
-                    <p>İki kişilik menüde %20 indirim!</p>
-                    <p>📍 İstanbul, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Restoran Kartı 2 -->
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b2.png') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 2</h5>
-                    <p>Pizza ve tatlı menüsünde %30 indirim!</p>
-                    <p>📍 Ankara, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Restoran Kartı 3 -->
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 3</h5>
-                    <p>Üç kişilik menüde ücretsiz içecek!</p>
-                    <p>📍 İzmir, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı 3</h5>
-                    <p>Üç kişilik menüde ücretsiz içecek!</p>
-                    <p>📍 İzmir, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-
-        
     </div>
 </div>

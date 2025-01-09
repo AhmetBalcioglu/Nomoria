@@ -17,9 +17,8 @@ return new class extends Migration
                 $table->text('comment')->nullable();
                 $table->timestamps();
 
-                $table->foreign('restaurantID')->references('id')->on('restaurants')->onDelete('cascade');
-            });
-        }
+            $table->foreign('restaurantID')->references('restaurantID')->on('restaurant')->onDelete('cascade');
+        });
     }
 
     public function down()

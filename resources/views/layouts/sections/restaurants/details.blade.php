@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.master')
 
 @section('page_title', $details['name'])
@@ -15,7 +12,7 @@
                     <!-- Restoran Fotoğrafı -->
                     @if (isset($details['photos']))
                         <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{ $details['photos'][0]['photo_reference'] }}&key={{ config('services.google_places.api_key') }}"
-                             class="card-img-top" alt="Restoran Fotoğrafı">
+                            class="card-img-top" alt="Restoran Fotoğrafı">
                     @else
                         <img src="{{ asset('images/default.jpg') }}" class="card-img-top" alt="Varsayılan Fotoğraf">
                     @endif
@@ -35,7 +32,8 @@
                         </ul>
                     @endif
                     @if (isset($details['website']))
-                        <p><strong>Web Sitesi:</strong> <a href="{{ $details['website'] }}" target="_blank">{{ $details['website'] }}</a></p>
+                        <p><strong>Web Sitesi:</strong> <a href="{{ $details['website'] }}"
+                                target="_blank">{{ $details['website'] }}</a></p>
                     @endif
                     <a href="{{ route('restaurants.index') }}" class="btn btn-secondary">Geri Dön</a>
                 </div>
