@@ -17,14 +17,6 @@
 @endsection
 
 @section('page_body_js')
-    <script>
-        function showPassword() {
-            var passwordInput = document.getElementById('password');
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-            } else {
-                passwordInput.type = 'password';
-            }
-        }
-    </script>
+    @vite('resources/js/login/_login.js')
+
 @endsection
