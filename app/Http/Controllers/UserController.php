@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -56,21 +57,25 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $email = $request->input('email');
-        $password = $request->input('password');
-
-        $user = Users::where('email', $email)->first();
-        $allUsers = Users::all()->toArray();
-        $userRole = $user->role;
-
-        if ($user && Hash::check($password, $user->password)) {
+        try {
+            $email = $request->input('email');
+            $password = $request->input('password');
+            
+            $user = Users::where('email', $email)->first();
+            
+            if (!$user || !Hash::check($password, $user->password)) {
+            return redirect('/login')->with('error', 'Email veya Şifre hatalı!');
+            }
+            
+            $userRole = $user->role;
             Session::put('role', $userRole);
             Session::put('name', $user->name);
             Session::put('surname', $user->surname);
             return redirect('/')->with('success', 'Giriş Başarılı!');
-        } else {
-            return redirect('/login')->with('error', 'Email veya Şifre hatalı!')->withInput();
+        } catch (Exception $e) {
+            return redirect('/login')->with('error', 'Bir hata oluştu: ' . $e->getMessage());
         }
+        
     }
 
     public function logout()
