@@ -12,3 +12,23 @@ function closePopup() {
 $('.close-btn').on('click', function () {
     closePopup();
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const heartIcons = document.querySelectorAll('.redirect-to-login');
+    heartIcons.forEach(function(icon) {
+        icon.addEventListener('click', function() {
+            icon.setAttribute('fill', 'red');
+            window.location.href = '/login';
+        });
+
+        icon.addEventListener('mouseover', function() {
+            icon.classList.add('heart-icon-grow');
+        });
+
+        icon.addEventListener('mouseout', function() {
+            icon.classList.remove('heart-icon-grow');
+        });
+    });
+});
+            
