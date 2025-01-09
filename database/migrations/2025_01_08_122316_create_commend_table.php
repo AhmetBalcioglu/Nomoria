@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreign('restaurantID')->references('restaurantID')->on('restaurant')->onDelete('cascade');
         });
-    }
+    }}
 
     public function down()
     {
