@@ -25,7 +25,7 @@ class CreateReservationsTable extends Migration
 
             // Yabancı anahtarlar
             $table->foreign('restaurantID')->references('restaurantID')->on('restaurant')->onDelete('cascade');
-            $table->foreign('userID')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('userID')->references('userID')->on('users')->onDelete('cascade');
         });
     }
 

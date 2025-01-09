@@ -1,5 +1,7 @@
 <div class="container mt-5">
-
+    @php
+        dump(session()->all());
+    @endphp
     {{-- Kampanyalı Restoranlar Banner --}}
     <div class="row">
         <div class="col-md-12">
@@ -86,7 +88,7 @@
             </div>
 
             <div class="col-md-2   p-2 mx-3 card card-body">
-                <p class="text-center"><b>Tek Kişilik</b></p>
+                <p id="test23" class="text-center"><b>Tek Kişilik</b></p>
                 <img src="{{ asset('img/homepage_img/tek_kisi.jpg') }}" width="50%" height="50%"
                     class="d-block w-100 my-4" alt="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black" class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 heart-icon redirect-to-login" viewBox="0 0 16 16">

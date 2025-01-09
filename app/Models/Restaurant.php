@@ -10,7 +10,7 @@ class Restaurant extends Model
 {
     use HasFactory, SoftDeletes; // Soft delete özelliğini ekler
 
-    protected $table = 'restaurants'; 
+    protected $table = 'restaurant';
     protected $primaryKey = 'restaurantID'; // Birincil anahtar
 
     // Fillable alanlar
@@ -42,10 +42,15 @@ class Restaurant extends Model
     {
         return $this->capacity;  // Restoran kapasitesini döndürür
     }
-// Bir restoranın birden fazla menüsü olabilir (menüler ile ilişki)
-public function menus()
-{
-    return $this->hasMany(Menu::class, 'restaurantID', 'restaurantID');
-}
+    // Bir restoranın birden fazla menüsü olabilir (menüler ile ilişki)
+    public function menus()
+    {
+        return $this->hasMany(Menu::class, 'restaurantID', 'restaurantID');
+    }
 
+    // Tüm restoranları getir
+    public static function getAllRestaurants()
+    {
+        return self::all();
+    }
 }

@@ -50,5 +50,6 @@ Route::get('/discount', [DiscountController::class, 'discount']);
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
 Route::get('/addRestaurant', [AddRestaurantController::class, 'index'])->name('addRestaurant');
+Route::post('/addRestaurant', [AddRestaurantController::class, 'addRestaurant'])->name('addRestaurantPost');
 Route::post('/comments', [CommentController::class, 'store']);
 Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);

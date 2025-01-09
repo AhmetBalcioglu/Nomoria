@@ -34,7 +34,6 @@ class RestaurantController extends Controller
             $restaurants = json_decode($response->getBody()->getContents(), true)['results'];
         } catch (\Exception $e) {
             return view('error', ['message' => 'API İsteği Hatası: ' . $e->getMessage()]);
-
         }
 
         return view('layouts.sections.restaurants.index', compact('restaurants'));
@@ -149,4 +148,3 @@ class RestaurantController extends Controller
 
 
 }
-
