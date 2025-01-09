@@ -224,20 +224,8 @@
 <div class="container my-4">
     <div class="row" id="restaurant-cards">
 
-        <!-- Restoran Kartı 1 -->
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="{{ asset('img/balik/b1.jpg') }}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>Restoran Adı</h5>
-                    <p>İki kişilik menüde %20 indirim!</p>
-                    <p>📍 İstanbul, Türkiye</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-        @dump($restaurants)
         @foreach ($restaurants as $restaurant)
+            {{-- Restoran Card --}}
             <div class="col-md-3 mb-5">
                 <div class="restaurant-card">
                     <img src="{{ asset('img/balik/b1.jpg') }}" alt="Restoran">
