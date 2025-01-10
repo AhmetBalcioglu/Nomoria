@@ -16,6 +16,7 @@ use App\Http\Controllers\AddRestaurantController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
+Route::get('/search', [RestaurantController::class, 'search'])->name('search');
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [UserController::class, 'login'])->name('login');
