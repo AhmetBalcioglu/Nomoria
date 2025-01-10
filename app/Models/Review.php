@@ -17,7 +17,7 @@ class Review extends Model
     // Fillable alanları tanımla
     protected $fillable = [
         'restaurantID',
-        'user_id',
+        'userID',
         'review',
         'rating',
     ];
@@ -31,6 +31,6 @@ class Review extends Model
 
     public function user()
     {
-        return $this->belongsTo(Users::class, 'user_id', 'id');
+        return $this->belongsTo(Users::class, 'userID', 'id');
     }
 }
