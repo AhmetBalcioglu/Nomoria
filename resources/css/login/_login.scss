@@ -58,6 +58,7 @@ body {
 
             .remember-me {
                 display: flex;
+                justify-content: flex-start;
                 align-items: center;
                 font-size: 14px;
                 color: #666;
@@ -67,10 +68,27 @@ body {
                     text-decoration: none;
                 }
 
-                .remember-checkbox {
+            }
+
+            .forgot-password {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                font-size: 14px;
+                color: #666;
+
+                a {
+                    color: #0073e6;
+                    text-decoration: none;
+                }
+
+                .forgot-password {
                     display: flex;
                 }
             }
+
+
+
 
             .login-button {
                 background-color: #ed4f15;

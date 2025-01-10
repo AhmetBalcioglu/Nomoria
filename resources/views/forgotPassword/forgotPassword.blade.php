@@ -6,6 +6,8 @@
 
 @section('page_head_css')
 
+    @vite('resources/css/forgotPassword/_forgotPassword.scss')
+
 @endsection
 
 @section('content')
@@ -15,5 +17,7 @@
 @endsection
 
 @section('page_body_js')
+    @vite('resources/js/forgotPassword/_forgotPassword.js')
+
 
 @endsection
