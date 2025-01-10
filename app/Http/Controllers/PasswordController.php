@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -35,7 +36,7 @@ class PasswordController extends Controller
         return redirect('/newPassword');
     }
 
-    
+
 
     public function resetPassword(Request $request)
     {
@@ -60,14 +61,14 @@ class PasswordController extends Controller
             return back()->withErrors(['code' => 'Sıfırlama kodu hatalı.']);
         }
 
-        // Kullanıcının e-posta adresine göre userID yerine id'yi kullan
+        // E-posta adresine göre kullanıcıyı buluyoruz
         $user = Users::where('email', $resetEmail)->first();
         if (!$user) {
             return back()->withErrors(['code' => 'Bu e-posta adresi sistemde kayıtlı değil.']);
         }
 
-        // Şifre doğrudan kaydedilecek
-        $user->password = $request->input('password');
+        // Şifreyi güncelle
+        $user->password = Hash::make($request->input('password'));
         $user->save();
 
         Session::forget('reset_code');
@@ -75,5 +76,6 @@ class PasswordController extends Controller
 
         return redirect('/login')->with('success', 'Şifreniz başarıyla güncellendi.');
     }
+
 }
 
