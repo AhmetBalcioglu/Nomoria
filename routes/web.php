@@ -56,4 +56,4 @@ Route::post('/addRestaurant', [AddRestaurantController::class, 'addRestaurant'])
 Route::post('/comments', [CommentController::class, 'store']);
 Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);
 
-Route::get('/adminPanel',[AdminPanelController::class,'index'])->name('adminPanel');
+Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');

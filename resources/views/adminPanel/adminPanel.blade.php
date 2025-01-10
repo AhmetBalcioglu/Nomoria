@@ -6,7 +6,7 @@
 
 @section('page_head_css')
 
-<!-- Değişcek @vite('resources/css/details/_details.scss') -->
+    @vite('resources/css/adminPanel/_adminPanel.scss')
 
 @endsection
 
@@ -18,7 +18,7 @@
 
 @section('page_body_js')
 
-<!-- Değişcek @vite('resources/js/details/_details.js') -->
+    @vite('resources/js/adminPanel/_adminPanel.js')
 
 @endsection
 
