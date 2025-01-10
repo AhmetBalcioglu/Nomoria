@@ -40,9 +40,9 @@ class VerifyCsrfToken
      * @var array<int, string>
      */
     protected $except = [
-        '/restaurants/create',
-        '/restaurants/delete/1',
-        '/restaurants/update/1',
+        // '/restaurants/create',
+        // '/restaurants/delete/Test',
+        // '/restaurants/update/Test',
 
     ];
 

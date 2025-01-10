@@ -82,69 +82,129 @@ class RestaurantController extends Controller
         return redirect()->route('home')->with('success', 'Restoran başarıyla oluşturuldu.');
     }
 
-    public function update(Request $request, $restaurantID)
+    // public function update(Request $request, $name)
+    // {
+    //     // Validasyon
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'description' => 'nullable|string',
+    //         'address' => 'nullable|string',
+    //         'phone' => 'nullable|string|max:15',
+    //         'email' => 'nullable|email|max:255',
+    //         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    //     ]);
+
+    //     // Restoran güncelleme
+    //     $restaurant = Restaurant::where('name', '=', $name)->first();
+    //     if (empty($name)) {
+    //         return redirect()->route('home')->with('warning', 'ID boş olamaz!');
+    //     }
+
+    //     if ($restaurant) {
+    //         if ($request->hasFile('image')) {
+    //             $image = time() . '.' . $request->file('image')->getClientOriginalExtension();
+    //             $destinationPath = public_path('images');
+    //             if (!File::exists($destinationPath)) {
+    //                 File::makeDirectory($destinationPath, 0755, true, true);
+    //             }
+    //             $request->file('image')->move($destinationPath, $image);
+    //             $restaurant->image = "/images/" . $image;
+    //         }
+
+    //         $restaurant->name = $request->name;
+    //         $restaurant->description = $request->description;
+    //         $restaurant->address = $request->address;
+    //         $restaurant->phone = $request->phone;
+    //         $restaurant->email = $request->email;
+    //         $restaurant->capacity = $request->capacity;
+    //         $restaurant->updated_at = Carbon::now();
+
+    //         if ($restaurant->save()) {
+    //             return redirect()->route('home')->with('success', 'Restoran başarıyla güncellendi.');
+    //         } else {
+    //             return redirect()->route('home')->with('error', 'Restoran güncellenemedi. Lütfen daha sonra tekrar deneyiniz.');
+    //         }
+    //     } else {
+    //         return redirect()->route('home')->with('error', 'Restoran Bulunamadı');
+    //     }
+    // }
+
+    public function update(Request $request, $name)
     {
         // Validasyon
-        $request->validate([
-            'name' => 'required|string|max:255',
+        $validated = $request->validate([
+            'newName' => 'required|string|max:255', // Yeni restoran adı zorunlu
             'description' => 'nullable|string',
             'address' => 'nullable|string',
             'phone' => 'nullable|string|max:15',
             'email' => 'nullable|email|max:255',
+            'capacity' => 'nullable|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        // Restoran güncelleme
-        $restaurant = Restaurant::find($restaurantID);
-        if (empty($restaurantID)) {
-            return redirect()->route('home')->with('warning', 'ID boş olamaz!');
+        // Restoranı bulma
+        $restaurant = Restaurant::where('name', $name)->first();
+
+        if (!$restaurant) {
+            return response()->json(['success' => false, 'message' => 'Restoran bulunamadı.'], 404);
         }
 
-        if ($restaurant) {
-            if ($request->hasFile('image')) {
-                $image = time() . '.' . $request->file('image')->getClientOriginalExtension();
-                $destinationPath = public_path('images');
-                if (!File::exists($destinationPath)) {
-                    File::makeDirectory($destinationPath, 0755, true, true);
-                }
-                $request->file('image')->move($destinationPath, $image);
-                $restaurant->image = "/images/" . $image;
+        // Yeni resim yüklendi mi?
+        if ($request->hasFile('image')) {
+            // Eski resmi silme
+            if ($restaurant->image && File::exists(public_path($restaurant->image))) {
+                File::delete(public_path($restaurant->image));
             }
 
-            $restaurant->name = $request->name;
-            $restaurant->description = $request->description;
-            $restaurant->address = $request->address;
-            $restaurant->phone = $request->phone;
-            $restaurant->email = $request->email;
-            $restaurant->capacity = $request->capacity;
-            $restaurant->updated_at = Carbon::now();
-
-            if ($restaurant->save()) {
-                return redirect()->route('home')->with('success', 'Restoran başarıyla güncellendi.');
-            } else {
-                return redirect()->route('home')->with('error', 'Restoran güncellenemedi. Lütfen daha sonra tekrar deneyiniz.');
+            // Yeni resmi kaydetme
+            $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $destinationPath = public_path('images');
+            if (!File::exists($destinationPath)) {
+                File::makeDirectory($destinationPath, 0755, true, true);
             }
+            $request->file('image')->move($destinationPath, $imageName);
+            $restaurant->image = "/images/" . $imageName;
+        }
+
+        // Restoran bilgilerini güncelleme
+        $restaurant->name = $validated['newName'];
+        $restaurant->description = $validated['description'];
+        $restaurant->address = $validated['address'];
+        $restaurant->phone = $validated['phone'];
+        $restaurant->email = $validated['email'];
+        $restaurant->capacity = $validated['capacity'];
+        $restaurant->updated_at = Carbon::now();
+
+        // Kaydetme ve yanıt döndürme
+        if ($restaurant->save()) {
+            return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
         } else {
-            return redirect()->route('home')->with('error', 'Restoran Bulunamadı');
+            return response()->json(['success' => false, 'message' => 'Restoran güncellenemedi. Lütfen tekrar deneyin.'], 500);
         }
     }
 
-    public function delete($restaurantID)
+    public function delete(Request $request, $name)
     {
-        $restaurant = Restaurant::find($restaurantID);
+        // Gelen $name değerini küçük harfe çevir
+        $name = strtolower($name);
 
-        if (empty($restaurantID)) {
-            return redirect()->route('home')->with('warning', 'ID boş olamaz!');
+        // Veritabanında ismi küçük harf olarak kontrol et
+        $restaurant = Restaurant::whereRaw('LOWER(name) = ?', [$name])->first();
+
+        // Eğer restoran bulunmazsa, hata mesajı döndür
+        if (!$restaurant) {
+            return response()->json(['success' => false, 'message' => 'Restoran Bulunamadı'], 404);
         }
 
-        if ($restaurant) {
-            $restaurant->deleted_at = Carbon::now();
-            $restaurant->save();
-            return redirect()->route('home')->with('success', 'Restoran Silindi');
-        } else {
-            return redirect()->route('home')->with('error', 'Restoran Bulunamadı');
-        }
+        // Restoranı sil (soft delete)
+        $restaurant->deleted_at = Carbon::now();
+        $restaurant->save();
+
+        // Başarılı mesajı ile yanıt dön
+        return response()->json(['success' => true, 'message' => 'Restoran Silindi']);
     }
+
+
 
 
 }
