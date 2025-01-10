@@ -15,31 +15,42 @@
 <body>
     @include('layouts.header')
     {{-- Eğer session'da bir mesaj varsa ekrana yazsın --}}
-    @if (session('success'))
+    <!-- @if (session('success'))
         <script>
             setTimeout(function () {
                 $('.alert-success').fadeOut(500);
             }, 5000);
         </script>
-        <div class="alert alert-success" style="position: absolute; top: 0; left: 0; z-index: 9999;width: 100%;height: 60px;">
+        <div class="alert alert-success">
             {{ session('success') }}
         </div>
     @endif
 
     @if ($errors->any())
-        <div class="alert alert-danger" style="position: absolute; top: 0; left: 0; z-index: 9999;">
+        <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
-    @endif
+    @endif -->
+
+
 
     @yield('content')
     @include('layouts.footer')
 
     <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
+
+    <script>
+        // Başarı mesajını JavaScript'e gönder
+        var successMessage = @json(session('success'));
+
+        // Hata mesajlarını JavaScript'e gönder
+        var errorMessages = @json($errors->all());
+    </script>
+
 
     @yield('page_body_js')
 
