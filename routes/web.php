@@ -13,6 +13,8 @@ use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddRestaurantController;
+use App\Http\Controllers\AdminPanelController;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
@@ -34,8 +36,8 @@ Route::prefix('restaurants')->group(function () {
     Route::get('/', [RestaurantController::class, 'index'])->name('restaurants.index');
     Route::get('/create', [RestaurantController::class, 'createPage'])->name('createPage');
     Route::post('/create', [RestaurantController::class, 'create'])->name('create');
-    Route::delete('/delete/{id}', [RestaurantController::class, 'delete'])->name('delete');
-    Route::post('/update/{id}', [RestaurantController::class, 'update'])->name('update');
+    Route::post('/delete/{name}', [RestaurantController::class, 'delete'])->name('delete');
+    Route::post('/update/{name}', [RestaurantController::class, 'update'])->name('update');
     Route::get('/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
     Route::get('/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
 });
@@ -54,3 +56,5 @@ Route::get('/addRestaurant', [AddRestaurantController::class, 'index'])->name('a
 Route::post('/addRestaurant', [AddRestaurantController::class, 'addRestaurant'])->name('addRestaurantPost');
 Route::post('/comments', [CommentController::class, 'store']);
 Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);
+
+Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');

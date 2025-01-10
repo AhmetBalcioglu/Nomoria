@@ -25,10 +25,12 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">İletişim</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link custom-link" href="{{ route('addRestaurant') }}">Restoran Ekleme </a>
-                </li>
+                @if ((session()->has('name') && session()->has('surname') && session()->has('role')) &&
+                    ((session()->get('role') == 'admin') || (session()->get('role') == 'restaurant')))
+                    <li class="nav-item">
+                        <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
+                    </li>
+                @endif
 
             </ul>
         </div>
@@ -36,13 +38,13 @@
     <!-- Login Section -->
     <div class="col-4 d-flex flex-column align-items-end">
         <div class="d-flex align-items-center justify-content-end">
-            @if (session()->has('role') && session()->get('role') == 'customer')
+            @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
                 <button class="btn btn-primary custom-button me-2">Rezervasyonlarım</button>
             @else
                 <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
             @endif
 
-            @if (session()->has('role') && session()->get('role') == 'customer')
+            @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
                 <a class="btn btn-secondary custom-button me-2">Favorilerim</a>
             @else
                 <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
@@ -54,8 +56,7 @@
             @if (!session()->has('role'))
                 <div class="dropdown">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill mt-1 mx-1"
-                        viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24"
-                        height="24">
+                        viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24" height="24">
                         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                     </svg>
                     <ul class="dropdown-menu">
@@ -64,7 +65,7 @@
                     </ul>
                 </div>
             @endif
-            @if (session()->has('role') && session()->get('role') == 'customer')
+            @if (session()->has('name') && session()->has('surname') && session()->has('role'))
                 <a href="{{ route('logout') }}" class="btn btn-secondary custom-button me-2 information">Çıkış Yap</a>
                 <h3>{{ session()->get('name') }} {{ session()->get('surname') }}</h3>
             @endif
