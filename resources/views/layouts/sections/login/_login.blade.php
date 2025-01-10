@@ -17,6 +17,7 @@
     <h1>Giriş Yap</h1>
     <form action="{{ route('login') }}" method="POST">
         @csrf
+         
         <input type="email" name="email" placeholder="Email" required>
         <div class="password-container">
             <input type="password" name="password" placeholder="Şifre" required>
