@@ -145,5 +145,25 @@ class RestaurantController extends Controller
         return response()->json(['success' => true, 'message' => 'Restoran Silindi']);
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('searchBar');
+
+        if (empty($query)) {
+            return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.');
+        }
+
+        $restaurants = Restaurant::where('name', 'like', '%' . $query . '%')
+            ->orWhere('description', 'like', '%' . $query . '%')
+            ->orWhere('address', 'like', '%' . $query . '%')
+            ->get();
+
+        if ($restaurants->isEmpty()) {
+            return redirect()->back()->with('error', 'Arama Sonucu Bulunamadı.');
+        }
+
+        return view('details.details', compact('restaurants', 'query'));
+    }
+
 
 }
