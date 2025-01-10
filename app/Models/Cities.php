@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cities extends Model
 {
-    use HasFactory;
+    use HasFactory;// Model için kullanılacak olan Factory sınıfını kullan
 
     protected $primaryKey = 'citiesID'; // Özel birincil anahtar
-    protected $fillable = ['name'];
+    protected $fillable = ['name'];// Doldurulabilir alanlar
 
-    public function districts()
+    public function districts() // İlçeleri getir
     {
-        return $this->hasMany(districts::class, 'citiesID', 'citiesID');
+        return $this->hasMany(districts::class, 'citiesID', 'citiesID'); // İlçeler tablosu ile ilişki
     }
 
-    public function restaurant()
+    public function restaurant() // Restoranları getir
     {
-        return $this->hasMany(Restaurant::class, 'citiesID', 'citiesID');
+        return $this->hasMany(Restaurant::class, 'citiesID', 'citiesID'); // Restoranlar tablosu ile ilişki
     }
 }
