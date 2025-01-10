@@ -1,9 +1,3 @@
-@if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
 <div class="login-body">
     <div class="login-container">
         <div class="logo">
