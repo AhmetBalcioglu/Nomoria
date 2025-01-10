@@ -164,6 +164,3 @@ class RestaurantController extends Controller
 
         return view('details.details', compact('restaurants', 'query'));
     }
-
-
-}

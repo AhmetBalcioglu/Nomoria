@@ -70,7 +70,7 @@
                 <h3>{{ session()->get('name') }} {{ session()->get('surname') }}</h3>
             @endif
         </div>
-        <form class="d-flex mt-2">
+        <form class="d-flex mt-2" action="{{ route('search') }}" method="GET">
             <input id="searchBar" name="searchBar" class="form-control me-2" type="search" placeholder="Arama yapın"
                 aria-label="Search">
             <button class="btn btn-secondary btn-sm" type="submit">Ara</button>
