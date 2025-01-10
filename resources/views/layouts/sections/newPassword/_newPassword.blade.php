@@ -1,50 +1,51 @@
-<div class="container">
-    <div class="row align-items-center" style="height: 100%;">
-        <div class="col-md-6 offset-md-3">
-            <h1>Şifre Yenile</h1>
+<div class="newPassword-body">
+    <div class="newPassword-container">
+        <div class="logo">
+            <h1>Şifreyi Yenile</h1>
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
             @endif
+
             <form action="{{ route('reset-password.submit') }}" method="POST">
                 @csrf
-                <div class="row">
-                    <div class="col-md-12">
-                        <label for="code">Kod:</label>
-                        <input type="text" id="code" name="code" required class="form-control">
-                    </div>
+
+                <div class="code-container">
+                    <input type="text" name="code" id="code" placeholder="Kodu giriniz"
+                        class="form-control reply mb-3" required>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <label for="password">Yeni Şifre:</label>
-                        <input type="password" id="password" name="password" required class="form-control">
-                        <input type="checkbox" id="showPasswordInput" onclick="showPassword()">
-                        <label for="showPasswordInput">Şifreyi Göster</label>
-                    </div>
+
+                <div class="password-container">
+                    <input type="password" name="password" id="password" placeholder="Yeni şifrenizi giriniz"
+                        class="form-control reply mb-3" required>
+                    <button type="button" class="show-password">&#128065;</button>
+
                 </div>
-                <div class="row mt-2">
-                    <div class="col-md-12">
-                        <label for="password_confirmation">Yeni Şifre (Tekrar):</label>
-                        <input type="password" id="password_confirmation" name="password_confirmation" required
-                            class="form-control">
-                    </div>
+
+                <div class="repassword-container">
+                    <input type="password" name="password_confirmation" id="password_confirmation"
+                        placeholder="Yeni şifrenizi tekrar giriniz" class="form-control reply mb-3" required>
+                    <button type="button" class="show-password">&#128065;</button>
+
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-success">Şifreyi Yenile</button>
-                    </div>
-                </div>
+
+                <button type="submit" class="newPassword-button">Şifreyi yenile</button>
+
             </form>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
         </div>
     </div>
+</div>
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+</div>
+</div>
 </div>
