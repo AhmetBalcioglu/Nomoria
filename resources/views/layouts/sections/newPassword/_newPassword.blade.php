@@ -2,18 +2,13 @@
     <div class="newPassword-container">
         <div class="logo">
             <h1>Şifreyi Yenile</h1>
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
 
             <form action="{{ route('reset-password.submit') }}" method="POST">
                 @csrf
 
                 <div class="code-container">
-                    <input type="text" name="code" id="code" placeholder="Kodu giriniz"
-                        class="form-control reply mb-3" required>
+                    <input type="text" name="code" id="code" placeholder="Kodu giriniz" class="form-control reply mb-3"
+                        required>
                 </div>
 
                 <div class="password-container">
@@ -35,17 +30,4 @@
             </form>
         </div>
     </div>
-</div>
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-</div>
-</div>
 </div>
