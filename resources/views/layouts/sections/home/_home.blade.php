@@ -1,7 +1,4 @@
 <div class="container mt-5">
-    @php
-        dump(session()->all());
-    @endphp
     {{-- Kampanyalı Restoranlar Banner --}}
     <div class="row">
         <div class="col-md-12">

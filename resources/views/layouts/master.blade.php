@@ -13,31 +13,29 @@
 </head>
 
 <body>
-
+    @include('layouts.header')
     {{-- Eğer session'da bir mesaj varsa ekrana yazsın --}}
     @if (session('success'))
         <script>
-            setTimeout(function() {
+            setTimeout(function () {
                 $('.alert-success').fadeOut(500);
             }, 5000);
         </script>
-        <div class="alert alert-success">
+        <div class="alert alert-success" style="position: absolute; top: 0; left: 0; z-index: 9999;width: 100%;height: 60px;">
             {{ session('success') }}
         </div>
     @endif
 
-    @if (session('error'))
-        <script>
-            setTimeout(function() {
-                $('.alert-danger').fadeOut(500);
-            }, 5000);
-        </script>
-        <div class="alert alert-danger">
-            {{ session('error') }}
+    @if ($errors->any())
+        <div class="alert alert-danger" style="position: absolute; top: 0; left: 0; z-index: 9999;">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
 
-    @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
 
