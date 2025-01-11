@@ -25,11 +25,13 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">İletişim</a>
                 </li>
-                @if ((session()->has('name') && session()->has('surname') && session()->has('role')) &&
-                    ((session()->get('role') == 'admin') || (session()->get('role') == 'restaurant')))
-                    <li class="nav-item">
-                        <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
-                    </li>
+                @if (
+                        (session()->has('name') && session()->has('surname') && session()->has('role')) &&
+                        ((session()->get('role') == 'admin') || (session()->get('role') == 'restaurant'))
+                    )
+                                    <li class="nav-item">
+                                        <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
+                                    </li>
                 @endif
 
             </ul>
@@ -70,10 +72,27 @@
                 <h3>{{ session()->get('name') }} {{ session()->get('surname') }}</h3>
             @endif
         </div>
-        <form class="d-flex mt-2" action="{{ route('search') }}" method="GET">
+        <form id="searchForm" class="d-flex mt-2" action="{{ route('search') }}" method="GET">
             <input id="searchBar" name="searchBar" class="form-control me-2" type="search" placeholder="Arama yapın"
                 aria-label="Search">
             <button class="btn btn-secondary btn-sm" type="submit">Ara</button>
         </form>
     </div>
 </header>
+
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
+        const searchInput = document.getElementById('searchBar').value.trim();
+
+        if (!searchInput) {
+            event.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata!',
+                text: 'Arama kutusu boş olamaz!',
+            });
+        }
+    });
+
+</script>
