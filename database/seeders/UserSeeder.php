@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Users;
@@ -20,7 +21,7 @@ class UserSeeder extends Seeder
         'surname' => 'admin',
         'email' => 'admin@gmail.com',
         'password' => '$2y$12$w7WdWuIDGkuojAbUKGeTeetvWWJp.2L.B0aU2tQpC/jMfNGsVRjJG',
-        'created_at' => null,
+        'created_at' => Carbon::now(),
         'updated_at' => null,
         'deleted_at' => null
         ]);
