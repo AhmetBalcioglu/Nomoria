@@ -145,15 +145,15 @@ class RestaurantController extends Controller
         return response()->json(['success' => true, 'message' => 'Restoran Silindi']);
     }
 
-    public function search(Request $request)
+    public function search(Request $request)//Arama fonksiyonu
     {
-        $query = $request->input('searchBar');
+        $query = $request->input('searchBar');//Arama kutusundan gelen veri
 
         if (empty($query)) {
             return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.');
         }
 
-        $restaurants = Restaurant::where('name', 'like', '%' . $query . '%')
+        $restaurants = Restaurant::where('name', 'like', '%' . $query . '%')//Arama sorgusu
             ->orWhere('description', 'like', '%' . $query . '%')
             ->orWhere('address', 'like', '%' . $query . '%')
             ->get();
@@ -162,6 +162,38 @@ class RestaurantController extends Controller
             return redirect()->back()->with('error', 'Arama Sonucu Bulunamadı.');
         }
 
-        return view('details.details', compact('restaurants', 'query'));
+        return view('details.details', compact('restaurants', 'query'));//Arama sonucunu döndür
+    }
+    
+// Restoran ekleme sayfasını göster
+public function store(Request $request)////store fonksiyonu veritabanına veri eklemek için kullanılır
+{
+    $validated = $request->validate([ //Gelen verilerin doğrulanması
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'image' => 'nullable|string',
+        'citiesID' => 'required|exists:cities,citiesID',
+        'districtID' => 'required|exists:districts,districtID',
+    ]);
+
+    Restaurant::create($validated);//Restaurant modeline verileri ekle
+
+    return redirect()->back()->with('success', 'Restoran başarıyla eklendi.');
+}
+
+/**
+ * Bir restorana ait menüleri göster.
+ */
+public function showMenus($restaurantID)//showMenus fonksiyonu belirli bir restorana ait menüleri göstermek için kullanılır
+{
+    $restaurant = Restaurant::find($restaurantID); // Restoranı bul
+
+    if ($restaurant) {
+        $menus = $restaurant->menus; // İlişkili menüleri al
+        return view('restaurant.menus', compact('restaurant', 'menus'));//menus.blade.php sayfasına restaurant ve menus değişkenlerini gönder
+    } else {
+        return redirect()->route('home')->with('error', 'Restoran Bulunamadı'); // Restoran bulunamadı hatası göster
     }
 }
+}
+

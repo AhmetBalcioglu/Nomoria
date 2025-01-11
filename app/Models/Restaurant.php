@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
 class Restaurant extends Model
 {
     use HasFactory, SoftDeletes; // Soft delete özelliğini ekler
@@ -22,7 +23,9 @@ class Restaurant extends Model
         'address',
         'phone',
         'email',
-        'capacity'
+        'capacity',
+        'citiesID',
+        'districtID',
     ];
 
     // Yorumlar (Reviews) ilişkisi
@@ -53,4 +56,15 @@ class Restaurant extends Model
     {
         return self::all();
     }
+// Şehir ilişkisi
+    public function cities()
+{
+    return $this->belongsTo(Cities::class, 'citiesID');
+}
+
+public function district()
+{
+    return $this->belongsTo(Districts::class, 'districtID');
+}
+
 }
