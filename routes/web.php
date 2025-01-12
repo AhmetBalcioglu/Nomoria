@@ -14,6 +14,8 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddRestaurantController;
 use App\Http\Controllers\AdminPanelController;
+use App\Http\Middleware\AdminOrRestaurant;
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -57,4 +59,6 @@ Route::post('/addRestaurant', [AddRestaurantController::class, 'addRestaurant'])
 Route::post('/comments', [CommentController::class, 'store']);
 Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);
 
-Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
+Route::middleware([AdminOrRestaurant::class])->group(function () {
+    Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
+});
