@@ -18,13 +18,13 @@ class Cities extends Model
     {
         return self::orderBy('name', 'asc')->get()->toArray();
     }
-    public static function getCityName($cityID) // İl adını döndür
+    public static function getCitiesName($citiesID) // İl adını döndür
     {
-        return self::where('citiesID', $cityID)->first()->name;
+        return self::where('citiesID', $citiesID)->first()->name;
     }
-    public static function getDistrictName($districtID) // İlçe adını döndür
+    public static function getDistrictsName($districtsID) // İlçe adını döndür
     {
-        return Districts::where('districtsID', $districtID)->first()->name;
+        return Districts::where('districtsID', $districtsID)->first()->name;
     }
     public function restaurant() // Restoranları getir
     {

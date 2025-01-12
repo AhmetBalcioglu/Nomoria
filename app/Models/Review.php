@@ -10,7 +10,7 @@ class Review extends Model
 {
     protected $table = 'reviews'; // Yorumlar tablosunun adı
     protected $primaryKey = 'id'; // Birincil anahtar
-    public $timestamps = true; // created_at ve updated_at kullanmak için
+
 
     // Fillable alanları tanımla
     protected $fillable = [
