@@ -41,8 +41,8 @@
                             <label for="name" class="form-label">Restoran Adı</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Restoran Adı"
-                                required>
+                            <input type="text" class="form-control" id="name" name="name"
+                                placeholder="Restoran Adı" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -50,8 +50,7 @@
                             <label for="description" class="form-label">Açıklama</label>
                         </div>
                         <div class="col-md-9">
-                            <textarea class="form-control" id="description" name="description"
-                                placeholder="Açıklama"></textarea>
+                            <textarea class="form-control" id="description" name="description" placeholder="Açıklama"></textarea>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -64,10 +63,35 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-3">
+                            <label for="city" class="form-label">İl</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select id="city" name="city" class="form-select">
+                                @foreach ($cities as $city)
+                                    <option value="{{ $city['citiesID'] }}">{{ $city['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="district" class="form-label">İlçe</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select id="district" name="district" class="form-select">
+                                @foreach ($districts as $district)
+                                    <option value="{{ $district['districtsID'] }}">{{ $district['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-3">
                             <label for="phone" class="form-label">Telefon</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefon">
+                            <input type="text" class="form-control" id="phone" name="phone"
+                                placeholder="Telefon">
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -75,7 +99,50 @@
                             <label for="email" class="form-label">E-posta</label>
                         </div>
                         <div class="col-md-9">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="E-posta">
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="E-posta">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="viewType" class="form-label">Manzara Türü</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select id="viewType" class="form-select" name="viewType">
+                                <option value="" selected>Boş</option>
+                                <option value="Deniz Manzarası">Deniz Manzarası</option>
+                                <option value="Doğanın İçinde">Doğanın İçinde</option>
+                                <option value="Tarihi Mekan">Tarihi Mekan</option>
+                                <option value="Şehir Manzarası">Şehir Manzarası</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="cuisineType" class="form-label">Mutfak Türü</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select id="cuisineType" class="form-select" name="cuisineType">
+                                <option value="" selected>Boş</option>
+                                <option value="Kore Mutfağı">Kore Mutfağı</option>
+                                <option value="Meksika Mutfağı">Meksika Mutfağı</option>
+                                <option value="Japon Mutfağı">Japon Mutfağı</option>
+                                <option value="İtalyan Mutfağı">İtalyan Mutfağı</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="concept" class="form-label">Konsept Türü</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select id="concept" class="form-select" name="concept">
+                                <option value="" selected>Boş</option>
+                                <option value="İş Yemeği">İş Yemeği</option>
+                                <option value="Kutlama">Kutlama</option>
+                                <option value="Tek Kişilik">Tek Kişilik</option>
+                                <option value="Özel Gün">Özel Gün</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -106,7 +173,8 @@
 </div>
 
 <!-- Delete Modal -->
-<div class="modal fade" id="removeRestaurant" tabindex="-1" aria-labelledby="removeRestaurantLabel" aria-hidden="true">
+<div class="modal fade" id="removeRestaurant" tabindex="-1" aria-labelledby="removeRestaurantLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -119,7 +187,8 @@
                 @method('DELETE')
                 <div class="row">
                     <div class="col-md-12">
-                        <label class="form-label">Lütfen silmek istediğiniz restorantın adını giriniz.</label>
+                        <label for="restaurantName" class="form-label">Lütfen silmek istediğiniz restorantın adını
+                            giriniz.</label>
                         <input class="form-control" type="text" name="name" id="restaurantName" required>
                     </div>
                 </div>
@@ -135,9 +204,9 @@
 
 
 
-
 <!-- Update Modal-->
-<div class="modal fade" id="updateRestaurant" tabindex="-1" aria-labelledby="updateRestaurantLabel" aria-hidden="true">
+<div class="modal fade" id="updateRestaurant" tabindex="-1" aria-labelledby="updateRestaurantLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -162,8 +231,7 @@
                     <div class="row mt-3 mt-3">
                         <div class="col-md-12">
                             <label for="description" class="form-label">Yeni Açıklama</label>
-                            <textarea class="form-control" id="description" name="description"
-                                placeholder="Açıklama"></textarea>
+                            <textarea class="form-control" id="description" name="description" placeholder="Açıklama"></textarea>
                         </div>
                     </div>
                     <div class="row mt-3 mt-3">
@@ -175,11 +243,13 @@
                     <div class="row mt-3 mt-3">
                         <div class="col-md-6">
                             <label for="phone" class="form-label">Yeni Telefon</label>
-                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefon">
+                            <input type="text" class="form-control" id="phone" name="phone"
+                                placeholder="Telefon">
                         </div>
                         <div class="col-md-6">
                             <label for="email" class="form-label">Yeni E-posta</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="E-posta">
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="E-posta">
                         </div>
                     </div>
                     <div class="row mt-3 mt-3">

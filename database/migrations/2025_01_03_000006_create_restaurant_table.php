@@ -18,33 +18,33 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('address');
-            $table->integer(column: 'phone');
+            $table->unsignedBigInteger('phone');
             $table->string('email')->unique();
             $table->integer('capacity');  // Restoran kapasitesi
-            $table->string('cuisine_type'); // Dünya mutfağı
-            $table->string('view_type'); // Mekan türü
-            $table->string('concept'); // Konsept
+            $table->string('cuisine_type')->nullable(); // Dünya mutfağı
+            $table->string('view_type')->nullable(); // Mekan türü
+            $table->string('concept')->nullable(); // Konsept
             $table->decimal('rating', 3, 1)->default(0); // Puanlama
-            $table->string('open_hours'); // Çalışma saatleri
+            $table->string('open_hours')->nullable(); // Çalışma saatleri
             $table->string('features')->nullable(); // Özel özellikler (Wi-Fi, otopark)
-            
+
             // Şehirler tablosuyla ilişki
-            $table->unsignedBigInteger('citiesID');//
+            $table->unsignedBigInteger('citiesID'); //
             $table->foreign('citiesID')
-                  ->references('citiesID')
-                  ->on('cities')
-                  ->onDelete('cascade');
-            
+                ->references('citiesID')
+                ->on('cities')
+                ->onDelete('cascade');
+
             // İlçeler tablosuyla ilişki
             $table->unsignedBigInteger('districtsID');
             $table->foreign('districtsID')
-                  ->references('districtsID')
-                  ->on('districts')
-                  ->onDelete('cascade');
+                ->references('districtsID')
+                ->on('districts')
+                ->onDelete('cascade');
 
             $table->timestamps(); // created_at ve updated_at otomatik oluşturulur
             $table->softDeletes(); // deleted_at otomatik oluşturulur
-            
+
         });
     }
 

@@ -53,11 +53,18 @@ class RestaurantController extends Controller
             'address' => 'nullable|string',
             'phone' => 'nullable|string|max:15',
             'email' => 'nullable|email|max:255',
+            'capacity' => 'required|integer',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:5120',
+            'city' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'cuisineType' => 'nullable|string|max:255',
+            'viewType' => 'nullable|string|max:255',
+            'concept' => 'nullable|string|max:255'
         ]);
 
         // Görsel yükleme
         $image = time() . '.' . $request->file('image')->getClientOriginalExtension();
-        $destinationPath = public_path('images');
+        $destinationPath = public_path('images/restaurantImages');
         if (!File::exists($destinationPath)) {
             File::makeDirectory($destinationPath, 0755, true, true);
         }
@@ -66,20 +73,25 @@ class RestaurantController extends Controller
         // Restoran oluşturma
         $restaurant = new Restaurant();
         $restaurant->guid = Str::uuid();
-        $restaurant->image = "/images/" . $image;
+        $restaurant->image = "/images/restaurantImages/" . $image;
         $restaurant->name = $request->name;
         $restaurant->description = $request->description;
         $restaurant->address = $request->address;
         $restaurant->phone = $request->phone;
         $restaurant->email = $request->email;
         $restaurant->capacity = $request->capacity;
+        $restaurant->cuisine_type = $request->cuisineType;
+        $restaurant->view_type = $request->viewType;
+        $restaurant->concept = $request->concept;
+        $restaurant->citiesID  = $request->city;
+        $restaurant->districtsID  = $request->district;
         $restaurant->created_at = Carbon::now();
-        $restaurant->updated_at = null; // Explicitly set updated_at to null
+        $restaurant->updated_at = null;
 
         $restaurant->save();
 
         // Form-data yanıt
-        return redirect()->route('home')->with('success', 'Restoran başarıyla oluşturuldu.');
+        return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
     }
 
     public function update(Request $request, $name)
@@ -145,15 +157,15 @@ class RestaurantController extends Controller
         return response()->json(['success' => true, 'message' => 'Restoran Silindi']);
     }
 
-    public function search(Request $request)//Arama fonksiyonu
+    public function search(Request $request) //Arama fonksiyonu
     {
-        $query = $request->input('searchBar');//Arama kutusundan gelen veri
+        $query = $request->input('searchBar'); //Arama kutusundan gelen veri
 
         if (empty($query)) {
             return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.');
         }
 
-        $restaurants = Restaurant::where('name', 'like', '%' . $query . '%')//Arama sorgusu
+        $restaurants = Restaurant::where('name', 'like', '%' . $query . '%') //Arama sorgusu
             ->orWhere('description', 'like', '%' . $query . '%')
             ->orWhere('address', 'like', '%' . $query . '%')
             ->get();
@@ -162,38 +174,37 @@ class RestaurantController extends Controller
             return redirect()->back()->with('error', 'Arama Sonucu Bulunamadı.');
         }
 
-        return view('details.details', compact('restaurants', 'query'));//Arama sonucunu döndür
+        return view('details.details', compact('restaurants', 'query')); //Arama sonucunu döndür
     }
-    
-// Restoran ekleme sayfasını göster
-public function store(Request $request)////store fonksiyonu veritabanına veri eklemek için kullanılır
-{
-    $validated = $request->validate([ //Gelen verilerin doğrulanması
-        'name' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'image' => 'nullable|string',
-        'citiesID' => 'required|exists:cities,citiesID',
-        'districtID' => 'required|exists:districts,districtID',
-    ]);
 
-    Restaurant::create($validated);//Restaurant modeline verileri ekle
+    // Restoran ekleme sayfasını göster
+    public function store(Request $request) ////store fonksiyonu veritabanına veri eklemek için kullanılır
+    {
+        $validated = $request->validate([ //Gelen verilerin doğrulanması
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'image' => 'nullable|string',
+            'citiesID' => 'required|exists:cities,citiesID',
+            'districtID' => 'required|exists:districts,districtID',
+        ]);
 
-    return redirect()->back()->with('success', 'Restoran başarıyla eklendi.');
-}
+        Restaurant::create($validated); //Restaurant modeline verileri ekle
 
-/**
- * Bir restorana ait menüleri göster.
- */
-public function showMenus($restaurantID)//showMenus fonksiyonu belirli bir restorana ait menüleri göstermek için kullanılır
-{
-    $restaurant = Restaurant::find($restaurantID); // Restoranı bul
+        return redirect()->back()->with('success', 'Restoran başarıyla eklendi.');
+    }
 
-    if ($restaurant) {
-        $menus = $restaurant->menus; // İlişkili menüleri al
-        return view('restaurant.menus', compact('restaurant', 'menus'));//menus.blade.php sayfasına restaurant ve menus değişkenlerini gönder
-    } else {
-        return redirect()->route('home')->with('error', 'Restoran Bulunamadı'); // Restoran bulunamadı hatası göster
+    /**
+     * Bir restorana ait menüleri göster.
+     */
+    public function showMenus($restaurantID) //showMenus fonksiyonu belirli bir restorana ait menüleri göstermek için kullanılır
+    {
+        $restaurant = Restaurant::find($restaurantID); // Restoranı bul
+
+        if ($restaurant) {
+            $menus = $restaurant->menus; // İlişkili menüleri al
+            return view('restaurant.menus', compact('restaurant', 'menus')); //menus.blade.php sayfasına restaurant ve menus değişkenlerini gönder
+        } else {
+            return redirect()->route('home')->with('error', 'Restoran Bulunamadı'); // Restoran bulunamadı hatası göster
+        }
     }
 }
-}
-

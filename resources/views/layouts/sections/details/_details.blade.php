@@ -219,8 +219,6 @@
     <button type="submit" class="btn">Filtrele</button>
 </div>
 
-
-
 <div class="container my-4">
     <div class="row" id="restaurant-cards">
 
@@ -228,12 +226,12 @@
             {{-- Restoran Card --}}
             <div class="col-md-3 mb-5">
                 <div class="restaurant-card">
-                    <img src="{{ asset('img/balik/b1.jpg') }}" alt="Restoran">
+                    <img src="{{ $restaurant['image'] }}" alt="RestaurantImg">
                     <div class="restaurant-card-body">
                         <h5></h5>
                         {{ $restaurant['name'] }}
                         <p>İki kişilik menüde %20 indirim!</p>
-                        <p>📍 {{ $restaurant['address'] }}</p>
+                        <p>📍{{ $cityName }}, {{ $districtName }}</p>
                         <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
                     </div>
                 </div>

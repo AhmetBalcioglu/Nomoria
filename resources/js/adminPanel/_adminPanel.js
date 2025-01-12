@@ -31,9 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             title: 'Başarılı',
                             text: 'Yeni restoran başarıyla eklendi.',
                             icon: 'success'
-                        }).then(() => {
-                            location.reload();
-                        });
+                        })
                     },
                     error: function (xhr) {
                         let errorMessage = 'Bir hata oluştu. Lütfen tekrar deneyin.';

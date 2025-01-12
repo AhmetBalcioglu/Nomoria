@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Users;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -14,17 +15,15 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         Users::create([
-        'userID' => 1,
-        'guid' => 'aa6c99c9-91f5-4bbc-b8ff-0db363572818',
-        'role' => 'admin',
-        'name' => 'admin',
-        'surname' => 'admin',
-        'email' => 'admin@gmail.com',
-        'password' => '$2y$12$w7WdWuIDGkuojAbUKGeTeetvWWJp.2L.B0aU2tQpC/jMfNGsVRjJG',
-        'created_at' => Carbon::now(),
-        'updated_at' => null,
-        'deleted_at' => null
+            'guid' => 'aa6c99c9-91f5-4bbc-b8ff-0db363572818',
+            'role' => 'admin',
+            'name' => 'admin name',
+            'surname' => 'admin surname',
+            'email' => 'admin@gmail.com',
+            'password' => '$2y$12$w7WdWuIDGkuojAbUKGeTeetvWWJp.2L.B0aU2tQpC/jMfNGsVRjJG',
+            'created_at' => Carbon::now(),
+            'updated_at' => null,
+            'deleted_at' => null
         ]);
     }
 }
-
