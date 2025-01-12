@@ -7,7 +7,5 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ContactMessage extends Model
 {
-    use HasFactory;
-
     protected $fillable = ['name', 'surname', 'email', 'message'];
 }

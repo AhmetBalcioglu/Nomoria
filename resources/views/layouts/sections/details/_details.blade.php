@@ -221,7 +221,9 @@
 
 <div class="container my-4">
     <div class="row" id="restaurant-cards">
-
+        @php
+            dump($restaurants);
+        @endphp
         @foreach ($restaurants as $restaurant)
             {{-- Restoran Card --}}
             <div class="col-md-3 mb-5">
@@ -231,7 +233,7 @@
                         <h5></h5>
                         {{ $restaurant['name'] }}
                         <p>İki kişilik menüde %20 indirim!</p>
-                        <p>📍{{ $cityName }}, {{ $districtName }}</p>
+                        <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }} </p>
                         <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
                     </div>
                 </div>

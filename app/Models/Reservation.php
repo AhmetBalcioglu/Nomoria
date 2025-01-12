@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reservation extends Model
 {
-    use HasFactory, SoftDeletes;
-
     protected $table = 'reservations';
     protected $primaryKey = 'reservationID';
 
@@ -29,7 +27,7 @@ class Reservation extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'userID', 'id');  // `Users` yerine `User` modelini kullanın
+        return $this->belongsTo(Users::class, 'userID', 'id');
     }
 
     // Kapasite kontrolü

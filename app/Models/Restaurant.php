@@ -9,8 +9,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Restaurant extends Model
 {
-    use HasFactory, SoftDeletes; // Soft delete özelliğini ekler
-
     protected $table = 'restaurant';
     protected $primaryKey = 'restaurantID'; // Birincil anahtar
 
@@ -56,15 +54,14 @@ class Restaurant extends Model
     {
         return self::all();
     }
-// Şehir ilişkisi
+    // Şehir ilişkisi
     public function cities()
-{
-    return $this->belongsTo(Cities::class, 'citiesID');
-}
+    {
+        return $this->belongsTo(Cities::class, 'citiesID');
+    }
 
-public function district()
-{
-    return $this->belongsTo(Districts::class, 'districtID');
-}
-
+    public function districts()
+    {
+        return $this->belongsTo(Districts::class, 'districtsID');
+    }
 }

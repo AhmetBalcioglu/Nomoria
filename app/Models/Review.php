@@ -8,8 +8,6 @@ use App\Models\Restaurant;
 
 class Review extends Model
 {
-    use HasFactory;
-
     protected $table = 'reviews'; // Yorumlar tablosunun adı
     protected $primaryKey = 'id'; // Birincil anahtar
     public $timestamps = true; // created_at ve updated_at kullanmak için

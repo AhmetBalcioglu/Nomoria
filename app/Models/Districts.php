@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Districts extends Model
 {
-    use HasFactory;
-
     protected $primaryKey = 'districtsID'; // Özel birincil anahtar
     protected $fillable = ['name', 'citiesID'];// Doldurulabilir alanlar
 
