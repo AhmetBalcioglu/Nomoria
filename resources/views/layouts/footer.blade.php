@@ -1,4 +1,3 @@
-
 <footer class="custom-footer text-white">
     <div class="container">
         <div class="row align-items-center">
@@ -36,61 +35,14 @@
                     </a>
                 </div>
             </div>
-        </div>    
+        </div>
 
         <!-- Alt Kısım -->
         <div class="row mt-4">
             <div class="col text-center">
-                <small>© 2025 Nomoria. Tüm Hakları Saklıdır. | <a href="#privacy" class="footer-link">Gizlilik Politikası</a></small>
+                <small>© 2025 Nomoria. Tüm Hakları Saklıdır. | <a href="#privacy" class="footer-link">Gizlilik
+                        Politikası</a></small>
             </div>
-        </div>    
+        </div>
     </div>
 </footer>
-
-
-
-<style>
-    .custom-footer {
-        background-color: #1b1b1b;
-        border-top: 5px solid #f46c2c;
-    }
-    .footer-logo {
-
-    ;
-    }
-    .footer-logo h3 {
-        color: #f46c2c;
-        font-weight: bold;
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .footer-menu {
-        font-size: 1rem;
-    }
-
-    .footer-link {
-        color: #ffffff;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .footer-link:hover {
-        color: #f46c2c;
-    }
-
-    .social-icons i {
-        font-size: 1.5rem;
-        color: #ffffff;
-        transition: transform 0.3s ease, color 0.3s ease;
-    }
-
-    .footer-social:hover i {
-        color: #f46c2c;
-        transform: scale(1.2);
-    }
-
-    .custom-footer p, .custom-footer small {
-        font-size: 0.9rem;
-        color: #b3b3b3;
-    }
-</style>
