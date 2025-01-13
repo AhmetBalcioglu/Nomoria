@@ -119,6 +119,19 @@
     </form> --}}
 
 
+
+    {{-- Hamburger menü üç çizgi özellikleri ve ayarlarının yapıldığı kısım --}}
+    <nav class="navbar navbar-dark mt-2">
+        <div class="container-fluid ">
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+
     {{-- Arama Çubuğu --}}
     <form id="searchForm" class="d-flex mt-2" action="{{ route('search') }}" method="GET">
         <input id="searchBar" name="searchBar" class="form-control me-2" type="search"
@@ -133,16 +146,7 @@
         </button>
     </form>
 
-    {{-- Hamburger menü üç çizgi özellikleri ve ayarlarının yapıldığı kısım --}}
-    <nav class="navbar navbar-dark mt-2">
-        <div class="container-fluid ">
-            <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
+
 
     {{-- Hamburger Menü İçeriği --}}
     <div class="collapse" id="navbarToggleExternalContent">
@@ -218,7 +222,7 @@
                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
                 </svg>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item processOptions" href="/login">Giriş Yap</a></li>
+                    <li><a class="dropdown-item processOptions" href="/login">Üye Girişi</a></li>
                     <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
                     <li>
                         @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
