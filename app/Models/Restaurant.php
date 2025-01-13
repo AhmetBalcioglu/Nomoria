@@ -24,6 +24,15 @@ class Restaurant extends Model
         'capacity',
         'citiesID',
         'districtsID',
+        'cuisine_type',//Dünya mutfağı
+        'view_type',//Mekan türü
+        'concept',//Konsept
+        'meat_dishes',//Et yemekleri
+        'fish_species',//Balık türleri
+        'fast_food',//Fast food
+        'vegan',//Vejeteryan
+        'alcoholic_places',//Alkol servisi
+        'rating',
     ];
 
     // Yorumlar (Reviews) ilişkisi
