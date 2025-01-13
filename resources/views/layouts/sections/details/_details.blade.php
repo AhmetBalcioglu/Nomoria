@@ -82,23 +82,30 @@
         <h2 class="baslik">Menülere Göre</h2>
 
         <div>
-            <div class="category-title collapsible" id="meat-dishes-title">Et Yemekleri
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-caret-down" viewBox="0 0 16 16">
+            <!--Et Yemekleri-->
+            <div class="category-title collapsible" id="meat-dishes-title">
+                <label>
+                    <input type="checkbox" id="meat-checkbox"> Et Yemekleri
+                </label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down"
+                    viewBox="0 0 16 16">
                     <path
                         d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
                 </svg>
             </div>
             <div class="checkbox-container" style="display: none;">
-                <label for="kebab">Kebap Çeşitleri</label> <br>
-                <label for="doner">Döner</label> <br>
-                <label for="kofte">Köfte</label> <br>
-                <label for="bonfile">Bonfile</label> <br>
+                <p>Kebab Çeşitleri</p>
+                <p>Döner</p>
+                <p>Köfte</p>
+                <p>Bonfile</p>
             </div>
         </div>
 
         <div>
-            <div class="category-title collapsible" id="fish-dishes-title">Balık
+            <div class="category-title collapsible" id="fish-dishes-title">
+                <label>
+                    <input type="checkbox" id="fish-checkbox"> Balık Yemekleri
+                </label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-caret-down" viewBox="0 0 16 16">
                     <path
@@ -106,19 +113,18 @@
                 </svg>
             </div>
             <div class="checkbox-container" style="display: none;">
-                <input id="hamsi" type="checkbox">
-                <label for="hamsi">Hamsi</label> <br>
-                <input id="palamut" type="checkbox">
-                <label for="palamut">Palamut</label> <br>
-                <input id="levrek" type="checkbox">
-                <label for="levrek">Levrek</label> <br>
-                <input id="istavrit" type="checkbox">
-                <label for="istavrit">İstavrit</label> <br>
+             <p>Hamsi</p>
+             <p>Palamut</p>
+             <p>Levrek</p>   
+             <p>Çupra</p>
             </div>
         </div>
 
         <div>
-            <div class="category-title collapsible" id="fast-food-title">Fast Food
+            <div class="category-title collapsible" id="fast-food-title">
+                <label>
+                    <input type="checkbox" id="fast-food-checkbox"> Fast Food
+                </label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-caret-down" viewBox="0 0 16 16">
                     <path
@@ -126,19 +132,18 @@
                 </svg>
             </div>
             <div class="checkbox-container" style="display: none;">
-                <input id="pizza" type="checkbox">
-                <label for="pizza">Pizza</label> <br>
-                <input id="pide" type="checkbox">
-                <label for="pide">Pide</label> <br>
-                <input id="burger" type="checkbox">
-                <label for="burger">Hamburger</label> <br>
-                <input id="hotDog" type="checkbox">
-                <label for="hotDog">Sosisli</label> <br>
+                <p>Pizza</p>
+                <p>Pide</p>
+                <p>Hamburger</p>
+                <p>Sosisli</p>
             </div>
         </div>
 
         <div>
-            <div class="category-title collapsible" id="vegan-dishes-title">Vegan
+            <div class="category-title collapsible" id="vegan-dishes-title">
+                <label>
+                    <input type="checkbox" id="vegan-checkbox"> Vegan Yemekler
+                </label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-caret-down" viewBox="0 0 16 16">
                     <path
@@ -146,19 +151,18 @@
                 </svg>
             </div>
             <div class="checkbox-container" style="display: none;">
-                <input id="falafel" type="checkbox">
-                <label for="falafel">Falafel Bowl</label> <br>
-                <input id="sezar" type="checkbox">
-                <label for="sezar">Sezar Salata</label> <br>
-                <input id="breakfast" type="checkbox">
-                <label for="breakfast">Protein Kahvaltı</label> <br>
-                <input id="kruvasan" type="checkbox">
-                <label for="kruvasan">Avokadolu Kruvasan</label> <br>
+                <p>Felafel Bowl</p>
+                <p>Sezar Salata</p>
+                <p>Protein Kahvaltı</p>
+                <p>Avokadolu Kruvasan</p>
+            
             </div>
         </div>
 
         <div>
-            <div class="category-title collapsible" id="alcoholic-places-title">Alkollü Mekanlar
+            <div class="category-title collapsible" id="alcoholic-places-title">
+                <label>
+                    <input type="checkbox" id="alcoholic-checkbox"> Alkol Servisi
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-caret-down" viewBox="0 0 16 16">
                     <path
@@ -166,14 +170,10 @@
                 </svg>
             </div>
             <div class="checkbox-container" style="display: none;">
-                <input id="tuborg" type="checkbox">
-                <label for="tuborg">Tuborg</label> <br>
-                <input id="guinnes" type="checkbox">
-                <label for="guinnes">Guinnes</label> <br>
-                <input id="sol" type="checkbox">
-                <label for="sol">Sol</label> <br>
-                <input id="wine" type="checkbox">
-                <label for="wine">Şarap</label> <br>
+                <p>Tuborg</p>
+                <p>Guinnes</p>
+                <p>Sol</p>
+                <p>Şarap</p>
             </div>
         </div> <br>
 
