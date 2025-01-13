@@ -7,32 +7,13 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
+use App\Http\Requests\UserCreateRequest;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function create(Request $request)
+    public function create(UserCreateRequest $request)
     {
-
-        $request->validate([
-            'name' => 'required|alpha',
-            'surname' => 'required|alpha',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-        ], [
-            'name.required' => "Adınızı girmeniz gerekiyor",
-            'name.alpha' => "Adınızı sadece harflerden oluşacak şekilde girebilirsiniz",
-            'surname.required' => "Soyadınızı girmeniz gerekiyor",
-            'surname.alpha' => "Soyadınızı sadece harflerden oluşacak şekilde girebilirsiniz",
-            'email.required' => "Email adresinizi girmeniz gerekiyor",
-            'email.email' => "Email adresinizin geçerli bir adres olması gerekiyor",
-            'email.unique' => "Girdiğiniz email adresi zaten sistemde kayıtlı",
-            'password.required' => "Şifrenizi girmeniz gerekiyor",
-            'password.min' => "Şifreniz en az 8 karakterden oluşacak şekilde girebilirsiniz",
-        ]);
-
         $user = new Users();
 
         $user->guid = substr(Str::uuid(), 0, 36);

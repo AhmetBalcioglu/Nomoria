@@ -7,19 +7,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\PasswordsendResetCodeRequest;
+use App\Http\Requests\PasswordResetPasswordRequest;
+
+
 
 class PasswordController extends Controller
 {
-    public function sendResetCode(Request $request)
+    public function sendResetCode(PasswordsendResetCodeRequest $request)
     {
-        $request->validate([
-            'email' => 'required|email|exists:users,email',
-        ], [
-            'email.required' => 'E-posta adresi boş bırakılamaz.',
-            'email.email' => 'Geçerli bir e-posta adresi giriniz.',
-            'email.exists' => 'Bu e-posta adresi sistemde kayıtlı değil.',
-        ]);
-
         $email = $request->input('email');
         $resetCode = random_int(100000, 999999);
 
@@ -38,18 +34,8 @@ class PasswordController extends Controller
 
 
 
-    public function resetPassword(Request $request)
+    public function resetPassword(PasswordResetPasswordRequest $request)
     {
-        $request->validate([
-            'code' => 'required|integer',
-            'password' => 'required|min:6|confirmed',
-        ], [
-            'code.required' => 'Kod alanı boş bırakılamaz.',
-            'password.required' => 'Şifre alanı boş bırakılamaz.',
-            'password.min' => 'Şifre en az 6 karakter olmalıdır.',
-            'password.confirmed' => 'Şifreler eşleşmiyor.',
-        ]);
-
         $resetCode = Session::get('reset_code');
         $resetEmail = Session::get('reset_email');
 

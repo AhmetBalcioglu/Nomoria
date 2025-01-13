@@ -25,7 +25,6 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/search', [RestaurantController::class, 'search'])->name('search');
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
-// Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register']);
 Route::post('/register', [UserController::class, 'create'])->name('register');
 Route::get('/forgotPassword', [LoginController::class, 'forgotPassword']);
@@ -33,7 +32,6 @@ Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name(
 Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
-// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
@@ -56,8 +54,6 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::get('/discount', [DiscountController::class, 'discount']);
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
-Route::get('/addRestaurant', [AddRestaurantController::class, 'index'])->name('addRestaurant');
-Route::post('/addRestaurant', [AddRestaurantController::class, 'addRestaurant'])->name('addRestaurantPost');
 Route::post('/comments', [CommentController::class, 'store']);
 Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);
 

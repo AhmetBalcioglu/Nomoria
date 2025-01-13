@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReservationCreateRequest;
 
 class ReservationController extends Controller
 {
@@ -11,16 +12,8 @@ class ReservationController extends Controller
     {
         return view("reservations.reservations");
     }
-    public function create(Request $request)
+    public function create(ReservationCreateRequest $request)
     {
-        $request->validate([
-            'restaurant_id' => 'required|exists:restaurants,restaurantID',
-            'customer_name' => 'required|string|max:255',
-            'customer_email' => 'required|email',
-            'reservation_date' => 'required|date|after:now',
-            'guest_count' => 'required|integer|min:1|max:20',
-        ]);
-
         // 20 kişilik kısıtlama
         $totalGuests = Reservation::where('restaurant_id', $request->restaurant_id)
             ->whereDate('reservation_date', $request->reservation_date)
