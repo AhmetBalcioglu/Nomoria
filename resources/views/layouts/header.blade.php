@@ -194,7 +194,7 @@
 
 
     <!-- Login Section -->
-    <div class="col-4 d-flex flex-column align-items-start">
+    <div class="col-1 d-flex flex-column align-items-start">
         {{-- <div class="d-flex align-items-center justify-content-end">
             @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
                 <button class="btn btn-primary custom-button me-2">Rezervasyonlarım</button>
