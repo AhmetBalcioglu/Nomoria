@@ -76,27 +76,6 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 
 
-
-@media (max-width: 768px) {
-    .header {
-        .custom-link {
-            font-size: 12px;
-        }
-
-        .logo {
-            max-width: 100px;
-        }
-
-        .custom-button {
-            font-size: 10px;
-        }
-
-        .small-input {
-            font-size: 10px;
-        }
-    }
-}
-
 /* Arama Çubuğu ve Menü Arası Boşluk */
 #searchForm {
     margin-bottom: 5px;
@@ -135,15 +114,77 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
     /* Taşma olursa bile yan yana kalsın */
 }
 
-/* Responsive Görünüm */
+
+
+
 @media (max-width: 768px) {
-    #searchForm {
-        width: 100%;
-        /* Arama çubuğu mobilde tam genişlikte */
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+
+        .logo {
+            max-width: 80px;
+            margin-bottom: 10px;
+        }
+
+        .custom-link {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .custom-button {
+            font-size: 12px;
+            padding: 5px 8px;
+        }
     }
 
-    .navbar-nav {
-        flex-direction: column;
-        /* Menü elemanları mobilde dikey */
+    #searchForm {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #navbarToggleExternalContent {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+
+        .navbar-nav {
+            flex-direction: column;
+            align-items: center;
+
+            .nav-item {
+                margin: 10px 0;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        text-align: center;
+
+        .dropdown-item {
+            padding: 10px;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .header {
+        .logo {
+            max-width: 120px;
+        }
+
+        .custom-link {
+            font-size: 16px;
+        }
+
+        .custom-button {
+            font-size: 14px;
+        }
+    }
+
+    #searchForm {
+        width: 80%;
     }
 }

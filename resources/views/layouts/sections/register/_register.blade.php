@@ -12,6 +12,17 @@
                 <input type="text" name="surname" id="surname" placeholder="Soyadınız"
                     class="form-control reply mb-3">
             </div>
+
+            <div class="gender-container">
+                <select class="form-select" name="gender" id="floatingSelect"
+                    aria-label="Floating label select example" placeholder="Cinsiyetiniz"
+                    class="form-control reply mb-3">
+                    <option selected>Cinsiyetiniz</option>
+                    <option value="0">Kız</option>
+                    <option value="1">Erkek</option>
+                </select>
+            </div>
+
             <input type="email" name="email" placeholder="Email" class="form-control" required>
 
 

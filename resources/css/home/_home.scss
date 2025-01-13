@@ -110,3 +110,32 @@ h2 {
         transform: translateY(0);
     }
 }
+
+/*Resposive tasarım kodları*/
+
+/* Kartlar arası boşluk ve hizalama */
+.best .card {
+    margin: 10px;
+    text-align: center;
+}
+
+/* Responsive görüntü */
+@media (max-width: 768px) {
+    .best .card {
+        flex: 0 0 45%;
+    }
+
+    .popup {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    .best .card {
+        flex: 0 0 100%;
+    }
+
+    .popup {
+        width: 100%;
+    }
+}
