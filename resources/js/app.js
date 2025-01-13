@@ -25,3 +25,17 @@ if (errorMessages.length > 0) {
         html: `<ul style="text-align: left; list-style: none; padding: 0;">${errorList}</ul>`,
     });
 }
+
+// Timed exit için kontrol
+// 1 dakikadır işlem yapılmadığında mesaj gösterme
+setTimeout(() => {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Oturum Süresi Doldu',
+        text: '1 dakikadır işlem yapmadınız, lütfen tekrar giriş yapın.',
+        showConfirmButton: true,
+    }).then(() => {
+        window.location.href = '/login';
+    });
+}, 60000);
+
