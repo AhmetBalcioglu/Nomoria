@@ -50,40 +50,6 @@ class UserController extends Controller
         }
     }
 
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        try {
-            $email = $request->input('email');
-            $password = $request->input('password');
-            
-            $user = Users::where('email', $email)->first();
-            
-            if (!$user || !Hash::check($password, $user->password)) {
-            return redirect('/login')->with('error', 'Email veya Şifre hatalı!');
-            }
-            
-            $userRole = $user->role;
-            Session::put('role', $userRole);
-            Session::put('name', $user->name);
-            Session::put('surname', $user->surname);
-            return redirect('/')->with('success', 'Giriş Başarılı!');
-        } catch (Exception $e) {
-            return redirect('/login')->with('error', 'Bir hata oluştu: ' . $e->getMessage());
-        }
-        
-    }
-
-    public function logout()
-    {
-        Session::flush();
-        return redirect('/')->with('success', 'Çıkış Başarılı!');
-    }
-
     public function forgotPassword(Request $request)
     {
         $email = Users::where('email', $request->input('email'))->first();
