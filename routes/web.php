@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LoginController;
+use App\Http\Middleware\HandleLogin;
+use App\Http\Middleware\HandleLogout;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
@@ -23,7 +25,7 @@ Route::get('/about', [AboutController::class, 'index']);
 Route::get('/search', [RestaurantController::class, 'search'])->name('search');
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [UserController::class, 'login'])->name('login');
+// Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register']);
 Route::post('/register', [UserController::class, 'create'])->name('register');
 Route::get('/forgotPassword', [LoginController::class, 'forgotPassword']);
@@ -31,7 +33,7 @@ Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name(
 Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
@@ -61,4 +63,14 @@ Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);
 
 Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
+});
+
+// Giriş yapma route
+
+Route::middleware([HandleLogin::class])->group(function () {
+    Route::post('/login', [UserController::class, 'login'])->name('login');
+});
+
+Route::middleware([HandleLogout::class])->group(function () {
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });
