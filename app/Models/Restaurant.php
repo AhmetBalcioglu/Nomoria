@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class Restaurant extends Model
 {
+
     protected $table = 'restaurant';
     protected $primaryKey = 'restaurantID'; // Birincil anahtar
 
@@ -23,7 +23,16 @@ class Restaurant extends Model
         'email',
         'capacity',
         'citiesID',
-        'districtID',
+        'districtsID',
+        'cuisine_type',//Dünya mutfağı
+        'view_type',//Mekan türü
+        'concept',//Konsept
+        'meat_dishes',//Et yemekleri
+        'fish_species',//Balık türleri
+        'fast_food',//Fast food
+        'vegan',//Vejeteryan
+        'alcoholic_places',//Alkol servisi
+        'rating',
     ];
 
     // Yorumlar (Reviews) ilişkisi
@@ -43,6 +52,7 @@ class Restaurant extends Model
     {
         return $this->capacity;  // Restoran kapasitesini döndürür
     }
+
     // Bir restoranın birden fazla menüsü olabilir (menüler ile ilişki)
     public function menus()
     {
@@ -54,6 +64,7 @@ class Restaurant extends Model
     {
         return self::all();
     }
+
     // Şehir ilişkisi
     public function cities()
     {
@@ -63,5 +74,32 @@ class Restaurant extends Model
     public function districts()
     {
         return $this->belongsTo(Districts::class, 'districtsID');
+    }
+
+    /**
+    
+     * Her kaydetme işlemi sırasında `capacity` alanını kontrol eder.
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($restaurant) {
+            if ($restaurant->capacity < 0) {
+                throw new \InvalidArgumentException("Capacity cannot be negative.");
+            }
+        });
+    }
+
+    /**
+     * : Capacity'yi her ayarlama sırasında kontrol eder.
+     */
+    public function setCapacityAttribute($value)
+    {
+        if ($value < 0) {
+            throw new \InvalidArgumentException("Capacity cannot be negative.");
+        }
+
+        $this->attributes['capacity'] = $value;
     }
 }

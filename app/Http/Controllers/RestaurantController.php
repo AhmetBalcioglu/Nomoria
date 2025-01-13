@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cities;
+use App\Models\Districts;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\RestaurantCreateRequest;
+use App\Http\Requests\RestaurantUpdateRequest;
+use App\Http\Requests\RestaurantStoreRequest;
 use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
@@ -44,24 +49,8 @@ class RestaurantController extends Controller
         return view('restaurants.restaurant');
     }
 
-    public function create(Request $request)
+    public function create(RestaurantCreateRequest $request)
     {
-        // Validasyon
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'address' => 'nullable|string',
-            'phone' => 'nullable|string|max:15',
-            'email' => 'nullable|email|max:255',
-            'capacity' => 'required|integer',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:5120',
-            'city' => 'required|string|max:255',
-            'district' => 'required|string|max:255',
-            'cuisineType' => 'nullable|string|max:255',
-            'viewType' => 'nullable|string|max:255',
-            'concept' => 'nullable|string|max:255'
-        ]);
-
         // Görsel yükleme
         $image = time() . '.' . $request->file('image')->getClientOriginalExtension();
         $destinationPath = public_path('images/restaurantImages');
@@ -83,8 +72,8 @@ class RestaurantController extends Controller
         $restaurant->cuisine_type = $request->cuisineType;
         $restaurant->view_type = $request->viewType;
         $restaurant->concept = $request->concept;
-        $restaurant->citiesID  = $request->city;
-        $restaurant->districtsID  = $request->district;
+        $restaurant->citiesID = $request->city;
+        $restaurant->districtsID = $request->district;
         $restaurant->created_at = Carbon::now();
         $restaurant->updated_at = null;
 
@@ -94,18 +83,8 @@ class RestaurantController extends Controller
         return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
     }
 
-    public function update(Request $request, $name)
+    public function update(RestaurantUpdateRequest $request, $name)
     {
-        $validated = $request->validate([
-            'newName' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'address' => 'nullable|string',
-            'phone' => 'nullable|string|max:15',
-            'email' => 'nullable|email|max:255',
-            'capacity' => 'nullable|integer',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
         $restaurant = Restaurant::where('name', $name)->first();
 
         if (!$restaurant) {
@@ -122,9 +101,9 @@ class RestaurantController extends Controller
             // Yeni resmi kaydet
             $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(public_path('images'), $imageName);
-            $restaurant->image = '/images/' . $imageName;
+            $restaurant->image = '/images/restaurantImages/' . $imageName;
         }
-
+        $validated = $request->validated();
         // Restoranı güncelle
         $restaurant->update([
             'name' => $validated['newName'],
@@ -160,6 +139,8 @@ class RestaurantController extends Controller
     public function search(Request $request) //Arama fonksiyonu
     {
         $query = $request->input('searchBar'); //Arama kutusundan gelen veri
+        $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
+        $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
 
         if (empty($query)) {
             return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.');
@@ -174,23 +155,33 @@ class RestaurantController extends Controller
             return redirect()->back()->with('error', 'Arama Sonucu Bulunamadı.');
         }
 
-        return view('details.details', compact('restaurants', 'query')); //Arama sonucunu döndür
+        return view('details.details', compact(
+            'restaurants',
+            'query',
+            'cities',
+            'districts'
+        )); //Arama sonucunu döndür
     }
 
-    // Restoran ekleme sayfasını göster
-    public function store(Request $request) ////store fonksiyonu veritabanına veri eklemek için kullanılır
+    public function filter(Request $request)
     {
-        $validated = $request->validate([ //Gelen verilerin doğrulanması
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image' => 'nullable|string',
-            'citiesID' => 'required|exists:cities,citiesID',
-            'districtID' => 'required|exists:districts,districtID',
-        ]);
 
-        Restaurant::create($validated); //Restaurant modeline verileri ekle
+        $districtID = $request->input('district');
+        $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
+        $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
 
-        return redirect()->back()->with('success', 'Restoran başarıyla eklendi.');
+        $restaurants = Restaurant::where('districtsID', $districtID)
+            ->get();
+
+        if ($restaurants->isEmpty()) {
+            return redirect('/details')->with('error', 'Filtreleme Sonucu Bulunamadı.');
+        }
+
+        return view('details.details', compact(
+            'restaurants',
+            'cities',
+            'districts'
+        ));
     }
 
     /**

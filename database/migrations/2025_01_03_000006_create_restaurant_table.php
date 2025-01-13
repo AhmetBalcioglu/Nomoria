@@ -18,30 +18,22 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('address');
-            $table->unsignedBigInteger('phone');
+            $table->string('phone');
             $table->string('email')->unique();
             $table->integer('capacity');  // Restoran kapasitesi
+            // Şehirler tablosuyla ilişki
+            $table->unsignedBigInteger('citiesID');$table->foreign('citiesID') ->references('citiesID')->on('cities')->onDelete('cascade');
+            // İlçeler tablosuyla ilişki
+            $table->unsignedBigInteger('districtsID');$table->foreign('districtsID')->references('districtsID')->on('districts')->onDelete('cascade');
             $table->string('cuisine_type')->nullable(); // Dünya mutfağı
             $table->string('view_type')->nullable(); // Mekan türü
             $table->string('concept')->nullable(); // Konsept
+            $table->string('meat_dishes')->nullable();// Et yemekleri
+            $table->string('fish_species')->nullable();// Balık türleri
+            $table->string('fast_food')->nullable();// Fast food
+            $table->string('vegan')->nullable();// Vejeteryan
+            $table->string('alcoholic_places')->nullable();// Alkol servisi
             $table->decimal('rating', 3, 1)->default(0); // Puanlama
-            $table->string('open_hours')->nullable(); // Çalışma saatleri
-            $table->string('features')->nullable(); // Özel özellikler (Wi-Fi, otopark)
-
-            // Şehirler tablosuyla ilişki
-            $table->unsignedBigInteger('citiesID'); //
-            $table->foreign('citiesID')
-                ->references('citiesID')
-                ->on('cities')
-                ->onDelete('cascade');
-
-            // İlçeler tablosuyla ilişki
-            $table->unsignedBigInteger('districtsID');
-            $table->foreign('districtsID')
-                ->references('districtsID')
-                ->on('districts')
-                ->onDelete('cascade');
-
             $table->timestamps(); // created_at ve updated_at otomatik oluşturulur
             $table->softDeletes(); // deleted_at otomatik oluşturulur
 

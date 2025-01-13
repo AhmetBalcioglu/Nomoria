@@ -7,32 +7,13 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
+use App\Http\Requests\UserCreateRequest;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function create(Request $request)
+    public function create(UserCreateRequest $request)
     {
-
-        $request->validate([
-            'name' => 'required|alpha',
-            'surname' => 'required|alpha',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-        ], [
-            'name.required' => "Adınızı girmeniz gerekiyor",
-            'name.alpha' => "Adınızı sadece harflerden oluşacak şekilde girebilirsiniz",
-            'surname.required' => "Soyadınızı girmeniz gerekiyor",
-            'surname.alpha' => "Soyadınızı sadece harflerden oluşacak şekilde girebilirsiniz",
-            'email.required' => "Email adresinizi girmeniz gerekiyor",
-            'email.email' => "Email adresinizin geçerli bir adres olması gerekiyor",
-            'email.unique' => "Girdiğiniz email adresi zaten sistemde kayıtlı",
-            'password.required' => "Şifrenizi girmeniz gerekiyor",
-            'password.min' => "Şifreniz en az 8 karakterden oluşacak şekilde girebilirsiniz",
-        ]);
-
         $user = new Users();
 
         $user->guid = substr(Str::uuid(), 0, 36);
@@ -48,40 +29,6 @@ class UserController extends Controller
         } else {
             return redirect('/register')->with('error', 'Kullanıcı oluşturulamadı!');
         }
-    }
-
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        try {
-            $email = $request->input('email');
-            $password = $request->input('password');
-            
-            $user = Users::where('email', $email)->first();
-            
-            if (!$user || !Hash::check($password, $user->password)) {
-            return redirect('/login')->with('error', 'Email veya Şifre hatalı!');
-            }
-            
-            $userRole = $user->role;
-            Session::put('role', $userRole);
-            Session::put('name', $user->name);
-            Session::put('surname', $user->surname);
-            return redirect('/')->with('success', 'Giriş Başarılı!');
-        } catch (Exception $e) {
-            return redirect('/login')->with('error', 'Bir hata oluştu: ' . $e->getMessage());
-        }
-        
-    }
-
-    public function logout()
-    {
-        Session::flush();
-        return redirect('/')->with('success', 'Çıkış Başarılı!');
     }
 
     public function forgotPassword(Request $request)

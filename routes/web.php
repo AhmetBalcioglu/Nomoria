@@ -6,6 +6,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LoginController;
+use App\Http\Middleware\HandleLogin;
+use App\Http\Middleware\HandleLogout;
 use App\Http\Middleware\TimedExit;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
@@ -22,9 +24,9 @@ use App\Http\Middleware\AdminOrRestaurant;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/search', [RestaurantController::class, 'search'])->name('search');
+Route::get('/filter', [RestaurantController::class, 'filter'])->name('filter');
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [UserController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register']);
 Route::post('/register', [UserController::class, 'create'])->name('register');
 Route::get('/forgotPassword', [LoginController::class, 'forgotPassword']);
@@ -32,7 +34,6 @@ Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name(
 Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
@@ -55,8 +56,6 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 Route::get('/discount', [DiscountController::class, 'discount']);
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
-Route::get('/addRestaurant', [AddRestaurantController::class, 'index'])->name('addRestaurant');
-Route::post('/addRestaurant', [AddRestaurantController::class, 'addRestaurant'])->name('addRestaurantPost');
 Route::post('/comments', [CommentController::class, 'store']);
 Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);
 
@@ -64,17 +63,12 @@ Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
 });
 
-Route::middleware(['session.timeout'])->group(function () {
-    // Korunan rotalar
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/login', [LoginController::class, 'index']);
+// Giriş yapma route
+
+Route::middleware([HandleLogin::class])->group(function () {
     Route::post('/login', [UserController::class, 'login'])->name('login');
-    Route::get('/details', [DetailsController::class, 'index']);
-    Route::get('/discount', [DiscountController::class, 'discount']);
-    Route::get('/about', [AboutController::class, 'index']);
-    Route::get('/contact', [ContactController::class, 'index']);
-    Route::get('/reservations', [ReservationController::class, 'index']);
-    Route::get('/addRestaurant', [AddRestaurantController::class, 'index'])->name('addRestaurant');
-    Route::post('/addRestaurant', [AddRestaurantController::class, 'addRestaurant'])->name('addRestaurantPost');
-    Route::post('/comments', [CommentController::class, 'store']);
+});
+
+Route::middleware([HandleLogout::class])->group(function () {
+    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });
