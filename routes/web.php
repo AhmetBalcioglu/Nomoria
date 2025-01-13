@@ -72,3 +72,18 @@ Route::middleware([HandleLogin::class])->group(function () {
 Route::middleware([HandleLogout::class])->group(function () {
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });
+
+
+Route::middleware(['session.timeout'])->group(function () {
+    // Korunan rotalar
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/login', [LoginController::class, 'index']);
+    Route::get('/details', [DetailsController::class, 'index']);
+    Route::get('/discount', [DiscountController::class, 'discount']);
+    Route::get('/about', [AboutController::class, 'index']);
+    Route::get('/contact', [ContactController::class, 'index']);
+    Route::get('/reservations', [ReservationController::class, 'index']);
+    Route::get('/addRestaurant', [AddRestaurantController::class, 'index'])->name('addRestaurant');
+    Route::post('/addRestaurant', [AddRestaurantController::class, 'addRestaurant'])->name('addRestaurantPost');
+    Route::post('/comments', [CommentController::class, 'store']);
+});
