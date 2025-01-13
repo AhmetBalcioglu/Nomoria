@@ -23,6 +23,7 @@ use App\Http\Middleware\AdminOrRestaurant;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/search', [RestaurantController::class, 'search'])->name('search');
+Route::get('/filter', [RestaurantController::class, 'filter'])->name('filter');
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [LoginController::class, 'register']);

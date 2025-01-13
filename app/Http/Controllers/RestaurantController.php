@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cities;
+use App\Models\Districts;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\RestaurantCreateRequest;
@@ -99,9 +101,9 @@ class RestaurantController extends Controller
             // Yeni resmi kaydet
             $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
             $request->file('image')->move(public_path('images'), $imageName);
-            $restaurant->image = '/images/' . $imageName;
+            $restaurant->image = '/images/restaurantImages/' . $imageName;
         }
-
+        $validated = $request->validated();
         // Restoranı güncelle
         $restaurant->update([
             'name' => $validated['newName'],
@@ -137,6 +139,8 @@ class RestaurantController extends Controller
     public function search(Request $request) //Arama fonksiyonu
     {
         $query = $request->input('searchBar'); //Arama kutusundan gelen veri
+        $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
+        $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
 
         if (empty($query)) {
             return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.');
@@ -151,14 +155,33 @@ class RestaurantController extends Controller
             return redirect()->back()->with('error', 'Arama Sonucu Bulunamadı.');
         }
 
-        return view('details.details', compact('restaurants', 'query')); //Arama sonucunu döndür
+        return view('details.details', compact(
+            'restaurants',
+            'query',
+            'cities',
+            'districts'
+        )); //Arama sonucunu döndür
     }
 
-    // Restoran ekleme sayfasını göster
-    public function store(RestaurantStoreRequest $request) ////store fonksiyonu veritabanına veri eklemek için kullanılır
+    public function filter(Request $request)
     {
-        Restaurant::create($validated); //Restaurant modeline verileri ekle
-        return redirect()->back()->with('success', 'Restoran başarıyla eklendi.');
+
+        $districtID = $request->input('district');
+        $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
+        $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
+
+        $restaurants = Restaurant::where('districtsID', $districtID)
+            ->get();
+
+        if ($restaurants->isEmpty()) {
+            return redirect('/details')->with('error', 'Filtreleme Sonucu Bulunamadı.');
+        }
+
+        return view('details.details', compact(
+            'restaurants',
+            'cities',
+            'districts'
+        ));
     }
 
     /**
