@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <div class="slider mb-5">
+            {{-- <div class="slider mb-5">
 
                 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
 
@@ -49,7 +49,7 @@
                     </button>
 
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -83,8 +83,8 @@
 
             <div class="col-md-2   p-2 mx-3 card card-body">
                 <p class="text-center"><b>İş Yemekleri</b></p>
-                <img src="{{ asset('img/homepage_img/is.jpg') }}" width="50% " height="50%" class="d-block w-100 my-4"
-                    alt="">
+                <img src="{{ asset('img/homepage_img/is.jpg') }}" width="50% " height="50%"
+                    class="d-block w-100 my-4" alt="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
                     class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 heart-icon redirect-to-login"
                     viewBox="0 0 16 16">
@@ -142,7 +142,8 @@
                     <p class="text-center"><b>Balık Menüleri</b></p>
                     <img src="{{ asset('img/homepage_img/balik.jpg') }}" width="50%" height="50%"
                         class="d-block w-100 my-4" alt="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
+                        stroke="black"
                         class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 heart-icon redirect-to-login"
                         viewBox="0 0 16 16">
                         <path
@@ -154,7 +155,8 @@
                     <p class="text-center"><b>Fast Food Menüleri</b></p>
                     <img src="{{ asset('img/homepage_img/fastfood.jpg') }}" width="50% " height="50%"
                         class="d-block w-100 my-4" alt="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
+                        stroke="black"
                         class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 heart-icon redirect-to-login"
                         viewBox="0 0 16 16">
                         <path
@@ -166,7 +168,8 @@
                     <p class="text-center"><b>Vegan Menüler</b></p>
                     <img src="{{ asset('img/homepage_img/vegan.png') }}" width="50%" height="50%"
                         class="d-block w-100 my-4" alt="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
+                        stroke="black"
                         class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 heart-icon redirect-to-login"
                         viewBox="0 0 16 16">
                         <path
@@ -178,7 +181,8 @@
                     <p class="text-center"><b>Alkollü Menüler</b></p>
                     <img src="{{ asset('img/homepage_img/alkol.jpg') }}" width="50%" height="50%"
                         class="d-block w-100 my-4" alt="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white"
+                        stroke="black"
                         class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 heart-icon redirect-to-login"
                         viewBox="0 0 16 16">
                         <path

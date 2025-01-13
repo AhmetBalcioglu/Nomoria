@@ -14,17 +14,20 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px 15px;
 
     .logo {
-        max-width: 120px;
+        max-width: 150px;
     }
 
+    /*Menü yazı özellikleri buradan ayarlanır*/
     .custom-link {
-        color: $white-color;
+        color: $text-color ;
         text-decoration: none;
         margin: 0 10px;
-        font-size: 14px;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: bold;
 
         &:hover {
-            color: $secondary-color;
+            color: $primary-color;
         }
     }
 
@@ -49,13 +52,13 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
 
             &:hover {
                 background-color: $secondary-color;
-                color: $white-color;
+                color: $text-color;
             }
         }
     }
 
     .small-input {
-        font-size: 12px;
+        font-size: 20px;
     }
 }
 
@@ -91,5 +94,56 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
         .small-input {
             font-size: 10px;
         }
+    }
+}
+
+/* Arama Çubuğu ve Menü Arası Boşluk */
+#searchForm {
+    margin-bottom: 15px;
+}
+
+/* Hamburger Menü İçeriği (Sola ve Altına Yerleştir) */
+#navbarToggleExternalContent {
+    position: absolute;
+    /* Menü arama çubuğunun altına sabitlenir */
+    top: 100%;
+    /* Çubuğun hemen altından başlar */
+    left: 21rem;
+    /* Sol tarafa hizalar */
+    width: 58%;
+    /* Tüm genişliği kaplar */
+    z-index: 1050;
+    /* Üstte görünür */
+
+    color: #ed4f15;
+    /* Açık arka plan rengi */
+    border: 1px solid #e40c0c;
+    /* Kenarlık ekler */
+}
+
+/* Menü öğeleri arasına boşluk ekler */
+.navbar-nav .nav-item {
+    margin-right: 15px;
+
+
+
+}
+
+/* Menü Elemanlarını Yatay Sıralama */
+.navbar-nav {
+    flex-wrap: nowrap;
+    /* Taşma olursa bile yan yana kalsın */
+}
+
+/* Responsive Görünüm */
+@media (max-width: 768px) {
+    #searchForm {
+        width: 100%;
+        /* Arama çubuğu mobilde tam genişlikte */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        /* Menü elemanları mobilde dikey */
     }
 }
