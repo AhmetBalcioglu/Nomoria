@@ -29,6 +29,7 @@ class HandleLogin
             }
 
             $userRole = $user->role;
+            Session::put('userID', $user->userID);
             Session::put('role', $userRole);
             Session::put('name', $user->name);
             Session::put('surname', $user->surname);

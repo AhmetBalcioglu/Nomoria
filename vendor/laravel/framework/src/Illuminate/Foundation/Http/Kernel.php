@@ -61,7 +61,15 @@ class Kernel implements KernelContract
      *
      * @var array<string, array<int, class-string|string>>
      */
-    protected $middlewareGroups = [];
+    protected $middlewareGroups = [
+        'web' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \App\Http\Middleware\TimedExit::class, // Oturum kontrolü middleware'i
+        // Diğer middleware'ler
+    ],
+    ];
 
     /**
      * The application's route middleware.
@@ -70,7 +78,10 @@ class Kernel implements KernelContract
      *
      * @deprecated
      */
-    protected $routeMiddleware = [];
+    protected $routeMiddleware = [
+            // Diğer middleware'ler
+            'session.timeout' => \App\Http\Middleware\TimedExit::class,
+    ];
 
     /**
      * The application's middleware aliases.

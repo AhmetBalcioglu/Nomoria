@@ -25,3 +25,30 @@ if (errorMessages.length > 0) {
         html: `<ul style="text-align: left; list-style: none; padding: 0;">${errorList}</ul>`,
     });
 }
+
+// Timed exit için kontrol
+// 1 dakikadır işlem yapılmadığında mesaj gösterme
+let idleTime = 0;
+
+// Her 1 dakikada bir kontrol yap
+setInterval(() => {
+    idleTime++;
+    if (idleTime >= 1) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oturum Süresi Doldu',
+            text: '1 dakikadır işlem yapmadınız, lütfen tekrar giriş yapın.',
+            showConfirmButton: true,
+        }).then(() => {
+            window.location.href = '/login';
+        });
+    }
+}, 60000);
+
+// Kullanıcı herhangi bir işlem yaptığında süreyi sıfırla
+['mousemove', 'keydown', 'click'].forEach(event => {
+    document.addEventListener(event, () => {
+        idleTime = 0;
+    });
+});
+
