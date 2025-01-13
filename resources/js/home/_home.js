@@ -1,6 +1,9 @@
 window.onload = function () {
     setTimeout(function () {
-        document.getElementById("popup").style.display = "block";
+        const popup = document.getElementById("popup");
+        if (popup) {
+            popup.style.display = "block";
+        }
     }, 500);
 }
 
