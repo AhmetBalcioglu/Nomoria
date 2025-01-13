@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ContactMessage;
+use App\Http\Requests\ContactSendRequest;
 
 class ContactController extends Controller
 {
@@ -12,14 +13,9 @@ class ContactController extends Controller
         return view('contact.contact');
     }
 
-    public function send(Request $request)
+    public function send(ContactSendRequest  $request)
     {
-        $validated = request()->validate([
-            'name' => 'required|string|max:255',
-            'surname' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:contact_messages,email',
-            'message' => 'required|string|max:255',
-        ]);
+        $validated = $request->validated();
 
         $contactMessage = ContactMessage::create([
             'name' => $validated['name'],
