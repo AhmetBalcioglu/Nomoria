@@ -1,13 +1,20 @@
 window.onload = function () {
     setTimeout(function () {
-        document.getElementById("popup").style.display = "block";
+        const popup = document.getElementById("popup");
+        if (popup) {
+            popup.style.display = "block"; 
+        }
     }, 500);
 }
 
-
+// Popup'ı kapatma fonksiyonu
 function closePopup() {
-    document.getElementById("popup").style.display = "none";
+    const popup = document.getElementById("popup");
+    if (popup) {
+        popup.style.display = "none"; 
+    }
 }
+
 
 $('.close-btn').on('click', function () {
     closePopup();
