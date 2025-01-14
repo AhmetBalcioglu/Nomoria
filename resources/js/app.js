@@ -27,17 +27,17 @@ if (errorMessages.length > 0) {
 }
 
 // Timed exit için kontrol
-// 1 dakikadır işlem yapılmadığında mesaj gösterme
+// 10 dakikadır işlem yapılmadığında mesaj gösterme
 let idleTime = 0;
 
 // Her 1 dakikada bir kontrol yap
 setInterval(() => {
     idleTime++;
-    if (idleTime >= 1) {
+    if (idleTime >= 10) {
         Swal.fire({
             icon: 'warning',
             title: 'Oturum Süresi Doldu',
-            text: '1 dakikadır işlem yapmadınız, lütfen tekrar giriş yapın.',
+            text: '10 dakikadır işlem yapmadınız, lütfen tekrar giriş yapın.',
             showConfirmButton: true,
         }).then(() => {
             window.location.href = '/login';
