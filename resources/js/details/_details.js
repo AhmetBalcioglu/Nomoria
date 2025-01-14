@@ -22,37 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  function restoranEkle(imgPath, restoranAdi, konum) {
-    let restaurantCards = document.querySelector('#restaurant-cards');
-    restaurantCards.innerHTML +=
-      `
-        <div class="col-md-3 mb-5">
-            <div class="restaurant-card">
-                <img src="${imgPath}" alt="Restoran">
-                <div class="restaurant-card-body">
-                    <h5>${restoranAdi}</h5>
-                    <p>İki kişilik menüde %20 indirim!</p>
-                    <p>📍 ${konum}</p>
-                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                </div>
-            </div>
-        </div>
-   `;
-  }
+  // İlçe seçimini dinleyen kod
+  const districtsDropdown = document.getElementById('districts');
+  const selectedDistrictDiv = document.getElementById('selected-district');
+
+  districtsDropdown.addEventListener('change', () => {
+    const selectedDistrict = districtsDropdown.value;
+    if (selectedDistrict) {
+      selectedDistrictDiv.textContent = `Seçilen İlçe: ${selectedDistrict}`;
+    } else {
+      selectedDistrictDiv.textContent = '';
+    }
+  });
+
+  
 
 });
 
 
-
-// İlçe seçimini dinleyen kod
-const districtsDropdown = document.getElementById('districts');
-const selectedDistrictDiv = document.getElementById('selected-district');
-
-districtsDropdown.addEventListener('change', () => {
-  const selectedDistrict = districtsDropdown.value;
-  if (selectedDistrict) {
-    selectedDistrictDiv.textContent = `Seçilen İlçe: ${selectedDistrict}`;
-  } else {
-    selectedDistrictDiv.textContent = '';
-  }
-});
