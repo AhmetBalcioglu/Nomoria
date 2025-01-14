@@ -166,15 +166,15 @@ class RestaurantController extends Controller
     public function filter(Request $request)
     {
 
-        $districtID = $request->input('district');
+        $districtID = $request->input('district') ?? 'all';
         $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
         $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
 
-        $restaurants = Restaurant::where('districtsID', $districtID)
-            ->get();
-
-        if ($restaurants->isEmpty()) {
-            return redirect('/details')->with('error', 'Filtreleme Sonucu Bulunamadı.');
+        if ($districtID === 'all') {
+            $restaurants = Restaurant::with('cities', 'districts')->get()->toArray();
+        } else {
+            $restaurants = Restaurant::where('districtsID', $districtID)
+                ->get();
         }
 
         return view('details.details', compact(
