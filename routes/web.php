@@ -34,6 +34,7 @@ Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
 // Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/makeReservation', [ReservationController::class, 'makeReservation']);
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
