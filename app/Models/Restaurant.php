@@ -68,12 +68,12 @@ class Restaurant extends Model
     // Şehir ilişkisi
     public function cities()
     {
-        return $this->belongsTo(Cities::class, 'citiesID');
+        return $this->belongsTo(Cities::class,'citiesID', 'citiesID');
     }
 
     public function districts()
     {
-        return $this->belongsTo(Districts::class, 'districtsID');
+        return $this->belongsTo(Districts::class, 'districtsID', 'districtsID');
     }
 
     /**

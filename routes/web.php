@@ -93,3 +93,5 @@ Route::middleware([TimedExit::class])->group(function () {
 
 
 Route::post('/favorites/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
+Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+Route::get('/favorites', [FavoriteController::class, 'getFavorites'])->name('getFavorites');
