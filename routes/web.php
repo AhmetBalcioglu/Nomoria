@@ -77,7 +77,7 @@ Route::middleware([HandleLogout::class])->group(function () {
 
 
 
-Route::middleware(['session.timeout'])->group(function () {
+Route::middleware([TimedExit::class])->group(function () {
     // Korunan rotalar
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/login', [LoginController::class, 'index']);
