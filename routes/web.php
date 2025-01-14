@@ -76,6 +76,7 @@ Route::middleware([HandleLogout::class])->group(function () {
 });
 
 
+
 Route::middleware(['session.timeout'])->group(function () {
     // Korunan rotalar
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -87,6 +88,8 @@ Route::middleware(['session.timeout'])->group(function () {
     Route::get('/reservations', [ReservationController::class, 'index']);
     Route::post('/comments', [CommentController::class, 'store']);
 });
+
+
 
 
 Route::post('/favorites/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');

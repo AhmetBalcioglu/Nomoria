@@ -78,10 +78,7 @@ class Kernel implements KernelContract
      *
      * @deprecated
      */
-    protected $routeMiddleware = [
-            // Diğer middleware'ler
-            'session.timeout' => \App\Http\Middleware\TimedExit::class,
-    ];
+    protected $routeMiddleware = [];
 
     /**
      * The application's middleware aliases.
