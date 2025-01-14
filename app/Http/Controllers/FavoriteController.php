@@ -33,6 +33,7 @@ class FavoriteController extends Controller
                 ->where('userID', $userID)
                 ->delete();
             $added = false;
+            $message = 'Favorilerinizden kaldırıldı.';
         } else {
             // Eğer favori kaydı yoksa yeni bir kayıt ekle
             Favorites::create([
@@ -40,12 +41,14 @@ class FavoriteController extends Controller
                 'userID' => $userID,
             ]);
             $added = true;
+            $message = 'Favorilerinize eklendi.';
         }
 
         // İşlem sonucunu döndür
         return response()->json([
             'success' => true,
             'added' => $added,
+            'message' => $message,
         ]);
     }
 

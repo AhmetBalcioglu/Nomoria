@@ -245,21 +245,40 @@
                             if (response.added) {
                                 // Favoriye eklenmişse sınıf ekle
                                 svgElement.classList.add('text-danger');
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Favorilerinize eklendi.',
+                                });
                             } else {
                                 // Favoriden çıkarılmışsa sınıfı kaldır
                                 svgElement.classList.remove('text-danger');
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Favorilerinizden kaldırıldı.',
+                                });
                             }
                         } else {
-                            alert('Bir hata oluştu.');
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Bir hata oluştu.',
+                                text: response.message,
+                            });
                         }
                     } else {
-                        console.error('AJAX isteği başarısız:', xhr.statusText);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'AJAX isteği başarısız.',
+                            text: xhr.statusText,
+                        });
                     }
                 };
 
                 // Hata durumunda
                 xhr.onerror = function () {
-                    console.error('AJAX hatası meydana geldi.');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'AJAX hatası meydana geldi.',
+                    });
                 };
 
                 // Sunucuya JSON verisini gönder
