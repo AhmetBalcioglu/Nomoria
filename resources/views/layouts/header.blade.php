@@ -22,7 +22,7 @@
     {{-- Arama Çubuğu --}}
     <form id="searchForm" class="d-flex mt-2" action="{{ route('search') }}" method="GET">
         <input id="searchBar" name="searchBar" class="form-control me-2" type="search"
-            placeholder="Aradığın restoranı buraya yazabilirsin" aria-label="Search" style="width: 70rem;">
+            placeholder="Aradığın restoranı buraya yazabilirsin" aria-label="Search" style="width: 60rem;">
         <button class="btn btn-light btn-sm" type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-search" viewBox="0 0 16 16">
