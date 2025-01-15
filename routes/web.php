@@ -26,6 +26,7 @@ use App\Http\Middleware\AdminOrRestaurant;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
 Route::get('/search', [RestaurantController::class, 'search'])->name('search');
+Route::get('/search/history', [RestaurantController::class, 'getHistory']);
 Route::get('/filter', [RestaurantController::class, 'filter'])->name('filter');
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
@@ -93,3 +94,5 @@ Route::middleware([TimedExit::class])->group(function () {
 
 
 Route::post('/favorites/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
+Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+Route::get('/favorites', [FavoriteController::class, 'getFavorites'])->name('getFavorites');

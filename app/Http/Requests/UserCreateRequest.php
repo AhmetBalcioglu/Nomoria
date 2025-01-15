@@ -26,7 +26,7 @@ class UserCreateRequest extends FormRequest
             'surname' => 'required|alpha',
             'gender' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|confirmed',
         ];
     }
 
@@ -43,6 +43,7 @@ class UserCreateRequest extends FormRequest
             'email.unique' => "Girdiğiniz email adresi zaten sistemde kayıtlı",
             'password.required' => "Şifrenizi girmeniz gerekiyor",
             'password.min' => "Şifreniz en az 8 karakterden oluşacak şekilde girebilirsiniz",
+            'password.confirmed' => "Girdiğiniz şifreler uyuşmuyor"
         ];
     }
 

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
                 CitiesTableSeeder::class, // Şehirler için Seeder
                 DistrictsTableSeeder::class, // İlçeler için Seeder
                 UserSeeder::class, // Admin için seeder
+                RestaurantsSeeder::class // Restoranlar için seeder
             ]);
         }
     }

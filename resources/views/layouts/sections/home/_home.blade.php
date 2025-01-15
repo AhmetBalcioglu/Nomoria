@@ -1,10 +1,5 @@
 <div class="container mt-5">
-    {{-- Kampanyalı Restoranlar Banner --}}
-    <div class="row">
-        <div class="col-md-12">
-
-        </div>
-    </div>
+    
 
     <div class="row mb-5">
         <div class="d-flex best">
@@ -146,6 +141,71 @@
         </div>
     </div>
 
+<div class="container my-5" id="campaigns">
+    <h2>Sizin için seçtiklerimiz</h2>
+    <div id="campaignCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" id="carousel-inner">
+            <!-- İlk Slide -->
+            <div class="carousel-item active">
+                <div class="row g-4">
+                    <!-- Balık Restoranları Kartı -->
+                    <div class="col-md-6">
+                        <div class="campaign-card text-center">
+                          <img src="{{ asset('img/kampanya_gorsel/fish.png') }}" alt="Balık Restoranları" class="img-fluid">
+                            <h3 class="campaign-title">Balık restoranlarında Kampanya</h3>
+                            <p class="discount">20%</p>
+                            <p class="campaign-text">Nomarisya'ya özel</p>
+                            <button class="btn btn-campaign">Restorana Git</button>
+                        </div>
+                    </div>
+                    <!-- Et Restoranları Kartı -->
+                    <div class="col-md-6">
+                        <div class="campaign-card text-center">
+                            <img src="{{ asset('img/kampanya_gorsel/steak.png') }}" alt="Et Restoranları" class="img-fluid">
+                            <h3 class="campaign-title">Et menülerinde Kampanya</h3>
+                            <p class="discount">15%</p>
+                            <p class="campaign-text">Nomaria'ya özel</p>
+                            <button class="btn btn-campaign">Restorana Git</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- İkinci Slide -->
+            <div class="carousel-item">
+                <div class="row g-4">
+                    <!-- Diğer Kampanya Kartları -->
+                    <div class="col-md-6">
+                        <div class="campaign-card text-center">
+                            <img src="{{ asset('img/kampanya_gorsel/vegan.png') }}" alt="Vegan Restoranları" class="img-fluid">
+                            <h3 class="campaign-title">Vegan menülerde Kampanya</h3>
+                            <p class="discount">10%</p>
+                            <p class="campaign-text">Nomaria'ya özel</p>
+                            <button class="btn btn-campaign">Restorana Git</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="campaign-card text-center">
+                        <img src="{{ asset('img/kampanya_gorsel/vegan.png') }}" alt="Vegan Restoranları" class="img-fluid">
+                            <h3 class="campaign-title">Tatlılarda Kampanya</h3>
+                            <p class="discount">5%</p>
+                            <p class="campaign-text">Nomariaya'ya özel</p>
+                            <button class="btn btn-campaign">Restorana Git</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Slider Kontrolleri -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#campaignCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#campaignCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 
 
 </div>
