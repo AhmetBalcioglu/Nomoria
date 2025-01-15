@@ -17,7 +17,5 @@
 @endsection
 
 @section('page_body_js')
-    @vite('resources/js/forgotPassword/_forgotPassword.js')
-
 
 @endsection
