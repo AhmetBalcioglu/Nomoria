@@ -47,10 +47,12 @@ Route::prefix('restaurants')->group(function () {
     Route::post('/update/{name}', [RestaurantController::class, 'update'])->name('update');
     Route::get('/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
     Route::get('/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
+    Route::get('/{restaurantID}', [RestaurantController::class, 'show'])->name('restaurants.show');
 });
 
 // Details Route
-Route::get('/details', [DetailsController::class, 'index']);
+Route::get('/details', [DetailsController::class, 'index'])->name('details');
+
 
 // Contact Route
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
@@ -96,3 +98,4 @@ Route::middleware([TimedExit::class])->group(function () {
 Route::post('/favorites/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
 Route::get('/favorites', [FavoriteController::class, 'getFavorites'])->name('getFavorites');
+

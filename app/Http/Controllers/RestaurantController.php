@@ -198,4 +198,10 @@ class RestaurantController extends Controller
             return redirect()->route('home')->with('error', 'Restoran Bulunamadı'); // Restoran bulunamadı hatası göster
         }
     }
+
+    public function show($restaurantID)
+    {
+        $restaurant = Restaurant::findOrFail($restaurantID);
+        return view('details.show_details', compact('restaurant'));
+    }
 }

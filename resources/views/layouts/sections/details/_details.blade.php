@@ -188,9 +188,12 @@
 <div class="container my-4">
     <div class="row" id="restaurant-cards">
         @foreach ($restaurants as $restaurant)
-            <div class="col-md-3 mb-5">
+            <div class="col-md-3 mb-5">z
                 <div class="restaurant-card">
-                    <img src="{{ $restaurant['image'] }}" alt="RestaurantImg">
+                    <a href="{{ route('restaurants.show', $restaurant["restaurantID"]) }}">
+                        <img src="{{ $restaurant['image'] }}" alt="RestaurantImg">
+                    </a>
+
                     <div class="restaurant-card-body">
                         <h5>{{ $restaurant['name'] }}</h5>
                         <p>İki kişilik menüde %20 indirim!</p>
@@ -199,7 +202,7 @@
 
                         <!-- Favori Olmayan (Boş Kalp) SVG -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            data-id="{{ $restaurant['restaurantID'] }}" class="bi bi-heart" viewBox="0 0 16 16"
+                            data-id="{{ $restaurant['restaurantID'] }}" classa="bi bi-heart" viewBox="0 0 16 16"
                             onclick="toggleFavorite({{ $restaurant['restaurantID'] }})">
                             <path fill-rule="evenodd"
                                 d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />

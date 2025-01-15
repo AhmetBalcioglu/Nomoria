@@ -21,4 +21,7 @@ class DetailsController extends Controller
             'districts'
         ));
     }
+
+
+
 }
