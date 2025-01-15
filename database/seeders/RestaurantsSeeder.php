@@ -166,6 +166,66 @@ class RestaurantsSeeder extends Seeder
                 'concept' => 'Tek Kişilik',
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Tuzla Balıkçısı',
+                'description' => 'Açıklama 9',
+                'address' => 'Tuzla',
+                'phone' => '03333333333',
+                'email' => 'balıkcı@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 35,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'concept' => 'Tek Kişilik',
+                'image' => '/img/seederImages/balik.jpg'
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Jazz Coffee Tuzla',
+                'description' => 'Açıklama 9',
+                'address' => 'Tuzla',
+                'phone' => '03333333333',
+                'email' => 'jazzcoffee@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 35,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'concept' => 'Tek Kişilik',
+                'image' => '/img/seederImages/balik.jpg'
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Mama Mia Restoran Tuzla',
+                'description' => 'Açıklama 9',
+                'address' => 'Tuzla',
+                'phone' => '03333333333',
+                'email' => 'mamamia@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 35,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'concept' => 'Tek Kişilik',
+                'image' => '/img/seederImages/tek_kisi.jpg'
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Ayaz Izgara Tuzla',
+                'description' => 'Açıklama 9',
+                'address' => 'Tuzla',
+                'phone' => '03333333333',
+                'email' => 'ayaz_ızgara@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 35,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'concept' => 'Tek Kişilik',
+                'image' => '/img/seederImages/tek_kisi.jpg'
+            ],
 
 
         ]);

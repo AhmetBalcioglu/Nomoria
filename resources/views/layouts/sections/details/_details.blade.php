@@ -186,9 +186,6 @@
 </div>
 
 <div class="container my-4">
-    @php
-        dump($restaurants);
-    @endphp
     <div class="row" id="restaurant-cards">
         @foreach ($restaurants as $restaurant)
             <div class="col-md-3 mb-5">
