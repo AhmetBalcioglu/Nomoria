@@ -141,8 +141,32 @@
         </div>
     </div>
 
+
+<div class="container">
+<div class="row">
+    <div class=" col md-12" id="hero" style="height: 40rem;">
+
+<img src="{{ asset('img/hero-bg2.png') }}" alt="">
+
+
+
+
+
+    </div>
+</div>
+
+</div>
+
+
+
+
 <div class="container my-5" id="campaigns">
     <h2>Sizin için seçtiklerimiz</h2>
+
+
+{{-- Alt slider - Kampanya ve özel restoranlar --}}
+
+
     <div id="campaignCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="carousel-inner">
             <!-- İlk Slide -->
