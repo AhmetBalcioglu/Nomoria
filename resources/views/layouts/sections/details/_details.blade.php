@@ -226,8 +226,6 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-
-
         // Tüm kalp simgelerini seç
         const heartIcons = document.querySelectorAll('.bi-heart');
 
@@ -255,12 +253,33 @@
                             if (response.added) {
                                 // Favoriye eklenmişse sınıf ekle
                                 svgElement.classList.add('text-danger');
+
+                                // Sweet Alert
+                                Swal.fire({
+                                    title: 'Favorilere Eklendi!',
+                                    text: 'Restoran favorilerinize eklendi.',
+                                    icon: 'success',
+                                    confirmButtonText: 'Tamam'
+                                });
                             } else {
                                 // Favoriden çıkarılmışsa sınıfı kaldır
                                 svgElement.classList.remove('text-danger');
+
+                                // Sweet Alert
+                                Swal.fire({
+                                    title: 'Favorilerden Çıkarıldı!',
+                                    text: 'Restoran favorilerinize çıkarıldı.',
+                                    icon: 'success',
+                                    confirmButtonText: 'Tamam'
+                                });
                             }
                         } else {
-                            alert('Bir hata oluştu.');
+                            Swal.fire({
+                                title: 'Bir hata oluştu!',
+                                text: 'Oturum açmamış olabilirsiniz lütfen tekrar deneyiniz!',
+                                icon: 'error',
+                                confirmButtonText: 'Tamam'
+                            });
                         }
                     } else {
                         console.error('AJAX isteği başarısız:', xhr.statusText);
