@@ -19,10 +19,10 @@ class UserController extends Controller
         $user->guid = substr(Str::uuid(), 0, 36);
         $user->name = $request->input('name');
         $user->surname = $request->input('surname');
+        $user->gender = $request->input('gender');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
         $user->created_at = Carbon::now()->format('Y-m-d H:i:s');
-        $user->updated_at = Carbon::now()->format('Y-m-d H:i:s');
 
         if ($user->save()) {
             return redirect('/login')->with('success', 'Kullanıcı oluşturuldu');

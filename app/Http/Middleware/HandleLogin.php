@@ -33,6 +33,7 @@ class HandleLogin
             Session::put('role', $userRole);
             Session::put('name', $user->name);
             Session::put('surname', $user->surname);
+            Session::put('gender', $user->gender);
             return redirect('/')->with('success', 'Giriş Başarılı!');
         } catch (Exception $e) {
             return redirect('/login')->with('error', 'Bir hata oluştu: ' . $e->getMessage());

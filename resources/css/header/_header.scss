@@ -4,7 +4,6 @@ $white-color: #ffffff;
 $text-color: #222831;
 $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-
 .header {
     position: sticky;
     top: 0;
@@ -15,6 +14,13 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     .logo {
         max-width: 150px;
+
+
+    }
+
+    .woman {
+        justify-content: center;
+        display: flex;
     }
 
     /*Menü yazı özellikleri buradan ayarlanır*/
