@@ -18,8 +18,8 @@
                     aria-label="Floating label select example" placeholder="Cinsiyetiniz"
                     class="form-control reply mb-3">
                     <option selected>Cinsiyetiniz</option>
-                    <option value="0">Kız</option>
-                    <option value="1">Erkek</option>
+                    <option value="Kadın">Kadın</option>
+                    <option value="Erkek">Erkek</option>
                 </select>
             </div>
 

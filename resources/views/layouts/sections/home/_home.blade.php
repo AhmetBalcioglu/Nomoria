@@ -6,7 +6,6 @@
         </div>
     </div>
 
-    {{-- En Çok Tercih Edilen --}}
     <div class="row mb-5">
         <div class="d-flex best">
 

@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'role' => 'admin',
             'name' => 'admin name',
             'surname' => 'admin surname',
+            'gender' => 'Kadın',
             'email' => 'admin@gmail.com',
             'password' => '$2y$12$w7WdWuIDGkuojAbUKGeTeetvWWJp.2L.B0aU2tQpC/jMfNGsVRjJG',
             'created_at' => Carbon::now(),
