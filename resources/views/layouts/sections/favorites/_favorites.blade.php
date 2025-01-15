@@ -1,5 +1,6 @@
 <div class="container">
     <div class="row">
+        <h1 class=" mt-5 mb-5">Favorilenmiş Restoranlar</h1>
         @forelse ($favorities as $favority)
             <div class="col-md-3 mb-5">
                 <div class="restaurant-card">
