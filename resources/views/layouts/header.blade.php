@@ -24,8 +24,8 @@
         <input id="searchBar" name="searchBar" class="form-control me-2" type="search"
             placeholder="Aradığın restoranı buraya yazabilirsin" aria-label="Search" style="width: 60rem;">
         <button class="btn btn-light btn-sm" type="submit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-search" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
                 <path
                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
             </svg>
@@ -50,13 +50,15 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">Yardım ve Destek</a>
                 </li>
-                @if (session()->has('name') &&
+                @if (
+                        session()->has('name') &&
                         session()->has('surname') &&
                         session()->has('role') &&
-                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurant'))
-                    <li class="nav-item">
-                        <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
-                    </li>
+                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurant')
+                    )
+                                    <li class="nav-item">
+                                        <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
+                                    </li>
                 @endif
             </ul>
         </div>
@@ -88,56 +90,55 @@
     <div class="col-1 d-flex flex-column align-items-start">
         {{-- <div class="d-flex align-items-center justify-content-end">
             @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                <button class="btn btn-primary custom-button me-2">Rezervasyonlarım</button>
+            <button class="btn btn-primary custom-button me-2">Rezervasyonlarım</button>
             @else
-                <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
+            <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
             @endif
 
             @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                <a class="btn btn-secondary custom-button me-2">Favorilerim</a>
+            <a class="btn btn-secondary custom-button me-2">Favorilerim</a>
             @else
-                <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
+            <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
             @endif --}}
 
 
 
-        {{-- login register kısmı --}}
-        @if (!session()->has('role'))
-            <div class="dropdown">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill mt-1 mx-1"
-                    viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24" height="24">
-                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                </svg>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item processOptions" href="/login">Üye Girişi</a></li>
-                    <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
-                    <li>
-                        @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                            <button class="btn btn-primary custom-button me-2">Rezervasyonlarım</button>
-                        @else
-                            <a href="{{ route('login') }}"
-                                class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
-                        @endif
+            {{-- login register kısmı --}}
+            @if (!session()->has('role'))
+                <div class="dropdown">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill mt-1 mx-1"
+                        viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24" height="24">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                    </svg>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item processOptions" href="/login">Üye Girişi</a></li>
+                        <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
+                        <li>
+                            @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
+                                <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
+                            @else
+                                <button class="btn btn-primary custom-button me-2">Rezervasyonlarım</button>
+                            @endif
 
-                    </li>
-                    <li>
+                        </li>
+                        <li>
 
-                        @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                            <a class="btn btn-secondary custom-button me-2">Favorilerim</a>
-                        @else
-                            <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
-                        @endif
-                    </li>
-                </ul>
-            </div>
-        @endif
+                            @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
+                                <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
+                            @else
+                                <a href="{{ route('favorites') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
+                            @endif
+                        </li>
+                    </ul>
+                </div>
+            @endif
 
-        {{-- Loginden sonra kullanıcı adının yazıldığı kısım --}}
-        @if (session()->has('name') && session()->has('surname') && session()->has('role'))
-            <a href="{{ route('logout') }}" class="btn btn-secondary custom-button me-2 information">Çıkış Yap</a>
-            <h3>{{ session()->get('name') }} {{ session()->get('surname') }}</h3>
-        @endif
-    </div>
+            {{-- Loginden sonra kullanıcı adının yazıldığı kısım --}}
+            @if (session()->has('name') && session()->has('surname') && session()->has('role'))
+                <a href="{{ route('logout') }}" class="btn btn-secondary custom-button me-2 information">Çıkış Yap</a>
+                <h3>{{ session()->get('name') }} {{ session()->get('surname') }}</h3>
+            @endif
+        </div>
 
     </div>
 
@@ -146,7 +147,7 @@
 
 {{-- searc kısmı script kodu --}}
 <script>
-    document.getElementById('searchForm').addEventListener('submit', function(event) {
+    document.getElementById('searchForm').addEventListener('submit', function (event) {
         const searchInput = document.getElementById('searchBar').value.trim();
 
         if (!searchInput) {
