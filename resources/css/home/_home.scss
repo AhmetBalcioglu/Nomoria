@@ -10,50 +10,6 @@ body {
     font-family: $font-family;
 }
 
-.slider-wrapper {
-    margin: 0 70px;
-}
-
-.slider-container {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.carousel-inner {
-    img {
-        height: 200px;
-        object-fit: cover;
-        width: 100%;
-    }
-}
-
-.card {
-    transition: all 0.3s ease-in-out;
-    border-radius: 10px;
-    border: 1px solid #ece9e9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fbfafa;
-
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        background-color: #f5f7fa;
-    }
-
-    p {
-        font-size: 0.9rem;
-        color: #555;
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    img {
-        border-radius: 10px 10px 0 0;
-        object-fit: cover;
-    }
-}
 
 h2 {
     font-family: $font-family;
@@ -61,6 +17,72 @@ h2 {
     letter-spacing: 0.5px;
     margin: 1.5rem 0;
     text-align: center;
+}
+
+#campaigns {
+    $primary-bg: #fbfafa;
+    $primary-color: black;
+    $accent-color: #ed4f15;
+    $btn-bg: #ed4f15;
+    $btn-hover-bg: #ed4f15;
+
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .campaign-card {
+        background-color: $primary-bg;
+        color: $primary-color;
+        border-radius: 15px;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid $accent-color;
+        }
+
+        .campaign-title {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .discount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: $accent-color;
+        }
+
+        .campaign-text {
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .btn-campaign {
+            background-color: $btn-bg;
+            color: $primary-bg;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $btn-hover-bg;
+                color: $primary-color;
+            }
+        }
+    }
 }
 
 // Popup
@@ -98,6 +120,8 @@ h2 {
         color: #333;
     }
 }
+
+
 
 @keyframes fadeIn {
     from {
