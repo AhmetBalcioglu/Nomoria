@@ -76,6 +76,11 @@ class Restaurant extends Model
         return $this->belongsTo(Districts::class, 'districtsID', 'districtsID');
     }
 
+    public function favorites()
+    {
+        return $this->belongsTo(Favorites::class, 'restaurantID', 'restaurantID');
+    }
+
     /**
     
      * Her kaydetme işlemi sırasında `capacity` alanını kontrol eder.
