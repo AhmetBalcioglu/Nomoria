@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class HandleLogout
 {
-    public function handle(Request $request, Closure $next)
+    public function handle()
     {
         Session::flush();
         return redirect('/')->with('success', 'Çıkış Başarılı!');
