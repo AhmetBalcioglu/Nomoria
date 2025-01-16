@@ -3,6 +3,10 @@ $secondary-color: #f0a500;
 $white-color: #ffffff;
 $text-color: #222831;
 $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+$light-bg: $white-color;
+$light-text: $text-color;
+$dark-bg: $text-color;
+$dark-text: $white-color;
 
 .header {
     position: sticky;
@@ -193,4 +197,27 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
     #searchForm {
         width: 80%;
     }
+}
+
+// Dark Mode
+
+// Varsayılan Light Mode
+body {
+    background-color: $light-bg;
+    color: $light-text;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &.dark-mode {
+        background-color: $dark-bg;
+        color: $dark-text;
+    }
+}
+
+/* Buton Stili */
+#themeToggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: inherit;
 }

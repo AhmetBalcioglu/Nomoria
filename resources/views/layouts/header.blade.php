@@ -65,8 +65,8 @@
     </div>
     {{-- Dark Mode --}}
     <nav class="navbar navbar-dark mt-2">
-        <div class="container-fluid ">
-            <button class="navbar-toggler " type="button">
+        <div class="container-fluid">
+            <button id="themeToggle" class="navbar-toggler" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                     class="bi bi-moon-stars" viewBox="0 0 16 16">
                     <path
@@ -75,13 +75,11 @@
                         d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z" />
                 </svg>
             </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item processOptions">Dark Mode</a></li>
-                <li><a class="dropdown-item processOptions">Light Mode</a></li>
-            </ul>
-
         </div>
     </nav>
+    
+    <link rel="stylesheet" href="{{ asset('resources/css/header.scss') }}">
+    <script src="{{ asset('resources/js/header.js') }}" defer></script>
 
 
 
