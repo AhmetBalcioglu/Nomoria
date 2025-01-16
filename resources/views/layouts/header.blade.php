@@ -126,7 +126,7 @@
         @if (session()->has('name') && session()->has('surname') && session()->has('role'))
 
             <div class="dropdown text-center">
-                <img src="{{ asset(session()->has('gender') && session()->get('gender') == 'Kadın' ? '/img/she_icon.png' : '/img/he_icon.png') }}" alt="User Icon" class="img-fluid w-25 h-25"
+                <img src="{{ session()->has('gender') && session()->get('gender') == 'Kadın' ? 'img/she_icon.png' : 'img/he_icon.png' }}" alt="User Icon" class="img-fluid w-25 h-25"
                     data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer; display: block; margin: 0 auto;">
 
                 <h6 class="mt-2">{{ session()->get('name') }} {{ session()->get('surname') }}</h6>
