@@ -29,6 +29,8 @@ Route::get('/search', [RestaurantController::class, 'search'])->name('search');
 Route::get('/search/history', [RestaurantController::class, 'getHistory']);
 Route::get('/filter', [RestaurantController::class, 'filter'])->name('filter');
 Route::get('/contact', [ContactController::class, 'index']);
+
+//Login Page and Forgot Password Route
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [LoginController::class, 'register']);
 Route::post('/register', [UserController::class, 'create'])->name('register');
@@ -59,27 +61,28 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 
 //discount Route
 Route::get('/discount', [DiscountController::class, 'discount']);
+
 //reservation Route
 Route::get('/reservations', [ReservationController::class, 'index']);
-Route::post('/comments', [CommentController::class, 'store']);
-Route::get('/comments/{restaurant_id}', [CommentController::class, 'index']);
 
+//Comments Route
+Route::prefix('comments')->group(function () {
+    Route::post('/', [CommentController::class, 'store']);
+    Route::get('/{restaurant_id}', [CommentController::class, 'index']);
+});
+
+//Admin Panel Route
 Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
 });
 
-// Giriş yapma route
-
-Route::middleware([HandleLogin::class])->group(function () {
+//Login Logout Middleware Route
+Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () {
     Route::post('/login', [UserController::class, 'login'])->name('login');
-});
-
-Route::middleware([HandleLogout::class])->group(function () {
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 });
 
-
-
+//Timed Exit Middleware Route
 Route::middleware([TimedExit::class])->group(function () {
     // Korunan rotalar
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -92,10 +95,10 @@ Route::middleware([TimedExit::class])->group(function () {
     Route::post('/comments', [CommentController::class, 'store']);
 });
 
-
-
-
-Route::post('/favorites/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
-Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
-Route::get('/favorites', [FavoriteController::class, 'getFavorites'])->name('getFavorites');
+// Favorite Routes
+Route::prefix('favorites')->group(function () {
+    Route::post('/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
+    Route::get('/', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::get('/', [FavoriteController::class, 'getFavorites'])->name('favorites.get');
+});
 
