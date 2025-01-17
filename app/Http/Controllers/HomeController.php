@@ -17,10 +17,7 @@ class HomeController extends Controller
         // Kullanıcının ID'sini session'dan al
         $userID = session('userID');
 
-        // Eğer session'dan kullanıcı ID'si alınamazsa hata ver
-        if (!$userID) {
-            return redirect()->route('login')->with('error', 'Lütfen giriş yapınız.');
-        }
+        
 
         // Kullanıcının favori kategorilerini al
         $favoritedCategories = Favorites::where('userID', $userID)
