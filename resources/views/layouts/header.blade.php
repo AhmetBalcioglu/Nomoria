@@ -2,7 +2,8 @@
     <!-- Logo Section -->
     <div class="col-2 d-flex align-items-center">
         <a href="{{ url('/') }}">
-            <img src="{{ asset('img/logo_2.png') }}" alt="logo" class="logo img-fluid">
+            <img id="light-logo" src="{{ asset('img/logo_light.png') }}" alt="Light Logo" class="logo img-fluid">
+            <img id="dark-logo" src="{{ asset('img/logo_dark.png') }}" alt="Dark Logo" class="logo img-fluid d-none">
         </a>
     </div>
 
@@ -77,7 +78,7 @@
             </button>
         </div>
     </nav>
-    
+
     <link rel="stylesheet" href="{{ asset('resources/css/header.scss') }}">
     <script src="{{ asset('resources/js/header.js') }}" defer></script>
 
