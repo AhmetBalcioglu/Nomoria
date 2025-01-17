@@ -66,10 +66,14 @@ Route::get('/discount', [DiscountController::class, 'discount']);
 Route::get('/reservations', [ReservationController::class, 'index']);
 
 //Comments Route
+
+
 Route::prefix('comments')->group(function () {
-    Route::post('/', [CommentController::class, 'store']);
+    Route::post('/', [CommentController::class, 'store'])->name('comments.store');
     Route::get('/{restaurant_id}', [CommentController::class, 'index']);
+    Route::delete('/{comment_id}', [CommentController::class, 'destroy'])->name('comments.destroy');
 });
+
 
 //Admin Panel Route
 Route::middleware([AdminOrRestaurant::class])->group(function () {

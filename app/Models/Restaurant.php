@@ -68,7 +68,7 @@ class Restaurant extends Model
     // Şehir ilişkisi
     public function cities()
     {
-        return $this->belongsTo(Cities::class,'citiesID', 'citiesID');
+        return $this->belongsTo(Cities::class, 'citiesID', 'citiesID');
     }
 
     public function districts()
@@ -79,6 +79,11 @@ class Restaurant extends Model
     public function favorites()
     {
         return $this->belongsTo(Favorites::class, 'restaurantID', 'restaurantID');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'restaurantID');
     }
 
     /**

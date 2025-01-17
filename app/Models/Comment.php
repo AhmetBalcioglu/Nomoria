@@ -7,13 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-  class Comment extends Model
+class Comment extends Model
+{
+  protected $fillable = [
+    'restaurantID',
+    'userID',
+    'user_name',
+    'rating',
+    'comment',
+  ];
+
+
+  public function user()
   {
-    protected $fillable = [
-        'restaurant_id',
-        'user_name',
-        'rating',
-        'comment',
-    ];
+    return $this->belongsTo(Users::class, 'userID');
+  }
+
+  public function restaurant()
+  {
+    return $this->belongsTo(Restaurant::class, 'restaurantID');
+  }
 }
 
