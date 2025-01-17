@@ -27,7 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('districtsID');$table->foreign('districtsID')->references('districtsID')->on('districts')->onDelete('cascade');
             $table->string('cuisine_type')->nullable(); // Dünya mutfağı
             $table->string('view_type')->nullable(); // Mekan türü
-            $table->string('concept')->nullable(); // Konsept
+            $table->unsignedBigInteger('categoryID')->foreign('categoryID')->references('categoryID')->on('categories')->onDelete('cascade');;
             $table->string('meat_dishes')->nullable();// Et yemekleri
             $table->string('fish_species')->nullable();// Balık türleri
             $table->string('fast_food')->nullable();// Fast food

@@ -86,6 +86,11 @@ class Restaurant extends Model
         return $this->hasMany(Comment::class, 'restaurantID');
     }
 
+    public function categories()
+    {
+        return $this->hasMany(Categories::class, 'categoryID');
+    }
+
     /**
     
      * Her kaydetme işlemi sırasında `capacity` alanını kontrol eder.
