@@ -83,7 +83,7 @@ Route::middleware([AdminOrRestaurant::class])->group(function () {
 //Login Logout Middleware Route
 Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () {
     Route::post('/login', [UserController::class, 'login'])->name('login');
-    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
 });
 
 //Timed Exit Middleware Route
@@ -106,3 +106,7 @@ Route::prefix('favorites')->group(function () {
     Route::get('/', [FavoriteController::class, 'getFavorites'])->name('favorites.get');
 });
 
+Route::get('/logout', function () {
+    $logoutHandler = new HandleLogout();
+    return $logoutHandler->handle();
+})->name('logout');

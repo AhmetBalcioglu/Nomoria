@@ -1,3 +1,4 @@
+<div class="detail-container">
 <div class="sidebar col-md-2">
     <form action="{{ route('filter') }}" method="GET">
         <div class="filter-container">
@@ -35,36 +36,13 @@
             </div>
         </div>
 
-
-
-
         <h2 class="baslik">Konsepte Göre</h2>
 
-        <div>
-            <div class="category-title collapsible" id="world-cuisine-title">Dünya Mutfağı
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-caret-down" viewBox="0 0 16 16">
-                    <path
-                        d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-                </svg>
-            </div>
-            <div class="checkbox-container" style="display: none;">
-                <input id="korea" type="checkbox">
-                <label for="korea">Kore Mutfağı</label> <br>
-                <input id="mexica" type="checkbox">
-                <label for="mexica">Meksika Mutfağı</label> <br>
-                <input id="japan" type="checkbox">
-                <label for="japan">Japon Mutfağı</label> <br>
-                <input id="italian" type="checkbox">
-                <label for="italian">İtalyan Mutfağı</label> <br>
-            </div>
-        </div>
 
         <div style="display: flex">
             <input id="workMeal" type="checkbox">
             <label for="workMeal" class="category-title mx-2">İş Yemeği</label>
         </div>
-
 
         <div style="display: flex">
             <input id="celebration" type="checkbox">
@@ -83,9 +61,25 @@
 
         <br>
         <h2 class="baslik">Menülere Göre</h2>
-
         <div>
-            <!--Et Yemekleri-->
+            <div class="category-title collapsible" id="world-cuisine-title">
+                <label>
+                    <input type="checkbox" id="world-cuisine-checkbox"> Dünya Mutfağı
+                </label>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-caret-down" viewBox="0 0 16 16">
+                    <path
+                        d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
+                </svg>
+            </div>
+            <div class="checkbox-container" style="display: none;">
+                <p>Kore Mutfağı</p>
+                <p>Meksika Mutfağı</p>
+                <p>Japon Mutfağı</p>
+                <p>İtalyan Mutfağı</p>
+            </div>
+        </div>
+        <div>
             <div class="category-title collapsible" id="meat-dishes-title">
                 <label>
                     <input type="checkbox" id="meat-checkbox"> Et Yemekleri
@@ -171,6 +165,7 @@
                         <path
                             d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
                     </svg>
+                    </label>
             </div>
             <div class="checkbox-container" style="display: none;">
                 <p>Tuborg</p>
@@ -178,19 +173,21 @@
                 <p>Sol</p>
                 <p>Şarap</p>
             </div>
-        </div> <br>
+        </div>
+        <br>
 
 
         <button id="filterButton" type="submit" class="btn">Filtrele</button>
     </form>
 </div>
 
+
 <div class="container my-4">
     <div class="row" id="restaurant-cards">
         @foreach ($restaurants as $restaurant)
             <div class="col-md-3 mb-5">z
                 <div class="restaurant-card">
-                    <a href="{{ route('restaurants.show', $restaurant["restaurantID"]) }}">
+                    <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
                         <img src="{{ $restaurant['image'] }}" alt="RestaurantImg">
                     </a>
 
@@ -199,10 +196,11 @@
                         <p>İki kişilik menüde %20 indirim!</p>
                         <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
                         <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                        @if (($restaurant['favorites']) == null)
+                        @if ($restaurant['favorites'] == null)
                             <!-- Favori Olmayan (Boş Kalp) SVG -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                data-id="{{ $restaurant['restaurantID'] }}" class="bi bi-heart" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" data-id="{{ $restaurant['restaurantID'] }}" class="bi bi-heart"
+                                viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                     d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
                                 <path
@@ -210,8 +208,9 @@
                             </svg>
                         @else
                             <!-- Favori Olan (Dolu Kalp) SVG -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                data-id="{{ $restaurant['restaurantID'] }}" class="bi bi-heart text-danger" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" data-id="{{ $restaurant['restaurantID'] }}"
+                                class="bi bi-heart text-danger" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
                                     d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
                                 <path
@@ -226,18 +225,20 @@
         @endforeach
     </div>
 </div>
+</div>
+
 
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
 
         // Tüm kalp simgelerini seç
         const heartIcons = document.querySelectorAll('.bi-heart');
 
         // Her bir kalp simgesine tıklama olayı ekle
-        heartIcons.forEach(function (icon) {
-            icon.addEventListener('click', function () {
+        heartIcons.forEach(function(icon) {
+            icon.addEventListener('click', function() {
                 const restaurantID = this.getAttribute(
                     'data-id'); // Tıklanan SVG'nin data-id değerini al
                 const svgElement = this; // Tıklanan SVG elementini seç
@@ -251,7 +252,7 @@
                 xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
 
                 // İstek tamamlandığında
-                xhr.onload = function () {
+                xhr.onload = function() {
                     if (xhr.status === 200) {
                         const response = JSON.parse(xhr.responseText);
 
@@ -293,7 +294,7 @@
                 };
 
                 // Hata durumunda
-                xhr.onerror = function () {
+                xhr.onerror = function() {
                     console.error('AJAX hatası meydana geldi.');
                 };
 

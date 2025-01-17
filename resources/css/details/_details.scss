@@ -2,36 +2,44 @@
     width: 7px; // Kaydırma çubuğu genişliği
     background-color: #f5f5f5;
   }
-  
+
   ::-webkit-scrollbar-track {
-    background-color: #cccccc; 
+    background-color: #cccccc;
     border-radius: 10px; // Yuvarlatılmış köşeler
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: #ffd66f; // Kaydırıcı rengi
     border-radius: 10px; // Yuvarlatılmış köşeler
     background-image: -webkit-linear-gradient(90deg, rgb(251, 255, 33) 0%, rgb(211, 84, 0) 100%);
     border: 1px solid #f0f0f0; // İç kenarlık
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: #e69717; // Üzerine gelince renk değişimi
   }
 
+ .detail-container{
+     display: flex;
 
+ }
 
   .sidebar {
-    width: 300px;
-    background-color: #ffffff;
-    padding: 20px;
-    height: 90vh;
-    overflow-y: auto;
-    position: fixed;
+      width: 280px;
+      background-color: #ffffff;
+      padding: 20px;
+      height: 100vh;
+      overflow-y: auto;
+      position: sticky;
+      top: 10px;
+
+
+
 
 
   .filter-container {
     margin-bottom: 20px;
+
   }
 
   label {
@@ -55,7 +63,7 @@ select {
     font-size: 18px;
     color: #f0952d;
 }
-  
+
 
     .baslik {
       font-size: 1.5em;
@@ -72,12 +80,12 @@ select {
       display: flex;
       align-items: center;
       color: #f0952d;
-  
+
       svg {
         margin-left: 0.5em;
         transition: transform 0.3s;
       }
-  
+
       &.collapsed svg {
         transform: rotate(-180deg);
       }
@@ -88,44 +96,44 @@ select {
             text-decoration: none;
             display: block;
             margin: 5px 0;
-        
+
     }
-   
-  
+
+
     .checkbox-container {
       display: none;
       margin-left: 1.5em;
-  
+
       &.expanded {
         display: block;
       }
-  
+
       input[type="checkbox"] {
         margin-right: 0.5em;
       }
-  
+
       label {
         font-size: 1em;
         margin-bottom: 0.5em;
         display: inline-block;
       }
     }
-  
+
     input[type="checkbox"] {
       accent-color: #ff6f00;
     }
-  
+
     label {
       font-size: 1em;
       cursor: pointer;
     }
-  
+
     // Additional hover styles
     .category-title:hover {
       color: #deba80;
     }
 
-    
+
   .btn{
     background-color: #deba80;
     color: black;
@@ -136,7 +144,7 @@ select {
     background-color: #555;
   }
   }
-  
+
 
 .baslik {
     color: #3d3a3a;
