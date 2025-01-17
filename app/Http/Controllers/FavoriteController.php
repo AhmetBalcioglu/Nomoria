@@ -48,6 +48,48 @@ class FavoriteController extends Controller
 
 
 
+    public function toggleFavoriteCategory($categoryID)
+    {
+        // Kullanıcının oturumda olup olmadığını kontrol et
+        $userID = session('userID'); // Session'dan kullanıcı ID'sini al
+
+        if (!$userID) {
+            // Kullanıcı oturumu yoksa hata döndür
+            return response()->json([
+                'success' => false,
+                'message' => 'Kullanıcı oturumu açmamış.',
+            ]);
+        }
+
+        // Kullanıcının bu kategoriye dair favori kaydı var mı kontrol et
+        $favorite = Favorites::where('categoryID', $categoryID)
+            ->where('userID', $userID)
+            ->first();
+
+        if ($favorite) {
+            // Eğer favori kaydı varsa sil
+            Favorites::where('categoryID', $categoryID)
+                ->where('userID', $userID)
+                ->delete();
+            $added = false;
+            $message = 'Favorilerinizden kaldırıldı.';
+        } else {
+            // Eğer favori kaydı yoksa yeni bir kayıt ekle
+            Favorites::create([
+                'categoryID' => $categoryID,
+                'userID' => $userID,
+            ]);
+            $added = true;
+            $message = 'Favorilerinize eklendi.';
+        }
+
+        // İşlem sonucunu döndür
+        return response()->json([
+            'success' => true,
+            'added' => $added,
+            'message' => $message,
+        ]);
+    }
 
 
 

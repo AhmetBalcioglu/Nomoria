@@ -13,11 +13,11 @@
 </head>
 
 <body>
+    <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
 
-    <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
 
     <script>
         let successMessage = @json(session('success'));

@@ -107,6 +107,7 @@ Route::prefix('favorites')->group(function () {
     Route::post('/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
     Route::get('/', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::get('/', [FavoriteController::class, 'getFavorites'])->name('favorites.get');
+    Route::post('/toggle/{categoryID}',[FavoriteController::class, 'toggleFavoriteCategory'])->name('favorites.get');
 });
 
 Route::get('/logout', function () {
