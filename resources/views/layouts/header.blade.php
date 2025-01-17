@@ -9,14 +9,14 @@
 
     {{-- Hamburger menü üç çizgi özellikleri ve ayarlarının yapıldığı kısım --}}
     <nav class="navbar navbar-dark mt-2 overflow-hidden">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
 
 
     {{-- Arama Çubuğu --}}
@@ -24,8 +24,8 @@
         <input id="searchBar" name="searchBar" class="form-control me-2" type="search"
             placeholder="Aradığın restoranı buraya yazabilirsin" aria-label="Search" style="width: 50rem;">
         <button class="btn btn-light btn-sm" type="submit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-search" viewBox="0 0 16 16">
                 <path
                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
             </svg>
@@ -50,12 +50,10 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">Yardım ve Destek</a>
                 </li>
-                @if (
-    session()->has('name') &&
-    session()->has('surname') &&
-    session()->has('role') &&
-    (session()->get('role') == 'admin' || session()->get('role') == 'restaurant')
-)
+                @if (session()->has('name') &&
+                        session()->has('surname') &&
+                        session()->has('role') &&
+                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurant'))
                     <li class="nav-item">
                         <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
                     </li>
@@ -77,12 +75,6 @@
             </button>
         </div>
     </nav>
-    
-    <link rel="stylesheet" href="{{ asset('resources/css/header.scss') }}">
-    <script src="{{ asset('resources/js/header.js') }}" defer></script>
-
-
-
 
     <!-- Login Section -->
     <div class="col-1 d-flex flex-column align-items-start">
@@ -122,10 +114,10 @@
 
 
         @if (session()->has('name') && session()->has('surname') && session()->has('role'))
-
             <div class="dropdown text-center">
-                <img src="{{ session()->has('gender') && session()->get('gender') == 'Kadın' ? 'img/she_icon.png' : 'img/he_icon.png' }}" alt="User Icon" class="img-fluid w-25 h-25"
-                    data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer; display: block; margin: 0 auto;">
+                <img src="{{ session()->has('gender') && session()->get('gender') == 'Kadın' ? 'img/she_icon.png' : 'img/he_icon.png' }}"
+                    alt="User Icon" class="img-fluid w-25 h-25" data-bs-toggle="dropdown" aria-expanded="false"
+                    style="cursor: pointer; display: block; margin: 0 auto;">
 
                 <h6 class="mt-2">{{ session()->get('name') }} {{ session()->get('surname') }}</h6>
 
@@ -137,8 +129,6 @@
                 </ul>
 
             </div>
-
-
         @endif
     </div>
 
@@ -147,9 +137,9 @@
 </header>
 
 
-{{-- searc kısmı script kodu --}}
+{{-- search kısmı script kodu --}}
 <script>
-    document.getElementById('searchForm').addEventListener('submit', function (event) {
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
         const searchInput = document.getElementById('searchBar').value.trim();
 
         if (!searchInput) {

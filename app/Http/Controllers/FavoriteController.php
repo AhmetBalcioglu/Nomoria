@@ -22,7 +22,7 @@ class FavoriteController extends Controller
     {
         $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
         $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
-        $restaurants = Restaurant::with('cities','districts')->get()->toArray(); // Restoranları diziye topla
+        $restaurants = Restaurant::with('cities', 'districts')->get()->toArray(); // Restoranları diziye topla
         // Kullanıcının ID'sini session'dan al
         $userID = session('userID');
 
@@ -33,12 +33,11 @@ class FavoriteController extends Controller
 
         // Favorilerdeki restoranların bilgilerini al
         $favorities = Favorites::with('restaurant:restaurantID,image,name,description,citiesID,cities,districts')
-        ->with('restaurant.districts')
-        ->with('restaurant.districts.city')
-        ->where('userID', $userID)
-        ->get();
-        // dd($favorities->toArray());
-        
+            ->with('restaurant.districts')
+            ->with('restaurant.districts.city')
+            ->where('userID', $userID)
+            ->get();
+
         return view('favorites.favorites', compact(
             'favorities',
             'cities',
@@ -94,5 +93,4 @@ class FavoriteController extends Controller
             'message' => $message,
         ]);
     }
-
 }
