@@ -21,7 +21,9 @@ use App\Http\Controllers\FavoriteController;
 
 use App\Http\Middleware\AdminOrRestaurant;
 
-
+Route::get('/dashboard', function () {
+    return view('layouts.dashboard');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
