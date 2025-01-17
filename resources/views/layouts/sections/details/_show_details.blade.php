@@ -22,7 +22,7 @@
         <div class="card-body">
             @foreach($restaurant->comments as $comment)
                 <div class="comment mb-3">
-                    <p class="mb-0"><strong>{{ $comment->user->name }}</strong> -
+                    <p class="mb-0"><strong>{{ $comment->user_name }}</strong> -
                         {{ $comment->created_at->format('d.m.Y H:i') }}
                     </p>
                     <p class="mb-0">
@@ -34,14 +34,28 @@
 
                     @if (Session::get('userID') === $comment->userID)
                         <div class="comment-actions mt-2">
-                            <form method="POST" action="/comments/{{ $comment->id }}" style="display: inline;">
+                            <!-- Güncelleme Formu -->
+                            <form method="POST" action="{{ route('comments.update', $comment->id) }}" style="display: inline;">
                                 @csrf
                                 @method('PUT')
-                                <textarea name="content" placeholder="Yorumunuzu güncelleyin..."
-                                    required>{{ $comment->comment }}</textarea>
-                                <button type="submit" class="btn btn-warning">Güncelle</button>
+                                <button type="button" class="btn btn-warning comment-update-btn">Güncelle</button>
+                                <div class="comment-update-form d-none">
+                                    <textarea class="form-control" name="content" placeholder="Yorumunuzu güncelleyin..."
+                                        required>{{ $comment->comment }}</textarea>
+                                    <button type="submit" class="btn btn-success">Güncelle</button>
+                                </div>
+                                <script>
+                                    const updateBtn = document.querySelector('.comment-update-btn');
+                                    const updateForm = document.querySelector('.comment-update-form');
+
+                                    updateBtn.addEventListener('click', () => {
+                                        updateForm.classList.toggle('d-none');
+                                    });
+                                </script>
                             </form>
-                            <form method="POST" action="/comments/{{ $comment->id }}" style="display: inline;">
+
+                            <!-- Silme Formu -->
+                            <form method="POST" action="{{ route('comments.destroy', $comment->id) }}" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Sil</button>
@@ -50,6 +64,7 @@
                     @endif
                 </div>
             @endforeach
+
 
 
             @if (Session::has('userID'))

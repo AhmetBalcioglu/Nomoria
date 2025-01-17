@@ -62,12 +62,15 @@ class CommentController extends Controller
         return view('comment.edit', compact('comment'));
     }
 
-    public function update(Comment $comment, Request $request)
+    public function update($comment_id, Request $request)
     {
         // Verileri doğrula
         $request->validate([
             'content' => 'required|string|max:500',
         ]);
+
+        // Yorum kaydını bul
+        $comment = Comment::findOrFail($comment_id);
 
         // Kullanıcı oturumundan ID'yi alın
         $userID = Session::get('userID');
@@ -76,7 +79,7 @@ class CommentController extends Controller
             return redirect('/login')->with('error', 'Yorumu güncellemek için giriş yapmalısınız.');
         }
 
-        // Kullanıcı yorumu yazan kişi mi kontrol edin
+        // Kullanıcının yetkisini kontrol edin
         if ($userID !== $comment->userID) {
             return back()->with('error', 'Bu yorumu güncelleme yetkiniz yok.');
         }
@@ -90,8 +93,12 @@ class CommentController extends Controller
         return back()->with('success', 'Yorumunuz güncellendi.');
     }
 
-    public function destroy(Comment $comment)
+
+    public function destroy($comment_id)
     {
+        // Yorum kaydını bul
+        $comment = Comment::findOrFail($comment_id);
+
         // Kullanıcı oturumundan ID'yi alın
         $userID = Session::get('userID');
 
@@ -99,7 +106,7 @@ class CommentController extends Controller
             return redirect('/login')->with('error', 'Yorumu silmek için giriş yapmalısınız.');
         }
 
-        // Kullanıcı yorumu yazan kişi mi kontrol edin
+        // Kullanıcının yetkisini kontrol edin
         if ($userID !== $comment->userID) {
             return back()->with('error', 'Bu yorumu silme yetkiniz yok.');
         }
@@ -110,6 +117,7 @@ class CommentController extends Controller
         // Başarı mesajı ile geri dön
         return back()->with('success', 'Yorumunuz silindi.');
     }
+
 
 
 }

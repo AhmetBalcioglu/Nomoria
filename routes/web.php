@@ -72,7 +72,9 @@ Route::prefix('comments')->group(function () {
     Route::post('/', [CommentController::class, 'store'])->name('comments.store');
     Route::get('/{restaurant_id}', [CommentController::class, 'index']);
     Route::delete('/{comment_id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::put('/{comment_id}', [CommentController::class, 'update'])->name('comments.update');
 });
+
 
 
 //Admin Panel Route
