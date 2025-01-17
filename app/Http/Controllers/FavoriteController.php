@@ -62,53 +62,6 @@ class FavoriteController extends Controller
         ));
     }
 
-    public function getFavoritesForHome()
-    {
-        // Şehirleri, ilçeleri ve restoranları topla
-        $cities = Cities::orderBy('name', 'asc')->get();
-        $districts = Districts::orderBy('name', 'asc')->get();
-        $restaurants = Restaurant::with(['cities', 'districts'])->get();
-
-        // Kullanıcının ID'sini session'dan al
-        $userID = session('userID');
-
-        // Eğer session'dan kullanıcı ID'si alınamazsa hata ver
-        if (!$userID) {
-            return redirect()->route('login')->with('error', 'Lütfen giriş yapınız.');
-        }
-
-        // Kullanıcının favori restoranlarını al
-        $favoritedRestaurants = Favorites::where('userID', $userID)
-            ->whereNotNull('restaurantID') // RestaurantID'si olan favoriler
-            ->with([
-                'restaurant' => function ($query) {
-                    $query->select('restaurantID', 'image', 'name', 'description', 'citiesID');
-                },
-                'restaurant.districts',   // Restoranın ilçelerini yükle
-                'restaurant.districts.city', // Restoranın ilçesinin bağlı olduğu şehir
-            ])
-            ->get();
-
-        // Kullanıcının favori kategorilerini al
-        $favoritedCategories = Favorites::where('userID', $userID)
-            ->whereNotNull('categoryID') // categoryID'ye sahip favoriler
-            ->with('category') // Kategorileri ilişkilendir
-            ->get();
-
-        // Verileri tek bir view'e gönder
-        return view('home.home', compact(
-            'favoritedRestaurants',
-            'favoritedCategories',
-            'cities',
-            'districts',
-            'restaurants'
-        ));
-    }
-
-
-
-
-
     public function toggleFavoriteCategory($categoryID)
     {
         // Kullanıcının oturumda olup olmadığını kontrol et
