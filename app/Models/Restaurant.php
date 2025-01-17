@@ -24,15 +24,15 @@ class Restaurant extends Model
         'capacity',
         'citiesID',
         'districtsID',
-        'cuisine_type',//Dünya mutfağı
-        'view_type',//Mekan türü
-        'concept',//Konsept
-        'meat_dishes',//Et yemekleri
-        'fish_species',//Balık türleri
-        'fast_food',//Fast food
-        'vegan',//Vejeteryan
-        'alcoholic_places',//Alkol servisi
-        'rating',
+        'cuisine_type', // Dünya mutfağı
+        'view_type', // Mekan türü
+        'categoryID', // Konsept
+        'meat_dishes', // Et yemekleri
+        'fish_species', // Balık türleri
+        'fast_food', // Fast food
+        'vegan', // Vejeteryan
+        'alcoholic_places', // Alkol servisi
+        'rating', // Puanlama
     ];
 
     // Yorumlar (Reviews) ilişkisi
@@ -79,6 +79,11 @@ class Restaurant extends Model
     public function favorites()
     {
         return $this->belongsTo(Favorites::class, 'restaurantID', 'restaurantID');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Categories::class, 'categoryID', 'categoryID');
     }
 
     public function comments()

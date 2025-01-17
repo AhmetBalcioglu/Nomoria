@@ -24,10 +24,10 @@
                 </select>
             </div>
 
-            {{-- Konsept --}}
+            {{-- Kategoriler --}}
             <div>
-                <h2 class="baslik">Konsept </h2>
-                <select name="concept" class="form-select mb-5">
+                <h2 class="baslik">Kategoriler </h2>
+                <select name="category" class="form-select mb-5">
                     <option value="all">Tümü</option>
                     <option value="İş Yemeği">İş Yemeği</option>
                     <option value="Kutlama">Kutlama</option>
@@ -68,6 +68,7 @@
 
 
     <div class="container my-4">
+        @dump($restaurants)
         <div class="row" id="restaurant-cards">
             @foreach ($restaurants as $restaurant)
                 <div class="col-md-3 mb-5">

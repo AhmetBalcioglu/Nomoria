@@ -188,7 +188,7 @@ class RestaurantController extends Controller
         }
 
         if ($concept !== 'all') {
-            $restaurants += Restaurant::where('concept', '=', $concept)
+            $restaurants += Restaurant::where('categoryID', '=', $concept)
                 ->get()->toArray();
         }
 
@@ -221,7 +221,7 @@ class RestaurantController extends Controller
 
         $query->where('deleted_at', null);
 
-        $restaurants = $query->with('cities', 'districts', 'favorites')->get()->toArray();
+        $restaurants = $query->with('cities', 'districts', 'favorites', 'categories')->get()->toArray();
         //-----------------------------------------------------------
 
         return view('details.details', compact(
