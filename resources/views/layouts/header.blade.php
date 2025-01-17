@@ -111,11 +111,9 @@
 
         {{-- Loginden sonra kullanıcı adının yazıldığı kısım --}}
 
-
-
         @if (session()->has('name') && session()->has('surname') && session()->has('role'))
             <div class="dropdown text-center">
-                <img src="{{ session()->has('gender') && session()->get('gender') == 'Kadın' ? 'img/she_icon.png' : 'img/he_icon.png' }}"
+                <img src="{{ session()->has('gender') && session()->get('gender') == 'Kadın' ? '/img/she_icon.png' : '/img/he_icon.png' }}"
                     alt="User Icon" class="img-fluid w-25 h-25" data-bs-toggle="dropdown" aria-expanded="false"
                     style="cursor: pointer; display: block; margin: 0 auto;">
 
