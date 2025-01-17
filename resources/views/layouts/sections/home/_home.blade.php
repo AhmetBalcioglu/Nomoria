@@ -1,8 +1,10 @@
 <div class="container mt-5">
+    
     @foreach ($categories->chunk(5) as $chunk)
+
         <div class="row mb-5">
             @foreach ($chunk as $category)
-                <div class="col-md-2 col-sm-2 col-md-2 p-2 mx-3 card card-body position-relative">
+                <div class="col-md-2 col-sm-2 col-md-2 p-2 mx-3 card card-body position-relative category_url" data-url="{{ $category->categoryName }}">
                     <p class="text-center"><b>{{ $category->categoryName }}</b></p>
                     <img src="{{ asset($category->image) }}" width="50%" height="50%" class="d-block w-100 my-4" alt="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
@@ -17,6 +19,19 @@
     @endforeach
 </div>
 
+
+
+{{-- Divlerin url bağlantısı --}}
+<script>
+    $('.category_url').on('click', function () {
+
+        let dataUrl =  $(this).data('url');
+        let url = "http://nomoria.local/filter?concept=" + dataUrl;
+        window.location.href = url;
+
+    })
+
+</script>
 
 
 <div class="container">
@@ -120,3 +135,4 @@
         </div>
     </div>
 @endif
+

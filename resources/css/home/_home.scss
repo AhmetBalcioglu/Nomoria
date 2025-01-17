@@ -37,6 +37,7 @@ h2 {
         margin: auto;
     }
 
+    /*Sizin için seçtiklerimiz slider kodları*/
     .campaign-card {
         background-color: $primary-bg;
         color: $primary-color;
@@ -84,6 +85,47 @@ h2 {
         }
     }
 }
+
+
+.card-body {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card-body:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.category_url:hover {
+
+    cursor: pointer;
+
+}
+
+.text-center {
+    font-size: 10rv;
+    margin-bottom: 10px;
+}
+
+.card-body-body p {
+    font-size: 16px;
+    color: #555;
+}
+
+.card-body-body .btn {
+    margin-top: 10px;
+}
+
+
 
 #hero {
     color: #ed4f15;
