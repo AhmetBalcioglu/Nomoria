@@ -123,7 +123,7 @@
 
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Restoranlarım</a></li>
-                    <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
+                    <li><a class="dropdown-item" href="#">Favorilerim</a></li>
                     <li> <a href="{{ route('logout') }}" class="btn btn-danger custom-button me-2 information">Çıkış
                             Yap</a></li>
                 </ul>

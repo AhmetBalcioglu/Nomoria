@@ -2,7 +2,7 @@ window.onload = function () {
     setTimeout(function () {
         const popup = document.getElementById("popup");
         if (popup) {
-            popup.style.display = "block";
+            popup.style.display = "block"; 
         }
     }, 500);
 }
@@ -11,7 +11,7 @@ window.onload = function () {
 function closePopup() {
     const popup = document.getElementById("popup");
     if (popup) {
-        popup.style.display = "none";
+        popup.style.display = "none"; 
     }
 }
 
@@ -39,50 +39,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-$(document).ready(function () {
-    $('.hearth-icon').click(function () {
-        var categoryID = $(this).data('id'); // Tıklanan SVG'nin data-id değerini al
-        var icon = $(this); // Tıklanan SVG elementini seç
-
-        // AJAX isteği
-        $.ajax({
-            url: 'favorites/toggle/' + categoryID, // Favori ekleme/çıkarma URL'si
-            method: 'GET',
-            data: {
-                _token: '{{ csrf_token() }}', // CSRF token
-            },
-            success: function (response) {
-                if (response.success) {
-                    // Favori eklenmişse
-                    if (response.added) {
-                        icon.attr('fill', 'red'); // Kalp simgesini kırmızıya dönüştür
-                        Swal.fire({
-                            title: 'Favorilere Eklendi!',
-                            text: 'Kategori favorilerinize eklendi.',
-                            icon: 'success',
-                            confirmButtonText: 'Tamam'
-                        });
-                    } else {
-                        icon.attr('fill', 'black'); // Kalp simgesini siyaha döndür
-                        Swal.fire({
-                            title: 'Favorilerden Çıkarıldı!',
-                            text: 'Kategori favorilerinizden çıkarıldı.',
-                            icon: 'success',
-                            confirmButtonText: 'Tamam'
-                        });
-                    }
-                } else {
-                    Swal.fire({
-                        title: 'Bir hata oluştu!',
-                        text: 'Oturum açmamış olabilirsiniz, lütfen tekrar deneyiniz!',
-                        icon: 'error',
-                        confirmButtonText: 'Tamam'
-                    });
-                }
-            },
-            error: function () {
-                console.log('Bir hata oluştu.');
-            }
-        });
-    });
-});

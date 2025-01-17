@@ -5,8 +5,7 @@
                 <div class="col-md-2 col-sm-2 col-md-2 p-2 mx-3 card card-body position-relative">
                     <p class="text-center"><b>{{ $category->categoryName }}</b></p>
                     <img src="{{ asset($category->image) }}" width="50%" height="50%" class="d-block w-100 my-4" alt="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                        fill="{{ in_array($category->categoryID, $favoritedCategories) ? 'red' : 'black' }}"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
                         class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 hearth-icon"
                         data-id="{{ $category->categoryID }}" viewBox="0 0 16 16">
                         <path
@@ -19,6 +18,36 @@
 </div>
 
 <script>
+    $(document).ready(function () {
+        $('.hearth-icon').click(function () {
+            var categoryID = $(this).data('id');
+            console.log(categoryID);
+
+
+            $.ajax({
+                url: 'favorites/toggle/' + categoryID, // URL'yi API endpoint'inizle eşleştirin
+                method: 'GET',
+                data: {
+                    _token: '{{ csrf_token() }}', // CSRF token
+                },
+                success: function (response) {
+                    console.log(response);
+                    if (response.success) {
+                        console.log(response.message);
+                        // Burada favori simgesini güncelleyebilirsiniz
+                        if (response.added) {
+                            $(this).addClass('text-danger'); // Kalp simgesini kırmızıya dönüştürme
+                        } else {
+                            $(this).removeClass('text-danger'); // Kalp simgesini gri yapma
+                        }
+                    }
+                },
+                error: function () {
+                    console.log('Bir hata oluştu.');
+                }
+            });
+        });
+    });
 
 </script>
 
