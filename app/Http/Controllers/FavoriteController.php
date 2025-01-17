@@ -34,6 +34,7 @@ class FavoriteController extends Controller
         // Favorilerdeki restoranların bilgilerini al
         $favorities = Favorites::with('restaurant:restaurantID,image,name,description,citiesID,cities,districts')
             ->with('restaurant.districts')
+            ->whereNotNull('restaurantID')
             ->with('restaurant.districts.city')
             ->where('userID', $userID)
             ->get();
