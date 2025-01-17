@@ -27,7 +27,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 6,
                 'cuisine_type' => 'Kore Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'İş Yemeği',
+                'categoryID' => 3,
                 'image' => '/img/seederImages/is.jpg'
 
             ],
@@ -43,7 +43,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 1,
                 'cuisine_type' => 'Kore Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -58,7 +58,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -73,7 +73,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 6,
                 'cuisine_type' => 'Japon Mutfağı',
                 'view_type' => 'Tarihi Mekan',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -88,7 +88,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 12,
                 'cuisine_type' => 'İtalyan Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -103,7 +103,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 1,
                 'cuisine_type' => 'Meksika Mutfağı',
                 'view_type' => 'Doğanın İçinde',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -118,7 +118,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 12,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/alkol.jpg'
             ],
             [
@@ -133,7 +133,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 6,
                 'cuisine_type' => 'Japon Mutfağı',
                 'view_type' => 'Tarihi Mekan',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/balik.jpg'
             ],
             [
@@ -148,7 +148,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 10,
                 'cuisine_type' => 'Japon Mutfağı',
                 'view_type' => 'Tarihi Mekan',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -163,7 +163,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 8,
                 'cuisine_type' => 'Japon Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -178,7 +178,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 35,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/balik.jpg'
             ],
             [
@@ -193,7 +193,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 35,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/balik.jpg'
             ],
             [
@@ -208,7 +208,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 35,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -223,7 +223,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 35,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -238,7 +238,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 35,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -253,7 +253,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 35,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -268,7 +268,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 35,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/fastfood.jpg'
             ],
             [
@@ -283,7 +283,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 35,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/fastfood.jpg'
             ],
             [
@@ -298,7 +298,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 1,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/fastfood.jpg'
             ],
             [
@@ -313,7 +313,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 1,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -328,7 +328,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 1,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'İş Yemeği',
+                'categoryID' => 3,
                 'image' => '/img/seederImages/is.jpg'
             ],
             [
@@ -343,7 +343,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 1,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -358,7 +358,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 1,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -373,7 +373,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 1,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -388,7 +388,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -403,7 +403,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -418,7 +418,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -433,7 +433,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'İş Yemeği',
+                'categoryID' => 3,
                 'image' => '/img/seederImages/is.jpg'
             ],
             [
@@ -448,7 +448,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -463,7 +463,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -478,7 +478,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -493,7 +493,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -508,7 +508,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -523,7 +523,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -538,7 +538,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
             [
@@ -553,7 +553,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -568,7 +568,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
-                'concept' => 'Kutlama',
+                'categoryID' => 2,
                 'image' => '/img/seederImages/kutlama.jpg'
             ],
             [
@@ -583,7 +583,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
-                'concept' => 'İş Yemegi',
+                'categoryID' => 3,
                 'image' => '/img/seederImages/is.jpg'
             ],
             [
@@ -598,7 +598,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
-                'concept' => 'Tek Kişilik',
+                'categoryID' => 4,
                 'image' => '/img/seederImages/tek_kisi.jpg'
             ],
             [
@@ -613,7 +613,7 @@ class RestaurantsSeeder extends Seeder
                 'districtsID' => 3,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
-                'concept' => 'Özel Gün',
+                'categoryID' => 1,
                 'image' => '/img/seederImages/ozel_gun.jpg'
             ],
 

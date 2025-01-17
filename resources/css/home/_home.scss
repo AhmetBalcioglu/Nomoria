@@ -37,6 +37,7 @@ h2 {
         margin: auto;
     }
 
+    /*Sizin için seçtiklerimiz slider kodları*/
     .campaign-card {
         background-color: $primary-bg;
         color: $primary-color;
@@ -85,6 +86,47 @@ h2 {
     }
 }
 
+
+.card-body {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card-body:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.category_url:hover {
+
+    cursor: pointer;
+
+}
+
+.text-center {
+    font-size: 10rv;
+    margin-bottom: 10px;
+}
+
+.card-body-body p {
+    font-size: 16px;
+    color: #555;
+}
+
+.card-body-body .btn {
+    margin-top: 10px;
+}
+
+
+
 #hero {
     color: #ed4f15;
     font-family: fantasy;
@@ -100,42 +142,71 @@ h2 {
 }
 
 
-// Popup
+/* Kartlar arası boşluk ve hizalama */
+.best .card {
+    margin: 10px;
+    text-align: center;
+}
+
+/* Popup için ana stil */
 .popup {
-    display: none;
+    display: none; // Varsayılan olarak gizli
     position: fixed;
-    top: 20%;
-    right: 20%;
+    top: 50%;
+    right: 150px; // Pozisyon ayarı
+    transform: translateY(-50%);
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 1;
     width: 300px;
-    max-width: 90%;
-    animation: fadeIn 0.8s ease-in-out;
+    max-width: 90%; // Genişlik sınırı
+    margin: 0; // Kenar boşluğu
+    transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease, width 0.3s ease, height 0.3s ease;
+
+    &:hover {
+        z-index: 10;
+        transform: translateY(-50%) scale(1.1); // Hover animasyonu
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        width: 330px;
+        height: auto;
+    }
+
 
     img {
         max-width: 100%;
         margin-top: 2rem;
     }
 
+    .popup-content {
+        padding: 20px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
     .close-btn {
         position: absolute;
         top: 10px;
         right: 10px;
-        font-size: 1.2rem;
         background: red;
         border: none;
+        font-size: 20px;
         cursor: pointer;
     }
 
-    .popup-content {
-        font-size: 1rem;
-        color: #333;
+    .uyeol-btn {
+        background-color: #ed4f15;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 15px;
+        cursor: pointer;
     }
-}
 
+
+}
 
 
 @keyframes fadeIn {
@@ -150,14 +221,6 @@ h2 {
     }
 }
 
-/*Resposive tasarım kodları*/
-
-/* Kartlar arası boşluk ve hizalama */
-.best .card {
-    margin: 10px;
-    text-align: center;
-}
-
 /* Responsive görüntü */
 @media (max-width: 768px) {
     .best .card {
@@ -166,6 +229,7 @@ h2 {
 
     .popup {
         width: 90%;
+        /* Mobilde genişlik */
     }
 }
 
@@ -176,5 +240,6 @@ h2 {
 
     .popup {
         width: 100%;
+        /* Daha küçük cihazlar için tam genişlik */
     }
 }

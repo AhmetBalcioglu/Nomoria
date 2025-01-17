@@ -2,7 +2,7 @@ window.onload = function () {
     setTimeout(function () {
         const popup = document.getElementById("popup");
         if (popup) {
-            popup.style.display = "block"; 
+            popup.style.display = "block";
         }
     }, 500);
 }
@@ -11,7 +11,7 @@ window.onload = function () {
 function closePopup() {
     const popup = document.getElementById("popup");
     if (popup) {
-        popup.style.display = "none"; 
+        popup.style.display = "none";
     }
 }
 
@@ -37,5 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
             icon.classList.remove('heart-icon-grow');
         });
     });
+
+
+
+
 });
 

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RestaurantCreateRequest;
 use App\Http\Requests\RestaurantUpdateRequest;
 use App\Http\Requests\RestaurantStoreRequest;
+use App\Models\Favorites;
 use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
@@ -165,22 +166,68 @@ class RestaurantController extends Controller
 
     public function filter(Request $request)
     {
-
-        $districtID = $request->input('district') ?? 'all';
         $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
         $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
+        $districtID = $request->input('district') ?? 'all'; // İlçenin id'si
+        $viewType = $request->input('viewType') ?? 'all'; // Manzara türü
+        $concept = $request->input('concept') ?? 'all'; // Konsept türü
+        $couisineType = $request->input('couisineType') ?? 'all'; // Mutfak türü
+        $menuType = $request->input('menuType') ?? 'all'; // Menü türü
 
-        if ($districtID === 'all') {
-            $restaurants = Restaurant::with('cities', 'districts')->get()->toArray();
-        } else {
-            $restaurants = Restaurant::where('districtsID', $districtID)
-                ->get();
+        $restaurants = [];
+
+        //--------------- Filtreleme işlemleri ----------------------
+        if ($districtID !== 'all') {
+            $restaurants += Restaurant::where('districtsID', '=', $districtID)
+                ->get()->toArray();
         }
+
+        if ($viewType !== 'all') {
+            $restaurants += Restaurant::where('view_type', '=', $viewType)
+                ->get()->toArray();
+        }
+
+        if ($concept !== 'all') {
+            $restaurants += Restaurant::where('categoryID', '=', $concept)
+                ->get()->toArray();
+        }
+
+        if ($couisineType !== 'all') {
+            $restaurants += Restaurant::where('cuisine_type', '=', $couisineType)
+                ->get()->toArray();
+        }
+
+        $restaurants = array_values(array_unique($restaurants, SORT_REGULAR));
+
+        $query = Restaurant::query();
+
+        if ($districtID !== 'all') {
+            $query->where('districtsID', $districtID);
+        }
+
+        if ($viewType !== 'all') {
+            $query->where('view_type', $viewType);
+        }
+
+        if ($concept !== 'all') {
+            $query->where('concept', $concept);
+        }
+
+        if ($couisineType !== 'all') {
+            $query->where('cuisine_type', $couisineType);
+        }
+
+        //TODO: Menü türü filtreleme
+
+        $query->where('deleted_at', null);
+
+        $restaurants = $query->with('cities', 'districts', 'favorites', 'categories')->get()->toArray();
+        //-----------------------------------------------------------
 
         return view('details.details', compact(
             'restaurants',
             'cities',
-            'districts'
+            'districts',
         ));
     }
 
