@@ -12,15 +12,17 @@ return new class extends Migration {
     {
         Schema::create('favorites', function (Blueprint $table) {
             $table->id("favoritesID")->primary();  // Her kaydın benzersiz ID'si
-            $table->unsignedBigInteger('restaurantID');  // Restoran referansı
-            $table->unsignedBigInteger('categoryID');  // Category referansı
+            $table->unsignedBigInteger('restaurantID')->nullable();  // Restoran referansı
+            $table->unsignedBigInteger('categoryID')->nullable();  // Category referansı
             $table->unsignedBigInteger('userID');  // Kullanıcı referansı
             $table->timestamps();  // Created at & Updated at
 
             // Dış anahtar ilişkilerini oluşturma
-            $table->foreign('restaurantID')->references('restaurantID')->on('restaurant')->onDelete('cascade');
+            $table->foreign('restaurantID')->references('restaurantID')->on('restaurant')
+                ->onDelete('cascade');
             $table->foreign('userID')->references('userID')->on('users')->onDelete('cascade');
-            $table->foreign('categoryID')->references('categoryID')->on('categories')->onDelete('cascade');
+            $table->foreign('categoryID')->references('categoryID')->on('categories')
+                ->onDelete('cascade');
         });
     }
 

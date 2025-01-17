@@ -65,7 +65,6 @@ class FavoriteController extends Controller
         $favorite = Favorites::where('categoryID', $categoryID)
             ->where('userID', $userID)
             ->first();
-
         if ($favorite) {
             // Eğer favori kaydı varsa sil
             Favorites::where('categoryID', $categoryID)
@@ -90,8 +89,6 @@ class FavoriteController extends Controller
             'message' => $message,
         ]);
     }
-
-
 
     public function toggleFavorite($restaurantID)
     {
