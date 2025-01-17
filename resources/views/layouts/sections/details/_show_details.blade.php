@@ -44,14 +44,6 @@
                                         required>{{ $comment->comment }}</textarea>
                                     <button type="submit" class="btn btn-success">Güncelle</button>
                                 </div>
-                                <script>
-                                    const updateBtn = document.querySelector('.comment-update-btn');
-                                    const updateForm = document.querySelector('.comment-update-form');
-
-                                    updateBtn.addEventListener('click', () => {
-                                        updateForm.classList.toggle('d-none');
-                                    });
-                                </script>
                             </form>
 
                             <!-- Silme Formu -->

@@ -14,3 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+const updateBtn = document.querySelector('.comment-update-btn');
+const updateForm = document.querySelector('.comment-update-form');
+
+updateBtn.addEventListener('click', () => {
+    updateForm.classList.toggle('d-none');
+});
