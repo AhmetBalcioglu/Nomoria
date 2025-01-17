@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -66,10 +67,16 @@ Route::get('/discount', [DiscountController::class, 'discount']);
 Route::get('/reservations', [ReservationController::class, 'index']);
 
 //Comments Route
+
+
 Route::prefix('comments')->group(function () {
-    Route::post('/', [CommentController::class, 'store']);
+    Route::post('/', [CommentController::class, 'store'])->name('comments.store');
     Route::get('/{restaurant_id}', [CommentController::class, 'index']);
+    Route::delete('/{comment_id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+    Route::put('/{comment_id}', [CommentController::class, 'update'])->name('comments.update');
 });
+
+
 
 //Admin Panel Route
 Route::middleware([AdminOrRestaurant::class])->group(function () {

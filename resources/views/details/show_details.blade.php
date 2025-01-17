@@ -18,6 +18,7 @@
 
 @section('page_body_js')
 
+@vite('resources/js/details/_show_details.js')
 
 
 @endsection

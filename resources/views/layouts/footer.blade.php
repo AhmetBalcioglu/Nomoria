@@ -36,7 +36,7 @@
               <div class="col-md-4 footer-col">
                   <div class="footer_detail">
                       <a href="" class="footer-logo">
-                          <img src="img/logo_2.png" alt="" class="box-img" width="200px">
+                          <img src="/img/logo_2.png" alt="" class="box-img" width="200px">
                       </a>
                       <p>
                           Aradığın restoran bu sayfada !!

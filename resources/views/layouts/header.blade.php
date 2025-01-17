@@ -10,14 +10,14 @@
 
     {{-- Hamburger menü üç çizgi özellikleri ve ayarlarının yapıldığı kısım --}}
     <nav class="navbar navbar-dark mt-2 overflow-hidden">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
 
 
     {{-- Arama Çubuğu --}}
@@ -52,14 +52,14 @@
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">Yardım ve Destek</a>
                 </li>
                 @if (
-    session()->has('name') &&
-    session()->has('surname') &&
-    session()->has('role') &&
-    (session()->get('role') == 'admin' || session()->get('role') == 'restaurant')
-)
-                    <li class="nav-item">
-                        <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
-                    </li>
+                        session()->has('name') &&
+                        session()->has('surname') &&
+                        session()->has('role') &&
+                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurant')
+                    )
+                                    <li class="nav-item">
+                                        <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
+                                    </li>
                 @endif
             </ul>
         </div>
@@ -78,6 +78,7 @@
             </button>
         </div>
     </nav>
+
 
     <link rel="stylesheet" href="{{ asset('resources/css/header.scss') }}">
     <script src="{{ asset('resources/js/header.js') }}" defer></script>
@@ -101,16 +102,15 @@
                     <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
                         <li><a class="dropdown-item processOptions" href="/register">Rezervasyonlarım</a>
-                        @else
-                            <a href="{{ route('login') }}"
-                                class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
                     @endif
                     </li>
                     {{-- Favorilerim --}}
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
                         <li><a class="dropdown-item processOptions" href="/register">Favorilerim</a>
-                        @else
-                            <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
+                    @else
+                        <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
                     @endif
                     </li>
                 </ul>
@@ -120,13 +120,11 @@
 
         {{-- Loginden sonra kullanıcı adının yazıldığı kısım --}}
 
-
-
         @if (session()->has('name') && session()->has('surname') && session()->has('role'))
-
             <div class="dropdown text-center">
-                <img src="{{ session()->has('gender') && session()->get('gender') == 'Kadın' ? 'img/she_icon.png' : 'img/he_icon.png' }}" alt="User Icon" class="img-fluid w-25 h-25"
-                    data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer; display: block; margin: 0 auto;">
+                <img src="{{ session()->has('gender') && session()->get('gender') == 'Kadın' ? '/img/she_icon.png' : '/img/he_icon.png' }}"
+                    alt="User Icon" class="img-fluid w-25 h-25" data-bs-toggle="dropdown" aria-expanded="false"
+                    style="cursor: pointer; display: block; margin: 0 auto;">
 
                 <h6 class="mt-2">{{ session()->get('name') }} {{ session()->get('surname') }}</h6>
 
@@ -138,8 +136,6 @@
                 </ul>
 
             </div>
-
-
         @endif
     </div>
 
@@ -148,7 +144,7 @@
 </header>
 
 
-{{-- searc kısmı script kodu --}}
+{{-- search kısmı script kodu --}}
 <script>
     document.getElementById('searchForm').addEventListener('submit', function (event) {
         const searchInput = document.getElementById('searchBar').value.trim();
