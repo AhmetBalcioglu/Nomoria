@@ -112,11 +112,11 @@
     <div id="popup" class="popup">
         <button class="close-btn">×</button>
         <div class="popup-content">
-            <img src="{{ asset('img/div_img.png') }}" alt="">
+            <img src="{{ asset('img/popup.png') }}" alt="">
             <h4>Hemen üye ol</h4>
             <p>Beğendiğin restoranları favorilerine ekle. </p>
             <p>Lezzetli Fırsatları Kaçırma!</p>
-            <button onclick="window.location.href = '/register' " class="btn btn-danger">ÜYE OL</button>
+            <button onclick="window.location.href = '/register' " class="uyeol-btn">ÜYE OL</button>
         </div>
     </div>
 @endif
