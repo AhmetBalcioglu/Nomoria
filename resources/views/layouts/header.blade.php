@@ -79,13 +79,6 @@
         </div>
     </nav>
 
-
-    <link rel="stylesheet" href="{{ asset('resources/css/header.scss') }}">
-    <script src="{{ asset('resources/js/header.js') }}" defer></script>
-
-
-
-
     <!-- Login Section -->
     <div class="col-1 d-flex flex-column align-items-start">
 

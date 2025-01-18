@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class, // Admin için seeder
                 CategoriesSeeder::class, // Kategoriler için seeder
                 RestaurantsSeeder::class, // Restoranlar için seeder
+                MenusSeeder::class, // Menüler için seeder
             ]);
         }
     }

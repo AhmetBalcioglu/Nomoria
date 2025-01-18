@@ -1,5 +1,5 @@
 @extends('layouts.master')
-<link rel="shortcut icon" href="images/favicon.png" type="">
+
 @section('page_title', 'Favoriler - Nomoria')
 
 @section('page_description', 'Nomoria favoriler sayfasıdır.')
