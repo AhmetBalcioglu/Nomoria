@@ -20,7 +20,6 @@ use App\Http\Controllers\AddRestaurantController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\FavoriteController;
 
-
 use App\Http\Middleware\AdminOrRestaurant;
 
 Route::get('/dashboard', function () {
