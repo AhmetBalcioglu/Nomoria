@@ -12,13 +12,13 @@ class CreateMenusTable extends Migration
     public function up(): void
     {
         Schema::create('menus', function (Blueprint $table) {
-            $table->id('menuID');
-            $table->unsignedBigInteger('restaurantID');
-            $table->foreign('restaurantID')->references('restaurantID')->on('restaurant')->onDelete('cascade');
-            $table->string('name'); // Menü adı
-            $table->text('description'); // Menü açıklaması
-            $table->decimal('price', 8, 2); // Menü fiyatı
-            $table->timestamps(); // Oluşturulma ve güncellenme zamanları
+            $table->id('menuID')->primary();
+            $table->integer('restaurantID');
+            $table->string('menuName');
+            $table->integer('price');
+            $table->string('description')->nullable();
+            $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 

@@ -12,6 +12,4 @@ class Categories extends Model
     {
         return $this->hasMany(Restaurant::class, 'categoryID');
     }
-
 }
-

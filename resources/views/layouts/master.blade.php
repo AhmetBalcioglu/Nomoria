@@ -8,7 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="@yield('page_description')">
     <title>@yield('page_title')</title>
-    @vite(['resources/css/darkMode/dark_mode.scss'])
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
     @yield('page_head_css')
 </head>

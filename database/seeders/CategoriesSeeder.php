@@ -34,33 +34,53 @@ class CategoriesSeeder extends Seeder
 
             ],
             [
-                'categoryName' => 'Dünya Mutfağı',
-                'image' => "/img/homepage_img/dunya_mutfagi.jpg",
-
-            ],
-            [
-                'categoryName' => 'Et Menüleri',
+                'categoryName' => 'Et Yemekleri',
                 'image' => "/img/homepage_img/et.jpg",
 
             ],
             [
-                'categoryName' => 'Balık Menüleri',
+                'categoryName' => 'Balık Yemekleri',
                 'image' => "/img/homepage_img/balik.jpg",
 
             ],
             [
-                'categoryName' => 'Fast Food Menüleri',
+                'categoryName' => 'Fast Food',
                 'image' => "/img/homepage_img/fastfood.jpg",
 
             ],
             [
-                'categoryName' => 'Vegan Menüler',
+                'categoryName' => 'Vegan Yemekleri',
                 'image' => "/img/homepage_img/vegan.png",
 
             ],
             [
-                'categoryName' => 'Alkollü Menüler',
+                'categoryName' => 'Alkol Servisi',
                 'image' => "/img/homepage_img/alkol.jpg",
+
+            ],
+            [
+                'categoryName' => 'Kore Mutfağı',
+                'image' => "/img/homepage_img/kore_mutfagi.jpg",
+
+            ],
+            [
+                'categoryName' => 'Türk Mutfağı',
+                'image' => "/img/homepage_img/turk_mutfagi.jpg",
+
+            ],
+            [
+                'categoryName' => 'Meksika Mutfağı',
+                'image' => "/img/homepage_img/meksika_mutfagi.jpg",
+
+            ],
+            [
+                'categoryName' => 'Japon Mutfağı',
+                'image' => "/img/homepage_img/japon_mutfagi.jpg",
+
+            ],
+            [
+                'categoryName' => 'İtalyan Mutfağı',
+                'image' => "/img/homepage_img/italyan_mutfagi.jpg",
 
             ],
         ]);

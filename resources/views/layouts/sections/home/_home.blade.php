@@ -1,10 +1,10 @@
 <div class="container mt-5">
-    
     @foreach ($categories->chunk(5) as $chunk)
 
         <div class="row mb-5">
             @foreach ($chunk as $category)
-                <div class="col-md-2 col-sm-2 col-md-2 p-2 mx-3 card card-body position-relative category_url" data-url="{{ $category->categoryName }}">
+                <div class="col-md-2 col-sm-2 col-md-2 p-2 mx-3 card card-body position-relative category_url"
+                    data-url="{{ $category->categoryName }}">
                     <p class="text-center"><b>{{ $category->categoryName }}</b></p>
                     <img src="{{ asset($category->image) }}" width="50%" height="50%" class="d-block w-100 my-4" alt="">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
@@ -24,12 +24,44 @@
 {{-- Divlerin url bağlantısı --}}
 <script>
     $('.category_url').on('click', function () {
+        let categoryArray = {
+            "İş Yemekleri": 3,
+            "Kutlamalar": 2,
+            "Tek Kişilik": 4,
+            "Özel Gün": 1
+        };
 
-        let dataUrl =  $(this).data('url');
-        let url = "http://nomoria.local/filter?concept=" + dataUrl;
-        window.location.href = url;
+        let cuisineArray = [
+            "Türk Mutfağı",
+            "Kore Mutfağı",
+            "Meksika Mutfağı",
+            "Japon Mutfağı",
+            "İtalyan Mutfağı"
+        ];
 
-    })
+        let menuArray = [
+            "Et Yemekleri",
+            "Balık Yemekleri",
+            "Fast Food",
+            "Vegan Yemekleri",
+            "Alkol Servisi"
+        ];
+
+        let data = $(this).data('url');
+        let district = "all";
+        let viewType = "all";
+        let category = categoryArray[data] ?? 'all';
+
+        let couisineType = cuisineArray.includes(data) ? data : 'all';
+        couisineType = couisineType.replaceAll(" ", "+");
+
+        let menuType = menuArray.includes(data) ? data : 'all';
+        menuType = menuType.replaceAll(" ", "+");
+
+        let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
+
+        window.location.href = url; // Yönlendirme
+    });
 
 </script>
 
@@ -135,4 +167,3 @@
         </div>
     </div>
 @endif
-
