@@ -14,6 +14,8 @@ use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 
 
 class RestaurantController extends Controller
@@ -246,9 +248,42 @@ class RestaurantController extends Controller
         }
     }
 
+
     public function show($restaurantID)
     {
+        // Session'dan user_id'yi al
+        $userId = session('userID');
+
+
+        if (!$userId) {
+            $userId = 2;
+        }
+
+        // Çerezden guest_id'yi al
+        $guestID = request()->cookie('guestID'); // Çerezdeki guest_id
+
+
+        if (!$guestID) {
+            $guestID = Str::uuid();
+            Cookie::queue('guestID', $guestID, 60 * 24 * 30);
+        }
+
+        // Görüntüleme kaydını ekle
+        DB::table('viewed_restaurants')->insert([
+            'userID' => $userId,
+            'guestID' => $guestID,
+            'restaurantID' => $restaurantID, // Görüntülenen restoranın ID'si
+            'viewed_at' => now(), // Görüntüleme tarihi
+        ]);
+
+        // Restoran bilgilerini al
         $restaurant = Restaurant::findOrFail($restaurantID);
+
+
         return view('details.show_details', compact('restaurant'));
     }
+
+
+
+
 }
