@@ -19,5 +19,6 @@ class Categories extends Model
         return $this->hasMany(Favorites::class, 'categoryID');
 
     }
+}
 
 

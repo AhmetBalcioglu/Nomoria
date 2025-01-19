@@ -26,45 +26,7 @@
 
 {{-- Divlerin url bağlantısı --}}
 <script>
-    $('.category_url').on('click', function () {
-        let categoryArray = {
-            "İş Yemekleri": 3,
-            "Kutlamalar": 2,
-            "Tek Kişilik": 4,
-            "Özel Gün": 1
-        };
-
-        let cuisineArray = [
-            "Türk Mutfağı",
-            "Kore Mutfağı",
-            "Meksika Mutfağı",
-            "Japon Mutfağı",
-            "İtalyan Mutfağı"
-        ];
-
-        let menuArray = [
-            "Et Yemekleri",
-            "Balık Yemekleri",
-            "Fast Food",
-            "Vegan Yemekleri",
-            "Alkol Servisi"
-        ];
-
-        let data = $(this).data('url');
-        let district = "all";
-        let viewType = "all";
-        let category = categoryArray[data] ?? 'all';
-
-        let couisineType = cuisineArray.includes(data) ? data : 'all';
-        couisineType = couisineType.replaceAll(" ", "+");
-
-        let menuType = menuArray.includes(data) ? data : 'all';
-        menuType = menuType.replaceAll(" ", "+");
-
-        let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
-
-        window.location.href = url; // Yönlendirme
-    });
+    
 
 </script>
 
