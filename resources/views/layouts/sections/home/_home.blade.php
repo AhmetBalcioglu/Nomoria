@@ -20,17 +20,6 @@
     @endforeach
 </div>
 
-<script>
-
-</script>
-
-{{-- Divlerin url bağlantısı --}}
-<script>
-    
-
-</script>
-
-
 <div class="container">
     <div class="row">
         <div class=" col md-12" id="hero" style="height: 40rem;">

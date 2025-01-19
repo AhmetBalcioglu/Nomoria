@@ -91,8 +91,9 @@ $(document).ready(function () {
     });
 });
 
-$('.category_url img').on('click', function (e) {
-    e.stopPropagation();
+$('.category_url img').on('click', function (event) {
+    event.stopPropagation(); // Tıklama olayının diğer üst elementlere bulaşmasını engeller
+
     let categoryArray = {
         "İş Yemekleri": 3,
         "Kutlamalar": 2,
@@ -116,7 +117,7 @@ $('.category_url img').on('click', function (e) {
         "Alkol Servisi"
     ];
 
-    let data = $(this).data('url');
+    let data = $(this).closest('.category_url').data('url');
     let district = "all";
     let viewType = "all";
     let category = categoryArray[data] ?? 'all';
