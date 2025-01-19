@@ -20,7 +20,7 @@ class TimedExit
 
 
 
-     protected $timedLimit = 10 * 60; // 1 dakika (saniye cinsinden)
+     protected $timedLimit = 10 * 60; // 10 dakika (saniye cinsinden)
     
      public function handle(Request $request, Closure $next): Response
      {
