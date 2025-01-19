@@ -18,6 +18,6 @@
 
 @section('page_body_js')
 
-<!-- @vite('resources/js/discount/_discount.js') -->
+@vite('resources/js/favorites/_favorites.js')
 
 @endsection

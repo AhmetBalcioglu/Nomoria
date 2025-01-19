@@ -8,8 +8,16 @@ class Categories extends Model
 {
     protected $table = 'categories';
 
+    protected $fillable = ['categoryName','image'];
+
     public function restaurants()
     {
         return $this->hasMany(Restaurant::class, 'categoryID');
     }
-}
+  
+    public function favorites(){
+        return $this->hasMany(Favorites::class, 'categoryID');
+
+    }
+
+

@@ -88,7 +88,6 @@ Route::middleware([AdminOrRestaurant::class])->group(function () {
 //Login Logout Middleware Route
 Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () {
     Route::post('/login', [UserController::class, 'login'])->name('login');
-
 });
 
 //Timed Exit Middleware Route
@@ -108,7 +107,8 @@ Route::middleware([TimedExit::class])->group(function () {
 Route::prefix('favorites')->group(function () {
     Route::post('/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
     Route::get('/', [FavoriteController::class, 'index'])->name('favorites.index');
-    Route::get('/', [FavoriteController::class, 'getFavorites'])->name('favorites.get');
+    Route::get('/toggle/{categoryID}', [FavoriteController::class, 'toggleFavoriteCategory']);
+    Route::get('/', [FavoriteController::class, 'getFavoritesAndCategories'])->name('favorites.all');
 });
 
 Route::get('/logout', function () {
