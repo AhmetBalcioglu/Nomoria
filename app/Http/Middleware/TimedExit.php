@@ -20,14 +20,14 @@ class TimedExit
 
 
 
-     protected $timedLimit = 10 * 60; // 1 dakika (saniye cinsinden)
+     protected $timedLimit = 10 * 60; // 10 dakika (saniye cinsinden)
     
      public function handle(Request $request, Closure $next): Response
      {
          if (session()->has('role')) {
              $lastActivity = session()->get('lastactivity', time());
  
-             // Kullanıcı 1 dakikadır işlem yapmadıysa
+             // Kullanıcı 10 dakikadır işlem yapmadıysa
              if (time() - $lastActivity > $this->timedLimit) {
                  session()->flush(); // Oturum verilerini temizle
                  return redirect()->route('login')->with('message', '1 dakikadır işlem yapmadığınız için oturum sonlandırıldı. Lütfen tekrar giriş yapınız.');
