@@ -37,6 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
             icon.classList.remove('heart-icon-grow');
         });
     });
+
+
+
+
 });
 
 $(document).ready(function () {

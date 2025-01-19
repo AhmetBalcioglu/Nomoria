@@ -10,6 +10,7 @@ use App\Http\Requests\RestaurantCreateRequest;
 use App\Http\Requests\RestaurantUpdateRequest;
 use App\Http\Requests\RestaurantStoreRequest;
 use App\Models\Favorites;
+use App\Models\Menu;
 use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
@@ -170,7 +171,7 @@ class RestaurantController extends Controller
         $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
         $districtID = $request->input('district') ?? 'all'; // İlçenin id'si
         $viewType = $request->input('viewType') ?? 'all'; // Manzara türü
-        $concept = $request->input('concept') ?? 'all'; // Konsept türü
+        $category = $request->input('category') ?? 'all'; // Konsept türü
         $couisineType = $request->input('couisineType') ?? 'all'; // Mutfak türü
         $menuType = $request->input('menuType') ?? 'all'; // Menü türü
 
@@ -187,8 +188,8 @@ class RestaurantController extends Controller
                 ->get()->toArray();
         }
 
-        if ($concept !== 'all') {
-            $restaurants += Restaurant::where('concept', '=', $concept)
+        if ($category !== 'all') {
+            $restaurants += Restaurant::where('categoryID', '=', $category)
                 ->get()->toArray();
         }
 
@@ -209,8 +210,8 @@ class RestaurantController extends Controller
             $query->where('view_type', $viewType);
         }
 
-        if ($concept !== 'all') {
-            $query->where('concept', $concept);
+        if ($category !== 'all') {
+            $query->where('categoryID', $category);
         }
 
         if ($couisineType !== 'all') {
@@ -221,8 +222,44 @@ class RestaurantController extends Controller
 
         $query->where('deleted_at', null);
 
-        $restaurants = $query->with('cities', 'districts', 'favorites')->get()->toArray();
-        //-----------------------------------------------------------
+        $restaurants = $query->with(['cities', 'districts', 'favorites', 'category' => function ($query) {
+            $query->select('categoryID', 'categoryName');
+        }])->get()->toArray();
+
+        //------------------------------------------------------------
+
+        $menus = Menu::all()->toArray();
+
+
+        //-----Bir restoranın birden fazla menüsü olabilir onları birleştirme işlemi------
+        $groupedMenus = [];
+        foreach ($menus as $menu) {
+            $restaurantID = $menu['restaurantID'];
+            if (!isset($groupedMenus[$restaurantID])) {
+                $groupedMenus[$restaurantID] = [];
+            }
+            $groupedMenus[$restaurantID][] = $menu;
+        }
+
+        foreach ($restaurants as &$restaurant) {
+            $restaurantID = $restaurant['restaurantID'];
+            if (isset($groupedMenus[$restaurantID])) {
+                $restaurant['menus'] = $groupedMenus[$restaurantID];
+            } else {
+                $restaurant['menus'] = [];
+            }
+        }
+        unset($restaurant);
+        //--------------------------------------------------------------------------------
+
+        if ($menuType !== 'all') {
+            $restaurants = array_filter($restaurants, function ($restaurant) use ($menuType) {
+                $restaurant['menus'] = array_filter($restaurant['menus'], function ($menu) use ($menuType) {
+                    return $menu['menuName'] === $menuType;
+                });
+                return !empty($restaurant['menus']);
+            });
+        }
 
         return view('details.details', compact(
             'restaurants',

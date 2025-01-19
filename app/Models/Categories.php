@@ -14,11 +14,10 @@ class Categories extends Model
     {
         return $this->hasMany(Restaurant::class, 'categoryID');
     }
-
+  
     public function favorites(){
         return $this->hasMany(Favorites::class, 'categoryID');
 
     }
 
-}
 

@@ -115,7 +115,7 @@ body {
                 width: auto;
 
                 &:hover {
-                    background-color: darken($secondary-color, 10%);
+                    filter: brightness(0.9);
                 }
             }
 
@@ -126,7 +126,7 @@ body {
                 width: auto;
 
                 &:hover {
-                    background-color: darken($primary-color, 10%);
+                    filter: brightness(0.9);
                 }
             }
         }
@@ -146,11 +146,11 @@ body {
 
         &:hover,
         &:focus {
-            color: lighten(#ffc107, 10%);
+            filter: brightness(110%);
         }
     }
 
-    input[type="radio"]:checked ~ label {
+    input[type="radio"]:checked~label {
         color: #ffc107;
     }
 }
