@@ -27,7 +27,7 @@ class TimedExit
          if (session()->has('role')) {
              $lastActivity = session()->get('lastactivity', time());
  
-             // Kullanıcı 1 dakikadır işlem yapmadıysa
+             // Kullanıcı 10 dakikadır işlem yapmadıysa
              if (time() - $lastActivity > $this->timedLimit) {
                  session()->flush(); // Oturum verilerini temizle
                  return redirect()->route('login')->with('message', '1 dakikadır işlem yapmadığınız için oturum sonlandırıldı. Lütfen tekrar giriş yapınız.');
