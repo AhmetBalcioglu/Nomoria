@@ -48,7 +48,7 @@ class RestaurantController extends Controller
 
     public function createPage()
     {
-        return view('restaurants.restaurant');
+        return redirect()->route('home');
     }
 
     public function create(RestaurantCreateRequest $request)
@@ -73,16 +73,19 @@ class RestaurantController extends Controller
         $restaurant->capacity = $request->capacity;
         $restaurant->cuisine_type = $request->cuisineType;
         $restaurant->view_type = $request->viewType;
-        $restaurant->concept = $request->concept;
+        $restaurant->categoryID = $request->categoryID;
         $restaurant->citiesID = $request->city;
         $restaurant->districtsID = $request->district;
         $restaurant->created_at = Carbon::now();
         $restaurant->updated_at = null;
 
-        $restaurant->save();
-
-        // Form-data yanıt
-        return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
+        // Kaydetme işlemi
+        try {
+            $restaurant->save();
+            return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 422);
+        }
     }
 
     public function update(RestaurantUpdateRequest $request, $name)
@@ -102,7 +105,7 @@ class RestaurantController extends Controller
 
             // Yeni resmi kaydet
             $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->move(public_path('images'), $imageName);
+            $request->file('image')->move(public_path('images/restaurantImages/'), $imageName);
             $restaurant->image = '/images/restaurantImages/' . $imageName;
         }
         $validated = $request->validated();
@@ -114,6 +117,7 @@ class RestaurantController extends Controller
             'phone' => $validated['phone'],
             'email' => $validated['email'],
             'capacity' => $validated['capacity'],
+
         ]);
 
         return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
@@ -122,7 +126,6 @@ class RestaurantController extends Controller
 
     public function delete(Request $request, $name)
     {
-        // CSRF kontrolü burada yapılır
         $restaurant = Restaurant::where('name', $name)->first();
 
         // Eğer restoran bulunmazsa, hata mesajı döndür
@@ -218,8 +221,6 @@ class RestaurantController extends Controller
             $query->where('cuisine_type', $couisineType);
         }
 
-        //TODO: Menü türü filtreleme
-
         $query->where('deleted_at', null);
 
         $restaurants = $query->with(['cities', 'districts', 'favorites', 'category' => function ($query) {
@@ -228,11 +229,12 @@ class RestaurantController extends Controller
 
         //------------------------------------------------------------
 
-        $menus = Menu::all()->toArray();
 
 
         //-----Bir restoranın birden fazla menüsü olabilir onları birleştirme işlemi------
+        $menus = Menu::all()->toArray();
         $groupedMenus = [];
+
         foreach ($menus as $menu) {
             $restaurantID = $menu['restaurantID'];
             if (!isset($groupedMenus[$restaurantID])) {
@@ -250,8 +252,6 @@ class RestaurantController extends Controller
             }
         }
         unset($restaurant);
-        //--------------------------------------------------------------------------------
-
         if ($menuType !== 'all') {
             $restaurants = array_filter($restaurants, function ($restaurant) use ($menuType) {
                 $restaurant['menus'] = array_filter($restaurant['menus'], function ($menu) use ($menuType) {
@@ -260,6 +260,7 @@ class RestaurantController extends Controller
                 return !empty($restaurant['menus']);
             });
         }
+        //--------------------------------------------------------------------------------
 
         return view('details.details', compact(
             'restaurants',

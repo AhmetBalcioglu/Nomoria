@@ -11,7 +11,7 @@ class RestaurantUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; 
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class RestaurantUpdateRequest extends FormRequest
             'newName' => 'required|string|max:255',
             'description' => 'nullable|string',
             'address' => 'nullable|string',
-            'phone' => 'nullable|string|max:15',
+            'phone' => 'nullable|numeric|max:15',
             'email' => 'nullable|email|max:255',
             'capacity' => 'nullable|integer',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -41,7 +41,7 @@ class RestaurantUpdateRequest extends FormRequest
             'newName.max' => 'Yeni restoran adı en fazla 255 karakter olmalıdır.',
             'description.string' => 'Açıklama yalnızca metin içermelidir.',
             'address.string' => 'Adres yalnızca metin içermelidir.',
-            'phone.string' => 'Telefon numarası yalnızca metin içermelidir.',
+            'phone.numeric' => 'Telefon numarası yalnızca sayı içermelidir.',
             'phone.max' => 'Telefon numarası en fazla 15 karakter olmalıdır.',
             'email.email' => 'Geçerli bir e-posta adresi giriniz.',
             'email.max' => 'E-posta adresi en fazla 255 karakter olmalıdır.',

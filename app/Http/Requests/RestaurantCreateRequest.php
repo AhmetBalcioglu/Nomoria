@@ -11,7 +11,7 @@ class RestaurantCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; 
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class RestaurantCreateRequest extends FormRequest
             'name' => 'required|string|max:255',
             'description' => 'nullable|string',
             'address' => 'nullable|string',
-            'phone' => 'nullable|string|max:15',
+            'phone' => 'required|numeric',
             'email' => 'nullable|email|max:255',
             'capacity' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:5120',
@@ -31,7 +31,7 @@ class RestaurantCreateRequest extends FormRequest
             'district' => 'required|string|max:255',
             'cuisineType' => 'nullable|string|max:255',
             'viewType' => 'nullable|string|max:255',
-            'concept' => 'nullable|string|max:255'
+            'categoryID' => 'required|string|max:255'
         ];
     }
 
@@ -46,8 +46,8 @@ class RestaurantCreateRequest extends FormRequest
             'name.max' => 'Restoran adı en fazla 255 karakter olmalıdır.',
             'description.string' => 'Açıklama yalnızca metin içermelidir.',
             'address.string' => 'Adres yalnızca metin içermelidir.',
-            'phone.string' => 'Telefon numarası yalnızca metin içermelidir.',
-            'phone.max' => 'Telefon numarası en fazla 15 karakter olmalıdır.',
+            'phone.numeric' => 'Telefon numarası yalnızca sayı içermelidir.',
+            'phone.required' => 'Telefon numarası zorunludur.',
             'email.email' => 'Geçerli bir e-posta adresi giriniz.',
             'email.max' => 'E-posta adresi en fazla 255 karakter olmalıdır.',
             'capacity.required' => 'Kapasitelerinin belirtilmesi zorunludur.',
@@ -64,7 +64,8 @@ class RestaurantCreateRequest extends FormRequest
             'district.max' => 'Semt adı en fazla 255 karakter olmalıdır.',
             'cuisineType.string' => 'Mutfağı türü yalnızca metin içermelidir.',
             'viewType.string' => 'Manzara türü yalnızca metin içermelidir.',
-            'concept.string' => 'Konsept yalnızca metin içermelidir.',
+            'categoryID.required' => 'Konsept zorunludur.',
+            'categoryID.string' => 'Konsept yalnızca metin içermelidir.',
         ];
     }
 

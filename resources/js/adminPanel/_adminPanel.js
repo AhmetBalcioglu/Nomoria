@@ -1,5 +1,5 @@
 
-// Add Restaurant
+// Add Restaurant AJAX
 document.addEventListener('DOMContentLoaded', function () {
     const addRestaurantForm = document.getElementById('addRestaurantForm');
 
@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             title: 'Başarılı',
                             text: 'Yeni restoran başarıyla eklendi.',
                             icon: 'success'
+                        }).then(function () {
+                            location.reload(); // Sayfayı yenile
                         })
                     },
                     error: function (xhr) {
@@ -101,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Update Restaurant
+// Update Restaurant AJAX
 document.addEventListener('DOMContentLoaded', function () {
     const updateRestaurantForm = document.getElementById('updateRestaurantForm');
 

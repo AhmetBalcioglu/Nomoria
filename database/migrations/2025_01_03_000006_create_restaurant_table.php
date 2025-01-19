@@ -31,11 +31,6 @@ return new class extends Migration
             $table->string('view_type')->nullable(); // Mekan türü
             $table->unsignedBigInteger('categoryID');
             $table->foreign('categoryID')->references('categoryID')->on('categories')->onDelete('cascade');
-            $table->string('meat_dishes')->nullable(); // Et yemekleri
-            $table->string('fish_species')->nullable(); // Balık türleri
-            $table->string('fast_food')->nullable(); // Fast food
-            $table->string('vegan')->nullable(); // Vejeteryan
-            $table->string('alcoholic_places')->nullable(); // Alkol servisi
             $table->decimal('rating', 3, 1)->default(0); // Puanlama
             $table->timestamps(); // created_at ve updated_at otomatik oluşturulur
             $table->softDeletes(); // deleted_at otomatik oluşturulur

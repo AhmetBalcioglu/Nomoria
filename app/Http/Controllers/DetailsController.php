@@ -12,7 +12,11 @@ class DetailsController extends Controller
 {
     public function index()
     {
-        $restaurants = Restaurant::with(['cities', 'districts','favorites'])->get()->toArray();
+        $restaurants = Restaurant::with(['cities', 'districts', 'favorites'])
+            ->where('deleted_at', '=', null)
+            ->orderBy('name', 'asc')
+            ->get()
+            ->toArray();
         $cities = Cities::orderBy('name', 'asc')->get()->toArray();
         $districts = Districts::orderBy('name', 'asc')->get()->toArray();
 
@@ -22,7 +26,4 @@ class DetailsController extends Controller
             'districts',
         ));
     }
-
-
-
 }
