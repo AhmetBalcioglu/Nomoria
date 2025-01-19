@@ -98,7 +98,7 @@ $('.category_url img').on('click', function (event) {
         "İş Yemekleri": 3,
         "Kutlamalar": 2,
         "Tek Kişilik": 4,
-        "Özel Gün": 1
+        "Özel Günler": 1
     };
 
     let cuisineArray = [
