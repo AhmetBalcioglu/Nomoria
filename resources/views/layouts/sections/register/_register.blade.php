@@ -5,21 +5,28 @@
         <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="name-container">
-                <input type="text" name="name" id="name" placeholder="Adınız" class="form-control reply mb-3">
+                <input type="text" name="name" id="name" placeholder="Adınız" class="form-control reply mb-3" required>
             </div>
 
             <div class="surname-container">
-                <input type="text" name="surname" id="surname" placeholder="Soyadınız"
-                    class="form-control reply mb-3">
+                <input type="text" name="surname" id="surname" placeholder="Soyadınız" class="form-control reply mb-3"
+                    required>
             </div>
 
             <div class="gender-container">
-                <select class="form-select" name="gender" id="floatingSelect"
-                    aria-label="Floating label select example" placeholder="Cinsiyetiniz"
-                    class="form-control reply mb-3">
-                    <option selected>Cinsiyetiniz</option>
+                <select class="form-select" name="gender" id="floatingSelect" aria-label="Floating label select example"
+                    placeholder="Cinsiyetiniz" class="form-control reply mb-3">
+                    <option value="" selected>Cinsiyetiniz</option>
                     <option value="Kadın">Kadın</option>
                     <option value="Erkek">Erkek</option>
+                </select>
+            </div>
+            <div class="role-container mt-2">
+                <select class="form-select" name="role" id="role" aria-label="Floating label select example"
+                    placeholder="Rolünüz" class="form-control reply mb-3">
+                    <option value="" selected>--Rol--</option>
+                    <option value="customer">Müşteri</option>
+                    <option value="restaurantOwner">Restoran Sahibi</option>
                 </select>
             </div>
 

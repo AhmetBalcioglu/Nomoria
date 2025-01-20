@@ -17,12 +17,13 @@ class UserController extends Controller
         $user = new Users();
 
         $user->guid = substr(Str::uuid(), 0, 36);
-        $user->name = $request->input('name');
-        $user->surname = $request->input('surname');
+        $user->name = mb_convert_case($request->input('name'), MB_CASE_TITLE, 'UTF-8');
+        $user->surname = mb_strtoupper($request->input('surname'), 'UTF-8');
         $user->gender = $request->input('gender');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
         $user->created_at = Carbon::now()->format('Y-m-d H:i:s');
+        $user->role = $request->input('role');
 
         if ($user->save()) {
             return redirect('/login')->with('success', 'Kullanıcı oluşturuldu');

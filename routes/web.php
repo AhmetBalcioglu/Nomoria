@@ -21,6 +21,7 @@ use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\FavoriteController;
 
 use App\Http\Middleware\AdminOrRestaurant;
+use App\Http\Middleware\RestaurantOwner;
 
 Route::get('/dashboard', function () {
     return view('layouts.dashboard');
@@ -83,6 +84,11 @@ Route::prefix('comments')->group(function () {
 //Admin Panel Route
 Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
+});
+
+//Restaurant Panel Route
+Route::middleware([RestaurantOwner::class])->group(function () {
+    Route::get('/restaurantPanel', [AdminPanelController::class, 'restaurantPanel'])->name('restaurantPanel');
 });
 
 //Login Logout Middleware Route

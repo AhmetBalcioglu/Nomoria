@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminOrRestaurant
+class RestaurantOwner
 {
     /**
      * Handle an incoming request.
@@ -21,7 +21,7 @@ class AdminOrRestaurant
         }
 
         $userRole = Session::get('role');
-        if (in_array(($userRole), ['admin'])) {
+        if (in_array(($userRole), ['restaurantOwner'])) {
             return $next($request); // Erişim izni verildi
         }
 

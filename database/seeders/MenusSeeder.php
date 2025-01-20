@@ -28,7 +28,7 @@ class MenusSeeder extends Seeder
                 'price' => 15,
                 'description' => 'Menü 2 Açıklama',
                 'created_at' => Carbon::now(),
-            ],
+        ],
             [
                 'restaurantID' => 1,
                 'menuName' => 'Alkol Servisi',

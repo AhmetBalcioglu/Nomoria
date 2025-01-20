@@ -61,6 +61,14 @@
                                         <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
                                     </li>
                 @endif
+                @if (
+                        session()->has('name') && session()->has('surname') && session()->has('role') &&
+                        session()->get('role') == 'restaurantOwner'
+                    )
+                                    <li class="nav-item"></li>
+                                    <a class="nav-link custom-link" href="{{ route('restaurantPanel') }}">Restoran Paneli</a>
+                                    </li>
+                @endif
             </ul>
         </div>
     </div>
