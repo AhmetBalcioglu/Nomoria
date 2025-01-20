@@ -6,6 +6,8 @@
 
 @section('page_head_css')
 
+    @vite('resources/css/makeReservation/_makeReservation.scss')
+
 @endsection
 
 @section('content')
