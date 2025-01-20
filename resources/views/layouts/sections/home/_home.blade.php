@@ -1,5 +1,5 @@
 <div class="container mt-5">
-    @dump(session()-> all())
+  
     
     @foreach ($categories->chunk(5) as $chunk)
 
