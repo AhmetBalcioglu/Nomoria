@@ -19,7 +19,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddRestaurantController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\FavoriteController;
-
+use App\Http\Controllers\RestaurantManagerController;
 use App\Http\Middleware\AdminOrRestaurant;
 use App\Http\Middleware\RestaurantOwner;
 
@@ -91,6 +91,9 @@ Route::middleware([RestaurantOwner::class])->group(function () {
     Route::get('/restaurantPanel', [AdminPanelController::class, 'restaurantPanel'])->name('restaurantPanel');
 });
 
+// RestaurantManager Route
+Route::get('/RestaurantManager', [RestaurantManagerController::class, 'index'])->name('RestaurantManager');
+
 //Login Logout Middleware Route
 Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () {
     Route::post('/login', [UserController::class, 'login'])->name('login');
@@ -100,7 +103,7 @@ Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () 
 Route::middleware([TimedExit::class])->group(function () {
     // Korunan rotalar
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/login', [LoginController::class, 'index']); 
+    Route::get('/login', [LoginController::class, 'index']);
     Route::get('/details', [DetailsController::class, 'index']);
     Route::get('/discount', [DiscountController::class, 'discount']);
     Route::get('/about', [AboutController::class, 'index']);

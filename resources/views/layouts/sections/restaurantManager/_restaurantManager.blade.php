@@ -1,6 +1,3 @@
-@php
-    dd($restaurant);
-@endphp
 <div class="restaurant-detail-container">
     <div class="restaurant-card">
         <div class="restaurant-image">

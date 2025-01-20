@@ -12,12 +12,9 @@ class RestaurantManagerController extends Controller
 {
     public function index()
     {
+        $restaurantID = 1; // TODO: Restoranın id'si db'den alınacak
+        $restaurant = Restaurant::findOrFail($restaurantID);
 
-        $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
-        $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
-        $restaurant = Restaurant::orderBy('name', 'asc')->get()->toArray(); // Restaurantları diziye topla
-        return view('restaurantManager.restaurantManager', compact('cities', 'districts', 'restaurant'));
+        return view('restaurantManager.restaurantManager', compact('restaurant'));
     }
-
-
 }
