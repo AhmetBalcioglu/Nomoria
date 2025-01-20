@@ -55,7 +55,7 @@
                         session()->has('name') &&
                         session()->has('surname') &&
                         session()->has('role') &&
-                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurantOwner')
+                        (session()->get('role') == 'admin')
                     )
                                     <li class="nav-item">
                                         <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
