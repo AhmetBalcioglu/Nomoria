@@ -12,6 +12,10 @@ class ReservationController extends Controller
     {
         return view("reservations.reservations");
     }
+    public function makeReservation()
+    {
+        return view("reservations.makeReservation");
+    }
     public function create(ReservationCreateRequest $request)
     {
         // 20 kişilik kısıtlama

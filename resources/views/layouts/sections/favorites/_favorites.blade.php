@@ -9,11 +9,28 @@
                 @forelse ($favoritedRestaurants as $favorite)
                     @if ($favorite->restaurant)
                         <div class="col-md-3 mb-5">
-                            <div class="restaurant-card">
+                            <div class="restaurant-card position-relative">
                                 <a href="{{ route('restaurants.show', $favorite->restaurant->restaurantID) }}">
                                     <img src="{{ asset($favorite->restaurant->image) }}" alt="Restaurant Image"
-                                        class="img-fluid">
+                                        class="img-fluid rounded">
                                 </a>
+                                <!-- Favori ikonu sağ üst köşeye sabitlendi ve hep görünür yapıldı -->
+                                @if (!$favorite->restaurant->favorites)
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
+                                        data-id="{{ $favorite->restaurant->restaurantID }}"
+                                        class="bi bi-heart fav-icon position-absolute top-0 end-0 m-2" viewBox="0 0 16 16">
+                                        <path
+                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                    </svg>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red"
+                                        data-id="{{ $favorite->restaurant->restaurantID }}"
+                                        class="bi bi-heart fav-icon position-absolute top-0 end-0 m-2" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                                    </svg>
+                                @endif
+
                                 <div class="restaurant-card-body">
                                     <h5>{{ $favorite->restaurant->name }}</h5>
                                     <p>📍
@@ -29,26 +46,6 @@
                                         @endif
                                     </p>
                                     <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                                    <!-- Favori Olmayan (Boş Kalp) SVG -->
-                                    @if (!$favorite->restaurant->favorites)
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            data-id="{{ $favorite->restaurant->restaurantID }}" class="bi bi-heart"
-                                            viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
-                                            <path
-                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
-                                        </svg>
-                                    @else
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                            data-id="{{ $favorite->restaurant->restaurantID }}" class="bi bi-heart text-danger"
-                                            viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd"
-                                                d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z" />
-                                            <path
-                                                d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z" />
-                                        </svg>
-                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -56,6 +53,7 @@
                 @empty
                     <p>Favorilere eklediğiniz bir restoran bulunmamaktadır.</p>
                 @endforelse
+
             </div>
         </div>
 
@@ -70,12 +68,13 @@
                                 <p><b>{{ $favorite->category->categoryName }}</b></p>
                                 <img src="{{ asset($favorite->category->image) }}" class="d-block w-100 my-4"
                                     alt="Category Image" style="object-fit: cover; height: 150px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red"
-                                    class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 favHearth-icon"
-                                    data-id="{{ $favorite->category->categoryID }}" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
+                                    data-id="{{ $favorite->category->categoryID }}"
+                                    class="bi bi-heart fav-icon position-absolute top-0 end-0 m-2" viewBox="0 0 16 16">
                                     <path
-                                        d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
                                 </svg>
+
                             </div>
                         </div>
                     @else

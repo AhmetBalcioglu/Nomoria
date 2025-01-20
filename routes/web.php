@@ -43,6 +43,10 @@ Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name(
 Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
+// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/makeReservation', [ReservationController::class, 'makeReservation']);
+
+
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
@@ -61,7 +65,7 @@ Route::get('/details', [DetailsController::class, 'index'])->name('details');
 
 
 // Contact Route
-Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact/send', [ContactController::class, 'sendMail'])->name('contact.send');
 
 //discount Route
 Route::get('/discount', [DiscountController::class, 'discount']);
