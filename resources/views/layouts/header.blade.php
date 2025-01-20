@@ -97,23 +97,21 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill mt-1 mx-1"
                     viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24" height="24">
                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                </svg>
+                <vg>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item processOptions" href="/login">Üye Girişi</a></li>
                     <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                        <li><a class="dropdown-item processOptions" href="/login">Rezervasyonlarım</a>
+                        <li><a class="dropdown-item processOptions" href="/login">Rezervasyonlarım</a></li>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
+                        <li><a href="{{ route('reservation') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a></li>
                     @endif
-                    </li>
                     {{-- Favorilerim --}}
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                        <li><a class="dropdown-item processOptions" href="/login">Favorilerim</a>
+                        <li><a class="dropdown-item processOptions" href="/login">Favorilerim</a></li>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
+                        <li><a href="{{ route('favorites') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a></li>
                     @endif
-                    </li>
                 </ul>
 
             </div>
@@ -132,6 +130,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('RestaurantManager') }}">Restoranlarım</a></li>
                     <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
+                    <li><a class="dropdown-item" href="#">Geçmiş Rezervasyonlarım</a></li>
                     <li> <a href="{{ route('logout') }}" class="btn btn-danger custom-button me-2 information">Çıkış
                             Yap</a></li>
                 </ul>
