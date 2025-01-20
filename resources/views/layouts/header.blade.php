@@ -52,19 +52,19 @@
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">Yardım ve Destek</a>
                 </li>
                 @if (
-                        session()->has('name') &&
-                        session()->has('surname') &&
-                        session()->has('role') &&
-                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurantOwner')
-                    )
+    session()->has('name') &&
+    session()->has('surname') &&
+    session()->has('role') &&
+    (session()->get('role') == 'admin' || session()->get('role') == 'restaurantOwner')
+)
                                     <li class="nav-item">
                                         <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
                                     </li>
                 @endif
                 @if (
-                        session()->has('name') && session()->has('surname') && session()->has('role') &&
-                        session()->get('role') == 'restaurantOwner'
-                    )
+    session()->has('name') && session()->has('surname') && session()->has('role') &&
+    session()->get('role') == 'restaurantOwner'
+)
                                     <li class="nav-item"></li>
                                     <a class="nav-link custom-link" href="{{ route('restaurantPanel') }}">Restoran Paneli</a>
                                     </li>
@@ -130,7 +130,7 @@
                 <h6 class="mt-2">{{ session()->get('name') }} {{ session()->get('surname') }}</h6>
 
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Restoranlarım</a></li>
+                    <li><a class="dropdown-item" href="{{ route('RestaurantManager') }}">Restoranlarım</a></li>
                     <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
                     <li> <a href="{{ route('logout') }}" class="btn btn-danger custom-button me-2 information">Çıkış
                             Yap</a></li>

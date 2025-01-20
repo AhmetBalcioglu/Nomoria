@@ -123,6 +123,7 @@
                         <div class="col-md-9">
                             <select id="cuisineType" class="form-select" name="cuisineType">
                                 <option value="" selected>--Seçiniz--</option>
+                                <option value="Türk Mutfağı">Türk Mutfağı</option>
                                 <option value="Kore Mutfağı">Kore Mutfağı</option>
                                 <option value="Meksika Mutfağı">Meksika Mutfağı</option>
                                 <option value="Japon Mutfağı">Japon Mutfağı</option>
