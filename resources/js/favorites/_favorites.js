@@ -1,49 +1,100 @@
 $(document).ready(function () {
-    // Favori kategoriler için tıklama olayı
-    $('.favHearth-icon').on('click', function () {
-        const categoryID = $(this).data('id'); // Kategorinin ID'sini al
-        const iconElement = $(this); // Tıklanan simgeyi seç
+    // Favori restoranlar için tıklama olayı
+    $('.bi-heart').on('click', function () {
+        const restaurantID = $(this).data('id'); // Tıklanan SVG'nin data-id değerini al
+        const svgElement = $(this); // Tıklanan SVG elementini seç
 
         // AJAX isteği
         $.ajax({
-            url: `/favorites/toggle/${categoryID}`, // Favori ekleme/çıkarma URL'si
-            method: 'GET',
+            url: `/favorites/toggle/${restaurantID}`,
+            method: 'POST',
             data: {
-                _token: $('meta[name="csrf-token"]').attr('content'), // Dinamik CSRF token
+                _token: $('meta[name="csrf-token"]').attr('content') // Dinamik CSRF token
             },
             success: function (response) {
                 if (response.success) {
                     if (response.added) {
-                        iconElement.addClass('text-danger'); // Favoriye eklenirse kırmızı
+                        svgElement.addClass('text-danger');
                         Swal.fire({
                             icon: 'success',
                             title: 'Favorilerinize eklendi.',
                         }).then(function () {
-                            location.reload(); // Sayfayı yenileyerek güncel veriyi göster
+                            location.reload();
                         });
                     } else {
-                        iconElement.removeClass('text-danger'); // Favoriden çıkarılırsa kırmızı kaldır
+                        svgElement.removeClass('text-danger');
                         Swal.fire({
                             icon: 'success',
                             title: 'Favorilerinizden kaldırıldı.',
                         }).then(function () {
-                            location.reload(); // Sayfayı yenileyerek güncel veriyi göster
+                            location.reload();
                         });
                     }
                 } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Bir hata oluştu.',
-                        text: response.message, // Hata mesajını göster
+                        text: response.message,
+                    });
+                }
+            },
+            error: function (xhr) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'AJAX isteği başarısız.',
+                    text: xhr.statusText,
+                });
+            }
+        });
+    });
+});
+
+$(document).ready(function () {
+    $('.favHearth-icon').click(function () {
+        var categoryID = $(this).data('id'); // Tıklanan SVG'nin data-id değerini al
+        var icon = $(this); // Tıklanan SVG elementini seç
+
+        // AJAX isteği
+        $.ajax({
+            url: 'favorites/toggle/' + categoryID, // Favori ekleme/çıkarma URL'si
+            method: 'GET',
+            data: {
+                _token: '{{ csrf_token() }}', // CSRF token
+            },
+            success: function (response) {
+                if (response.success) {
+                    if (response.added) {
+                        icon.addClass('favorited'); // Favori sınıfını ekle
+                        Swal.fire({
+                            title: 'Favorilere Eklendi!',
+                            text: 'Kategori favorilerinize eklendi.',
+                            icon: 'success',
+                            confirmButtonText: 'Tamam'
+                        }).then(function () {
+                            location.reload();
+                        });
+                    } else {
+                        icon.removeClass('favorited'); // Favori sınıfını kaldır
+                        Swal.fire({
+                            title: 'Favorilerden Çıkarıldı!',
+                            text: 'Kategori favorilerinizden çıkarıldı.',
+                            icon: 'success',
+                            confirmButtonText: 'Tamam'
+                        }).then(function () {
+                            location.reload();
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        title: 'Bir hata oluştu!',
+                        text: 'Oturum açmamış olabilirsiniz, lütfen tekrar deneyiniz!',
+                        icon: 'error',
+                        confirmButtonText: 'Tamam'
                     });
                 }
             },
             error: function () {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Bir hata oluştu.',
-                    text: 'Favori güncellenirken bir sorun oluştu.',
-                });
+                console.log('Bir hata oluştu.');
             }
         });
     });

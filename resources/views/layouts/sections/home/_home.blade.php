@@ -1,16 +1,17 @@
 <div class="container mt-5">
-    @dump(session()-> all())
-    
+    @dump(session()->all())
+
     @foreach ($categories->chunk(5) as $chunk)
 
         <div class="row mb-5">
             @foreach ($chunk as $category)
-                <div class="col-md-2 col-sm-2 col-md-2 p-2 mx-3 card card-body position-relative category_url" data-url="{{ $category->categoryName }}">
+                <div class="col-md-2 col-sm-2 col-md-2 p-2 mx-3 card card-body position-relative category_url"
+                    data-url="{{ $category->categoryName }}">
                     <p class="text-center"><b>{{ $category->categoryName }}</b></p>
                     <img src="{{ asset($category->image) }}" width="50%" height="50%" class="d-block w-100 my-4" alt="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" stroke="black"
-                        class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 heart-icon redirect-to-login"
-                        viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 hearth-icon 
+                                           {{ in_array($category->categoryID, $favoritedCategories) ? 'favorited' : '' }}"
+                        data-id="{{ $category->categoryID }}" viewBox="0 0 16 16">
                         <path
                             d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
                     </svg>
@@ -19,21 +20,6 @@
         </div>
     @endforeach
 </div>
-
-
-
-{{-- Divlerin url bağlantısı --}}
-<script>
-    $('.category_url').on('click', function () {
-
-        let dataUrl =  $(this).data('url');
-        let url = "http://nomoria.local/filter?concept=" + dataUrl;
-        window.location.href = url;
-
-    })
-
-</script>
-
 
 <div class="container">
     <div class="row">
@@ -73,8 +59,7 @@
                     <!-- Et Restoranları Kartı -->
                     <div class="col-md-6">
                         <div class="campaign-card text-center">
-                            <img src="{{ asset('img/homepage_img/et.jpg') }}" alt="Et Restoranları"
-                                class="img-fluid">
+                            <img src="{{ asset('img/homepage_img/et.jpg') }}" alt="Et Restoranları" class="img-fluid">
                             <h3 class="campaign-title">Et menülerinde Kampanya</h3>
                             <p class="discount">15%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
@@ -138,4 +123,3 @@
         </div>
     </div>
 @endif
-
