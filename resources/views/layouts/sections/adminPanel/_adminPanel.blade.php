@@ -94,10 +94,17 @@
                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefon">
                         </div>
                     </div>
-
                     <div class="row mt-3">
                         <div class="col-md-3">
-                            <label for="viewType" class="form-label">Manzara Türü</label>
+                            <label for="email" class="form-label"><b>*</b>E-posta</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="E-posta">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-3">
+                            <label for="viewType" class="form-label"><b>*</b>Manzara Türü</label>
                         </div>
                         <div class="col-md-9">
                             <select id="viewType" class="form-select" name="viewType">
@@ -111,7 +118,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-3">
-                            <label for="cuisineType" class="form-label">Mutfak Türü</label>
+                            <label for="cuisineType" class="form-label"><b>*</b>Mutfak Türü</label>
                         </div>
                         <div class="col-md-9">
                             <select id="cuisineType" class="form-select" name="cuisineType">
@@ -210,51 +217,52 @@
                 <div class="modal-body">
                     <div class="row mt-3 mt-3">
                         <div class="col-md-6">
-                            <label for="name" class="form-label">Mevcut Restoran Adı</label>
+                            <label for="name" class="form-label"><b>*</b>Mevcut Restoran Adı</label>
                             <input type="text" class="form-control" id="name" name="name"
                                 placeholder="Mevcut Restoran Adı" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="newName" class="form-label">Yeni Restoran Adı</label>
+                            <label for="newName" class="form-label"><b>*</b>Yeni Restoran Adı</label>
                             <input type="text" class="form-control" id="newName" name="newName"
                                 placeholder="Yeni Restoran Adı" required>
                         </div>
                     </div>
                     <div class="row mt-3 mt-3">
                         <div class="col-md-12">
-                            <label for="description" class="form-label">Yeni Açıklama</label>
+                            <label for="description" class="form-label"><b>*</b>Yeni Açıklama</label>
                             <textarea class="form-control" id="description" name="description"
                                 placeholder="Açıklama"></textarea>
                         </div>
                     </div>
                     <div class="row mt-3 mt-3">
                         <div class="col-md-12">
-                            <label for="address" class="form-label">Yeni Adres</label>
+                            <label for="address" class="form-label"><b>*</b>Yeni Adres</label>
                             <textarea class="form-control" id="address" name="address" placeholder="Adres"></textarea>
                         </div>
                     </div>
                     <div class="row mt-3 mt-3">
                         <div class="col-md-6">
-                            <label for="phone" class="form-label">Yeni Telefon</label>
+                            <label for="phone" class="form-label"><b>*</b>Yeni Telefon</label>
                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefon">
                         </div>
                         <div class="col-md-6">
-                            <label for="email" class="form-label">Yeni E-posta</label>
+                            <label for="email" class="form-label"><b>*</b>Yeni E-posta</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="E-posta">
                         </div>
                     </div>
                     <div class="row mt-3 mt-3">
                         <div class="col-md-6">
-                            <label for="capacity" class="form-label">Yeni Kapasite</label>
+                            <label for="capacity" class="form-label"><b>*</b>Yeni Kapasite</label>
                             <input type="number" class="form-control" id="capacity" name="capacity"
                                 placeholder="Kapasite">
                         </div>
                         <div class="col-md-6">
-                            <label for="image" class="form-label">Yeni Resim</label>
+                            <label for="image" class="form-label"><b>*</b>Yeni Resim</label>
                             <input type="file" class="form-control" id="image" name="image">
                         </div>
                     </div>
                 </div>
+                <p class="form-text" style="margin-left: 1rem">* ile işaretli alanlar zorunludur</p>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary w-100">Güncelle</button>
                 </div>

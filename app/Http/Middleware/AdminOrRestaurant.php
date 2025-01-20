@@ -21,7 +21,7 @@ class AdminOrRestaurant
         }
 
         $userRole = Session::get('role');
-        if (in_array(($userRole), ['admin'])) {
+        if (in_array(($userRole), ['admin', 'restaurantOwner'])) {
             return $next($request); // Erişim izni verildi
         }
 

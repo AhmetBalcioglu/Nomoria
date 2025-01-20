@@ -55,7 +55,7 @@
                         session()->has('name') &&
                         session()->has('surname') &&
                         session()->has('role') &&
-                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurant')
+                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurantOwner')
                     )
                                     <li class="nav-item">
                                         <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
@@ -102,14 +102,14 @@
                     <li><a class="dropdown-item processOptions" href="/login">Üye Girişi</a></li>
                     <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                        <li><a class="dropdown-item processOptions" href="/register">Rezervasyonlarım</a>
+                        <li><a class="dropdown-item processOptions" href="/login">Rezervasyonlarım</a>
                     @else
                         <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
                     @endif
                     </li>
                     {{-- Favorilerim --}}
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                        <li><a class="dropdown-item processOptions" href="/register">Favorilerim</a>
+                        <li><a class="dropdown-item processOptions" href="/login">Favorilerim</a>
                     @else
                         <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
                     @endif

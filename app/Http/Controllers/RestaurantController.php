@@ -15,6 +15,8 @@ use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Mail\RestaurantCreatedMail;
 
 
 class RestaurantController extends Controller
@@ -79,14 +81,23 @@ class RestaurantController extends Controller
         $restaurant->created_at = Carbon::now();
         $restaurant->updated_at = null;
 
-        // Kaydetme işlemi
         try {
             $restaurant->save();
+
+            $userRole = session('role');
+            $userEmail = session('email');
+
+            if ($userRole && strtolower($userRole) === 'restaurantOwner') {
+                Mail::to($userEmail)->send(new RestaurantCreatedMail($restaurant));
+            }
+
+
             return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 422);
         }
     }
+
 
     public function update(RestaurantUpdateRequest $request, $name)
     {
@@ -223,9 +234,14 @@ class RestaurantController extends Controller
 
         $query->where('deleted_at', null);
 
-        $restaurants = $query->with(['cities', 'districts', 'favorites', 'category' => function ($query) {
-            $query->select('categoryID', 'categoryName');
-        }])->get()->toArray();
+        $restaurants = $query->with([
+            'cities',
+            'districts',
+            'favorites',
+            'category' => function ($query) {
+                $query->select('categoryID', 'categoryName');
+            }
+        ])->get()->toArray();
 
         //------------------------------------------------------------
 
@@ -290,3 +306,4 @@ class RestaurantController extends Controller
         return view('details.show_details', compact('restaurant'));
     }
 }
+
