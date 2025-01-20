@@ -61,7 +61,7 @@ Route::get('/details', [DetailsController::class, 'index'])->name('details');
 
 
 // Contact Route
-Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact/send', [ContactController::class, 'sendMail'])->name('contact.send');
 
 //discount Route
 Route::get('/discount', [DiscountController::class, 'discount']);

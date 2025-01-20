@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ContactMessage extends Model
 {
-    protected $fillable = ['name', 'surname', 'email', 'message'];
+    public function up()
+{
+    Schema::create('contact_messages', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('surname');
+        $table->string('email');
+        $table->text('message');
+        $table->timestamps();
+    });
+}
+
 }
