@@ -100,7 +100,7 @@ Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () 
 Route::middleware([TimedExit::class])->group(function () {
     // Korunan rotalar
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/login', [LoginController::class, 'index']);
+    Route::get('/login', [LoginController::class, 'index']); 
     Route::get('/details', [DetailsController::class, 'index']);
     Route::get('/discount', [DiscountController::class, 'discount']);
     Route::get('/about', [AboutController::class, 'index']);

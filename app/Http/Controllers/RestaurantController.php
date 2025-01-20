@@ -87,7 +87,7 @@ class RestaurantController extends Controller
             $userRole = session('role');
             $userEmail = session('email');
 
-            if ($userRole && strtolower($userRole) === 'restaurantOwner') {
+            if ($userRole && $userRole === 'restaurantOwner') {
                 Mail::to($userEmail)->send(new RestaurantCreatedMail($restaurant));
             }
 

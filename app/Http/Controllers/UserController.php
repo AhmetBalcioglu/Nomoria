@@ -26,9 +26,9 @@ class UserController extends Controller
         $user->role = $request->input('role');
 
         if ($user->save()) {
-            return redirect('/login')->with('success', 'Kullanıcı oluşturuldu');
+            return response()->json(['success' => 'Kullanıcı oluşturuldu']);
         } else {
-            return redirect('/register')->with('error', 'Kullanıcı oluşturulamadı!');
+            return response()->json(['error' => 'Kullanıcı oluşturulamadı!'], 400);
         }
     }
 
