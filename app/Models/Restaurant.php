@@ -24,6 +24,15 @@ class Restaurant extends Model
         'capacity',
         'citiesID',
         'districtsID',
+        'cuisine_type', // Dünya mutfağı
+        'view_type', // Mekan türü
+        'categoryID', // Konsept
+        'meat_dishes', // Et yemekleri
+        'fish_species', // Balık türleri
+        'fast_food', // Fast food
+        'vegan', // Vejeteryan
+        'alcoholic_places', // Alkol servisi
+        'rating', // Puanlama
     ];
 
     // Yorumlar (Reviews) ilişkisi
@@ -59,12 +68,32 @@ class Restaurant extends Model
     // Şehir ilişkisi
     public function cities()
     {
-        return $this->belongsTo(Cities::class, 'citiesID');
+        return $this->belongsTo(Cities::class, 'citiesID', 'citiesID');
     }
 
     public function districts()
     {
-        return $this->belongsTo(Districts::class, 'districtsID');
+        return $this->belongsTo(Districts::class, 'districtsID', 'districtsID');
+    }
+
+    public function favorites()
+    {
+        return $this->belongsTo(Favorites::class, 'restaurantID', 'restaurantID');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Categories::class, 'categoryID', 'categoryID');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'restaurantID');
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Categories::class, 'categoryID');
     }
 
     /**

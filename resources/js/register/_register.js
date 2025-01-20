@@ -24,3 +24,46 @@ $(document).ready(function () {
         $(this).text(inputType === 'password' ? "👁" : "🙈");
     });
 });
+$(document).ready(function () {
+    $("form").submit(function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        $.ajax({
+            url: $(this).attr('action'),
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                if (response.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Kullanıcı oluşturuldu',
+                        text: response.message
+                    }).then(function () {
+                        window.location.href = '/login';
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Kullanıcı oluşturulamadı',
+                        text: response.message
+                    });
+                }
+            },
+            error: function (err) {
+                var errors = err.responseJSON.errors;
+                var message = '';
+                $.each(errors, function (key, value) {
+                    message += value + "<br>";
+                });
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Kullanıcı oluşturulamadı',
+                    html: message
+                });
+            }
+        });
+    });
+});
+

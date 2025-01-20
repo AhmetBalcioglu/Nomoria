@@ -1,244 +1,121 @@
-<div class="sidebar col-md-2">
-
-    <div class="filter-container">
-        <label for="districts" class="baslik">Konum Seçiniz:</label>
-        <select id="districts" style="color: #f0952d">
-            <option value="">Seçiniz</option>
-            <option value="Adalar">Adalar</option>
-            <option value="Arnavutköy">Arnavutköy</option>
-            <option value="Ataşehir">Ataşehir</option>
-            <option value="Avcılar">Avcılar</option>
-            <option value="Bağcılar">Bağcılar</option>
-            <option value="Bahçelievler">Bahçelievler</option>
-            <option value="Bakırköy">Bakırköy</option>
-            <option value="Başakşehir">Başakşehir</option>
-            <option value="Bayrampaşa">Bayrampaşa</option>
-            <option value="Beşiktaş">Beşiktaş</option>
-            <option value="Beykoz">Beykoz</option>
-            <option value="Beylikdüzü">Beylikdüzü</option>
-            <option value="Beyoğlu">Beyoğlu</option>
-            <option value="Büyükçekmece">Büyükçekmece</option>
-            <option value="Çatalca">Çatalca</option>
-            <option value="Çekmeköy">Çekmeköy</option>
-            <option value="Esenler">Esenler</option>
-            <option value="Esenyurt">Esenyurt</option>
-            <option value="Eyüpsultan">Eyüpsultan</option>
-            <option value="Fatih">Fatih</option>
-            <option value="Gaziosmanpaşa">Gaziosmanpaşa</option>
-            <option value="Güngören">Güngören</option>
-            <option value="Kadıkoy">Kadıköy</option>
-            <option value="Kağıthane">Kağıthane</option>
-            <option value="Kartal">Kartal</option>
-            <option value="Küçükçekmece">Küçükçekmece</option>
-            <option value="Maltepe">Maltepe</option>
-            <option value="Pendik">Pendik</option>
-            <option value="Sancaktepe">Sancaktepe</option>
-            <option value="Sarıyer">Sarıyer</option>
-            <option value="Silivri">Silivri</option>
-            <option value="Sultanbeyli">Sultanbeyli</option>
-            <option value="Sultangazi">Sultangazi</option>
-            <option value="Şile">Şile</option>
-            <option value="Şişli">Şişli</option>
-            <option value="Tuzla">Tuzla</option>
-            <option value="Ümraniye">Ümraniye</option>
-            <option value="Üskudar">Üsküdar</option>
-            <option value="Zeytinburnu">Zeytinburnu</option>
-            <!-- Daha fazla ilçe eklenebilir -->
-        </select>
-    </div>
-    <div id="selected-district"></div>
-
-    <h2 class="baslik">Mekan Türü</h2>
-    <div>
-        <div class="category-title collapsible" id="mekan-turu-title"> Seçiniz
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-            </svg>
-        </div>
-        <div class="checkbox-container" style="display: none;">
-            <input id="sea-view" type="checkbox">
-            <label for="sea-view">Deniz Manzarası</label> <br>
-            <input id="nature" type="checkbox">
-            <label for="nature">Doğanın İçinde</label> <br>
-            <input id="historical" type="checkbox">
-            <label for="historical">Tarihi Mekan</label> <br>
-            <input id="city-view" type="checkbox">
-            <label for="city-view">Şehir Manzarası</label> <br>
-        </div>
-    </div>
-
-
-
-
-    <h2 class="baslik">Konsepte Göre</h2>
-    <div style="display: flex">
-        <input id="workMeal" type="checkbox">
-        <label for="workMeal" class="category-title mx-2">İş Yemeği</label>
-    </div>
-
-    <div>
-        <div class="category-title collapsible" id="world-cuisine-title">Dünya Mutfağı
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-            </svg>
-        </div>
-        <div class="checkbox-container" style="display: none;">
-            <input id="korea" type="checkbox">
-            <label for="korea">Kore Mutfağı</label> <br>
-            <input id="mexica" type="checkbox">
-            <label for="mexica">Meksika Mutfağı</label> <br>
-            <input id="japan" type="checkbox">
-            <label for="japan">Japon Mutfağı</label> <br>
-            <input id="italian" type="checkbox">
-            <label for="italian">İtalyan Mutfağı</label> <br>
-        </div>
-    </div>
-
-    <div style="display: flex">
-        <input id="celebration" type="checkbox">
-        <label for="celebration" class="category-title mx-2">Kutlama</label>
-    </div>
-
-    <div style="display: flex">
-        <input id="single" type="checkbox">
-        <label for="single" class="category-title mx-2">Tek Kişilik</label>
-    </div>
-
-    <div style="display: flex">
-        <input id="specialDay" type="checkbox">
-        <label for="specialDay" class="category-title mx-2">Özel Gün</label>
-    </div>
-
-    <br>
-    <h2 class="baslik">Menülere Göre</h2>
-
-    <div>
-        <div class="category-title collapsible" id="meat-dishes-title">Et Yemekleri
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-            </svg>
-        </div>
-        <div class="checkbox-container" style="display: none;">
-            <input id="kebab" type="checkbox" class="check">
-            <label for="kebab">Kebap Çeşitleri</label> <br>
-            <input id="doner" type="checkbox">
-            <label for="doner">Döner</label> <br>
-            <input id="kofte" type="checkbox">
-            <label for="kofte">Köfte</label> <br>
-            <input id="bonfile" type="checkbox">
-            <label for="bonfile">Bonfile</label> <br>
-        </div>
-    </div>
-
-    <div>
-        <div class="category-title collapsible" id="fish-dishes-title">Balık
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-            </svg>
-        </div>
-        <div class="checkbox-container" style="display: none;">
-            <input id="hamsi" type="checkbox">
-            <label for="hamsi">Hamsi</label> <br>
-            <input id="palamut" type="checkbox">
-            <label for="palamut">Palamut</label> <br>
-            <input id="levrek" type="checkbox">
-            <label for="levrek">Levrek</label> <br>
-            <input id="istavrit" type="checkbox">
-            <label for="istavrit">İstavrit</label> <br>
-        </div>
-    </div>
-
-    <div>
-        <div class="category-title collapsible" id="fast-food-title">Fast Food
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-            </svg>
-        </div>
-        <div class="checkbox-container" style="display: none;">
-            <input id="pizza" type="checkbox">
-            <label for="pizza">Pizza</label> <br>
-            <input id="pide" type="checkbox">
-            <label for="pide">Pide</label> <br>
-            <input id="burger" type="checkbox">
-            <label for="burger">Hamburger</label> <br>
-            <input id="hotDog" type="checkbox">
-            <label for="hotDog">Sosisli</label> <br>
-        </div>
-    </div>
-
-    <div>
-        <div class="category-title collapsible" id="vegan-dishes-title">Vegan
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-            </svg>
-        </div>
-        <div class="checkbox-container" style="display: none;">
-            <input id="falafel" type="checkbox">
-            <label for="falafel">Falafel Bowl</label> <br>
-            <input id="sezar" type="checkbox">
-            <label for="sezar">Sezar Salata</label> <br>
-            <input id="breakfast" type="checkbox">
-            <label for="breakfast">Protein Kahvaltı</label> <br>
-            <input id="kruvasan" type="checkbox">
-            <label for="kruvasan">Avokadolu Kruvasan</label> <br>
-        </div>
-    </div>
-
-    <div>
-        <div class="category-title collapsible" id="alcoholic-places-title">Alkollü Mekanlar
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-caret-down" viewBox="0 0 16 16">
-                <path
-                    d="M3.204 5h9.592L8 10.481zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659" />
-            </svg>
-        </div>
-        <div class="checkbox-container" style="display: none;">
-            <input id="tuborg" type="checkbox">
-            <label for="tuborg">Tuborg</label> <br>
-            <input id="guinnes" type="checkbox">
-            <label for="guinnes">Guinnes</label> <br>
-            <input id="sol" type="checkbox">
-            <label for="sol">Sol</label> <br>
-            <input id="wine" type="checkbox">
-            <label for="wine">Şarap</label> <br>
-        </div>
-    </div> <br>
-
-    <button type="submit" class="btn">Filtrele</button>
-</div>
-
-<div class="container my-4">
-    <div class="row" id="restaurant-cards">
-        @php
-            dump($restaurants);
-        @endphp
-        @foreach ($restaurants as $restaurant)
-            {{-- Restoran Card --}}
-            <div class="col-md-3 mb-5">
-                <div class="restaurant-card">
-                    <img src="{{ $restaurant['image'] }}" alt="RestaurantImg">
-                    <div class="restaurant-card-body">
-                        <h5></h5>
-                        {{ $restaurant['name'] }}
-                        <p>İki kişilik menüde %20 indirim!</p>
-                        <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }} </p>
-                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                    </div>
-                </div>
+<div class="detail-container">
+    <div class="sidebar col-md-2">
+        <form action="{{ route('filter') }}" method="GET">
+            <div>
+                <label for="districts" class="baslik">Konum</label>
+                <select id="districts" class="form-select" name="district">
+                    <option value="all" {{ request()->query('district') == 'all' ? 'selected' : '' }}>Tümü</option>
+                    @foreach ($districts as $district)
+                        <option value="{{ $district['districtsID'] }}" {{ request()->query('district') == $district['districtsID'] ? 'selected' : '' }}>
+                            {{ $district['name'] }}
+                        </option>
+                    @endforeach
+                </select>
+                <div id="selected-district" class="mb-5"></div>
             </div>
-        @endforeach
 
+            {{-- Mekan --}}
+            <div class="mb-5">
+                <h2 class="baslik">Manzara </h2>
+                <select name="viewType" class="form-select">
+                    <option value="all" {{ request()->query('viewType') == 'all' ? 'selected' : '' }}>Tümü</option>
+                    <option value="Deniz Manzarası" {{ request()->query('viewType') == 'Deniz Manzarası' ? 'selected' : '' }}>Deniz Manzarası</option>
+                    <option value="Doğanın İçinde" {{ request()->query('viewType') == 'Doğanın İçinde' ? 'selected' : '' }}>Doğanın İçinde</option>
+                    <option value="Tarihi Mekan" {{ request()->query('viewType') == 'Tarihi Mekan' ? 'selected' : '' }}>
+                        Tarihi Mekan</option>
+                    <option value="Şehir Manzarası" {{ request()->query('viewType') == 'Şehir Manzarası' ? 'selected' : '' }}>Şehir Manzarası</option>
+                </select>
+            </div>
+
+            {{-- Kategoriler --}}
+            <div>
+                <h2 class="baslik">Kategoriler </h2>
+                <select name="category" class="form-select mb-5">
+                    <option value="all" {{ request()->query('category') == 'all' ? 'selected' : '' }}>Tümü</option>
+                    <option value="3" {{ request()->query('category') == '3' ? 'selected' : '' }}>İş Yemeği</option>
+                    <option value="2" {{ request()->query('category') == '2' ? 'selected' : '' }}>Kutlama</option>
+                    <option value="4" {{ request()->query('category') == '4' ? 'selected' : '' }}>Tek Kişilik</option>
+                    <option value="1" {{ request()->query('category') == '1' ? 'selected' : '' }}>Özel Gün</option>
+                </select>
+            </div>
+
+            {{-- Mutfak --}}
+            <div class="mb-5">
+                <h2 class="baslik">Mutfak </h2>
+                <select name="couisineType" class="form-select">
+                    <option value="all" {{ request()->query('couisineType') == 'all' ? 'selected' : '' }}>Tümü</option>
+                    <option value="Türk Mutfağı" {{ request()->query('couisineType') == 'Türk Mutfağı' ? 'selected' : '' }}>Türk Mutfağı</option>
+                    <option value="Kore Mutfağı" {{ request()->query('couisineType') == 'Kore Mutfağı' ? 'selected' : '' }}>Kore Mutfağı</option>
+                    <option value="Meksika Mutfağı" {{ request()->query('couisineType') == 'Meksika Mutfağı' ? 'selected' : '' }}>Meksika Mutfağı</option>
+                    <option value="Japon Mutfağı" {{ request()->query('couisineType') == 'Japon Mutfağı' ? 'selected' : '' }}>Japon Mutfağı</option>
+                    <option value="İtalyan Mutfağı" {{ request()->query('couisineType') == 'İtalyan Mutfağı' ? 'selected' : '' }}>İtalyan Mutfağı</option>
+                </select>
+            </div>
+
+            {{-- Menü --}}
+            <div class="mb-5">
+                <h2 class="baslik">Menü </h2>
+                <select name="menuType" class="form-select">
+                    <option value="all" {{ request()->query('menuType') == 'all' ? 'selected' : '' }}>Tümü</option>
+                    <option {{ request()->query('menuType') == 'Et Yemekleri' ? 'selected' : '' }}>Et Yemekleri</option>
+                    <option {{ request()->query('menuType') == 'Balık Yemekleri' ? 'selected' : '' }}>Balık Yemekleri
+                    </option>
+                    <option {{ request()->query('menuType') == 'Fast Food' ? 'selected' : '' }}>Fast Food</option>
+                    <option {{ request()->query('menuType') == 'Vegan Yemekleri' ? 'selected' : '' }}>Vegan Yemekleri
+                    </option>
+                    <option {{ request()->query('menuType') == 'Alkol Servisi' ? 'selected' : '' }}>Alkol Servisi</option>
+                </select>
+            </div>
+
+            <button id="filterButton" type="submit" class="btn">Filtrele</button>
+        </form>
+    </div>
+    <div class="container my-4">
+        <div class="row" id="restaurant-cards">
+            @if (count($restaurants) == 0) {{-- Eğer hiçbir restoran bulunamazsa ekrana 'Sonuç Bulunamadı' yazsın --}}
+                <div class="col-12 text-center">
+                    <p class="mt-5">Sonuç bulunamadı.</p>
+                </div>
+            @else
+                @foreach ($restaurants as $restaurant)
+                    <div class="col-md-3 mb-5">
+                        <div class="restaurant-card position-relative">
+                            <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
+                                <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
+                            </a>
+
+                            <!-- Favori ikonu -->
+                            @if ($restaurant['favorites'] == null)
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
+                                    data-id="{{ $restaurant['restaurantID'] }}"
+                                    class="bi bi-heart fav-icon position-absolute top-0 end-0 m-2" viewBox="0 0 16 16">
+                                    <path
+                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                </svg>
+                            @else
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red"
+                                    data-id="{{ $restaurant['restaurantID'] }}"
+                                    class="bi bi-heart fav-icon position-absolute top-0 end-0 m-2" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+                                </svg>
+                            @endif
+
+
+
+
+                            <div class="restaurant-card-body">
+                                <h5>{{ $restaurant['name'] }}</h5>
+                                <p>İki kişilik menüde %20 indirim!</p>
+                                <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
+                                <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            @endif
+
+        </div>
     </div>
 </div>

@@ -1,14 +1,14 @@
 
-// Add Restaurant
+// Add Restaurant AJAX
 document.addEventListener('DOMContentLoaded', function () {
     const addRestaurantForm = document.getElementById('addRestaurantForm');
 
-    addRestaurantForm.addEventListener('submit', function (event) {
+    addRestaurantForm.addEventListener('submit', async function (event) {
         event.preventDefault();
 
         const formData = new FormData(addRestaurantForm);
 
-        Swal.fire({ // İşlemi yaparken uyarılıyoruz
+        const { value: isConfirmed } = await Swal.fire({ // İşlemi yaparken uyarılıyoruz
             title: 'Emin misiniz?',
             text: "Yeni bir restoran eklenecek!",
             icon: 'warning',
@@ -17,32 +17,36 @@ document.addEventListener('DOMContentLoaded', function () {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Evet, Ekle!',
             cancelButtonText: 'Vazgeç'
-        }).then((result) => {
-            if (result.isConfirmed) {
+        });
+
+        if (isConfirmed) {
+            try {
                 // AJAX isteği
-                $.ajax({
+                const response = await $.ajax({
                     url: '/restaurants/create',
                     method: 'POST',
                     data: formData,
                     processData: false,
                     contentType: false,
-                    success: function (response) { // Backend işlemi başarılı ise sweetalert ile bilgilendiriliyoruz.
-                        Swal.fire({
-                            title: 'Başarılı',
-                            text: 'Yeni restoran başarıyla eklendi.',
-                            icon: 'success'
-                        })
-                    },
-                    error: function (xhr) {
-                        let errorMessage = 'Bir hata oluştu. Lütfen tekrar deneyin.';
-                        if (xhr.responseJSON && xhr.responseJSON.errors) {
-                            errorMessage = Object.values(xhr.responseJSON.errors).join('<br>');
-                        }
-                        Swal.fire('Hata', errorMessage, 'error');
-                    }
                 });
+
+                // Backend işlemi başarılı ise sweetalert ile bilgilendiriliyoruz.
+                await Swal.fire({
+                    title: 'Başarılı',
+                    text: 'Yeni restoran başarıyla eklendi.',
+                    icon: 'success'
+                });
+
+                location.reload(); // Sayfayı yenile
+            } catch (error) {
+                let errorMessage = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+                if (error.responseJSON && error.responseJSON.errors) {
+                    errorMessage = Object.values(error.responseJSON.errors).join('<br>');
+                }
+
+                await Swal.fire('Hata', errorMessage, 'error');
             }
-        });
+        }
     });
 });
 
@@ -101,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// Update Restaurant
+// Update Restaurant AJAX
 document.addEventListener('DOMContentLoaded', function () {
     const updateRestaurantForm = document.getElementById('updateRestaurantForm');
 

@@ -1,0 +1,84 @@
+$dark-mode-bg: #121212;
+$dark-mode-color: #e0e0e0;
+$dark-mode-link: #bb86fc;
+$dark-mode-button-bg: #333;
+$dark-mode-border: #444;
+
+body {
+    .hearth-icon {
+        fill: black; // Normal modda varsayılan siyah
+        transition: fill 0.3s ease;
+    }
+
+    .hearth-icon.favorited {
+        fill: red; // Favori durumunda her iki modda da kırmızı
+    }
+}
+
+body.dark-mode {
+
+
+    background-color: $dark-mode-bg;
+    color: $dark-mode-color;
+
+
+
+
+    .hearth-icon {
+        fill: white; // Dark mode'da varsayılan beyaz
+    }
+
+    .hearth-icon.favorited {
+        fill: red; // Favori durumunda her iki modda da kırmızı
+    }
+
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $dark-mode-color; // Başlık renkleri
+    }
+
+    a {
+        color: $dark-mode-link; // Link renkleri
+    }
+
+    button {
+        background-color: $dark-mode-button-bg;
+        color: $dark-mode-color;
+        border-color: $dark-mode-border;
+
+        &:hover {
+            background-color: #444; // Hover durumunda daha koyu arka plan
+        }
+    }
+
+    header,
+    footer {
+        background-color: #222; // Header ve footer arka planı
+        color: $dark-mode-color;
+    }
+
+    .card-body {
+        background-color: $dark-mode-bg;
+        border-radius: 5px;
+
+        -webkit-box-shadow: -5px 5px 37px 4px rgba(237, 79, 21, 0.71);
+        -moz-box-shadow: -5px 5px 37px 4px rgba(237, 79, 21, 0.71);
+        box-shadow: -5px 5px 37px 4px rgba(237, 79, 21, 0.71);
+
+        &:hover {
+            transform: scale(1.05);
+            transition: 0.4s;
+        }
+
+        &:not(:hover) {
+            transition: transform 0.5s ease;
+        }
+    }
+
+}

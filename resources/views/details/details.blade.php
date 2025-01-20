@@ -6,7 +6,7 @@
 
 @section('page_head_css')
 
-@vite('resources/css/details/_details.scss')
+    @vite('resources/css/details/_details.scss')
 
 @endsection
 
@@ -18,8 +18,6 @@
 
 @section('page_body_js')
 
-@vite('resources/js/details/_details.js')
+    @vite('resources/js/details/_details.js')
 
 @endsection
-
-

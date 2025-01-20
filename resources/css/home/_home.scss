@@ -10,50 +10,6 @@ body {
     font-family: $font-family;
 }
 
-.slider-wrapper {
-    margin: 0 70px;
-}
-
-.slider-container {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.carousel-inner {
-    img {
-        height: 200px;
-        object-fit: cover;
-        width: 100%;
-    }
-}
-
-.card {
-    transition: all 0.3s ease-in-out;
-    border-radius: 10px;
-    border: 1px solid #ece9e9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #fbfafa;
-
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        background-color: #f5f7fa;
-    }
-
-    p {
-        font-size: 0.9rem;
-        color: #555;
-        margin: 10px 0;
-        text-align: center;
-    }
-
-    img {
-        border-radius: 10px 10px 0 0;
-        object-fit: cover;
-    }
-}
 
 h2 {
     font-family: $font-family;
@@ -63,41 +19,195 @@ h2 {
     text-align: center;
 }
 
-// Popup
+#campaigns {
+    $primary-bg: #fbfafa;
+    $primary-color: black;
+    $accent-color: #ed4f15;
+    $btn-bg: #ed4f15;
+    $btn-hover-bg: #ed4f15;
+
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    /*Sizin için seçtiklerimiz slider kodları*/
+    .campaign-card {
+        background-color: $primary-bg;
+        color: $primary-color;
+        border-radius: 15px;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid $accent-color;
+        }
+
+        .campaign-title {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .discount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: $accent-color;
+        }
+
+        .campaign-text {
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .btn-campaign {
+            background-color: $btn-bg;
+            color: $primary-bg;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $btn-hover-bg;
+                color: $primary-color;
+            }
+        }
+    }
+}
+
+
+.card-body {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card-body:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.category_url:hover {
+
+    cursor: pointer;
+
+}
+
+.text-center {
+    font-size: 10rv;
+    margin-bottom: 10px;
+}
+
+.card-body-body p {
+    font-size: 16px;
+    color: #555;
+}
+
+.card-body-body .btn {
+    margin-top: 10px;
+}
+
+
+
+#hero {
+    color: #ed4f15;
+    font-family: fantasy;
+    font-weight: bold;
+}
+
+#hero img {
+    width: 100%;
+    height: 40rem;
+    object-fit: cover;
+    border-radius: 20px;
+
+}
+
+
+/* Kartlar arası boşluk ve hizalama */
+.best .card {
+    margin: 10px;
+    text-align: center;
+}
+
+/* Popup için ana stil */
 .popup {
-    display: none;
+    display: none; // Varsayılan olarak gizli
     position: fixed;
-    top: 20%;
-    right: 20%;
+    top: 50%;
+    right: 150px; // Pozisyon ayarı
+    transform: translateY(-50%);
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    z-index: 1;
     width: 300px;
-    max-width: 90%;
-    animation: fadeIn 0.8s ease-in-out;
+    max-width: 90%; // Genişlik sınırı
+    margin: 0; // Kenar boşluğu
+    transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease, width 0.3s ease, height 0.3s ease;
+
+    &:hover {
+        z-index: 10;
+        transform: translateY(-50%) scale(1.1); // Hover animasyonu
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        width: 330px;
+        height: auto;
+    }
+
 
     img {
         max-width: 100%;
         margin-top: 2rem;
     }
 
+    .popup-content {
+        padding: 20px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
     .close-btn {
         position: absolute;
         top: 10px;
         right: 10px;
-        font-size: 1.2rem;
         background: red;
         border: none;
+        font-size: 20px;
         cursor: pointer;
     }
 
-    .popup-content {
-        font-size: 1rem;
-        color: #333;
+    .uyeol-btn {
+        background-color: #ed4f15;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 15px;
+        cursor: pointer;
     }
+
+
 }
+
 
 @keyframes fadeIn {
     from {
@@ -108,5 +218,28 @@ h2 {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Responsive görüntü */
+@media (max-width: 768px) {
+    .best .card {
+        flex: 0 0 45%;
+    }
+
+    .popup {
+        width: 90%;
+        /* Mobilde genişlik */
+    }
+}
+
+@media (max-width: 576px) {
+    .best .card {
+        flex: 0 0 100%;
+    }
+
+    .popup {
+        width: 100%;
+        /* Daha küçük cihazlar için tam genişlik */
     }
 }

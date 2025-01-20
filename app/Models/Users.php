@@ -8,4 +8,6 @@ class Users extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'userID';
+
+    protected $gender = 'gender';
 }

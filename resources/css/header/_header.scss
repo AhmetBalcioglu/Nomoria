@@ -3,28 +3,41 @@ $secondary-color: #f0a500;
 $white-color: #ffffff;
 $text-color: #222831;
 $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+$light-bg: $white-color;
+$light-text: $text-color;
+$dark-bg: $text-color;
+$dark-text: $white-color;
 
 .header {
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
     background-color: $primary-color;
     color: $white-color;
     padding: 10px 15px;
 
     .logo {
-        max-width: 120px;
+        max-width: 150px;
+
+
     }
 
+    .woman {
+        justify-content: center;
+        display: flex;
+    }
+
+    /*Menü yazı özellikleri buradan ayarlanır*/
     .custom-link {
-        color: $white-color;
+        color: $text-color ;
         text-decoration: none;
         margin: 0 10px;
-        font-size: 14px;
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: bold;
 
         &:hover {
-            color: $secondary-color;
+            color: $primary-color;
         }
     }
 
@@ -49,13 +62,13 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
 
             &:hover {
                 background-color: $secondary-color;
-                color: $white-color;
+                color: $text-color;
             }
         }
     }
 
     .small-input {
-        font-size: 12px;
+        font-size: 20px;
     }
 }
 
@@ -73,23 +86,138 @@ $box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 
 
+/* Arama Çubuğu ve Menü Arası Boşluk */
+#searchForm {
+    margin-bottom: 5px;
+}
+
+/* Hamburger Menü İçeriği (Sola ve Altına Yerleştir) */
+#navbarToggleExternalContent {
+    position: absolute;
+    /* Menü arama çubuğunun altına sabitlenir */
+    top: 100%;
+    /* Çubuğun hemen altından başlar */
+    left: 21rem;
+    /* Sol tarafa hizalar */
+    width: 58%;
+    /* Tüm genişliği kaplar */
+    z-index: 1050;
+    /* Üstte görünür */
+
+    color: #ed4f15;
+    /* Açık arka plan rengi */
+    border: 1px solid #e40c0c;
+    /* Kenarlık ekler */
+}
+
+/* Menü öğeleri arasına boşluk ekler */
+.navbar-nav .nav-item {
+    margin-right: 15px;
+
+
+
+}
+
+/* Menü Elemanlarını Yatay Sıralama */
+.navbar-nav {
+    flex-wrap: nowrap;
+    /* Taşma olursa bile yan yana kalsın */
+}
+
+
+
 
 @media (max-width: 768px) {
     .header {
-        .custom-link {
-            font-size: 12px;
-        }
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
 
         .logo {
-            max-width: 100px;
+            max-width: 80px;
+            margin-bottom: 10px;
+        }
+
+        .custom-link {
+            font-size: 14px;
+            margin: 5px 0;
         }
 
         .custom-button {
-            font-size: 10px;
-        }
-
-        .small-input {
-            font-size: 10px;
+            font-size: 12px;
+            padding: 5px 8px;
         }
     }
+
+    #searchForm {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #navbarToggleExternalContent {
+        position: static;
+        width: 100%;
+        margin-top: 10px;
+
+        .navbar-nav {
+            flex-direction: column;
+            align-items: center;
+
+            .nav-item {
+                margin: 10px 0;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        text-align: center;
+
+        .dropdown-item {
+            padding: 10px;
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    .header {
+        .logo {
+            max-width: 120px;
+        }
+
+        .custom-link {
+            font-size: 16px;
+        }
+
+        .custom-button {
+            font-size: 14px;
+        }
+    }
+
+    #searchForm {
+        width: 80%;
+    }
+}
+
+// Dark Mode
+
+// Varsayılan Light Mode
+body {
+    background-color: $light-bg;
+    color: $light-text;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    //&.dark-mode {
+    //    background-color: $dark-bg;
+    //    color: $dark-text;
+    //}
+}
+
+/* Buton Stili */
+#themeToggle {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: inherit;
 }

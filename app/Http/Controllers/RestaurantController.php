@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cities;
+use App\Models\Districts;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\RestaurantCreateRequest;
 use App\Http\Requests\RestaurantUpdateRequest;
 use App\Http\Requests\RestaurantStoreRequest;
+use App\Models\Favorites;
+use App\Models\Menu;
 use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Mail\RestaurantCreatedMail;
 
 
 class RestaurantController extends Controller
@@ -44,7 +50,7 @@ class RestaurantController extends Controller
 
     public function createPage()
     {
-        return view('restaurants.restaurant');
+        return redirect()->route('home');
     }
 
     public function create(RestaurantCreateRequest $request)
@@ -69,17 +75,29 @@ class RestaurantController extends Controller
         $restaurant->capacity = $request->capacity;
         $restaurant->cuisine_type = $request->cuisineType;
         $restaurant->view_type = $request->viewType;
-        $restaurant->concept = $request->concept;
+        $restaurant->categoryID = $request->categoryID;
         $restaurant->citiesID = $request->city;
         $restaurant->districtsID = $request->district;
         $restaurant->created_at = Carbon::now();
         $restaurant->updated_at = null;
 
-        $restaurant->save();
+        try {
+            $restaurant->save();
 
-        // Form-data yanıt
-        return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
+            $userRole = session('role');
+            $userEmail = session('email');
+
+            if ($userRole && $userRole === 'restaurantOwner') {
+                Mail::to($userEmail)->send(new RestaurantCreatedMail($restaurant));
+            }
+
+
+            return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 422);
+        }
     }
+
 
     public function update(RestaurantUpdateRequest $request, $name)
     {
@@ -98,10 +116,10 @@ class RestaurantController extends Controller
 
             // Yeni resmi kaydet
             $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->move(public_path('images'), $imageName);
-            $restaurant->image = '/images/' . $imageName;
+            $request->file('image')->move(public_path('images/restaurantImages/'), $imageName);
+            $restaurant->image = '/images/restaurantImages/' . $imageName;
         }
-
+        $validated = $request->validated();
         // Restoranı güncelle
         $restaurant->update([
             'name' => $validated['newName'],
@@ -110,6 +128,7 @@ class RestaurantController extends Controller
             'phone' => $validated['phone'],
             'email' => $validated['email'],
             'capacity' => $validated['capacity'],
+
         ]);
 
         return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
@@ -118,7 +137,6 @@ class RestaurantController extends Controller
 
     public function delete(Request $request, $name)
     {
-        // CSRF kontrolü burada yapılır
         $restaurant = Restaurant::where('name', $name)->first();
 
         // Eğer restoran bulunmazsa, hata mesajı döndür
@@ -137,6 +155,8 @@ class RestaurantController extends Controller
     public function search(Request $request) //Arama fonksiyonu
     {
         $query = $request->input('searchBar'); //Arama kutusundan gelen veri
+        $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
+        $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
 
         if (empty($query)) {
             return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.');
@@ -151,14 +171,118 @@ class RestaurantController extends Controller
             return redirect()->back()->with('error', 'Arama Sonucu Bulunamadı.');
         }
 
-        return view('details.details', compact('restaurants', 'query')); //Arama sonucunu döndür
+        return view('details.details', compact(
+            'restaurants',
+            'query',
+            'cities',
+            'districts'
+        )); //Arama sonucunu döndür
     }
 
-    // Restoran ekleme sayfasını göster
-    public function store(RestaurantStoreRequest $request) ////store fonksiyonu veritabanına veri eklemek için kullanılır
+    public function filter(Request $request)
     {
-        Restaurant::create($validated); //Restaurant modeline verileri ekle
-        return redirect()->back()->with('success', 'Restoran başarıyla eklendi.');
+        $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
+        $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
+        $districtID = $request->input('district') ?? 'all'; // İlçenin id'si
+        $viewType = $request->input('viewType') ?? 'all'; // Manzara türü
+        $category = $request->input('category') ?? 'all'; // Konsept türü
+        $couisineType = $request->input('couisineType') ?? 'all'; // Mutfak türü
+        $menuType = $request->input('menuType') ?? 'all'; // Menü türü
+
+        $restaurants = [];
+
+        //--------------- Filtreleme işlemleri ----------------------
+        if ($districtID !== 'all') {
+            $restaurants += Restaurant::where('districtsID', '=', $districtID)
+                ->get()->toArray();
+        }
+
+        if ($viewType !== 'all') {
+            $restaurants += Restaurant::where('view_type', '=', $viewType)
+                ->get()->toArray();
+        }
+
+        if ($category !== 'all') {
+            $restaurants += Restaurant::where('categoryID', '=', $category)
+                ->get()->toArray();
+        }
+
+        if ($couisineType !== 'all') {
+            $restaurants += Restaurant::where('cuisine_type', '=', $couisineType)
+                ->get()->toArray();
+        }
+
+        $restaurants = array_values(array_unique($restaurants, SORT_REGULAR));
+
+        $query = Restaurant::query();
+
+        if ($districtID !== 'all') {
+            $query->where('districtsID', $districtID);
+        }
+
+        if ($viewType !== 'all') {
+            $query->where('view_type', $viewType);
+        }
+
+        if ($category !== 'all') {
+            $query->where('categoryID', $category);
+        }
+
+        if ($couisineType !== 'all') {
+            $query->where('cuisine_type', $couisineType);
+        }
+
+        $query->where('deleted_at', null);
+
+        $restaurants = $query->with([
+            'cities',
+            'districts',
+            'favorites',
+            'category' => function ($query) {
+                $query->select('categoryID', 'categoryName');
+            }
+        ])->get()->toArray();
+
+        //------------------------------------------------------------
+
+
+
+        //-----Bir restoranın birden fazla menüsü olabilir onları birleştirme işlemi------
+        $menus = Menu::all()->toArray();
+        $groupedMenus = [];
+
+        foreach ($menus as $menu) {
+            $restaurantID = $menu['restaurantID'];
+            if (!isset($groupedMenus[$restaurantID])) {
+                $groupedMenus[$restaurantID] = [];
+            }
+            $groupedMenus[$restaurantID][] = $menu;
+        }
+
+        foreach ($restaurants as &$restaurant) {
+            $restaurantID = $restaurant['restaurantID'];
+            if (isset($groupedMenus[$restaurantID])) {
+                $restaurant['menus'] = $groupedMenus[$restaurantID];
+            } else {
+                $restaurant['menus'] = [];
+            }
+        }
+        unset($restaurant);
+        if ($menuType !== 'all') {
+            $restaurants = array_filter($restaurants, function ($restaurant) use ($menuType) {
+                $restaurant['menus'] = array_filter($restaurant['menus'], function ($menu) use ($menuType) {
+                    return $menu['menuName'] === $menuType;
+                });
+                return !empty($restaurant['menus']);
+            });
+        }
+        //--------------------------------------------------------------------------------
+
+        return view('details.details', compact(
+            'restaurants',
+            'cities',
+            'districts',
+        ));
     }
 
     /**
@@ -175,4 +299,11 @@ class RestaurantController extends Controller
             return redirect()->route('home')->with('error', 'Restoran Bulunamadı'); // Restoran bulunamadı hatası göster
         }
     }
+
+    public function show($restaurantID)
+    {
+        $restaurant = Restaurant::findOrFail($restaurantID);
+        return view('details.show_details', compact('restaurant'));
+    }
 }
+
