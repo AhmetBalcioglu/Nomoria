@@ -13,7 +13,11 @@
 </head>
 
 <body>
+    
     <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
+    <script src="//code.jivosite.com/widget/IRUzibtaUY" async></script>
+
+
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
