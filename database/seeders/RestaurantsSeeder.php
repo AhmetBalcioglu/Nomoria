@@ -419,7 +419,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
-                'name' => 'Doğa Kır Lokantası Arnavutköy',
+                'name' => 'Doğa Kır Lokantası ',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
                 'phone' => '03333333333',
@@ -435,7 +435,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
-                'name' => 'Coni&Co Restoran Arnavutköy',
+                'name' => 'Coni&Co Restoran ',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
                 'phone' => '03333333333',
@@ -579,7 +579,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
-                'name' => 'Çeşme Alaçatı Balıkçısı Ataşehir',
+                'name' => 'Çeşme Alaçatı Balıkçısı ',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
                 'phone' => '03333333333',
@@ -734,7 +734,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/özel_gun.jpg',
+                'image' => '/img/seederImages/ozel_gun.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -750,7 +750,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/özel_gun.jpg',
+                'image' => '/img/seederImages/ozel_gun.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1038,7 +1038,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/özel_gun.jpg',
+                'image' => '/img/seederImages/ozel_gun.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1107,7 +1107,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
-                'name' => 'Zeyn-Et-Steakhouse & Kebap',
+                'name' => 'Zeyn Steakhouse & Kebap',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beylikdüzü',
                 'phone' => '03292111191',
