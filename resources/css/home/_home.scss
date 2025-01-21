@@ -148,29 +148,32 @@ h2 {
     text-align: center;
 }
 
+
 /* Popup için ana stil */
 .popup {
     display: none; // Varsayılan olarak gizli
     position: fixed;
     top: 50%;
-    right: 150px; // Pozisyon ayarı
+    right: 20rem; // Pozisyon ayarı
     transform: translateY(-50%);
     background-color: #fff;
     border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    box-shadow: 10 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    width: 300px;
+    width: 80rem;
     max-width: 90%; // Genişlik sınırı
     margin: 0; // Kenar boşluğu
     transition: transform 0.3s ease, z-index 0.3s ease, box-shadow 0.3s ease, width 0.3s ease, height 0.3s ease;
 
+
     &:hover {
         z-index: 10;
         transform: translateY(-50%) scale(1.1); // Hover animasyonu
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-        width: 300px;
+        box-shadow: 10px 15px 15px rgba(192, 14, 14, 0.86);
+        width: 80rem;
         height: auto;
+
     }
 
 
@@ -178,6 +181,9 @@ h2 {
         max-width: 100%;
         margin-top: 2rem;
         border-color: #ed4f15;
+
+
+
     }
 
     .popup-content {
@@ -185,6 +191,7 @@ h2 {
         background: rgb(24, 24, 24);
         border: 1px solid #110e0e;
         border-radius: 5px;
+
     }
 
     .close-btn {
@@ -222,6 +229,9 @@ h2 {
         transform: translateY(0);
     }
 }
+
+
+
 
 /* Responsive görüntü */
 @media (max-width: 768px) {

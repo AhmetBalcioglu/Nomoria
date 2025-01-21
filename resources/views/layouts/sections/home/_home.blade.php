@@ -110,14 +110,13 @@
 
 </div>
 
-
 @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
+    <div id="blur-bg" class="blur-bg"></div>
     <div id="popup" class="popup">
         <button class="close-btn">×</button>
         <div class="popup-content">
-            <img src="{{ asset('img/popup2.png') }}" alt="" >
-
-            <button onclick="window.location.href = '/register' " class="uyeol-btn">ÜYE OL</button>
+            <img src="{{ asset('img/popup.png') }}" alt="Popup Görseli">
+            <button onclick="window.location.href = '/register'" class="uyeol-btn">ÜYE OL</button>
         </div>
     </div>
 @endif
