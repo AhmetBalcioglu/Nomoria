@@ -59,5 +59,20 @@ class UserSeeder extends Seeder
             ],
 
         );
+        Users::create(
+            [
+                'guid' => '04827042-208a-456c-a09b-a68f6b8e99a9',
+                'role' => 'restaurantOwner',
+                'name' => 'Bektaş',
+                'surname' => 'ERGİN',
+                'gender' => 'Erkek',
+                'email' => 'erginbeko34@gmail.com',
+                'password' => '$2y$12$ZbWRd1EviDDPrSum.XmNh.Ej7rXJKR7bzcJN6BYVjkjzUpzQLhd4G',
+                'created_at' => Carbon::now(),
+                'updated_at' => null,
+                'deleted_at' => null
+            ],
+
+        );
     }
 }

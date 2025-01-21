@@ -65,6 +65,10 @@ class Restaurant extends Model
         return self::all();
     }
 
+    public function users(){
+        return $this->belongsTo(Users::class, 'userID', 'userID');
+    }
+
     // Şehir ilişkisi
     public function cities()
     {
