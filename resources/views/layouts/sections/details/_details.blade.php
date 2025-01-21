@@ -88,7 +88,8 @@
                                 <div class="restaurant-card-body">
                                     <h5>{{ $restaurant['name'] }}</h5>
                                     <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
-                                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                                    <a href="{{ route('makeReservation', ['restaurantID' => $restaurant['restaurantID']]) }}"
+                                        class="btn btn-danger">Hemen Rezervasyon Yap</a>
                                 </div>
 
                                 @if ($restaurant['favorites'] == null)

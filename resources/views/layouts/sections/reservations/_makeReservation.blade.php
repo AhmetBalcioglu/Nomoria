@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-bottom: 15rem">
     <div class="row">
         <!-- Sağ Kısım -->
         <!-- <div class="restoranBilgi col-md-4">
