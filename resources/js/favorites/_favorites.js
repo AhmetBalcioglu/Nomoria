@@ -56,7 +56,7 @@ $(document).ready(function () {
 
         // AJAX isteği
         $.ajax({
-            url: 'favorites/toggle/' + categoryID, // Favori ekleme/çıkarma URL'si
+            url: '/favorites/toggle/' + categoryID, // Favori ekleme/çıkarma URL'si
             method: 'GET',
             data: {
                 _token: '{{ csrf_token() }}', // CSRF token
@@ -64,7 +64,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     if (response.added) {
-                        icon.addClass('favorited'); // Favori sınıfını ekle
+                        icon.addClass('favorited').attr('fill', 'red'); // Favori sınıfını ekle ve rengi değiştir
                         Swal.fire({
                             title: 'Favorilere Eklendi!',
                             text: 'Kategori favorilerinize eklendi.',
@@ -74,7 +74,7 @@ $(document).ready(function () {
                             location.reload();
                         });
                     } else {
-                        icon.removeClass('favorited'); // Favori sınıfını kaldır
+                        icon.removeClass('favorited').attr('fill', 'white'); // Favori sınıfını kaldır ve rengi değiştir
                         Swal.fire({
                             title: 'Favorilerden Çıkarıldı!',
                             text: 'Kategori favorilerinizden çıkarıldı.',
@@ -98,4 +98,53 @@ $(document).ready(function () {
             }
         });
     });
+});
+
+$('.category_url img').on('click', function (event) {
+    event.stopPropagation(); // Tıklama olayının diğer üst elementlere bulaşmasını engeller
+
+    let categoryArray = {
+        "İş Yemekleri": 3,
+        "Kutlamalar": 2,
+        "Tek Kişilik": 4,
+        "Özel Günler": 1
+    };
+
+    let cuisineArray = [
+        "Türk Mutfağı",
+        "Kore Mutfağı",
+        "Meksika Mutfağı",
+        "Japon Mutfağı",
+        "İtalyan Mutfağı"
+    ];
+
+    let menuArray = [
+        "Et Yemekleri",
+        "Balık Yemekleri",
+        "Fast Food",
+        "Vegan Yemekleri",
+        "Alkol Servisi"
+    ];
+
+    // Resmin bulunduğu öğenin data-url değerini alıyoruz
+    let data = $(this).closest('.category_url').data('url');
+    let district = "all";
+    let viewType = "all";
+
+    // categoryArray ile eşleşen kategori ID'sini alıyoruz
+    let category = categoryArray[data] ?? 'all';
+
+    // cuisineArray ve menuArray içinde veri kontrolü yapıyoruz
+    let couisineType = cuisineArray.includes(data) ? data : 'all';
+    let menuType = menuArray.includes(data) ? data : 'all';
+
+    // Boşlukları "+" ile değiştiriyoruz
+    couisineType = couisineType.replaceAll(" ", "+");
+    menuType = menuType.replaceAll(" ", "+");
+
+    // URL oluşturuluyor
+    let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
+    console.log("Redirecting to URL:", url); // URL'yi konsola yazdırıyoruz
+
+    window.location.href = url; // Yönlendirme işlemi
 });
