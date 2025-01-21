@@ -1241,6 +1241,21 @@ class RestaurantsSeeder extends Seeder
                 'image' => '/img/seederImages/kutlama.jpg',
                 'created_at' => Carbon::now()
             ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         ]);
     }
 }
