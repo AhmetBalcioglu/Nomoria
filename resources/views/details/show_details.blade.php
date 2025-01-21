@@ -6,7 +6,7 @@
 
 @section('page_head_css')
 
-    @vite('resources/css/details/_show_details.scss')
+    <!-- @vite('resources/css/details/_show_details.scss') -->
 
 @endsection
 
