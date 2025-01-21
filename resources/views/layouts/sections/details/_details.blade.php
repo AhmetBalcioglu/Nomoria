@@ -71,7 +71,7 @@
         </form>
     </div>
 
-    <div class="detail-container">
+    <div class="detail-container container">
         <div class="container my-4 d-flex justify-content-center">
             <div class="row" id="restaurant-cards">
                 @if (count($restaurants) == 0)
