@@ -1,149 +1,160 @@
 // Genel Stil
 body {
-    background: url('/public/img/makeReservation/r3.jpg') no-repeat center center fixed;
-    background-size: cover;
-  }
+  background: url('/public/img/makeReservation/r3.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
 .container {
-    .row {
-      display: flex;
-      
-      // Sağ Kısım (Restoran Bilgi Bölümü)
-      .restoranBilgi {
-        position: relative; 
-        margin-top: -27px;
-        
-        .border {
-          padding: 1rem;
-          border-radius: 0.5rem;
-          margin: 2rem;
-          backdrop-filter: blur(10px); // Blurlu arka plan
-        }
-  
-        .restoranAdi {
-          font-size: 1.5rem;
-          font-weight: bold;
-          color: black;
-        }
-  
-        p {
-          font-size: 1rem;
-          color: #666;
-        }
-        
-    
+  margin-bottom: 15rem;
+
+  .row {
+    display: flex;
+
+    // Sağ Kısım (Restoran Bilgi Bölümü)
+    .restoranBilgi {
+      position: relative;
+      margin-top: -27px;
+
+      .border {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 2rem;
+        backdrop-filter: blur(10px); // Blurlu arka plan
       }
-  
-      // Sol Kısım (Form)
-      .form {
-        .rezervasyonForm {
-          padding: 1rem;
-          border-radius: 0.5rem;
-          margin: 2rem;
-          background: rgba(255, 255, 255, 0.8); // Şeffaf arka plan
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
-          .formBaslik {
-            font-size: 2rem;
-            font-weight: bold;
+
+      .restoranAdi {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: black;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #666;
+      }
+
+
+    }
+
+    // Sol Kısım (Form)
+    .form {
+      .rezervasyonForm {
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 2rem;
+        background: rgba(255, 255, 255, 0.8); // Şeffaf arka plan
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        .formBaslik {
+          font-size: 2rem;
+          font-weight: bold;
+          margin-bottom: 1.5rem;
+          text-align: center;
+        }
+
+        form {
+
+          // Üst Kısım: IMG ve Form Elemanları
+          .formUst {
+            display: flex;
+            align-items: flex-start;
             margin-bottom: 1.5rem;
-            text-align:  center;
-          }
-  
-          form {
-            // Üst Kısım: IMG ve Form Elemanları
-            .formUst {
-              display: flex;
-              align-items: flex-start;
-              margin-bottom: 1.5rem;
-  
-              .img {
-                margin-right: 1rem;
-  
-                .border {
-                  width: 120px;
-                  height: 150px;
+
+            .img {
+              margin-right: 1rem;
+
+              .border {
+                width: 120px;
+                height: 150px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0.5rem;
+              }
+            }
+
+            .formEleman {
+              flex-grow: 1;
+
+              .input-group {
+                margin-bottom: 1rem;
+
+                .input-group-text {
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  border-radius: 0.5rem;
-                }
-              }
-  
-              .formEleman {
-                flex-grow: 1;
-  
-                .input-group {
-                  margin-bottom: 1rem;
-  
-                  .input-group-text {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    svg {
-                      width: 16px;
-                      height: 16px;
-                    }
-                  }
 
-  
-                  input {
-                    flex: 1;
-                    padding: 0.5rem;
+                  svg {
+                    width: 16px;
+                    height: 16px;
                   }
+                }
+
+
+                input {
+                  flex: 1;
+                  padding: 0.5rem;
                 }
               }
             }
-  
-            // Alt Kısım: Diğer Form Elemanları
-            .formLabel {
-              font-weight: bold;
-              display: block;
-              margin-bottom: 0.5rem;
-            }
-  
-            input[type="date"],
-            input[type="time"] {
-              width: 95%;
-              padding: 0.5rem;
-              margin-bottom: 1rem;
-            }
-  
-            .form-check {
-              margin-bottom: 1rem;
-              display: flex;
-              align-items: center;
-  
-              input[type="checkbox"] {
-                margin-right: 0.5rem;
-                accent-color: #ff6f00;
-              }
-            }
+          }
 
-            .text{
-                border-radius: 7px;
-            }
-  
-            button {
-              background-color: #ed4f15;
-              color: #fff;
-              padding: 0.75rem 1.5rem;
-              border: none;
-              border-radius: 0.5rem;
-              font-size: 1rem;
-  
-              &:hover {
-                background-color: #666
-              }
-            }
+          // Alt Kısım: Diğer Form Elemanları
+          .formLabel {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+          }
 
-            
-            input:focus, textarea:focus, select:focus, button:focus {
-                outline: none; /* Varsayılan mavi çerçeveyi kaldırır */
-                border: 2px solid #ed4f15; /*sınır rengi */
-                box-shadow: 0 0 8px #f0a500; /* gölge rengi */
+          input[type="date"],
+          input[type="time"] {
+            width: 95%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+          }
+
+          .form-check {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+
+            input[type="checkbox"] {
+              margin-right: 0.5rem;
+              accent-color: #ff6f00;
             }
+          }
+
+          .text {
+            border-radius: 7px;
+          }
+
+          button {
+            background-color: #ed4f15;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+
+            &:hover {
+              background-color: #666
+            }
+          }
+
+
+          input:focus,
+          textarea:focus,
+          select:focus,
+          button:focus {
+            outline: none;
+            /* Varsayılan mavi çerçeveyi kaldırır */
+            border: 2px solid #ed4f15;
+            /*sınır rengi */
+            box-shadow: 0 0 8px #f0a500;
+            /* gölge rengi */
           }
         }
       }
     }
   }
+}
