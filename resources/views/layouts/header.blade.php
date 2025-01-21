@@ -51,6 +51,7 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">Yardım ve Destek</a>
                 </li>
+                {{-- Kullanıcı rolüne göre gösterilecek panel kısıtlaması --}}
                 @if (
                         session()->has('name') &&
                         session()->has('surname') &&
@@ -131,6 +132,7 @@
                     <li><a class="dropdown-item" href="{{ route('RestaurantManager') }}">Restoranlarım</a></li>
                     <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
                     <li><a class="dropdown-item" href="{{ route('reservations') }}">Geçmiş Rezervasyonlarım</a></li>
+                    <li><a class="dropdown-item" href="/historyRezervations">Geçmiş Rezervasyonlarım</a></li>
                     <li> <a href="{{ route('logout') }}" class="btn btn-danger custom-button me-2 information">Çıkış
                             Yap</a></li>
                 </ul>

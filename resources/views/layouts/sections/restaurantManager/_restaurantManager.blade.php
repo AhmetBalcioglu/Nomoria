@@ -1,111 +1,69 @@
-<style>
-    /* Sayfanın tamamında yatay kaydırmayı gizler */
-    body {
-        overflow-x: hidden;
-    }
-
-    /* Row yapısındaki taşmayı engeller */
-    .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        /* Kolonlar arasındaki boşluğu ayarlar */
-    }
-
-    /* Kolonların ekran boyutuna uygun şekilde sıralanmasını sağlar */
-    .col {
-        flex: 1 1 calc(25% - 16px);
-        /* 4 kolon yerleştirmek için */
-        box-sizing: border-box;
-        /* İçeriklerin kolon sınırına sığmasını sağlar */
-    }
-
-    /* Restaurant kartlarının boyutlarını aynı yapar */
-    .restaurant-card {
-        max-width: 100%;
-        /* Kartın genişliği ekranı aşmaz */
-        height: 350px;
-        /* Kartların sabit yüksekliği */
-        box-sizing: border-box;
-        /* Kartların içeriği düzgün şekilde sığar */
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        /* Kartın içeriği dikey hizalanacak */
-    }
-
-    /* Görsellerin taşmasını engeller ve uyumlu hale getirir */
-    .restaurant-card img {
-        width: 100%;
-        height: 200px;
-        /* Görselin yüksekliği sabitlenir */
-        object-fit: cover;
-        /* Görselin boyutları kartla uyumlu hale gelir */
-        border-radius: 8px;
-        /* Köşeleri yuvarlar */
-    }
-
-    /* Restoran adı ve açıklamanın düzgün görünmesini sağlar */
-    .restaurant-card-body {
-        flex-grow: 1;
-        /* İçeriğin kart içinde genişlemesini sağlar */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        /* İçeriği yukarı ve aşağıya yerleştirir */
-    }
-
-    /* Kolonlar arasında boşluk bırakır */
-    .g-4 {
-        gap: 1rem;
-    }
-
-    /* Görsel ve buton arası boşluk */
-    .restaurant-card-body h5 {
-        margin: 0;
-    }
-
-    .restaurant-card-body p {
-        margin: 0;
-        font-size: 14px;
-    }
-
-    .restaurant-card-body .btn {
-        margin-top: auto;
-        /* Butonu alt kısma yerleştirir */
-    }
-
-    .container {
-        margin-top: 50px
-    }
-</style>
-
-<div class="container">
-    <h1 class="mb-3">Restoranlarım</h1>
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-        @foreach ($restaurants as $restaurant)
-            <div class="col">
-                <div class="restaurant-card position-relative">
-                    <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
-                        <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
-                    </a>
-                    <div class="restaurant-card-body">
-                        <h5>{{ $restaurant['name'] }}</h5>
-                        <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
-                        <button class="btn btn-warning updateRestaurantBtn" data-bs-toggle="modal"
-                            data-bs-target="#updateRestaurant" data-restaurantid="{{ $restaurant['restaurantID'] }}"
-                            data-restaurantname="{{ $restaurant['name'] }}"
-                            data-restaurantdescription="{{ $restaurant['description'] }}"
-                            data-restaurantaddress="{{ $restaurant['address'] }}"
-                            data-restaurantphone="{{ $restaurant['phone'] }}"
-                            data-restaurantemail="{{ $restaurant['email'] }}"
-                            data-restaurantcapacity="{{ $restaurant['capacity'] }}">Restoran Güncelle</button>
+@if (session('role') === 'restaurantOwner')
+    <div class="container">
+        <h1 class="mb-3">Restoranlarım</h1>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            @foreach ($restaurants as $restaurant)
+                <div class="col">
+                    <div class="restaurant-card position-relative">
+                        <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
+                            <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
+                        </a>
+                        <div class="restaurant-card-body">
+                            <h5>{{ $restaurant['name'] }}</h5>
+                            <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
+                            <button class="btn btn-warning updateRestaurantBtn" data-bs-toggle="modal"
+                                data-bs-target="#updateRestaurant" data-restaurantid="{{ $restaurant['restaurantID'] }}"
+                                data-restaurantname="{{ $restaurant['name'] }}"
+                                data-restaurantdescription="{{ $restaurant['description'] }}"
+                                data-restaurantaddress="{{ $restaurant['address'] }}"
+                                data-restaurantphone="{{ $restaurant['phone'] }}"
+                                data-restaurantemail="{{ $restaurant['email'] }}"
+                                data-restaurantcapacity="{{ $restaurant['capacity'] }}">Restoran Güncelle</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
     </div>
-</div>
+@endif
+
+@if (session('role') === 'admin')
+    <div class="detail-container container">
+        <div class="container my-4 d-flex justify-content-center">
+            <div class="row" id="restaurant-cards">
+                @if (count($restaurants) == 0)
+                    <div class="col-12 text-center">
+                        <p class="mt-5">Sonuç bulunamadı.</p>
+                    </div>
+                @else
+                <h1 class="mt-5 mb-5">Tüm Restoranlar</h1>
+                    @foreach ($restaurants as $restaurant)
+                        <div class="col-md-3 mb-5">
+                            <div class="restaurant-card position-relative">
+                                <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
+                                    <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
+                                </a>
+                                <div class="restaurant-card-body">
+                                    <h5>{{ $restaurant['name'] }}</h5>
+                                    <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
+                                    <button class="btn btn-warning updateRestaurantBtn" data-bs-toggle="modal"
+                                        data-bs-target="#updateRestaurant" data-restaurantid="{{ $restaurant['restaurantID'] }}"
+                                        data-restaurantname="{{ $restaurant['name'] }}"
+                                        data-restaurantdescription="{{ $restaurant['description'] }}"
+                                        data-restaurantaddress="{{ $restaurant['address'] }}"
+                                        data-restaurantphone="{{ $restaurant['phone'] }}"
+                                        data-restaurantemail="{{ $restaurant['email'] }}"
+                                        data-restaurantcapacity="{{ $restaurant['capacity'] }}">Restoran Güncelle</button>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </div>
+@endif
+
 
 <!-- Güncelleme Modal'ı -->
 <div class="modal fade" id="updateRestaurant" tabindex="-1" aria-labelledby="updateRestaurantLabel" aria-hidden="true">
@@ -169,42 +127,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        // Güncelle butonuna tıklandığında modal'a verileri doldur
-        $('.updateRestaurantBtn').on('click', function () {
-            $('#restaurantID').val($(this).data('restaurantid'));
-            $('#newName').val($(this).data('restaurantname'));
-            $('#description').val($(this).data('restaurantdescription'));
-            $('#address').val($(this).data('restaurantaddress'));
-            $('#phone').val($(this).data('restaurantphone'));
-            $('#email').val($(this).data('restaurantemail'));
-            $('#capacity').val($(this).data('restaurantcapacity'));
-        });
-
-        // Formu gönderme işlemi
-        $('#updateRestaurantForm').on('submit', function (e) {
-            e.preventDefault();
-            let formData = new FormData(this);
-            let restaurantID = $('#restaurantID').val();
-
-            $.ajax({
-                url: '/RestaurantManager/update/' + restaurantID,
-                method: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    Swal.fire('Başarılı', 'Restoran başarıyla güncellendi.', 'success').then(() => {
-                        $('#updateRestaurant').modal('hide');
-                        location.reload();
-                    });
-                },
-                error: function () {
-                    Swal.fire('Hata', 'Güncelleme sırasında hata oluştu.', 'error');
-                }
-            });
-        });
-    });
-</script>
