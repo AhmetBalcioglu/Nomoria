@@ -1,8 +1,4 @@
-$('.resBtn').on('click', function () {
-    var element = document.getElementById('date1');
-    if (element.style.display === "none") {
-        element.style.display = "block";
-    } else {
-        element.style.display = "none";
-    }
+$('.restaurantDiv').on('click', function () {
+    var id = $(this).data('id');
+    window.location.href = '/restaurants/' + id;
 });

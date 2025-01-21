@@ -17,7 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id('reservationID'); // Rezervasyon ID
             $table->unsignedBigInteger('restaurantID'); // Restoran ID (foreign key)
             $table->unsignedBigInteger('userID'); // Kullanıcı ID (foreign key)
-            $table->dateTime('reservation_time'); // Rezervasyon tarihi ve saati
+            $table->date('reservation_time'); // Rezervasyon tarihi ve saati
             $table->integer('guest_count'); // Misafir sayısı
             $table->string('status')->default('pending'); // Rezervasyon durumu (pending, confirmed, canceled vb.)
             $table->timestamps();
