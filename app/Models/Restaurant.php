@@ -97,7 +97,7 @@ class Restaurant extends Model
     }
 
     /**
-    
+
      * Her kaydetme işlemi sırasında `capacity` alanını kontrol eder.
      */
     public static function boot()
@@ -121,5 +121,10 @@ class Restaurant extends Model
         }
 
         $this->attributes['capacity'] = $value;
+    }
+
+    public function views()
+    {
+        return $this->hasMany(ViewedRestaurant::class, 'restaurantID', 'restaurantID');
     }
 }

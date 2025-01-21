@@ -22,10 +22,12 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\RestaurantManagerController;
 use App\Http\Middleware\AdminOrRestaurant;
 use App\Http\Middleware\RestaurantOwner;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/dashboard', function () {
-    return view('layouts.dashboard');
-});
+
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/my-restaurants', [DashboardController::class, 'OwnerRestaurants'])->name('my-restaurants');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
