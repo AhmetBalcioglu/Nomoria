@@ -376,11 +376,7 @@ class RestaurantController extends Controller
 
 
 
-    public function show($restaurantID)
-    {
-        $restaurant = Restaurant::findOrFail($restaurantID);
-        return view('details.show_details', compact('restaurant'));
-    }
+   
 
 
 
