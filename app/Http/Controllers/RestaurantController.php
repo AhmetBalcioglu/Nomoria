@@ -390,4 +390,10 @@ class RestaurantController extends Controller
 
         return view('restaurantManager.restaurantManager', compact('restaurants'));
     }
+
+    public function getAdminRestaurants()
+    {
+        $restaurants = Restaurant::all();
+        return view('restaurantManager.restaurantManager', compact('restaurants'));
+    }
 }

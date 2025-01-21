@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('restaurant', function (Blueprint $table) {
             $table->id('restaurantID');
             $table->string('guid');
-            $table->unsignedBigInteger('userID')->nullable();
+            $table->unsignedBigInteger('userID');
             $table->foreign('userID')->references('userID')->on('users')->onDelete('cascade');
             $table->string('image');
             $table->string('name');

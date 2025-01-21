@@ -6,7 +6,7 @@
 
 @section('page_head_css')
 
-    {{-- @vite('resources/css/discount/_discount.scss')  --}}
+ @vite('resources/css/restaurantManager/_restaurantManager.scss')  
 
 @endsection
 
@@ -18,6 +18,6 @@
 
 @section('page_body_js')
 
-{{-- @vite('resources/js/favorites/_favorites.js') --}}
+ @vite('resources/js/restaurantManager/_restaurantManager.js') 
 
 @endsection

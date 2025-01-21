@@ -122,7 +122,7 @@
     </div>
     <nav>
         <a href="#">Ana Sayfa</a>
-        <a href="{{route("my-restaurants")}}">Restoranlar</a>
+        <a href="/RestaurantManager">Restoranlar</a>
         <a href="#">Analizler</a>
         <a href="#">Ayarlar</a>
         <a href="{{route("home")}}">Çıkış</a>
