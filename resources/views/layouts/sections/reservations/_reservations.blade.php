@@ -1,5 +1,5 @@
-<h2>Geçmiş rezervasyonlarım</h2>
 <div class="container my-4">
+    <h2>Geçmiş rezervasyonlarım</h2>
     <div class="row">
 
         @foreach ($reservations as $reservation)

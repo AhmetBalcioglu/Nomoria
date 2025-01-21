@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;

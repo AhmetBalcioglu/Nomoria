@@ -98,7 +98,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-3">
-                            <label for="viewType" class="form-label">Manzara Türü</label>
+                            <label for="viewType" class="form-label"><b>*</b>Manzara Türü</label>
                         </div>
                         <div class="col-md-9">
                             <select id="viewType" class="form-select" name="viewType">
@@ -112,7 +112,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-3">
-                            <label for="cuisineType" class="form-label">Mutfak Türü</label>
+                            <label for="cuisineType" class="form-label"><b>*</b>Mutfak Türü</label>
                         </div>
                         <div class="col-md-9">
                             <select id="cuisineType" class="form-select" name="cuisineType">

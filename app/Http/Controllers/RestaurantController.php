@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Mail\RestaurantCreatedMail;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
+
 
 
 class RestaurantController extends Controller
@@ -66,6 +69,7 @@ class RestaurantController extends Controller
         // Restoran oluşturma
         $restaurant = new Restaurant();
         $restaurant->guid = Str::uuid();
+        $restaurant->userID = session('userID');
         $restaurant->image = "/images/restaurantImages/" . $image;
         $restaurant->name = $request->name;
         $restaurant->description = $request->description;
@@ -373,13 +377,6 @@ class RestaurantController extends Controller
     }
 
 
-
-
-
-   
-
-
-
     public function getMyRestaurants()
     {
 
@@ -393,6 +390,4 @@ class RestaurantController extends Controller
 
         return view('restaurantManager.restaurantManager', compact('restaurants'));
     }
-
 }
-

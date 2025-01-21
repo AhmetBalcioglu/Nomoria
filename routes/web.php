@@ -22,10 +22,9 @@ use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Middleware\RestaurantView;
 use App\Http\Controllers\DashboardController;
-
 use App\Http\Middleware\AdminOrRestaurant;
 use App\Http\Middleware\RestaurantOwner;
-use App\Http\Controllers\DashboardController;
+
 
 
 
@@ -62,8 +61,6 @@ Route::prefix('restaurants')->group(function () {
     Route::post('/update/{name}', [RestaurantController::class, 'update'])->name('update');
     Route::get('/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
     Route::get('/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
-
-
 });
 
 Route::get('/restaurants/{restaurantID}', [RestaurantController::class, 'show'])

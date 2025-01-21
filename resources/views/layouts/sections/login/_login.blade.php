@@ -20,7 +20,7 @@
                         <label class="remember-checkbox">
                             <input type="checkbox" name="remember" id="remember">
                         </label>
-                        <span>Beni hatırla</span>
+                        <label for="remember">Beni hatırla</label>
                     </div>
                 </div>
                 <button type="submit" class="login-button">Giriş yap</button>
@@ -28,7 +28,6 @@
             </form>
 
             <p>Henüz hesabın yok mu? <a href="{{ route('register') }}">Hesap aç</a></p>
-
 
         </div>
     </div>

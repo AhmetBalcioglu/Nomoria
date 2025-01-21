@@ -154,7 +154,7 @@ h2 {
     display: none; // Varsayılan olarak gizli
     position: fixed;
     top: 30%;
-    right: 5%; // Pozisyon ayarı
+    left: 5%; // Pozisyon ayarı
     transform: translateY(-50%);
     background-color: #fff;
     border-radius: 8px;
@@ -171,7 +171,7 @@ h2 {
         z-index: 10;
         transform: translateY(-50%) scale(1.1); // Hover animasyonu
         box-shadow: 10px 15px 15px rgba(83, 81, 81, 0.86);
-        width: 29rem;
+        width: 45rem;
         height: auto;
 
     }
