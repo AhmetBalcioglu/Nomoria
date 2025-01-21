@@ -92,7 +92,7 @@
                     <div class="restaurant-card-body">
                         <h5>{{ $restaurant['name'] }}</h5>
                         <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
-                        <button class="btn btn-success updateRestaurantBtn" data-bs-toggle="modal"
+                        <button class="btn btn-warning updateRestaurantBtn" data-bs-toggle="modal"
                             data-bs-target="#updateRestaurant" data-restaurantid="{{ $restaurant['restaurantID'] }}"
                             data-restaurantname="{{ $restaurant['name'] }}"
                             data-restaurantdescription="{{ $restaurant['description'] }}"

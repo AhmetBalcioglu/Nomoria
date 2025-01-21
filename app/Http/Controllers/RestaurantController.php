@@ -350,7 +350,8 @@ class RestaurantController extends Controller
             return view('login.login')->with("error", "Lütfen Giriş Yapınız");
         }
 
-        $restaurants = Restaurant::where('userID', '=', $userID)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
+        $restaurants = Restaurant::where('userID', '=', $userID)->where('deleted_at', null)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
+        
         return view('restaurantManager.restaurantManager', compact('restaurants'));
     }
 }
