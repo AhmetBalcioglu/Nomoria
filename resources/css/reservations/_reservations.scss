@@ -1,0 +1,14 @@
+.resBtn {
+    background-color: #bb4a21bb;
+
+    &:hover {
+        background-color: #e0805de1;
+        transition: all 0.3s ease;
+    }
+}
+
+.restaurantDiv {
+    &:hover {
+        cursor: pointer;
+    }
+}

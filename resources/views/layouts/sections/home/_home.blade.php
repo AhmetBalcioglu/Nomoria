@@ -34,11 +34,9 @@
 
 
 <div class="container my-5" id="campaigns">
-    <h2>Sizin için seçtiklerimiz</h2>
-
+    <h2 class="text-dark">Sizin için seçtiklerimiz</h2>
 
     {{-- Alt slider - Kampanya ve özel restoranlar --}}
-
 
     <div id="campaignCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="carousel-inner">
@@ -47,23 +45,23 @@
                 <div class="row g-4">
                     <!-- Balık Restoranları Kartı -->
                     <div class="col-md-6">
-                        <div class="campaign-card text-center">
+                        <div class="campaign-card text-center bg-dark text-light">
                             <img src="{{ asset('img/homepage_img/balik.jpg') }}" alt="Balık Restoranları"
                                 class="img-fluid">
                             <h3 class="campaign-title">Balık restoranlarında Kampanya</h3>
                             <p class="discount">20%</p>
                             <p class="campaign-text">Nomarisya'ya özel</p>
-                            <button class="btn btn-campaign">Restorana Git</button>
+                            <button class="btn btn-campaign btn-light">Restorana Git</button>
                         </div>
                     </div>
                     <!-- Et Restoranları Kartı -->
                     <div class="col-md-6">
-                        <div class="campaign-card text-center">
+                        <div class="campaign-card text-center bg-dark text-light">
                             <img src="{{ asset('img/homepage_img/et.jpg') }}" alt="Et Restoranları" class="img-fluid">
                             <h3 class="campaign-title">Et menülerinde Kampanya</h3>
                             <p class="discount">15%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
-                            <button class="btn btn-campaign">Restorana Git</button>
+                            <button class="btn btn-campaign btn-light">Restorana Git</button>
                         </div>
                     </div>
                 </div>
@@ -73,23 +71,23 @@
                 <div class="row g-4">
                     <!-- Diğer Kampanya Kartları -->
                     <div class="col-md-6">
-                        <div class="campaign-card text-center">
+                        <div class="campaign-card text-center bg-dark text-light">
                             <img src="{{ asset('img/kampanya_gorsel/vegan.png') }}" alt="Vegan Restoranları"
                                 class="img-fluid">
                             <h3 class="campaign-title">Vegan menülerde Kampanya</h3>
                             <p class="discount">10%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
-                            <button class="btn btn-campaign">Restorana Git</button>
+                            <button class="btn btn-campaign btn-light">Restorana Git</button>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="campaign-card text-center">
+                        <div class="campaign-card text-center bg-dark text-light">
                             <img src="{{ asset('img/kampanya_gorsel/vegan.png') }}" alt="Vegan Restoranları"
                                 class="img-fluid">
                             <h3 class="campaign-title">Tatlılarda Kampanya</h3>
                             <p class="discount">5%</p>
                             <p class="campaign-text">Nomariaya'ya özel</p>
-                            <button class="btn btn-campaign">Restorana Git</button>
+                            <button class="btn btn-campaign btn-light">Restorana Git</button>
                         </div>
                     </div>
                 </div>

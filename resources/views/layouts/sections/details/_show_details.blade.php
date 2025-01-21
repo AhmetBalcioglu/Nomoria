@@ -8,7 +8,9 @@
             <p class="restaurant-description">{{ $restaurant->description }}</p>
             <p class="restaurant-address">📍 <strong>Adres:</strong> {{ $restaurant->address }}</p>
             <div class="restaurant-actions">
-                <button class="btn-reserve">Rezervasyon Yap</button>
+                <button onclick="window.location.href = '/makeReservation?restaurantID={{ $restaurant->restaurantID }}'"
+                    class="btn-reserve">
+                    Rezervasyon Yap</button>
             </div>
         </div>
     </div>

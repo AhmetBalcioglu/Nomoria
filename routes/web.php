@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Middleware\HandleLogin;
 use App\Http\Middleware\HandleLogout;
 use App\Http\Middleware\TimedExit;
+use App\Http\Middleware\isCustomer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
@@ -46,7 +47,10 @@ Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
 // Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-Route::get('/makeReservation', [ReservationController::class, 'makeReservation']);
+Route::middleware([isCustomer::class])->group(function () {
+    Route::get('/makeReservation', [ReservationController::class, 'makeReservation'])->name('makeReservation');
+});
+Route::post('/makeReservation/{restaurantID}', [ReservationController::class, 'create'])->name('makeReservation.post');
 
 
 
@@ -71,9 +75,6 @@ Route::post('/contact/send', [ContactController::class, 'sendMail'])->name('cont
 
 //discount Route
 Route::get('/discount', [DiscountController::class, 'discount']);
-
-//reservation Route
-Route::get('/reservations', [ReservationController::class, 'index']);
 
 //Comments Route
 
@@ -114,7 +115,7 @@ Route::middleware([TimedExit::class])->group(function () {
     Route::get('/discount', [DiscountController::class, 'discount']);
     Route::get('/about', [AboutController::class, 'index']);
     Route::get('/contact', [ContactController::class, 'index']);
-    Route::get('/reservations', [ReservationController::class, 'index']);
+    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations');
     Route::post('/comments', [CommentController::class, 'store']);
 });
 

@@ -71,7 +71,7 @@
         </form>
     </div>
 
-    <div class="detail-container">
+    <div class="detail-container container">
         <div class="container my-4 d-flex justify-content-center">
             <div class="row" id="restaurant-cards">
                 @if (count($restaurants) == 0)
@@ -88,7 +88,8 @@
                                 <div class="restaurant-card-body">
                                     <h5>{{ $restaurant['name'] }}</h5>
                                     <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
-                                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                                    <a href="{{ route('makeReservation', ['restaurantID' => $restaurant['restaurantID']]) }}"
+                                        class="btn btn-danger">Hemen Rezervasyon Yap</a>
                                 </div>
 
                                 @if ($restaurant['favorites'] == null)

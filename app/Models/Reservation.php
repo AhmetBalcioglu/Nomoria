@@ -37,9 +37,9 @@ class Reservation extends Model
     {
         // Şu anda o restoranda yapılmış olan tüm rezervasyonları al
         $totalGuests = self::where('restaurantID', $restaurantID)
-                           ->where('status', 'confirmed') // Sadece onaylı rezervasyonları dikkate al
-                           ->whereDate('reservation_time', '=', today()) // Bugün yapılan rezervasyonlar
-                           ->sum('guest_count'); // Toplam misafir sayısını al
+            ->where('status', 'confirmed') // Sadece onaylı rezervasyonları dikkate al
+            ->whereDate('reservation_time', '=', today()) // Bugün yapılan rezervasyonlar
+            ->sum('guest_count'); // Toplam misafir sayısını al
 
         // Toplam misafir sayısını kontrol et ve 20'yi geçip geçmediğini kontrol et
         if (($totalGuests + $guestCount) > 20) {
