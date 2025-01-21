@@ -12,10 +12,10 @@ use App\Http\Middleware\HandleLogout;
 use App\Http\Middleware\TimedExit;
 use App\Http\Middleware\isCustomer;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\DiscountController;
-use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddRestaurantController;
 use App\Http\Controllers\AdminPanelController;
@@ -25,8 +25,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AdminOrRestaurant;
 use App\Http\Middleware\RestaurantOwner;
 
-
-
+Route::get('/dashboard', function () {
+    return view('layouts.dashboard');
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
@@ -140,4 +141,6 @@ Route::get('/logout', function () {
     return $logoutHandler->handle();
 })->name('logout');
 
-Route::get('/my-restaurants', [DashboardController::class, 'OwnerRestaurants'])->name('my-restaurants');
+
+// Geçmiş rezervasyonlarım
+Route::get('/historyRezervations', [ReservationController::class, 'index']);
