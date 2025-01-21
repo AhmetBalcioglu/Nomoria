@@ -38,15 +38,15 @@ $(document).ready(function () {
                 if (response.success) {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Başarılı',
+                        title: 'Kullanıcı oluşturuldu',
                         text: response.message
                     }).then(function () {
-                        window.location.href = response.redirect;
+                        window.location.href = '/login';
                     });
                 } else {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Hata',
+                        title: 'Kullanıcı oluşturulamadı',
                         text: response.message
                     });
                 }
@@ -59,7 +59,7 @@ $(document).ready(function () {
                 });
                 Swal.fire({
                     icon: 'error',
-                    title: 'Hata',
+                    title: 'Kullanıcı oluşturulamadı',
                     html: message
                 });
             }

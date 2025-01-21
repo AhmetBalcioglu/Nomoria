@@ -21,12 +21,10 @@ class AdminOrRestaurant
         }
 
         $userRole = Session::get('role');
-        if (in_array(strtolower($userRole), ['admin', 'restorant'])) {
+        if (in_array(($userRole), ['admin', 'restaurantOwner'])) {
             return $next($request); // Erişim izni verildi
         }
 
         abort(403, 'Bu sayfaya erişim izniniz yok.');
     }
 }
-
-

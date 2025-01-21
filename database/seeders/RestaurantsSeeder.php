@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Kore Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/is.jpg'
+                'image' => '/img/seederImages/is.jpg',
+                'created_at' => Carbon::now()
 
             ],
             [
@@ -44,7 +46,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Kore Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -59,7 +62,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -74,7 +78,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Japon Mutfağı',
                 'view_type' => 'Tarihi Mekan',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -89,7 +94,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'İtalyan Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -104,7 +110,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Meksika Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -119,7 +126,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/alkol.jpg'
+                'image' => '/img/seederImages/alkol.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -134,7 +142,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Japon Mutfağı',
                 'view_type' => 'Tarihi Mekan',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/balik.jpg'
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -149,7 +158,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Japon Mutfağı',
                 'view_type' => 'Tarihi Mekan',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -164,7 +174,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Japon Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -179,7 +190,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/balik.jpg'
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -194,7 +206,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/balik.jpg'
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now(),
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -209,7 +222,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -224,7 +238,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -239,7 +254,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -254,7 +270,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -269,7 +286,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/fastfood.jpg'
+                'image' => '/img/seederImages/fastfood.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -284,7 +302,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/fastfood.jpg'
+                'image' => '/img/seederImages/fastfood.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -299,7 +318,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/fastfood.jpg'
+                'image' => '/img/seederImages/fastfood.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -314,7 +334,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -329,7 +350,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/is.jpg'
+                'image' => '/img/seederImages/is.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -344,7 +366,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -359,7 +382,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -374,7 +398,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -389,11 +414,12 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
-                'name' => 'Doğa Kır Lokantası Arnavutköy',
+                'name' => 'Doğa Kır Lokantası ',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
                 'phone' => '03333333333',
@@ -404,11 +430,12 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
-                'name' => 'Coni&Co Restoran Arnavutköy',
+                'name' => 'Coni&Co Restoran ',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
                 'phone' => '03333333333',
@@ -419,7 +446,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -434,7 +462,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/is.jpg'
+                'image' => '/img/seederImages/is.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -449,7 +478,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -464,7 +494,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -479,7 +510,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -494,7 +526,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -509,7 +542,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -524,7 +558,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -539,11 +574,12 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
-                'name' => 'Çeşme Alaçatı Balıkçısı Ataşehir',
+                'name' => 'Çeşme Alaçatı Balıkçısı ',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
                 'phone' => '03333333333',
@@ -554,7 +590,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -569,7 +606,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg'
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -584,7 +622,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/is.jpg'
+                'image' => '/img/seederImages/is.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -599,7 +638,8 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg'
+                'image' => '/img/seederImages/tek_kisi.jpg',
+                'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
@@ -614,8 +654,527 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg'
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
             ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Baler Garden',
+                'description' => 'Her davete uygun, şıklık ve lezzetin buluşma noktası',
+                'address' => 'Avcılar',
+                'phone' => '03233333334',
+                'email' => 'baler@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 4,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 2,
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Big Mammas Avcılar',
+                'description' => 'Lezzetin ve dostane atmosferin buluştuğu, her anı özel kılan bir deneyim',
+                'address' => 'Avcılar',
+                'phone' => '01233333334',
+                'email' => 'bigmamas@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 4,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 1,
+                'image' => '/img/seederImages/fastfood.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'İskele Restoran',
+                'description' => 'Denizden sofraya taptaze balıklar, eşsiz tatlar ve samimi bir atmosfer',
+                'address' => 'Avcılar',
+                'phone' => '01133333334',
+                'email' => 'iskele@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 4,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => ' Etçi Mehmet SteakHouse',
+                'description' => 'Denizden sofraya taptaze balıklar, eşsiz tatlar ve samimi bir atmosfer',
+                'address' => 'Avcılar',
+                'phone' => '01131333334',
+                'email' => 'etci_mehmet@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 4,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Doğanın İçinde',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/et.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => ' Pandora Cafe&Restoran',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bağcılar',
+                'phone' => '01231313334',
+                'email' => 'pandora@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 5,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Doğanın İçinde',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Cihan Derya Balık',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bağcılar',
+                'phone' => '01231313334',
+                'email' => 'cihan@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 5,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Miraç Et Mangal',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bağcılar',
+                'phone' => '01281313334',
+                'email' => 'mirac@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 5,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/et.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Seraf Restoran',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bağcılar',
+                'phone' => '01291313334',
+                'email' => 'seraf@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 5,
+                'cuisine_type' => 'İtalyan Mutfağı',
+                'view_type' => 'Doğanın İçinde',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/alkol.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Karadeniz Balıkçısı',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bahçelievler',
+                'phone' => '01291813334',
+                'email' => 'karadeniz_balık@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 6,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Tarihi Sebat Lokantası',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bahçelievler',
+                'phone' => '01291893334',
+                'email' => 'tarihi_sebat@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 6,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Tarihi Mekan',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/et.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Veganarsist',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bahçelievler',
+                'phone' => '01291813335',
+                'email' => 'veganarsist@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 6,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/vegan.png',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Fenerbahçe Balıkçısı',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bakırköy',
+                'phone' => '01291818435',
+                'email' => 'fener_balık@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 7,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Yelken Restoran',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bakırköy',
+                'phone' => '01291818485',
+                'email' => 'yelken@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 7,
+                'cuisine_type' => 'Meksika Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 1,
+                'image' => '/img/seederImages/is.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Hanedan Mangalbası',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bakırköy',
+                'phone' => '01291818485',
+                'email' => 'hanedan_mangalbas@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 7,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Doğanın İçinde',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/et.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Göl Balık Restoranı',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Başakşehir',
+                'phone' => '01291818485',
+                'email' => 'gol_balık@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 8,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Vegan İstanbul',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Başakşehir',
+                'phone' => '01292818485',
+                'email' => 'vegan_ist@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 8,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/vegan.png',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Seventeen Pizza',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Başakşehir',
+                'phone' => '01291813485',
+                'email' => 'seventeen@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 8,
+                'cuisine_type' => 'İtalyan Mutfağı',
+                'view_type' => 'Doğanın İçinde',
+                'categoryID' => 2,
+                'image' => '/img/seederImages/dunya_mutfagi.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Ercan SteakHouse',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Başakşehir',
+                'phone' => '01291813495',
+                'email' => 'ercan_steak@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 8,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 1,
+                'image' => '/img/seederImages/is.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Nusr-Et SteakHouse',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bayrampaşa',
+                'phone' => '01291814495',
+                'email' => 'nusr_et@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 9,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 1,
+                'image' => '/img/seederImages/et.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Plant Burger',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bayrampaşa',
+                'phone' => '01291814495',
+                'email' => 'plant_burger@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 9,
+                'cuisine_type' => 'İtalyan Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/fastfood.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Korean House',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bayrampaşa',
+                'phone' => '01292815495',
+                'email' => 'korean_house@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 9,
+                'cuisine_type' => 'Kore Mutfağı',
+                'view_type' => 'Doğanın İçinde',
+                'categoryID' => 1,
+                'image' => '/img/seederImages/dunya_mutfagi.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Akin Balık',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Bayrampaşa',
+                'phone' => '03292815495',
+                'email' => 'akin_balik@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 9,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Taç Balık Restaurant',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beykoz',
+                'phone' => '07292815495',
+                'email' => 'tac_balik@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 10,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Boğaziçi Yakamoz',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beykoz',
+                'phone' => '03292815495',
+                'email' => 'bozgazici_yakamoz@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 10,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/ozel_gun.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Çam Vadisi',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beykoz',
+                'phone' => '03292812495',
+                'email' => 'cam_vadisi@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 10,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Doğanın İçinde',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/et.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Lotus Coffee & Resto',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beykoz',
+                'phone' => '03292111495',
+                'email' => 'lotus_coffee@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 10,
+                'cuisine_type' => 'Meksika Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/dunya_mutfagi.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Veggie Vokkie',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beylikdüzü',
+                'phone' => '03292112495',
+                'email' => 'veggie@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 11,
+                'cuisine_type' => 'Meksika Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/vegan.png',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Calisto Balık',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beylikdüzü',
+                'phone' => '03292111495',
+                'email' => 'calisto@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 11,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Deniz Manzarası',
+                'categoryID' => 4,
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Zeyn Steakhouse & Kebap',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beylikdüzü',
+                'phone' => '03292111191',
+                'email' => 'zeyn_et@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 11,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 2,
+                'image' => '/img/seederImages/et.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Poyraz Sahil Balık',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beyoğlu',
+                'phone' => '03292111492',
+                'email' => 'poyraz@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 12,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'DenizManzarası',
+                'categoryID' => 2,
+                'image' => '/img/seederImages/balik.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Kasabım Ethane',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beyoğlu',
+                'phone' => '03293111431',
+                'email' => 'kasabım_ethane@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 12,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 3,
+                'image' => '/img/seederImages/et.jpg',
+                'created_at' => Carbon::now()
+            ],
+            [
+                'guid' => Str::uuid()->toString(),
+                'name' => 'Litera Restoran',
+                'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
+                'address' => 'Beyoğlu',
+                'phone' => '01292111591',
+                'email' => 'litera@gmail.com',
+                'capacity' => 35,
+                'citiesID' => 1,
+                'districtsID' => 12,
+                'cuisine_type' => 'Türk Mutfağı',
+                'view_type' => 'Şehir Manzarası',
+                'categoryID' => 2,
+                'image' => '/img/seederImages/kutlama.jpg',
+                'created_at' => Carbon::now()
+            ],
+
+
+
+
+
+
 
 
 

@@ -43,3 +43,91 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+$(document).ready(function () {
+    $('.hearth-icon').click(function () {
+        var categoryID = $(this).data('id'); // Tıklanan SVG'nin data-id değerini al
+        var icon = $(this); // Tıklanan SVG elementini seç
+
+        // AJAX isteği
+        $.ajax({
+            url: 'favorites/toggle/' + categoryID, // Favori ekleme/çıkarma URL'si
+            method: 'GET',
+            data: {
+                _token: '{{ csrf_token() }}', // CSRF token
+            },
+            success: function (response) {
+                if (response.success) {
+                    if (response.added) {
+                        icon.addClass('favorited'); // Favori sınıfını ekle
+                        Swal.fire({
+                            title: 'Favorilere Eklendi!',
+                            text: 'Kategori favorilerinize eklendi.',
+                            icon: 'success',
+                            confirmButtonText: 'Tamam'
+                        });
+                    } else {
+                        icon.removeClass('favorited'); // Favori sınıfını kaldır
+                        Swal.fire({
+                            title: 'Favorilerden Çıkarıldı!',
+                            text: 'Kategori favorilerinizden çıkarıldı.',
+                            icon: 'success',
+                            confirmButtonText: 'Tamam'
+                        });
+                    }
+                } else {
+                    Swal.fire({
+                        title: 'Bir hata oluştu!',
+                        text: 'Oturum açmamış olabilirsiniz, lütfen tekrar deneyiniz!',
+                        icon: 'error',
+                        confirmButtonText: 'Tamam'
+                    });
+                }
+            },
+            error: function () {
+                console.log('Bir hata oluştu.');
+            }
+        });
+    });
+});
+
+$('.category_url img').on('click', function (event) {
+    event.stopPropagation(); // Tıklama olayının diğer üst elementlere bulaşmasını engeller
+
+    let categoryArray = {
+        "İş Yemekleri": 3,
+        "Kutlamalar": 2,
+        "Tek Kişilik": 4,
+        "Özel Günler": 1
+    };
+
+    let cuisineArray = [
+        "Türk Mutfağı",
+        "Kore Mutfağı",
+        "Meksika Mutfağı",
+        "Japon Mutfağı",
+        "İtalyan Mutfağı"
+    ];
+
+    let menuArray = [
+        "Et Yemekleri",
+        "Balık Yemekleri",
+        "Fast Food",
+        "Vegan Yemekleri",
+        "Alkol Servisi"
+    ];
+
+    let data = $(this).closest('.category_url').data('url');
+    let district = "all";
+    let viewType = "all";
+    let category = categoryArray[data] ?? 'all';
+
+    let couisineType = cuisineArray.includes(data) ? data : 'all';
+    couisineType = couisineType.replaceAll(" ", "+");
+
+    let menuType = menuArray.includes(data) ? data : 'all';
+    menuType = menuType.replaceAll(" ", "+");
+
+    let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
+
+    window.location.href = url; // Yönlendirme
+});

@@ -25,6 +25,7 @@ class UserCreateRequest extends FormRequest
             'name' => 'required|alpha',
             'surname' => 'required|alpha',
             'gender' => 'required',
+            'role' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
         ];
@@ -38,6 +39,7 @@ class UserCreateRequest extends FormRequest
             'surname.required' => "Soyadınızı girmeniz gerekiyor",
             'surname.alpha' => "Soyadınızı sadece harflerden oluşacak şekilde girebilirsiniz",
             'gender.required' => "Cinsiyetinizi girmeniz gerekiyor",
+            'role.required' => "Rol bilgisi gereklidir.",
             'email.required' => "Email adresinizi girmeniz gerekiyor",
             'email.email' => "Email adresinizin geçerli bir adres olması gerekiyor",
             'email.unique' => "Girdiğiniz email adresi zaten sistemde kayıtlı",
@@ -54,6 +56,7 @@ class UserCreateRequest extends FormRequest
             'name' => 'Adı',
             'surname' => 'Soyadı',
             'gender' => 'Cinsiyet',
+            'role' => 'Rol',
             'email' => 'Email',
             'password' => 'Şifre',
         ];

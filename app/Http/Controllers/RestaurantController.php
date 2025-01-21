@@ -15,8 +15,8 @@ use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Mail\RestaurantCreatedMail;
 
 
 class RestaurantController extends Controller
@@ -50,7 +50,7 @@ class RestaurantController extends Controller
 
     public function createPage()
     {
-        return view('restaurants.restaurant');
+        return redirect()->route('home');
     }
 
     public function create(RestaurantCreateRequest $request)
@@ -75,17 +75,29 @@ class RestaurantController extends Controller
         $restaurant->capacity = $request->capacity;
         $restaurant->cuisine_type = $request->cuisineType;
         $restaurant->view_type = $request->viewType;
-        $restaurant->concept = $request->concept;
+        $restaurant->categoryID = $request->categoryID;
         $restaurant->citiesID = $request->city;
         $restaurant->districtsID = $request->district;
         $restaurant->created_at = Carbon::now();
         $restaurant->updated_at = null;
 
-        $restaurant->save();
+        try {
+            $restaurant->save();
 
-        // Form-data yanıt
-        return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
+            $userRole = session('role');
+            $userEmail = session('email');
+
+            if ($userRole && $userRole === 'restaurantOwner') {
+                Mail::to($userEmail)->send(new RestaurantCreatedMail($restaurant));
+            }
+
+
+            return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()], 422);
+        }
     }
+
 
     public function update(RestaurantUpdateRequest $request, $name)
     {
@@ -104,7 +116,7 @@ class RestaurantController extends Controller
 
             // Yeni resmi kaydet
             $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->move(public_path('images'), $imageName);
+            $request->file('image')->move(public_path('images/restaurantImages/'), $imageName);
             $restaurant->image = '/images/restaurantImages/' . $imageName;
         }
         $validated = $request->validated();
@@ -116,6 +128,7 @@ class RestaurantController extends Controller
             'phone' => $validated['phone'],
             'email' => $validated['email'],
             'capacity' => $validated['capacity'],
+
         ]);
 
         return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
@@ -124,7 +137,6 @@ class RestaurantController extends Controller
 
     public function delete(Request $request, $name)
     {
-        // CSRF kontrolü burada yapılır
         $restaurant = Restaurant::where('name', $name)->first();
 
         // Eğer restoran bulunmazsa, hata mesajı döndür
@@ -220,21 +232,25 @@ class RestaurantController extends Controller
             $query->where('cuisine_type', $couisineType);
         }
 
-        //TODO: Menü türü filtreleme
-
         $query->where('deleted_at', null);
 
-        $restaurants = $query->with(['cities', 'districts', 'favorites', 'category' => function ($query) {
-            $query->select('categoryID', 'categoryName');
-        }])->get()->toArray();
+        $restaurants = $query->with([
+            'cities',
+            'districts',
+            'favorites',
+            'category' => function ($query) {
+                $query->select('categoryID', 'categoryName');
+            }
+        ])->get()->toArray();
 
         //------------------------------------------------------------
 
-        $menus = Menu::all()->toArray();
 
 
         //-----Bir restoranın birden fazla menüsü olabilir onları birleştirme işlemi------
+        $menus = Menu::all()->toArray();
         $groupedMenus = [];
+
         foreach ($menus as $menu) {
             $restaurantID = $menu['restaurantID'];
             if (!isset($groupedMenus[$restaurantID])) {
@@ -252,8 +268,6 @@ class RestaurantController extends Controller
             }
         }
         unset($restaurant);
-        //--------------------------------------------------------------------------------
-
         if ($menuType !== 'all') {
             $restaurants = array_filter($restaurants, function ($restaurant) use ($menuType) {
                 $restaurant['menus'] = array_filter($restaurant['menus'], function ($menu) use ($menuType) {
@@ -262,6 +276,7 @@ class RestaurantController extends Controller
                 return !empty($restaurant['menus']);
             });
         }
+        //--------------------------------------------------------------------------------
 
         return view('details.details', compact(
             'restaurants',
@@ -286,43 +301,51 @@ class RestaurantController extends Controller
     }
 
 
-        public function show($restaurantID)
-        {
+    public function show($restaurantID)
+    {
 
-            $userId = session('userID');
-
-
-            if (!$userId) {
-                $userId = null;
-            }
+        $userId = session('userID');
 
 
-            $guestID = request()->cookie('guestID'); // Çerezdeki guest_id
-
-
-            if (!$guestID) {
-                $guestID = Str::uuid();
-                Cookie::queue('guestID', $guestID, 60 * 24 * 30);
-            }
-
-
-            DB::table('viewed_restaurants')->insert([
-                'userID' => $userId,
-                'guestID' => $guestID,
-                'restaurantID' => $restaurantID, // Görüntülenen restoranın ID'si
-                'viewed_at' => now(), // Görüntüleme tarihi
-            ]);
-
-
-
-            // Restoran bilgilerini al
-            $restaurant = Restaurant::findOrFail($restaurantID);
-
-
-            return view('details.show_details', compact('restaurant'));
+        if (!$userId) {
+            $userId = null;
         }
 
 
+        $guestID = request()->cookie('guestID'); // Çerezdeki guest_id
 
+
+        if (!$guestID) {
+            $guestID = Str::uuid();
+            Cookie::queue('guestID', $guestID, 60 * 24 * 30);
+        }
+
+
+        DB::table('viewed_restaurants')->insert([
+            'userID' => $userId,
+            'guestID' => $guestID,
+            'restaurantID' => $restaurantID, // Görüntülenen restoranın ID'si
+            'viewed_at' => now(), // Görüntüleme tarihi
+        ]);
+
+
+
+        // Restoran bilgilerini al
+        $restaurant = Restaurant::findOrFail($restaurantID);
+
+
+        return view('details.show_details', compact('restaurant'));
+    }
+
+
+
+
+
+    public function show($restaurantID)
+    {
+        $restaurant = Restaurant::findOrFail($restaurantID);
+        return view('details.show_details', compact('restaurant'));
+    }
 
 }
+

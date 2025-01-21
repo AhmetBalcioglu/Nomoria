@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Middleware\HandleLogin;
 use App\Http\Middleware\HandleLogout;
 use App\Http\Middleware\TimedExit;
+use App\Http\Middleware\isCustomer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
@@ -23,6 +24,8 @@ use App\Http\Middleware\RestaurantView;
 use App\Http\Controllers\DashboardController;
 
 use App\Http\Middleware\AdminOrRestaurant;
+use App\Http\Middleware\RestaurantOwner;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -42,6 +45,13 @@ Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name(
 Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
+// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::middleware([isCustomer::class])->group(function () {
+    Route::get('/makeReservation', [ReservationController::class, 'makeReservation'])->name('makeReservation');
+});
+Route::post('/makeReservation/{restaurantID}', [ReservationController::class, 'create'])->name('makeReservation.post');
+
+
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
@@ -64,13 +74,10 @@ Route::get('/details', [DetailsController::class, 'index'])->name('details');
 
 
 // Contact Route
-Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact/send', [ContactController::class, 'sendMail'])->name('contact.send');
 
 //discount Route
 Route::get('/discount', [DiscountController::class, 'discount']);
-
-//reservation Route
-Route::get('/reservations', [ReservationController::class, 'index']);
 
 //Comments Route
 
@@ -89,10 +96,17 @@ Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
 });
 
+//Restaurant Panel Route
+Route::middleware([RestaurantOwner::class])->group(function () {
+    Route::get('/restaurantPanel', [AdminPanelController::class, 'restaurantPanel'])->name('restaurantPanel');
+});
+
+// RestaurantManager Route
+Route::get('/RestaurantManager', [RestaurantManagerController::class, 'index'])->name('RestaurantManager');
+
 //Login Logout Middleware Route
 Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () {
     Route::post('/login', [UserController::class, 'login'])->name('login');
-
 });
 
 //Timed Exit Middleware Route
@@ -104,7 +118,7 @@ Route::middleware([TimedExit::class])->group(function () {
     Route::get('/discount', [DiscountController::class, 'discount']);
     Route::get('/about', [AboutController::class, 'index']);
     Route::get('/contact', [ContactController::class, 'index']);
-    Route::get('/reservations', [ReservationController::class, 'index']);
+    Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations');
     Route::post('/comments', [CommentController::class, 'store']);
 });
 
@@ -112,7 +126,8 @@ Route::middleware([TimedExit::class])->group(function () {
 Route::prefix('favorites')->group(function () {
     Route::post('/toggle/{restaurantID}', [FavoriteController::class, 'toggleFavorite'])->name('favorites.toggle');
     Route::get('/', [FavoriteController::class, 'index'])->name('favorites.index');
-    Route::get('/', [FavoriteController::class, 'getFavorites'])->name('favorites.get');
+    Route::get('/toggle/{categoryID}', [FavoriteController::class, 'toggleFavoriteCategory']);
+    Route::get('/', [FavoriteController::class, 'getFavoritesAndCategories'])->name('favorites.all');
 });
 
 Route::get('/logout', function () {

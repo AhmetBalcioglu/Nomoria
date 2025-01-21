@@ -19,9 +19,9 @@
                 Güncelle</button>
         </div>
         <div class="col-md-3">
-            <a href="{{route("dashboard")}}">
-            <button class="btn btn-warning"     >Dash Board</button></a> <!-- Tuğçenin Dash Boarda yönlendirilecek-->
+            <button class="btn btn-warning">Dash Board</button> <!-- Tuğçenin Dash Boarda yönlendirilecek-->
         </div>
+
     </div>
 </div>
 

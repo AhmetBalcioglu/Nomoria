@@ -16,7 +16,7 @@ class Favorites extends Model
 
     public $incrementing = false;
 
-    protected $fillable = ['restaurantID', 'userID'];
+    protected $fillable = ['restaurantID', 'categoryID', 'userID'];
 
     public $timestamps = false;
 
@@ -28,6 +28,11 @@ class Favorites extends Model
     public function user()
     {
         return $this->belongsTo(Users::class, 'userID', 'userID');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Categories::class, 'categoryID', 'categoryID');
     }
 }
 

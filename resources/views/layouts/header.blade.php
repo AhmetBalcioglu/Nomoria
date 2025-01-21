@@ -55,10 +55,18 @@
                         session()->has('name') &&
                         session()->has('surname') &&
                         session()->has('role') &&
-                        (session()->get('role') == 'admin' || session()->get('role') == 'restaurant')
+                        (session()->get('role') == 'admin')
                     )
                                     <li class="nav-item">
                                         <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
+                                    </li>
+                @endif
+                @if (
+    session()->has('name') && session()->has('surname') && session()->has('role') &&
+    session()->get('role') == 'restaurantOwner'
+)
+                                    <li class="nav-item"></li>
+                                    <a class="nav-link custom-link" href="{{ route('restaurantPanel') }}">Restoran Paneli</a>
                                     </li>
                 @endif
             </ul>
@@ -68,7 +76,7 @@
     <nav class="navbar navbar-dark mt-2">
         <div class="container-fluid">
             <button id="themeToggle" class="navbar-toggler" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-moon-stars" viewBox="0 0 16 16">
                     <path
                         d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286" />
@@ -89,23 +97,21 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill mt-1 mx-1"
                     viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24" height="24">
                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-                </svg>
+            </svg>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item processOptions" href="/login">Üye Girişi</a></li>
                     <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                        <li><a class="dropdown-item processOptions" href="/register">Rezervasyonlarım</a>
+                        <li><a class="dropdown-item processOptions" href="/login">Rezervasyonlarım</a></li>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
+                        <li><a href="{{ route('reservation') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a></li>
                     @endif
-                    </li>
                     {{-- Favorilerim --}}
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
-                        <li><a class="dropdown-item processOptions" href="/register">Favorilerim</a>
+                        <li><a class="dropdown-item processOptions" href="/login">Favorilerim</a></li>
                     @else
-                        <a href="{{ route('login') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a>
+                        <li><a href="{{ route('favorites') }}" class="btn btn-secondary custom-button me-2">Favorilerim</a></li>
                     @endif
-                    </li>
                 </ul>
 
             </div>
@@ -122,8 +128,9 @@
                 <h6 class="mt-2">{{ session()->get('name') }} {{ session()->get('surname') }}</h6>
 
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Restoranlarım</a></li>
-                    <li><a class="dropdown-item" href="#">Favorilerim</a></li>
+                    <li><a class="dropdown-item" href="{{ route('RestaurantManager') }}">Restoranlarım</a></li>
+                    <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
+                    <li><a class="dropdown-item" href="{{ route('reservations') }}">Geçmiş Rezervasyonlarım</a></li>
                     <li> <a href="{{ route('logout') }}" class="btn btn-danger custom-button me-2 information">Çıkış
                             Yap</a></li>
                 </ul>

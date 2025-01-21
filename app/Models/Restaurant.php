@@ -129,6 +129,4 @@ class Restaurant extends Model
     {
         return $this->hasMany(ViewedRestaurant::class, 'restaurantID', 'restaurantID');
     }
-
-
 }
