@@ -1,89 +1,210 @@
-<div class="restaurant-detail-container">
-    <div class="restaurant-card">
-        <div class="restaurant-image">
-            <img src="{{ $restaurant->image }}" alt="{{ $restaurant->name }}">
-        </div>
-        <div class="restaurant-info">
-            <h1 class="restaurant-title">{{ $restaurant->name }}</h1>
-            <p class="restaurant-description">{{ $restaurant->description }}</p>
-            <p class="restaurant-address">📍 <strong>Adres:</strong> {{ $restaurant->address }}</p>
-            <div class="restaurant-actions">
-                <button class="btn-reserve"> Rezervasyon Yap</button>
-            </div>
-        </div>
-    </div>
-</div>
+<style>
+    /* Sayfanın tamamında yatay kaydırmayı gizler */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Row yapısındaki taşmayı engeller */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        /* Kolonlar arasındaki boşluğu ayarlar */
+    }
+
+    /* Kolonların ekran boyutuna uygun şekilde sıralanmasını sağlar */
+    .col {
+        flex: 1 1 calc(25% - 16px);
+        /* 4 kolon yerleştirmek için */
+        box-sizing: border-box;
+        /* İçeriklerin kolon sınırına sığmasını sağlar */
+    }
+
+    /* Restaurant kartlarının boyutlarını aynı yapar */
+    .restaurant-card {
+        max-width: 100%;
+        /* Kartın genişliği ekranı aşmaz */
+        height: 350px;
+        /* Kartların sabit yüksekliği */
+        box-sizing: border-box;
+        /* Kartların içeriği düzgün şekilde sığar */
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* Kartın içeriği dikey hizalanacak */
+    }
+
+    /* Görsellerin taşmasını engeller ve uyumlu hale getirir */
+    .restaurant-card img {
+        width: 100%;
+        height: 200px;
+        /* Görselin yüksekliği sabitlenir */
+        object-fit: cover;
+        /* Görselin boyutları kartla uyumlu hale gelir */
+        border-radius: 8px;
+        /* Köşeleri yuvarlar */
+    }
+
+    /* Restoran adı ve açıklamanın düzgün görünmesini sağlar */
+    .restaurant-card-body {
+        flex-grow: 1;
+        /* İçeriğin kart içinde genişlemesini sağlar */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* İçeriği yukarı ve aşağıya yerleştirir */
+    }
+
+    /* Kolonlar arasında boşluk bırakır */
+    .g-4 {
+        gap: 1rem;
+    }
+
+    /* Görsel ve buton arası boşluk */
+    .restaurant-card-body h5 {
+        margin: 0;
+    }
+
+    .restaurant-card-body p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .restaurant-card-body .btn {
+        margin-top: auto;
+        /* Butonu alt kısma yerleştirir */
+    }
+
+    .container {
+        margin-top: 50px
+    }
+</style>
 
 <div class="container">
-    <div class="restaurant-comments card">
-        <div class="card-header">
-            <h2>Yorumlar</h2>
-        </div>
-        <div class="card-body">
-            @foreach($restaurant->comments as $comment)
-                <div class="comment mb-3">
-                    <p class="mb-0"><strong>{{ $comment->user_name }}</strong> -
-                        {{ $comment->created_at->format('d.m.Y H:i') }}
-                    </p>
-                    <p class="mb-0">
-                        @for ($i = 0; $i < 5; $i++)
-                            <span style="color: {{ $i < $comment->rating ? 'gold' : '#ccc' }}">&#9733;</span>
-                        @endfor
-                    </p>
-                    <p class="mb-0">{{ $comment->comment ?? 'Yorum yok' }}</p>
-
-                    @if (Session::get('userID') === $comment->userID)
-                        <div class="comment-actions mt-2">
-                            <!-- Güncelleme Formu -->
-                            <form method="POST" action="{{ route('comments.update', $comment->id) }}" style="display: inline;">
-                                @csrf
-                                @method('PUT')
-                                <button type="button" class="btn btn-warning comment-update-btn">Güncelle</button>
-                                <div class="comment-update-form d-none">
-                                    <textarea class="form-control" name="content" placeholder="Yorumunuzu güncelleyin..."
-                                        required>{{ $comment->comment }}</textarea>
-                                    <button type="submit" class="btn btn-success">Güncelle</button>
-                                </div>
-                            </form>
-
-                            <!-- Silme Formu -->
-                            <form method="POST" action="{{ route('comments.destroy', $comment->id) }}" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Sil</button>
-                            </form>
-                        </div>
-                    @endif
+    <h1 class="mb-3">Restoranlarım</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach ($restaurants as $restaurant)
+            <div class="col">
+                <div class="restaurant-card position-relative">
+                    <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
+                        <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
+                    </a>
+                    <div class="restaurant-card-body">
+                        <h5>{{ $restaurant['name'] }}</h5>
+                        <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
+                        <button class="btn btn-success updateRestaurantBtn" data-bs-toggle="modal"
+                            data-bs-target="#updateRestaurant" data-restaurantid="{{ $restaurant['restaurantID'] }}"
+                            data-restaurantname="{{ $restaurant['name'] }}"
+                            data-restaurantdescription="{{ $restaurant['description'] }}"
+                            data-restaurantaddress="{{ $restaurant['address'] }}"
+                            data-restaurantphone="{{ $restaurant['phone'] }}"
+                            data-restaurantemail="{{ $restaurant['email'] }}"
+                            data-restaurantcapacity="{{ $restaurant['capacity'] }}">Restoran Güncelle</button>
+                    </div>
                 </div>
-            @endforeach
+            </div>
+        @endforeach
+    </div>
+</div>
 
-
-
-            @if (Session::has('userID'))
-                <form method="POST" action="/comments">
-                    @csrf
-                    <input type="hidden" name="restaurantID" value="{{ $restaurant->restaurantID }}">
-                    <div class="rating mb-3">
-                        <input type="radio" name="rating" value="1" required id="rate-1">
-                        <label for="rate-1" data-rating="1">★</label>
-                        <input type="radio" name="rating" value="2" required id="rate-2">
-                        <label for="rate-2" data-rating="2">★</label>
-                        <input type="radio" name="rating" value="3" required id="rate-3">
-                        <label for="rate-3" data-rating="3">★</label>
-                        <input type="radio" name="rating" value="4" required id="rate-4">
-                        <label for="rate-4" data-rating="4">★</label>
-                        <input type="radio" name="rating" value="5" required id="rate-5">
-                        <label for="rate-5" data-rating="5">★</label>
+<!-- Güncelleme Modal'ı -->
+<div class="modal fade" id="updateRestaurant" tabindex="-1" aria-labelledby="updateRestaurantLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-5" id="updateRestaurantLabel">Restoran Güncelle</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="updateRestaurantForm" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" id="restaurantID" name="restaurantID">
+                <div class="modal-body">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="newName" class="form-label"><b>*</b>Yeni Restoran Adı</label>
+                            <input type="text" class="form-control" id="newName" name="newName"
+                                placeholder="Yeni Restoran Adı" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <textarea name="content" class="form-control" placeholder="Yorumunuzu yazın..." required></textarea>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="description" class="form-label"><b>*</b>Yeni Açıklama</label>
+                            <textarea class="form-control" id="description" name="description"
+                                placeholder="Açıklama"></textarea>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Yorum Yap</button>
-                </form>
-
-            @else
-                <p>Yorum yapmak için <a href="{{ url('/login') }}">giriş yapın</a>.</p>
-            @endif
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label for="address" class="form-label"><b>*</b>Yeni Adres</label>
+                            <textarea class="form-control" id="address" name="address" placeholder="Adres"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="phone" class="form-label"><b>*</b>Yeni Telefon</label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Telefon">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label"><b>*</b>Yeni E-posta</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="E-posta">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <label for="capacity" class="form-label"><b>*</b>Yeni Kapasite</label>
+                            <input type="number" class="form-control" id="capacity" name="capacity"
+                                placeholder="Kapasite">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="image" class="form-label"><b>*</b>Yeni Resim</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                        </div>
+                    </div>
+                </div>
+                <p class="form-text" style="margin-left: 1rem">* ile işaretli alanlar zorunludur</p>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary w-100">Güncelle</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        // Güncelle butonuna tıklandığında modal'a verileri doldur
+        $('.updateRestaurantBtn').on('click', function () {
+            $('#restaurantID').val($(this).data('restaurantid'));
+            $('#newName').val($(this).data('restaurantname'));
+            $('#description').val($(this).data('restaurantdescription'));
+            $('#address').val($(this).data('restaurantaddress'));
+            $('#phone').val($(this).data('restaurantphone'));
+            $('#email').val($(this).data('restaurantemail'));
+            $('#capacity').val($(this).data('restaurantcapacity'));
+        });
+
+        // Formu gönderme işlemi
+        $('#updateRestaurantForm').on('submit', function (e) {
+            e.preventDefault();
+            let formData = new FormData(this);
+            let restaurantID = $('#restaurantID').val();
+
+            $.ajax({
+                url: '/RestaurantManager/update/' + restaurantID,
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    Swal.fire('Başarılı', 'Restoran başarıyla güncellendi.', 'success').then(() => {
+                        $('#updateRestaurant').modal('hide');
+                        location.reload();
+                    });
+                },
+                error: function () {
+                    Swal.fire('Hata', 'Güncelleme sırasında hata oluştu.', 'error');
+                }
+            });
+        });
+    });
+</script>

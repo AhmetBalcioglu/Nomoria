@@ -18,6 +18,7 @@ class RestaurantsSeeder extends Seeder
         DB::table('restaurant')->insert([
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Ahmet Restoran',
                 'description' => 'Açıklama',
                 'address' => 'Adres',
@@ -35,6 +36,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Bektaş Restoran',
                 'description' => 'Açıklama 2',
                 'address' => 'Adres 2',
@@ -51,6 +53,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Özlem Katip Restoran',
                 'description' => 'Açıklama 3',
                 'address' => 'Adres 3',
@@ -67,6 +70,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Ali Restoran',
                 'description' => 'Açıklama 3',
                 'address' => 'Adres 3',
@@ -83,6 +87,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Pınar Restoran',
                 'description' => 'Açıklama 4',
                 'address' => 'Adres 4',
@@ -99,6 +104,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Sema Restoran',
                 'description' => 'Açıklama 5',
                 'address' => 'Adres 5',
@@ -115,6 +121,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Furkan Restoran',
                 'description' => 'Açıklama 6',
                 'address' => 'Adres 6',
@@ -131,6 +138,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Tuğçe Restoran',
                 'description' => 'Açıklama 7',
                 'address' => 'Adres 7',
@@ -147,6 +155,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Aylin Restoran',
                 'description' => 'Açıklama 8',
                 'address' => 'Adres 8',
@@ -163,6 +172,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Aysun Restoran',
                 'description' => 'Açıklama 9',
                 'address' => 'Adres 9',
@@ -179,6 +189,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Tuzla Balıkçısı',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -195,6 +206,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Jazz Coffee Tuzla',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -211,6 +223,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Mama Mia Restoran Tuzla',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -227,6 +240,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Ayaz Izgara Tuzla',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -243,6 +257,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Legume Cafe & Bakery',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -259,6 +274,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'The North Shield',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -275,6 +291,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Zeytin Tuzla',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -291,6 +308,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Kebap Tuzla',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -307,6 +325,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Tiara Restoran Adalar',
                 'description' => 'Açıklama 9',
                 'address' => 'Adalar',
@@ -323,6 +342,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Mimoza Restoran Adalar',
                 'description' => 'Açıklama 9',
                 'address' => 'Adalar',
@@ -339,6 +359,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Büyükada LocAda',
                 'description' => 'Açıklama 9',
                 'address' => 'Adalar',
@@ -355,6 +376,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Heyamola Restoran Adalar',
                 'description' => 'Açıklama 9',
                 'address' => 'Adalar',
@@ -371,6 +393,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Kutlama Restoran Adalar',
                 'description' => 'Açıklama 9',
                 'address' => 'Adalar',
@@ -387,6 +410,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Palya Restoran Adalar',
                 'description' => 'Açıklama 9',
                 'address' => 'Adalar',
@@ -403,6 +427,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Mira Balık Arnavutköy',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
@@ -419,6 +444,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Doğa Kır Lokantası ',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
@@ -435,6 +461,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Coni&Co Restoran ',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
@@ -451,6 +478,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Madre Arnavutköy',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
@@ -467,6 +495,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Bi-Resto Arnavutköy',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
@@ -483,6 +512,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Antica Lokantası Arnavutköy',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
@@ -499,6 +529,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Nokta Tesisleri Arnavutköy',
                 'description' => 'Açıklama 9',
                 'address' => 'Arnavutköy',
@@ -515,6 +546,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Foça Restoran Ataşehir',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -531,6 +563,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Süslü Konak',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -547,6 +580,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Quick Burger Ataşehir',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -563,6 +597,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Divan Pub Ataşehir',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -579,6 +614,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Çeşme Alaçatı Balıkçısı ',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -595,6 +631,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Develi Restoran Ataşehir',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -611,6 +648,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Sanat Ocakbaşı Ataşehir',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -627,6 +665,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Veganista Ataşehir',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -643,6 +682,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Grill Prime Ataşehir',
                 'description' => 'Açıklama 9',
                 'address' => 'Ataşehir',
@@ -659,6 +699,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Baler Garden',
                 'description' => 'Her davete uygun, şıklık ve lezzetin buluşma noktası',
                 'address' => 'Avcılar',
@@ -675,6 +716,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Big Mammas Avcılar',
                 'description' => 'Lezzetin ve dostane atmosferin buluştuğu, her anı özel kılan bir deneyim',
                 'address' => 'Avcılar',
@@ -691,6 +733,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'İskele Restoran',
                 'description' => 'Denizden sofraya taptaze balıklar, eşsiz tatlar ve samimi bir atmosfer',
                 'address' => 'Avcılar',
@@ -707,6 +750,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => ' Etçi Mehmet SteakHouse',
                 'description' => 'Denizden sofraya taptaze balıklar, eşsiz tatlar ve samimi bir atmosfer',
                 'address' => 'Avcılar',
@@ -723,6 +767,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => ' Pandora Cafe&Restoran',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bağcılar',
@@ -739,6 +784,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Cihan Derya Balık',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bağcılar',
@@ -755,6 +801,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Miraç Et Mangal',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bağcılar',
@@ -771,6 +818,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Seraf Restoran',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bağcılar',
@@ -787,6 +835,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Karadeniz Balıkçısı',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bahçelievler',
@@ -803,6 +852,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Tarihi Sebat Lokantası',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bahçelievler',
@@ -819,6 +869,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Veganarsist',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bahçelievler',
@@ -835,6 +886,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Fenerbahçe Balıkçısı',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bakırköy',
@@ -851,6 +903,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Yelken Restoran',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bakırköy',
@@ -867,6 +920,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Hanedan Mangalbası',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bakırköy',
@@ -883,6 +937,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Göl Balık Restoranı',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Başakşehir',
@@ -899,6 +954,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Vegan İstanbul',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Başakşehir',
@@ -915,6 +971,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Seventeen Pizza',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Başakşehir',
@@ -931,6 +988,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Ercan SteakHouse',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Başakşehir',
@@ -947,6 +1005,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Nusr-Et SteakHouse',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bayrampaşa',
@@ -963,6 +1022,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Plant Burger',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bayrampaşa',
@@ -979,6 +1039,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Korean House',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bayrampaşa',
@@ -995,6 +1056,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Akin Balık',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Bayrampaşa',
@@ -1011,6 +1073,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Taç Balık Restaurant',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beykoz',
@@ -1027,6 +1090,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Boğaziçi Yakamoz',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beykoz',
@@ -1043,6 +1107,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Çam Vadisi',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beykoz',
@@ -1059,6 +1124,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Lotus Coffee & Resto',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beykoz',
@@ -1075,6 +1141,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Veggie Vokkie',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beylikdüzü',
@@ -1091,6 +1158,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Calisto Balık',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beylikdüzü',
@@ -1107,6 +1175,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Zeyn Steakhouse & Kebap',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beylikdüzü',
@@ -1123,6 +1192,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Poyraz Sahil Balık',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beyoğlu',
@@ -1139,6 +1209,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 3,
                 'name' => 'Kasabım Ethane',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beyoğlu',
@@ -1155,6 +1226,7 @@ class RestaurantsSeeder extends Seeder
             ],
             [
                 'guid' => Str::uuid()->toString(),
+                'userID' => 4,
                 'name' => 'Litera Restoran',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Beyoğlu',
@@ -1169,21 +1241,6 @@ class RestaurantsSeeder extends Seeder
                 'image' => '/img/seederImages/kutlama.jpg',
                 'created_at' => Carbon::now()
             ],
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         ]);
     }
 }

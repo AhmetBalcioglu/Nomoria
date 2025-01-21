@@ -134,6 +134,41 @@ class RestaurantController extends Controller
         return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
     }
 
+    public function updateRestaurantOwner(RestaurantUpdateRequest $request, $restaurantID)
+    {
+        $restaurant = Restaurant::where('restaurantID', $restaurantID)->first();
+
+        if (!$restaurant) {
+            return response()->json(['success' => false, 'message' => 'Restoran bulunamadı.'], 404);
+        }
+
+        // Eski resmi sil
+        if ($request->hasFile('image')) {
+            // Eski resim dosyasını sil (eğer varsa)
+            if ($restaurant->image && file_exists(public_path($restaurant->image))) {
+                unlink(public_path($restaurant->image));
+            }
+
+            // Yeni resmi kaydet
+            $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('images/restaurantImages/'), $imageName);
+            $restaurant->image = '/images/restaurantImages/' . $imageName;
+        }
+        $validated = $request->validated();
+        // Restoranı güncelle
+        $restaurant->update([
+            'name' => $validated['newName'],
+            'description' => $validated['description'],
+            'address' => $validated['address'],
+            'phone' => $validated['phone'],
+            'email' => $validated['email'],
+            'capacity' => $validated['capacity'],
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
+    }
+
+
 
     public function delete(Request $request, $name)
     {
@@ -304,6 +339,19 @@ class RestaurantController extends Controller
     {
         $restaurant = Restaurant::findOrFail($restaurantID);
         return view('details.show_details', compact('restaurant'));
+    }
+
+    public function getMyRestaurants()
+    {
+
+        $userID = session('userID');
+
+        if (empty($userID)) {
+            return view('login.login')->with("error", "Lütfen Giriş Yapınız");
+        }
+
+        $restaurants = Restaurant::where('userID', '=', $userID)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
+        return view('restaurantManager.restaurantManager', compact('restaurants'));
     }
 }
 

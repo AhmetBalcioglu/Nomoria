@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,6 +13,8 @@ return new class extends Migration
         Schema::create('restaurant', function (Blueprint $table) {
             $table->id('restaurantID');
             $table->string('guid');
+            $table->unsignedBigInteger('userID')->nullable();
+            $table->foreign('userID')->references('userID')->on('users')->onDelete('cascade');
             $table->string('image');
             $table->string('name');
             $table->string('description');
@@ -34,7 +35,6 @@ return new class extends Migration
             $table->decimal('rating', 3, 1)->default(0); // Puanlama
             $table->timestamps(); // created_at ve updated_at otomatik oluşturulur
             $table->softDeletes(); // deleted_at otomatik oluşturulur
-
         });
     }
 
