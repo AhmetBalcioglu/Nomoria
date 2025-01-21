@@ -33,6 +33,11 @@
   position: sticky;
   top: 10px;
 
+  .dark-mode & {
+    background-color: #222;
+    color: #fff;
+  }
+
   label {
     font-size: 16px;
     margin-right: 10px;
