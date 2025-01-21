@@ -286,39 +286,41 @@ class RestaurantController extends Controller
     }
 
 
-    public function show($restaurantID)
-    {
-        // Session'dan user_id'yi al
-        $userId = session('userID');
+        public function show($restaurantID)
+        {
+
+            $userId = session('userID');
 
 
-        if (!$userId) {
-            $userId = 2;
+            if (!$userId) {
+                $userId = null;
+            }
+
+
+            $guestID = request()->cookie('guestID'); // Çerezdeki guest_id
+
+
+            if (!$guestID) {
+                $guestID = Str::uuid();
+                Cookie::queue('guestID', $guestID, 60 * 24 * 30);
+            }
+
+
+            DB::table('viewed_restaurants')->insert([
+                'userID' => $userId,
+                'guestID' => $guestID,
+                'restaurantID' => $restaurantID, // Görüntülenen restoranın ID'si
+                'viewed_at' => now(), // Görüntüleme tarihi
+            ]);
+
+
+
+            // Restoran bilgilerini al
+            $restaurant = Restaurant::findOrFail($restaurantID);
+
+
+            return view('details.show_details', compact('restaurant'));
         }
-
-        // Çerezden guest_id'yi al
-        $guestID = request()->cookie('guestID'); // Çerezdeki guest_id
-
-
-        if (!$guestID) {
-            $guestID = Str::uuid();
-            Cookie::queue('guestID', $guestID, 60 * 24 * 30);
-        }
-
-        // Görüntüleme kaydını ekle
-        DB::table('viewed_restaurants')->insert([
-            'userID' => $userId,
-            'guestID' => $guestID,
-            'restaurantID' => $restaurantID, // Görüntülenen restoranın ID'si
-            'viewed_at' => now(), // Görüntüleme tarihi
-        ]);
-
-        // Restoran bilgilerini al
-        $restaurant = Restaurant::findOrFail($restaurantID);
-
-
-        return view('details.show_details', compact('restaurant'));
-    }
 
 
 

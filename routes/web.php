@@ -19,13 +19,12 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AddRestaurantController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\FavoriteController;
-
+use App\Http\Middleware\RestaurantView;
+use App\Http\Controllers\DashboardController;
 
 use App\Http\Middleware\AdminOrRestaurant;
 
-Route::get('/dashboard', function () {
-    return view('layouts.dashboard');
-});
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index']);
@@ -53,8 +52,12 @@ Route::prefix('restaurants')->group(function () {
     Route::post('/update/{name}', [RestaurantController::class, 'update'])->name('update');
     Route::get('/all', [RestaurantController::class, 'allRestaurants'])->name('getRestaurants');
     Route::get('/{placeId}', [RestaurantController::class, 'show'])->name('restaurants.details');
-    Route::get('/{restaurantID}', [RestaurantController::class, 'show'])->name('restaurants.show');
+
+
 });
+
+Route::get('/restaurants/{restaurantID}', [RestaurantController::class, 'show'])
+    ->middleware(RestaurantView::class)->name('restaurants.show');
 
 // Details Route
 Route::get('/details', [DetailsController::class, 'index'])->name('details');
@@ -116,3 +119,6 @@ Route::get('/logout', function () {
     $logoutHandler = new HandleLogout();
     return $logoutHandler->handle();
 })->name('logout');
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/my-restaurants', [DashboardController::class, 'OwnerRestaurants'])->name('my-restaurants');

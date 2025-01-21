@@ -13,13 +13,21 @@ return new class extends Migration
     {
         Schema::create('viewed_restaurants', function (Blueprint $table) {
             $table->id("viewedRestaurantID")->primary();
-            $table->unsignedBigInteger('userID');
-            $table->char('guestID',36)->nullable();
+            $table->unsignedBigInteger('userID')->nullable();
+            $table->char('guestID', 36)->nullable();
             $table->unsignedBigInteger('restaurantID');
             $table->timestamp('viewed_at')->useCurrent();
             $table->timestamps();
-            $table->foreign('userID')->references('userID')->on('users')->onDelete('cascade');
-            $table->foreign('restaurantID')->references('restaurantID')->on('restaurant')->onDelete('cascade');
+
+            // Yabancı anahtar tanımları
+            $table->foreign('userID')
+                ->references('userID')
+                ->on('users')
+                ->onDelete('cascade');
+            $table->foreign('restaurantID')
+                ->references('restaurantID')
+                ->on('restaurant')
+                ->onDelete('cascade');
         });
     }
 
