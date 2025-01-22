@@ -127,7 +127,7 @@ $('.category_url img').on('click', function (event) {
     let menuType = menuArray.includes(data) ? data : 'all';
     menuType = menuType.replaceAll(" ", "+");
 
-    let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
+    let url = `/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
 
     window.location.href = url; // Yönlendirme
 });

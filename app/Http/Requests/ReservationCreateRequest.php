@@ -23,7 +23,8 @@ class ReservationCreateRequest extends FormRequest
             'restaurantID' => 'required',
             'userID' => 'required',
             'date' => 'required',
-            'guestCount' => 'required',
+            'guestCount' => 'required|integer|min:1',
+            'checkbox' => 'required|integer|in:1',
 
         ];
     }
@@ -38,6 +39,11 @@ class ReservationCreateRequest extends FormRequest
             'userID.required' => 'Kullanıcı ID zorunludur.',
             'date.required' => 'Rezervasyon tarihi zorunludur.',
             'guestCount.required' => 'Misafir sayısı zorunludur.',
+            'checkbox.required' => 'KVKK metnini kabul etmek zorunludur.',
+            'checkbox.integer' => 'KVKK metnini kabul etmek zorunludur.',
+            'checkbox.in' => 'KVKK metnini kabul etmek zorunludur.',
+            'guestCount.integer' => 'Lütfen geçerli bir misafir sayısı giriniz',
+            'guestCount.min' => 'Lütfen geçerli bir misafir sayısı giriniz',
         ];
     }
 

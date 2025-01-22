@@ -20,7 +20,8 @@ class ReservationController extends Controller
     }
     public function makeReservation()
     {
-        return view("reservations.makeReservation");
+        $restaurants = Restaurant::all()->toArray();
+        return view("reservations.makeReservation", compact('restaurants'));
     }
     public function create(ReservationCreateRequest $request)
     {
@@ -37,7 +38,7 @@ class ReservationController extends Controller
             return response()->json(['success' => false, 'message' => 'Restoran kapasitesi dolmuştur.']);
         }
 
-        if ($request->date < Carbon::now()->format('Y-m-d')) {
+        if ($request->date < Carbon::now()->format('Y-m-d') || $request->date > Carbon::createFromDate(2099, 12, 31)->format('Y-m-d')) {
             return response()->json(['success' => false, 'message' => 'Lütfen geçerli bir tarih giriniz'], 400);
         }
 
@@ -46,6 +47,7 @@ class ReservationController extends Controller
         $reservation->reservation_time = $request->input('date');
         $reservation->guest_count = $request->input('guestCount');
         $reservation->created_at = Carbon::now();
+        $reservation->updated_at = null;
 
         try {
             $userName = session('name');

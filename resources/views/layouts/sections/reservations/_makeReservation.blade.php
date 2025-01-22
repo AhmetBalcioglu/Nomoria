@@ -1,13 +1,5 @@
 <div class="container">
     <div class="row">
-        <!-- Sağ Kısım -->
-        <!-- <div class="restoranBilgi col-md-4">
-            <div class="border p-3 rounded m-5">
-                <h4 class="restoranAdi">Restoran Adı</h4>
-                <p>Rezervasyon öncesi gerekli bilgileri doldurmayı unutmayınız.</p>
-            </div>
-        </div> -->
-
         <!-- Sol Kısım: Form -->
         <div class="container">
             <div class="form col-md-12">
@@ -19,8 +11,13 @@
                         <div class="formUst d-flex flex-row justify-content-between align-items-start mb-3">
                             <!-- Kimlik/IMG Kutusu -->
                             <div class="img col-md-2 me-3">
-                                <div class="border p-3 rounded">
-                                    <h6>IMG</h6>
+                                <div class="border rounded">
+                                    
+                                    @foreach ($restaurants as $restaurant)
+                                        @if ($restaurant['restaurantID'] == request()->input('restaurantID'))
+                                        <img src="{{ asset($restaurant['image']) }}" alt="Kimlik" class="img-fluid">
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -73,7 +70,11 @@
                             <!-- Restoran Bilgi -->
                             <div class="restoranBilgi col-md-4">
                                 <div class="border p-3 rounded h-100">
-                                    <h4 class="restoranAdi">Restoran Adı</h4>
+                                    @foreach ($restaurants as $restaurant)
+                                        @if ($restaurant['restaurantID'] == request()->input('restaurantID'))
+                                            <h4 class="restoranAdi mb-4">{{ $restaurant['name'] }}</h4>
+                                        @endif
+                                    @endforeach
                                     <p>Rezervasyon öncesi gerekli bilgileri doldurmayı unutmayınız.</p>
                                 </div>
                             </div>
@@ -89,7 +90,7 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="date" class="form-control mb-3" id="rezervasyonTarihi"
-                                    name="reservationDate" required min="{{ \Carbon\Carbon::today()->toDateString() }}">
+                                    name="reservationDate" required min="{{ \Carbon\Carbon::today()->toDateString() }}" max="2099-12-31">
 
                                 <label for="rezervasyonSaati" class="formLabel">
                                     Rezervasyon Saati
@@ -111,7 +112,7 @@
 
 
                         <div class="form-check mb-3">
-                            <input type="checkbox" id="checkbox" required>
+                            <input type="checkbox" id="checkbox" name="checkbox">
                             <label class="check" for="checkbox"> <a href="#" data-bs-toggle="modal"
                                     data-bs-target="#kvkkModal">KVKK Aydınlatma Metnini</a> Okudum, Kabul
                                 Ediyorum</label>
@@ -258,6 +259,9 @@
 
             let date = $('#rezervasyonTarihi').val();
             let guestCount = $('#kisiSayisi').val();
+            let checkbox = $('#checkbox').is(':checked') ? 1 : 0;
+            console.log(checkbox);
+            
 
             $.ajax({
                 method: "POST",
@@ -268,6 +272,7 @@
                     userID: userID,
                     date: date,
                     guestCount: guestCount,
+                    checkbox: checkbox
                 },
                 async: true,
                 success: function (response) {
@@ -286,7 +291,7 @@
                         text: `${response.responseJSON.message}`
                     });
                 }
-            })
+            });
 
         });
     });
