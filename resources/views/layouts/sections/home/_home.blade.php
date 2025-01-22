@@ -52,10 +52,8 @@
                             <p class="discount">20%</p>
 
                             <p class="campaign-text">Nomaria'ya özel</p>
-                            <a class="btn btn-campaign" href="/discount">Restorana Git</a>
-
-                            <p class="campaign-text">Nomarisya'ya özel</p>
-                            <button class="btn btn-campaign btn-light">Restorana Git</button>
+                            <a href="/discount" class="btn btn-campaign" >Restorana Git</a>
+                  
 
                         </div>
                     </div>
@@ -67,10 +65,7 @@
                             <p class="discount">15%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
 
-                            <a class="btn btn-campaign" href="/discount">Restorana Git</a>
-
-                            <button class="btn btn-campaign btn-light">Restorana Git</button>
-
+                            <a href="/discount" class="btn btn-campaign" >Restorana Git</a>
                         </div>
                     </div>
                 </div>
@@ -87,9 +82,9 @@
                             <p class="discount">10%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
 
-                            <a class="btn btn-campaign" href="/discount">Restorana Git</a>
+                            <a href="/discount" class="btn btn-campaign" >Restorana Git</a>
 
-                            <button class="btn btn-campaign btn-light">Restorana Git</button>
+                           
 
                         </div>
                     </div>
@@ -101,10 +96,9 @@
                             <p class="discount">5%</p>
 
                             <p class="campaign-text">Nomaria'ya özel</p>
-                            <a class="btn btn-campaign" href= "/discount">Restorana Git</a>
 
-                            <p class="campaign-text">Nomariaya'ya özel</p>
-                            <button class="btn btn-campaign btn-light">Restorana Git</button>
+                            <a href= "/discount" class="btn btn-campaign" >Restorana Git</a>
+                           
 
                         </div>
                     </div>
