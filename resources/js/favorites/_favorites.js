@@ -47,52 +47,104 @@ $(document).ready(function () {
             }
         });
     });
+});
 
-    // Favori kategoriler için tıklama olayı
-    $('.hearth-icon').on('click', function () {
-        const categoryID = $(this).data('id'); // Kategorinin ID'sini al
-        const iconElement = $(this); // Tıklanan simgeyi seç
+$(document).ready(function () {
+    $('.favHearth-icon').click(function () {
+        var categoryID = $(this).data('id'); // Tıklanan SVG'nin data-id değerini al
+        var icon = $(this); // Tıklanan SVG elementini seç
 
+        // AJAX isteği
         $.ajax({
-            url: `/favorites/toggle/${categoryID}`,
+            url: '/favorites/toggle/' + categoryID, // Favori ekleme/çıkarma URL'si
             method: 'GET',
             data: {
-                _token: $('meta[name="csrf-token"]').attr('content'), // Dinamik CSRF token
+                _token: '{{ csrf_token() }}', // CSRF token
             },
             success: function (response) {
                 if (response.success) {
                     if (response.added) {
-                        iconElement.addClass('text-danger');
+                        icon.addClass('favorited').attr('fill', 'red'); // Favori sınıfını ekle ve rengi değiştir
                         Swal.fire({
+                            title: 'Favorilere Eklendi!',
+                            text: 'Kategori favorilerinize eklendi.',
                             icon: 'success',
-                            title: 'Favorilerinize eklendi.',
+                            confirmButtonText: 'Tamam'
                         }).then(function () {
                             location.reload();
                         });
                     } else {
-                        iconElement.removeClass('text-danger');
+                        icon.removeClass('favorited').attr('fill', 'white'); // Favori sınıfını kaldır ve rengi değiştir
                         Swal.fire({
+                            title: 'Favorilerden Çıkarıldı!',
+                            text: 'Kategori favorilerinizden çıkarıldı.',
                             icon: 'success',
-                            title: 'Favorilerinizden kaldırıldı.',
+                            confirmButtonText: 'Tamam'
                         }).then(function () {
                             location.reload();
                         });
                     }
                 } else {
                     Swal.fire({
+                        title: 'Bir hata oluştu!',
+                        text: 'Oturum açmamış olabilirsiniz, lütfen tekrar deneyiniz!',
                         icon: 'error',
-                        title: 'Bir hata oluştu.',
-                        text: response.message,
+                        confirmButtonText: 'Tamam'
                     });
                 }
             },
             error: function () {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Bir hata oluştu.',
-                    text: 'Favori güncellenirken bir sorun oluştu.',
-                });
+                console.log('Bir hata oluştu.');
             }
         });
     });
+});
+
+$('.category_url img').on('click', function (event) {
+    event.stopPropagation(); // Tıklama olayının diğer üst elementlere bulaşmasını engeller
+
+    let categoryArray = {
+        "İş Yemekleri": 3,
+        "Kutlamalar": 2,
+        "Tek Kişilik": 4,
+        "Özel Günler": 1
+    };
+
+    let cuisineArray = [
+        "Türk Mutfağı",
+        "Kore Mutfağı",
+        "Meksika Mutfağı",
+        "Japon Mutfağı",
+        "İtalyan Mutfağı"
+    ];
+
+    let menuArray = [
+        "Et Yemekleri",
+        "Balık Yemekleri",
+        "Fast Food",
+        "Vegan Yemekleri",
+        "Alkol Servisi"
+    ];
+
+    // Resmin bulunduğu öğenin data-url değerini alıyoruz
+    let data = $(this).closest('.category_url').data('url');
+    let district = "all";
+    let viewType = "all";
+
+    // categoryArray ile eşleşen kategori ID'sini alıyoruz
+    let category = categoryArray[data] ?? 'all';
+
+    // cuisineArray ve menuArray içinde veri kontrolü yapıyoruz
+    let couisineType = cuisineArray.includes(data) ? data : 'all';
+    let menuType = menuArray.includes(data) ? data : 'all';
+
+    // Boşlukları "+" ile değiştiriyoruz
+    couisineType = couisineType.replaceAll(" ", "+");
+    menuType = menuType.replaceAll(" ", "+");
+
+    // URL oluşturuluyor
+    let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
+    console.log("Redirecting to URL:", url); // URL'yi konsola yazdırıyoruz
+
+    window.location.href = url; // Yönlendirme işlemi
 });

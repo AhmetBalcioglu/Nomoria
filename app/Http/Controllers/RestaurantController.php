@@ -15,6 +15,11 @@ use Illuminate\Support\Str;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Mail\RestaurantCreatedMail;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
+
 
 
 class RestaurantController extends Controller
@@ -64,6 +69,7 @@ class RestaurantController extends Controller
         // Restoran oluşturma
         $restaurant = new Restaurant();
         $restaurant->guid = Str::uuid();
+        $restaurant->userID = session('userID');
         $restaurant->image = "/images/restaurantImages/" . $image;
         $restaurant->name = $request->name;
         $restaurant->description = $request->description;
@@ -79,14 +85,23 @@ class RestaurantController extends Controller
         $restaurant->created_at = Carbon::now();
         $restaurant->updated_at = null;
 
-        // Kaydetme işlemi
         try {
             $restaurant->save();
+
+            $userRole = session('role');
+            $userEmail = session('email');
+
+            if ($userRole && $userRole === 'restaurantOwner') {
+                Mail::to($userEmail)->send(new RestaurantCreatedMail($restaurant));
+            }
+
+
             return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 422);
         }
     }
+
 
     public function update(RestaurantUpdateRequest $request, $name)
     {
@@ -122,6 +137,41 @@ class RestaurantController extends Controller
 
         return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
     }
+
+    public function updateRestaurantOwner(RestaurantUpdateRequest $request, $restaurantID)
+    {
+        $restaurant = Restaurant::where('restaurantID', $restaurantID)->first();
+
+        if (!$restaurant) {
+            return response()->json(['success' => false, 'message' => 'Restoran bulunamadı.'], 404);
+        }
+
+        // Eski resmi sil
+        if ($request->hasFile('image')) {
+            // Eski resim dosyasını sil (eğer varsa)
+            if ($restaurant->image && file_exists(public_path($restaurant->image))) {
+                unlink(public_path($restaurant->image));
+            }
+
+            // Yeni resmi kaydet
+            $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move(public_path('images/restaurantImages/'), $imageName);
+            $restaurant->image = '/images/restaurantImages/' . $imageName;
+        }
+        $validated = $request->validated();
+        // Restoranı güncelle
+        $restaurant->update([
+            'name' => $validated['newName'],
+            'description' => $validated['description'],
+            'address' => $validated['address'],
+            'phone' => $validated['phone'],
+            'email' => $validated['email'],
+            'capacity' => $validated['capacity'],
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
+    }
+
 
 
     public function delete(Request $request, $name)
@@ -223,9 +273,14 @@ class RestaurantController extends Controller
 
         $query->where('deleted_at', null);
 
-        $restaurants = $query->with(['cities', 'districts', 'favorites', 'category' => function ($query) {
-            $query->select('categoryID', 'categoryName');
-        }])->get()->toArray();
+        $restaurants = $query->with([
+            'cities',
+            'districts',
+            'favorites',
+            'category' => function ($query) {
+                $query->select('categoryID', 'categoryName');
+            }
+        ])->get()->toArray();
 
         //------------------------------------------------------------
 
@@ -284,9 +339,63 @@ class RestaurantController extends Controller
         }
     }
 
+
     public function show($restaurantID)
     {
+
+        $userId = session('userID');
+
+
+        if (!$userId) {
+            $userId = null;
+        }
+
+
+        $guestID = request()->cookie('guestID'); // Çerezdeki guest_id
+
+
+        if (!$guestID) {
+            $guestID = Str::uuid();
+            Cookie::queue('guestID', $guestID, 60 * 24 * 30);
+        }
+
+
+        DB::table('viewed_restaurants')->insert([
+            'userID' => $userId,
+            'guestID' => $guestID,
+            'restaurantID' => $restaurantID, // Görüntülenen restoranın ID'si
+            'viewed_at' => now(), // Görüntüleme tarihi
+        ]);
+
+
+
+        // Restoran bilgilerini al
         $restaurant = Restaurant::findOrFail($restaurantID);
+
+
         return view('details.show_details', compact('restaurant'));
     }
+
+
+    public function getMyRestaurants()
+    {
+
+        $userID = session('userID');
+
+        if (empty($userID)) {
+            return view('login.login')->with("error", "Lütfen Giriş Yapınız");
+        }
+
+        $role = session('role');
+
+        if ($role === 'admin') {
+            $restaurants = Restaurant::where('deleted_at', null)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
+        } else {
+            $restaurants = Restaurant::where('userID', '=', $userID)->where('deleted_at', null)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
+        }
+
+        return view('restaurantManager.restaurantManager', compact('restaurants'));
+    }
+
+   
 }

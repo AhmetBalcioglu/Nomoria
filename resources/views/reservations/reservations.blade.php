@@ -6,18 +6,18 @@
 
 @section('page_head_css')
 
-    @vite('resources/css/reservations/_reservations.scss')
+@vite('resources/css/reservations/_reservations.scss')
 
 @endsection
 
 @section('content')
 
-    @include('layouts.sections.reservations._reservations')
+@include('layouts.sections.reservations._reservations')
 
 @endsection
 
 @section('page_body_js')
 
-    @vite('resources/js/reservations/_reservations.js')
+@vite('resources/js/reservations/_reservations.js')
 
 @endsection

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ContactMessage;
-use App\Http\Requests\ContactSendRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMail;
 
 class ContactController extends Controller
 {
@@ -12,18 +13,28 @@ class ContactController extends Controller
     {
         return view('contact.contact');
     }
-
-    public function send(ContactSendRequest  $request)
+    public function sendMail(Request $request)
     {
-        $validated = $request->validated();
-
-        $contactMessage = ContactMessage::create([
-            'name' => $validated['name'],
-            'surname' => $validated['surname'],
-            'email' => $validated['email'],
-            'message' => $validated['message'],
+        // Verileri doğrulama
+        $data = $request->validate([
+            'name'    => 'required|string',
+            'surname' => 'required|string',
+            'email'   => 'required|email',
+            'message' => 'required|string'
         ]);
 
-        return redirect()->back()->with('success', 'Mesaj Başarıyla Kaydedildi');
+        // Verileri veritabanına kaydetme
+        $contactMessage = new ContactMessage();
+        $contactMessage->name = $data['name'];
+        $contactMessage->surname = $data['surname'];
+        $contactMessage->email = $data['email'];
+        $contactMessage->message = $data['message'];
+        $contactMessage->save();
+
+        // Mail gönderme
+        Mail::to('destek.nomoria@gmail.com')->send(new ContactMail($data));
+
+        // Başarı mesajı döndürme
+        return redirect()->back()->with('success', 'Mesajınız başarıyla gönderildi!');
     }
 }

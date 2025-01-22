@@ -21,16 +21,16 @@ class RestaurantCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'address' => 'nullable|string',
+            'description' => 'required|string',
+            'address' => 'required|string',
             'phone' => 'required|numeric',
-            'email' => 'nullable|email|max:255',
+            'email' => 'required|email|max:255|unique:restaurant,email',
             'capacity' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:5120',
             'city' => 'required|string|max:255',
             'district' => 'required|string|max:255',
-            'cuisineType' => 'nullable|string|max:255',
-            'viewType' => 'nullable|string|max:255',
+            'cuisineType' => 'required|string|max:255',
+            'viewType' => 'required|string|max:255',
             'categoryID' => 'required|string|max:255'
         ];
     }
@@ -50,6 +50,7 @@ class RestaurantCreateRequest extends FormRequest
             'phone.required' => 'Telefon numarası zorunludur.',
             'email.email' => 'Geçerli bir e-posta adresi giriniz.',
             'email.max' => 'E-posta adresi en fazla 255 karakter olmalıdır.',
+            'email.unique' => 'Bu e-posta adresi zaten kullanılıyor.',
             'capacity.required' => 'Kapasitelerinin belirtilmesi zorunludur.',
             'capacity.integer' => 'Kapasite geçerli bir sayı olmalıdır.',
             'image.required' => 'Resim yüklenmesi zorunludur.',

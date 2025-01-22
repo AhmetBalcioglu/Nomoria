@@ -19,8 +19,10 @@
                 Güncelle</button>
         </div>
         <div class="col-md-3">
-            <button class="btn btn-warning">Dash Board</button> <!-- Tuğçenin Dash Boarda yönlendirilecek-->
+            <button id="dashboard" onclick="window.location.href = '{{route('dashboard')}}'" class="btn btn-warning">Dash
+                Board</button>
         </div>
+
     </div>
 </div>
 
@@ -104,7 +106,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-3">
-                            <label for="viewType" class="form-label">Manzara Türü</label>
+                            <label for="viewType" class="form-label"><b>*</b>Manzara Türü</label>
                         </div>
                         <div class="col-md-9">
                             <select id="viewType" class="form-select" name="viewType">
@@ -118,7 +120,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-3">
-                            <label for="cuisineType" class="form-label">Mutfak Türü</label>
+                            <label for="cuisineType" class="form-label"><b>*</b>Mutfak Türü</label>
                         </div>
                         <div class="col-md-9">
                             <select id="cuisineType" class="form-select" name="cuisineType">
@@ -192,7 +194,7 @@
                         <input class="form-control" type="text" name="name" id="restaurantName" required>
                     </div>
                 </div>
-                <div class="row mt-2">
+                <div class="row">
                     <div class="col-md-12">
                         <button type="submit" class="btn btn-danger">Sil</button>
                     </div>

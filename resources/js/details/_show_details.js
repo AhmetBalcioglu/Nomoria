@@ -15,9 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-const updateBtn = document.querySelector('.comment-update-btn');
-const updateForm = document.querySelector('.comment-update-form');
+const updateBtns = document.querySelectorAll('.comment-update-btn');
+const updateForms = document.querySelectorAll('.comment-update-form');
 
-updateBtn.addEventListener('click', () => {
-    updateForm.classList.toggle('d-none');
+updateBtns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        updateForms[index].classList.toggle('d-none');
+    });
 });

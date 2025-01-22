@@ -1,0 +1,38 @@
+   /* Modal Açılma*/
+   @keyframes modalSlideIn {
+       from {
+           opacity: 0;
+           transform: translateY(-50px) scale(0.9);
+       }
+
+       to {
+           opacity: 1;
+           transform: translateY(0) scale(1);
+       }
+   }
+
+   /* Modal Kapanma*/
+   @keyframes modalSlideOut {
+       from {
+           opacity: 1;
+           transform: translateY(0) scale(1);
+       }
+
+       to {
+           opacity: 0;
+           transform: translateY(50px) scale(0.9);
+       }
+   }
+
+   /* Bootstrap Modal İçin Animasyon */
+   .modal.fade.show {
+       animation: modalSlideIn 0.5s ease-out;
+   }
+
+   .modal.fade:not(.show) {
+       animation: modalSlideOut 0.5s ease-in;
+   }
+
+   b {
+       color: red;
+   }

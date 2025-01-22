@@ -28,7 +28,7 @@ class MenusSeeder extends Seeder
                 'price' => 15,
                 'description' => 'Menü 2 Açıklama',
                 'created_at' => Carbon::now(),
-            ],
+        ],
             [
                 'restaurantID' => 1,
                 'menuName' => 'Alkol Servisi',
@@ -166,6 +166,28 @@ class MenusSeeder extends Seeder
                 'description' => 'Menü Açıklama',
                 'created_at' => Carbon::now(),
             ],
+            [
+                'restaurantID' => 14,
+                'menuName' => 'Fast Food',
+                'price' => 25,
+                'description' => 'Menü Açıklama',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'restaurantID' => 15,
+                'menuName' => 'Fast Food',
+                'price' => 25,
+                'description' => 'Menü Açıklama',
+                'created_at' => Carbon::now(),
+            ],
+            [
+                'restaurantID' => 15,
+                'menuName' => 'Fast Food',
+                'price' => 25,
+                'description' => 'Menü Açıklama',
+                'created_at' => Carbon::now(),
+            ],
+
 
             //TODO: Her restoranID için Menü eklenecek
 

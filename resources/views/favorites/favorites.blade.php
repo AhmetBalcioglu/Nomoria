@@ -5,8 +5,8 @@
 @section('page_description', 'Nomoria favoriler sayfasıdır.')
 
 @section('page_head_css')
-<!-- 
-    @vite('resources/css/discount/_discount.scss') -->
+
+    @vite('resources/css/favorites/_favorites.scss')
 
 @endsection
 

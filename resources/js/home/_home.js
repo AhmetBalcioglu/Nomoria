@@ -57,9 +57,8 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response.success) {
-                    // Favori eklenmişse
                     if (response.added) {
-                        icon.attr('fill', 'red'); // Kalp simgesini kırmızıya dönüştür
+                        icon.addClass('favorited'); // Favori sınıfını ekle
                         Swal.fire({
                             title: 'Favorilere Eklendi!',
                             text: 'Kategori favorilerinize eklendi.',
@@ -67,7 +66,7 @@ $(document).ready(function () {
                             confirmButtonText: 'Tamam'
                         });
                     } else {
-                        icon.attr('fill', 'black'); // Kalp simgesini siyaha döndür
+                        icon.removeClass('favorited'); // Favori sınıfını kaldır
                         Swal.fire({
                             title: 'Favorilerden Çıkarıldı!',
                             text: 'Kategori favorilerinizden çıkarıldı.',
@@ -128,7 +127,7 @@ $('.category_url img').on('click', function (event) {
     let menuType = menuArray.includes(data) ? data : 'all';
     menuType = menuType.replaceAll(" ", "+");
 
-    let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
+    let url = `/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
 
     window.location.href = url; // Yönlendirme
 });
