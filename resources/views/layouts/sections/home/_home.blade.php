@@ -51,8 +51,8 @@
                                 class="img-fluid">
                             <h3 class="campaign-title">Balık restoranlarında Kampanya</h3>
                             <p class="discount">20%</p>
-                            <p class="campaign-text">Nomarisya'ya özel</p>
-                            <button class="btn btn-campaign">Restorana Git</button>
+                            <p class="campaign-text">Nomaria'ya özel</p>
+                            <a class="btn btn-campaign" href="/discount">Restorana Git</a>
                         </div>
                     </div>
                     <!-- Et Restoranları Kartı -->
@@ -63,7 +63,7 @@
                             <h3 class="campaign-title">Et menülerinde Kampanya</h3>
                             <p class="discount">15%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
-                            <button class="btn btn-campaign">Restorana Git</button>
+                            <a class="btn btn-campaign" href="/discount">Restorana Git</a>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                             <h3 class="campaign-title">Vegan menülerde Kampanya</h3>
                             <p class="discount">10%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
-                            <button class="btn btn-campaign">Restorana Git</button>
+                            <a class="btn btn-campaign" href="/discount">Restorana Git</a>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -88,8 +88,8 @@
                                 class="img-fluid">
                             <h3 class="campaign-title">Tatlılarda Kampanya</h3>
                             <p class="discount">5%</p>
-                            <p class="campaign-text">Nomariaya'ya özel</p>
-                            <button class="btn btn-campaign">Restorana Git</button>
+                            <p class="campaign-text">Nomaria'ya özel</p>
+                            <a class="btn btn-campaign" href= "/discount">Restorana Git</a>
                         </div>
                     </div>
                 </div>
