@@ -103,7 +103,6 @@ Route::middleware([RestaurantOwner::class])->group(function () {
 // RestaurantManager Route
 Route::get('/RestaurantManager', [RestaurantController::class, 'index'])->name('RestaurantManager');
 Route::get('/RestaurantManager', [RestaurantController::class, 'getMyRestaurants'])->name('RestaurantManager');
-Route::get('/RestaurantManager', [RestaurantController::class, 'getAdminRestaurants'])->name('RestaurantManager');
 Route::post('/RestaurantManager/update/{restaurantID}', [RestaurantController::class, 'updateRestaurantOwner']);
 
 

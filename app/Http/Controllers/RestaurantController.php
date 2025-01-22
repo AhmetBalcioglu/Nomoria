@@ -386,14 +386,16 @@ class RestaurantController extends Controller
             return view('login.login')->with("error", "Lütfen Giriş Yapınız");
         }
 
-        $restaurants = Restaurant::where('userID', '=', $userID)->where('deleted_at', null)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
+        $role = session('role');
+
+        if ($role === 'admin') {
+            $restaurants = Restaurant::where('deleted_at', null)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
+        } else {
+            $restaurants = Restaurant::where('userID', '=', $userID)->where('deleted_at', null)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
+        }
 
         return view('restaurantManager.restaurantManager', compact('restaurants'));
     }
 
-    public function getAdminRestaurants()
-    {
-        $restaurants = Restaurant::all();
-        return view('restaurantManager.restaurantManager', compact('restaurants'));
-    }
+   
 }

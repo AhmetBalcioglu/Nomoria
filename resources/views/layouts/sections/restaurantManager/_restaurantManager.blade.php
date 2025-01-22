@@ -1,68 +1,32 @@
-@if (session('role') === 'restaurantOwner')
-    <div class="container">
-        <h1 class="mb-3">Restoranlarım</h1>
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-            @foreach ($restaurants as $restaurant)
-                <div class="col">
-                    <div class="restaurant-card position-relative">
-                        <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
-                            <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
-                        </a>
-                        <div class="restaurant-card-body">
-                            <h5>{{ $restaurant['name'] }}</h5>
-                            <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
-                            <button class="btn btn-warning updateRestaurantBtn" data-bs-toggle="modal"
-                                data-bs-target="#updateRestaurant" data-restaurantid="{{ $restaurant['restaurantID'] }}"
-                                data-restaurantname="{{ $restaurant['name'] }}"
-                                data-restaurantdescription="{{ $restaurant['description'] }}"
-                                data-restaurantaddress="{{ $restaurant['address'] }}"
-                                data-restaurantphone="{{ $restaurant['phone'] }}"
-                                data-restaurantemail="{{ $restaurant['email'] }}"
-                                data-restaurantcapacity="{{ $restaurant['capacity'] }}">Restoran Güncelle</button>
-                        </div>
+<div class="container">
+    <h1 class="mb-3">Restoranlarım</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        @foreach ($restaurants as $restaurant)
+            <div class="col">
+                <div class="restaurant-card position-relative">
+                    <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
+                        <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
+                    </a>
+                    <div class="restaurant-card-body">
+                        <h5>{{ $restaurant['name'] }}</h5>
+                        <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
+                        <button class="btn btn-warning updateRestaurantBtn" data-bs-toggle="modal"
+                            data-bs-target="#updateRestaurant" data-restaurantid="{{ $restaurant['restaurantID'] }}"
+                            data-restaurantname="{{ $restaurant['name'] }}"
+                            data-restaurantdescription="{{ $restaurant['description'] }}"
+                            data-restaurantaddress="{{ $restaurant['address'] }}"
+                            data-restaurantphone="{{ $restaurant['phone'] }}"
+                            data-restaurantemail="{{ $restaurant['email'] }}"
+                            data-restaurantcapacity="{{ $restaurant['capacity'] }}">Restoran Güncelle</button>
                     </div>
                 </div>
-            @endforeach
-        </div>
-    </div>
-@endif
-
-@if (session('role') === 'admin')
-    <div class="detail-container container">
-        <div class="container my-4 d-flex justify-content-center">
-            <div class="row" id="restaurant-cards">
-                @if (count($restaurants) == 0)
-                    <div class="col-12 text-center">
-                        <p class="mt-5">Sonuç bulunamadı.</p>
-                    </div>
-                @else
-                <h1 class="mt-5 mb-5">Tüm Restoranlar</h1>
-                    @foreach ($restaurants as $restaurant)
-                        <div class="col-md-3 mb-5">
-                            <div class="restaurant-card position-relative">
-                                <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
-                                    <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
-                                </a>
-                                <div class="restaurant-card-body">
-                                    <h5>{{ $restaurant['name'] }}</h5>
-                                    <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
-                                    <button class="btn btn-warning updateRestaurantBtn" data-bs-toggle="modal"
-                                        data-bs-target="#updateRestaurant" data-restaurantid="{{ $restaurant['restaurantID'] }}"
-                                        data-restaurantname="{{ $restaurant['name'] }}"
-                                        data-restaurantdescription="{{ $restaurant['description'] }}"
-                                        data-restaurantaddress="{{ $restaurant['address'] }}"
-                                        data-restaurantphone="{{ $restaurant['phone'] }}"
-                                        data-restaurantemail="{{ $restaurant['email'] }}"
-                                        data-restaurantcapacity="{{ $restaurant['capacity'] }}">Restoran Güncelle</button>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
             </div>
-        </div>
+        @endforeach
     </div>
-@endif
+</div>
+
+
+
 
 
 <!-- Güncelleme Modal'ı -->
