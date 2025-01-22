@@ -1,5 +1,9 @@
 <div class="container">
-    <h1 class="mb-3">Restoranlarım</h1>
+    @if (session()->get('role') == 'admin')
+        <h1 class="mb-3">Tüm Restoranlar</h1>
+    @elseif (session()->get('role') == 'restaurantOwner')
+        <h1 class="mb-3">Restoranlarım</h1>
+    @endif
     <div class="row row-cols-1 row-cols-md-4 g-4">
         @foreach ($restaurants as $restaurant)
             <div class="col">
