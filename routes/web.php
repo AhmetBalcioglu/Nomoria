@@ -124,14 +124,14 @@ Route::prefix('RestaurantManager')->group(function () {
 
 //Login Logout Middleware Route
 Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () {
-    Route::post('/login', [UserController::class, 'login'])->name('login');
+    Route::post('/login', [UserController::class, 'login'])->name('login')->middleware(LoginRegisterUrl::class);
 });
 
 //Timed Exit Middleware Route
 Route::middleware([TimedExit::class])->group(function () {
     // Korunan rotalar
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/login', [LoginController::class, 'index']);
+    Route::get('/login', [LoginController::class, 'index'])->middleware(LoginRegisterUrl::class);
     Route::get('/details', [DetailsController::class, 'index']);
     Route::get('/discount', [DiscountController::class, 'discount']);
     Route::get('/about', [AboutController::class, 'index']);
