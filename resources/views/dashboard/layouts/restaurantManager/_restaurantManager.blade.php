@@ -8,7 +8,7 @@
         @foreach ($restaurants as $restaurant)
             <div class="col">
                 <div class="restaurant-card position-relative">
-                    <a href="{{ route('restaurants.show', $restaurant['restaurantID']) }}">
+                    <a href="{{ route('restaurant.analiz', $restaurant['restaurantID']) }}">
                         <img src="{{ $restaurant['image'] }}" alt="RestaurantImg" class="img-fluid rounded">
                     </a>
                     <div class="restaurant-card-body">
@@ -28,10 +28,6 @@
         @endforeach
     </div>
 </div>
-
-
-
-
 
 <!-- Güncelleme Modal'ı -->
 <div class="modal fade" id="updateRestaurant" tabindex="-1" aria-labelledby="updateRestaurantLabel" aria-hidden="true">

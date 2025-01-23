@@ -100,10 +100,19 @@ Route::middleware([RestaurantOwner::class])->group(function () {
     Route::get('/restaurantPanel', [AdminPanelController::class, 'restaurantPanel'])->name('restaurantPanel');
 });
 
-// RestaurantManager Route
-Route::get('/RestaurantManager', [RestaurantController::class, 'index'])->name('RestaurantManager');
-Route::get('/RestaurantManager', [RestaurantController::class, 'getMyRestaurants'])->name('RestaurantManager');
-Route::post('/RestaurantManager/update/{restaurantID}', [RestaurantController::class, 'updateRestaurantOwner']);
+Route::prefix('RestaurantManager')->group(function () {
+    Route::get('/', [RestaurantController::class, 'index'])->name('RestaurantManager');
+    Route::get('/', [RestaurantController::class, 'getMyRestaurants'])->name('RestaurantManager');
+    Route::post('/update/{restaurantID}', [RestaurantController::class, 'updateRestaurantOwner']);
+    Route::get('/analiz',function () {
+        return view('dashboard.restaurantManager.restaurantAnaliz'); 
+    });
+    Route::get('/analiz/{restaurantID}', [DashboardController::class, 'showAnaliz'])->name('restaurant.analiz');
+    Route::get('/analiz/comments/{restaurantID}', [DashboardController::class, 'getComments'])->name('restaurant.analiz.comments');
+});
+
+
+
 
 
 

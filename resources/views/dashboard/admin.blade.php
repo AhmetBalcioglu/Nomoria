@@ -7,17 +7,15 @@
 @section('page_head_css')
 
 
-
 @endsection
 
 @section('content')
 
-    @include('dashboard.layouts.admin.adminDashboard')
+    @include('dashboard.layouts.admin._adminDashboard')
 
 @endsection
 
 @section('page_body_js')
-
 
 
 @endsection

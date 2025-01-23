@@ -16,7 +16,7 @@
 
 <body>
 <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
-@include('dashboard.layouts.header.dashboardHeader')
+@include('dashboard.layouts.header._dashboardHeader')
 @yield('content')
 
 

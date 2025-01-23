@@ -12,7 +12,7 @@
 
 @section('content')
 
-    @include('dashboard.layouts.owner.ownerDashboard')
+    @include('dashboard.layouts.owner._ownerDashboard')
 
 
 

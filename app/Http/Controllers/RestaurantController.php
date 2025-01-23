@@ -394,7 +394,7 @@ class RestaurantController extends Controller
             $restaurants = Restaurant::where('userID', '=', $userID)->where('deleted_at', null)->get(['restaurantID', 'userID', 'image', 'name', 'description', 'address', 'phone', 'email', 'capacity', 'cuisine_type', 'view_type', 'categoryID', 'citiesID', 'districtsID']);
         }
 
-        return view('restaurantManager.restaurantManager', compact('restaurants'));
+        return view('dashboard.restaurantManager.restaurantManager', compact('restaurants'));
     }
 
    

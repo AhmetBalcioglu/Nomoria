@@ -15,6 +15,6 @@ class RestaurantManagerController extends Controller
         $restaurantID = 1; // TODO: Restoranın id'si db'den alınacak
         $restaurant = Restaurant::findOrFail($restaurantID);
 
-        return view('restaurantManager.restaurantManager', compact('restaurant'));
+        return view('dashboard.restaurantManager.restaurantManager', compact('restaurant'));
     }
 }
