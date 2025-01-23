@@ -19,8 +19,7 @@
                 Güncelle</button>
         </div>
         <div class="col-md-3">
-            <button id="dashboard" onclick="window.location.href = '{{route('dashboard')}}'" class="btn btn-warning">Dash
-                Board</button>
+            <button id="dashboard" onclick="window.location.href = '{{route('dashboard')}}'" class="btn btn-warning">Dashboard</button>
         </div>
 
     </div>

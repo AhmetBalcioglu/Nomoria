@@ -4,3 +4,6 @@
 @use './contact/contact.scss';
 @use './details/details';
 @use './darkMode/dark_mode.scss';
+
+@import "variables";
+@import "global";

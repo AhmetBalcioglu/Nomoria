@@ -1,6 +1,7 @@
+<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <div class="container mt-5">
-  
-    
+
+
     @foreach ($categories->chunk(5) as $chunk)
 
         <div class="row mb-5">
@@ -9,7 +10,7 @@
                     data-url="{{ $category->categoryName }}">
                     <p class="text-center"><b>{{ $category->categoryName }}</b></p>
                     <img src="{{ asset($category->image) }}" width="50%" height="50%" class="d-block w-100 my-4" alt="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 hearth-icon 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 hearth-icon
                                            {{ in_array($category->categoryID, $favoritedCategories) ? 'favorited' : '' }}"
                         data-id="{{ $category->categoryID }}" viewBox="0 0 16 16">
                         <path
@@ -53,7 +54,7 @@
 
                             <p class="campaign-text">Nomaria'ya özel</p>
                             <a href="/discount" class="btn btn-campaign" >Restorana Git</a>
-                  
+
 
                         </div>
                     </div>
@@ -84,7 +85,7 @@
 
                             <a href="/discount" class="btn btn-campaign" >Restorana Git</a>
 
-                           
+
 
                         </div>
                     </div>
@@ -98,7 +99,7 @@
                             <p class="campaign-text">Nomaria'ya özel</p>
 
                             <a href= "/discount" class="btn btn-campaign" >Restorana Git</a>
-                           
+
 
                         </div>
                     </div>
