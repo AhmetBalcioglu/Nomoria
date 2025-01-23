@@ -15,7 +15,7 @@ class ReservationController extends Controller
 {
     public function index()
     {
-        $reservations = Reservation::with('restaurant.name', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
+        $reservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
         return view("reservations.reservations", compact('reservations'));
     }
     public function makeReservation()
