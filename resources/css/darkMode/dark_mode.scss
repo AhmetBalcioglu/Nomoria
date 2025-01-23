@@ -80,85 +80,98 @@ body.dark-mode {
             transition: transform 0.5s ease;
         }
     }
-   
-        .login-body{
-            background-color: $dark-mode-bg;
-            color: $dark-mode-color;
 
-    .login-container{
+    .login-body {
+        background-color: $dark-mode-bg;
+        color: $dark-mode-color;
+
+        .login-container {
             background-color: $dark-mode-bg;
             color: $dark-mode-color;
             border-color: $dark-mode-border;
             box-shadow: none;
 
-    h1{
-            color: $dark-mode-color;
-      }
-   input{
-            background-color: #333;
-            color: $dark-mode-color;
-            border: 1px solid $dark-mode-border;
-}
-    .login-button{
-        background-color: $dark-mode-button-bg;
-        color: $dark-mode-color;
+            h1 {
+                color: $dark-mode-color;
             }
-            &:hover{
+
+            input {
+                background-color: #333;
+                color: $dark-mode-color;
+                border: 1px solid $dark-mode-border;
+            }
+
+            .login-button {
+                background-color: $dark-mode-button-bg;
+                color: $dark-mode-color;
+            }
+
+            &:hover {
                 background-color: #444;
             }
         }
     }
-.register-body{
-    background-color: $dark-mode-bg;
-    color: $dark-mode-color;
 
-    .register-container{
+    .register-body {
         background-color: $dark-mode-bg;
         color: $dark-mode-color;
-        border-color: $dark-mode-border;
-        box-shadow: none;
 
-        h1{
+        .register-container {
+            background-color: $dark-mode-bg;
             color: $dark-mode-color;
+            border-color: $dark-mode-border;
+            box-shadow: none;
+
+            h1 {
+                color: $dark-mode-color;
+            }
+
+            input {
+                background-color: #333;
+                color: $dark-mode-color;
+                border: 1px solid $dark-mode-border;
+            }
+
+            select {
+                background-color: #333;
+                color: $dark-mode-color;
+                border: 1px solid $dark-mode-border;
+            }
+
+            option {
+                background-color: #333;
+                color: $dark-mode-color;
+
+            }
+
+            label {
+                color: $dark-mode-color; // Etiket renkleri için ekleme
+            }
+
+            .form-text {
+                color: $dark-mode-color; // Form metin rengi
+            }
+
+            .register-button {
+                background-color: $dark-mode-button-bg;
+                color: $dark-mode-color;
+            }
+
+            &:hover {
+                background-color: #444;
+            }
+
         }
-        input{
-            background-color: #333;
-            color: $dark-mode-color;
-            border: 1px solid $dark-mode-border;
-        }
-        select{
-            background-color: #333;
-            color: $dark-mode-color;
-            border: 1px solid $dark-mode-border;
-        }
-        option{
-            background-color: #333;
-            color: $dark-mode-color;
-            
-        }
-        label {
-            color: $dark-mode-color; // Etiket renkleri için ekleme
-        }
-        .form-text{
-            color: $dark-mode-color; // Form metin rengi
-        }
-        .register-button{
-            background-color: $dark-mode-button-bg;
-            color: $dark-mode-color;
-        }
-        &:hover{
-            background-color: #444;
-        }
-        
+
     }
 
-}
-label {
-    color: $dark-mode-color; // Form üzerindeki etiketler için genel ayar
-}
-input::placeholder, 
-select::placeholder, 
-textarea::placeholder {
-    color: lighten($dark-mode-color, 20%); // Placeholder metin rengi
-}
+    label {
+        color: $dark-mode-color; // Form üzerindeki etiketler için genel ayar
+    }
+
+    input::placeholder,
+    select::placeholder,
+    textarea::placeholder {
+        color: rgba($dark-mode-color, 0.7); // Placeholder metin rengi
+    }
 }

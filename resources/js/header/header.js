@@ -18,13 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const lightLogo = document.getElementById("light-logo");
     const darkLogo = document.getElementById("dark-logo");
 
-
-    // function updateButtonText() {
-    //     const isDarkMode = document.body.classList.contains("dark-mode");
-    //     toggleButton.textContent = isDarkMode ? "Light Mode'a Geç" : "Dark Mode'a Geç";
-    // }
-
-    //Dark mode için svg ikonublu buton
+    //Dark mode için svg ikonlu buton
     function updateButtonText() {
         const isDarkMode = document.body.classList.contains("dark-mode");
 

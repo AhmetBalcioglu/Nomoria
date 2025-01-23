@@ -12,6 +12,7 @@ class DetailsController extends Controller
 {
     public function index()
     {
+        //Restoranlarım sayfasına gerekli bilgiler gönderiliyor
         $restaurants = Restaurant::with(['cities', 'districts', 'favorites'])
             ->where('deleted_at', '=', null)
             ->orderBy('name', 'asc')

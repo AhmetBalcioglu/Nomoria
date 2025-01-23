@@ -25,6 +25,7 @@ class ReservationController extends Controller
     }
     public function create(ReservationCreateRequest $request)
     {
+        //-----------------------Rezervasyon oluşturma işlemi------------------------
         $reservation = new Reservation();
 
         $restaurant = Restaurant::where('restaurantID', $request->input('restaurantID'))->first();
@@ -53,11 +54,12 @@ class ReservationController extends Controller
             $userName = session('name');
             $userEmail = session('email');
             $reservation->save();
-            Mail::to($userEmail)->send(new ReservationCreatedMail($reservation, $userName));
+            Mail::to($userEmail)->send(new ReservationCreatedMail($reservation, $userName)); // Rezervasyon bilgileri kullanıcıya e-posta ile gönderiliyor
 
             return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla oluşturuldu.']);
         } catch (\Throwable $errorMessage) {
             return response()->json(['success' => false, 'message' => $errorMessage->getMessage()]);
         }
+        //--------------------------------------------------------------------------
     }
 }

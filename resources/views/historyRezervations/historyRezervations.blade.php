@@ -6,8 +6,6 @@
 
 @section('page_head_css')
 
-@vite('resources/css/historyRezervations/_historyRezervations.scss')
-
 @endsection
 
 @section('content')
@@ -17,8 +15,5 @@
 @endsection
 
 @section('page_body_js')
-
-
-@vite('resources/js/historyRezervations/_historyRezervations.js')
 
 @endsection

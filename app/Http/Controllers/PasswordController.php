@@ -16,6 +16,7 @@ class PasswordController extends Controller
 {
     public function sendResetCode(PasswordsendResetCodeRequest $request)
     {
+        // ------------Şifre Sıfırlama Kodu Gönderme------------
         $email = $request->input('email');
         $resetCode = random_int(100000, 999999);
 
@@ -30,12 +31,14 @@ class PasswordController extends Controller
         });
 
         return redirect('/newPassword');
+        // ------------------------------------------------
     }
 
 
 
     public function resetPassword(PasswordResetPasswordRequest $request)
     {
+        // ------------Şifre Sıfırlama İşlemi------------
         $resetCode = Session::get('reset_code');
         $resetEmail = Session::get('reset_email');
 
@@ -61,7 +64,6 @@ class PasswordController extends Controller
         Session::forget('reset_email');
 
         return redirect('/login')->with('success', 'Şifreniz başarıyla güncellendi.');
+        // ------------------------------------------------
     }
-
 }
-
