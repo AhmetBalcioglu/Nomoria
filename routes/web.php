@@ -35,7 +35,7 @@ Route::get('/search', [RestaurantController::class, 'search'])->name('search');
 Route::get('/search/history', [RestaurantController::class, 'getHistory']);
 Route::get('/filter', [RestaurantController::class, 'filter'])->name('filter');
 Route::get('/contact', [ContactController::class, 'index']);
-Route::get('/profile', [LoginController::class, 'profile'])->name('profile')->middleware(AdminOrRestaurant::class);
+Route::get('/profile', [LoginController::class, 'profile'])->name('profile');
 
 //Login Page and Forgot Password Route
 Route::get('/login', [LoginController::class, 'index']);
