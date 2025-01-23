@@ -131,7 +131,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('RestaurantManager') }}">Restoranlarım</a></li>
                     <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
-                    <li><a class="dropdown-item" href="{{ route('reservations') }}">Geçmiş Rezervasyonlarım</a></li>
+                    <li><a class="dropdown-item" href="{{ route('reservations') }}">Rezervasyonlarım</a></li>
                     <li><a class="dropdown-item" href="/historyRezervations">Geçmiş Rezervasyonlarım</a></li>
                     <li> <a href="{{ route('logout') }}" class="btn btn-danger custom-button me-2 information">Çıkış
                             Yap</a></li>
