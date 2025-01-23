@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('dashboard.master')
 
 @section('page_title', 'Restorant Panel - Nomoria')
 
@@ -12,7 +12,7 @@
 
 @section('content')
 
-@include('layouts.sections.restaurantPanel._restaurantPanel')
+@include('dashboard.layouts.restaurantPanel._restaurantPanel')
 
 @endsection
 

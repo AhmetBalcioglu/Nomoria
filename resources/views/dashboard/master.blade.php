@@ -10,26 +10,27 @@
     <title>@yield('page_title')</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @vite(['resources/css/app.scss', 'resources/js/app.js'])
     @yield('page_head_css')
 
 </head>
 
 <body>
-<script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
-@include('dashboard.layouts.header._dashboardHeader')
-@yield('content')
+    <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
+    @include('dashboard.layouts.header._dashboardHeader')
+    @yield('content')
 
 
 
 
-<script>
-    let successMessage = @json(session('success'));
-    let errorMessages = @json(session('error') ? [session('error')] : []);
-</script>
+    <script>
+        let successMessage = @json(session('success'));
+        let errorMessages = @json(session('error') ? [session('error')] : []);
+    </script>
 
 
 
-@yield('page_body_js')
+    @yield('page_body_js')
 
 </body>
 

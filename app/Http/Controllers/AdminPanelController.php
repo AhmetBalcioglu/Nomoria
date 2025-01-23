@@ -11,13 +11,13 @@ class AdminPanelController extends Controller
     {
         $cities = Cities::getAllCities();
         $districts = Cities::getAllDistricts();
-        return view('adminPanel.adminPanel', compact('districts', 'cities'));
+        return view('dashboard.adminPanel.adminPanel', compact('districts', 'cities'));
     }
 
     public function restaurantPanel()
     {
         $cities = Cities::getAllCities();
         $districts = Cities::getAllDistricts();
-        return view('restaurantPanel.restaurantPanel', compact('districts', 'cities'));
+        return view('dashboard.restaurantPanel.restaurantPanel', compact('districts', 'cities'));
     }
 }

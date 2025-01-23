@@ -51,25 +51,6 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">Yardım ve Destek</a>
                 </li>
-                {{-- Kullanıcı rolüne göre gösterilecek panel kısıtlaması --}}
-                @if (
-                        session()->has('name') &&
-                        session()->has('surname') &&
-                        session()->has('role') &&
-                        (session()->get('role') == 'admin')
-                    )
-                                    <li class="nav-item">
-                                        <a class="nav-link custom-link" href="{{ route('adminPanel') }}">Admin Panel</a>
-                                    </li>
-                @endif
-                @if (
-    session()->has('name') && session()->has('surname') && session()->has('role') &&
-    session()->get('role') == 'restaurantOwner'
-)
-                                    <li class="nav-item"></li>
-                                    <a class="nav-link custom-link" href="{{ route('restaurantPanel') }}">Restoran Paneli</a>
-                                    </li>
-                @endif
             </ul>
         </div>
     </div>
@@ -98,14 +79,15 @@
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill mt-1 mx-1"
                     viewBox="0 0 16 16" data-bs-toggle="dropdown" aria-expanded="false" width="24" height="24">
                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
-            </svg>
+                </svg>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item processOptions" href="/login">Üye Girişi</a></li>
                     <li><a class="dropdown-item processOptions" href="/register">Kayıt Ol</a></li>
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
                         <li><a class="dropdown-item processOptions" href="/login">Rezervasyonlarım</a></li>
                     @else
-                        <li><a href="{{ route('reservation') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a></li>
+                        <li><a href="{{ route('reservation') }}" class="btn btn-primary custom-button me-2">Rezervasyonlarım</a>
+                        </li>
                     @endif
                     {{-- Favorilerim --}}
                     @if (!(session()->has('name') && session()->has('surname') && session()->has('role')))
@@ -130,7 +112,9 @@
 
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('profile') }}">Hesabım</a></li>
-                    <li><a class="dropdown-item" href="{{ route('RestaurantManager') }}">Restoranlarım</a></li>
+                    @if (session('role') == 'admin' || session('role') == 'restaurantOwner')
+                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Restoran İşlemleri(Dashboard)</a></li>
+                    @endif
                     <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
                     <li><a class="dropdown-item" href="{{ route('reservations') }}">Rezervasyonlarım</a></li>
                     <li><a class="dropdown-item" href="/historyRezervations">Geçmiş Rezervasyonlarım</a></li>

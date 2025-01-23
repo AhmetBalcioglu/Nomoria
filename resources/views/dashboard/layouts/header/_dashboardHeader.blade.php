@@ -7,6 +7,7 @@
         font-family: Arial, sans-serif;
         margin-left: 250px;
     }
+
     .container {
         width: calc(100vw - 200px);
         padding: 20px;
@@ -36,7 +37,8 @@
 
 
     }
-    h4{
+
+    h4 {
         text-align: end;
         font-size: 12px;
     }
@@ -113,18 +115,24 @@
 
 <body>
 
-<!-- Dashboard Header (Sol Menü) -->
-<div class="dashboard-header">
-    <div class="logo">
-        <img src="{{ asset('img/logo_light.png') }}" alt="Logo">
-        <h4 >DASHBOARD</h4>
+    <!-- Dashboard Header (Sol Menü) -->
+    <div class="dashboard-header">
+        <div class="logo">
+            <img src="{{ asset('img/logo_light.png') }}" alt="Logo">
+            <h4>DASHBOARD</h4>
 
+        </div>
+        <nav>
+            @if (session('role') === 'admin')
+                <a href="/adminPanel">Admin Panel</a>
+            @else
+                <a href="/restaurantPanel">Restaurant Owner Panel</a>
+            @endif
+
+            <a href="#">Ana Sayfa</a>
+            <a href="/RestaurantManager">Restoranlar</a>
+            <a href="#">Analizler</a>
+            <a href="#">Ayarlar</a>
+            <a href="{{route("home")}}">Çıkış</a>
+        </nav>
     </div>
-    <nav>
-        <a href="#">Ana Sayfa</a>
-        <a href="/RestaurantManager">Restoranlar</a>
-        <a href="#">Analizler</a>
-        <a href="#">Ayarlar</a>
-        <a href="{{route("home")}}">Çıkış</a>
-    </nav>
-</div>

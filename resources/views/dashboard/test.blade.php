@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('dashboard.master')
 
 @section('page_title', 'Admin Panel - Nomoria')
 
@@ -12,7 +12,7 @@
 
 @section('content')
 
-    @include('layouts.sections.adminPanel._adminPanel')
+    @include('dashboard.layouts.adminPanel._adminPanel')
 
 @endsection
 

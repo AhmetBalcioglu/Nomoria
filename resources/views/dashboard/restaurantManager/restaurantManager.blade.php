@@ -1,4 +1,4 @@
-@extends('dashboard.dashboardMaster')
+@extends('dashboard.master')
 
 @section('page_title', 'Restoran Yöneticisi Sayfası - Nomoria')
 
