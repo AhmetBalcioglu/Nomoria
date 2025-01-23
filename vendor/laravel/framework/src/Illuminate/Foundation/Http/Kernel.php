@@ -63,12 +63,11 @@ class Kernel implements KernelContract
      */
     protected $middlewareGroups = [
         'web' => [
-        \App\Http\Middleware\EncryptCookies::class,
-        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-        \Illuminate\Session\Middleware\StartSession::class,
-        \App\Http\Middleware\TimedExit::class, // Oturum kontrolü middleware'i
-        // Diğer middleware'ler
-    ],
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \App\Http\Middleware\TimedExit::class, // Oturum kontrolü middleware'i
+            // Diğer middleware'ler
+        ],
     ];
 
     /**
@@ -78,7 +77,9 @@ class Kernel implements KernelContract
      *
      * @deprecated
      */
-    protected $routeMiddleware = [];
+    protected $routeMiddleware = [
+        \App\Http\Middleware\LoginUrl::class,
+    ];
 
     /**
      * The application's middleware aliases.
@@ -179,9 +180,9 @@ class Kernel implements KernelContract
         $this->bootstrap();
 
         return (new Pipeline($this->app))
-                    ->send($request)
-                    ->through($this->app->shouldSkipMiddleware() ? [] : $this->middleware)
-                    ->then($this->dispatchToRouter());
+            ->send($request)
+            ->through($this->app->shouldSkipMiddleware() ? [] : $this->middleware)
+            ->then($this->dispatchToRouter());
     }
 
     /**
@@ -191,7 +192,7 @@ class Kernel implements KernelContract
      */
     public function bootstrap()
     {
-        if (! $this->app->hasBeenBootstrapped()) {
+        if (!$this->app->hasBeenBootstrapped()) {
             $this->app->bootstrapWith($this->bootstrappers());
         }
     }
@@ -257,7 +258,7 @@ class Kernel implements KernelContract
         );
 
         foreach ($middlewares as $middleware) {
-            if (! is_string($middleware)) {
+            if (!is_string($middleware)) {
                 continue;
             }
 
@@ -388,7 +389,7 @@ class Kernel implements KernelContract
      */
     public function prependMiddlewareToGroup($group, $middleware)
     {
-        if (! isset($this->middlewareGroups[$group])) {
+        if (!isset($this->middlewareGroups[$group])) {
             throw new InvalidArgumentException("The [{$group}] middleware group has not been defined.");
         }
 
@@ -412,7 +413,7 @@ class Kernel implements KernelContract
      */
     public function appendMiddlewareToGroup($group, $middleware)
     {
-        if (! isset($this->middlewareGroups[$group])) {
+        if (!isset($this->middlewareGroups[$group])) {
             throw new InvalidArgumentException("The [{$group}] middleware group has not been defined.");
         }
 
@@ -433,7 +434,7 @@ class Kernel implements KernelContract
      */
     public function prependToMiddlewarePriority($middleware)
     {
-        if (! in_array($middleware, $this->middlewarePriority)) {
+        if (!in_array($middleware, $this->middlewarePriority)) {
             array_unshift($this->middlewarePriority, $middleware);
         }
 
@@ -450,7 +451,7 @@ class Kernel implements KernelContract
      */
     public function appendToMiddlewarePriority($middleware)
     {
-        if (! in_array($middleware, $this->middlewarePriority)) {
+        if (!in_array($middleware, $this->middlewarePriority)) {
             $this->middlewarePriority[] = $middleware;
         }
 
@@ -493,7 +494,7 @@ class Kernel implements KernelContract
      */
     protected function addToMiddlewarePriorityRelative($existing, $middleware, $after = true)
     {
-        if (! in_array($middleware, $this->middlewarePriority)) {
+        if (!in_array($middleware, $this->middlewarePriority)) {
             $index = $after ? 0 : count($this->middlewarePriority);
 
             foreach ((array) $existing as $existingMiddleware) {

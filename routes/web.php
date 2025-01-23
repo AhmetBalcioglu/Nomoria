@@ -24,6 +24,7 @@ use App\Http\Middleware\RestaurantView;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AdminOrRestaurant;
 use App\Http\Middleware\RestaurantOwner;
+use App\Http\Middleware\LoginRegisterUrl;
 
 Route::get('/dashboard', function () {
     return view('layouts.dashboard');
@@ -37,9 +38,11 @@ Route::get('/filter', [RestaurantController::class, 'filter'])->name('filter');
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/profile', [LoginController::class, 'profile'])->name('profile');
 
-//Login Page and Forgot Password Route
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [LoginController::class, 'register']);
+
+
+Route::get('/login', [LoginController::class, 'index'])->middleware(LoginRegisterUrl::class);
+Route::get('/register', [LoginController::class, 'register'])->middleware(LoginRegisterUrl::class);
+
 Route::post('/register', [UserController::class, 'create'])->name('register');
 Route::get('/forgotPassword', [LoginController::class, 'forgotPassword']);
 Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name('forgotPassword');
