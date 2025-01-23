@@ -6,19 +6,18 @@
 
 @section('page_head_css')
 
-    @vite('resources/css/newPassword/_newPassword.scss')
-
+@vite('resources/css/newPassword/_newPassword.scss')
 
 @endsection
 
 @section('content')
 
-    @include('layouts.sections.newPassword._newPassword')
+@include('layouts.sections.newPassword._newPassword')
 
 @endsection
 
 @section('page_body_js')
 
-    @vite('resources/js/newPassword/_newPassword.js')
+@vite('resources/js/newPassword/_newPassword.js')
 
 @endsection
