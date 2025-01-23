@@ -24,6 +24,11 @@
 
 }
 
+.dark-mode .btn {
+  background-color: #ed4f15;
+  color: white;
+}
+
 .sidebar {
   width: 280px;
   background-color: #ffffff;
@@ -136,16 +141,26 @@
     background-color: #deba80;
     color: black;
     width: 250px;
+
+    .dark-mode & {
+      background-color: #ed4f15;
+      color: white;
+    }
   }
 
   .btn:hover {
     background-color: #555;
   }
+
 }
 
 
 .baslik {
   color: #3d3a3a;
+
+  .dark-mode & {
+    color: #fff;
+  }
 }
 
 .hero {
