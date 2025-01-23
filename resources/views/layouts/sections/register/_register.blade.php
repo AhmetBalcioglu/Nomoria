@@ -50,6 +50,7 @@
 
             <button type="submit" class="register-button">Kayıt Ol</button>
         </form>
+        <p>Zaten üye misin? <a href="{{ route('login') }}">Giriş Yap</a></p>
 
     </div>
 </div>

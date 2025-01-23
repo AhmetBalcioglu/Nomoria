@@ -129,6 +129,7 @@
                 <h6 class="mt-2">{{ session()->get('name') }} {{ session()->get('surname') }}</h6>
 
                 <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('profile') }}">Hesabım</a></li>
                     <li><a class="dropdown-item" href="{{ route('RestaurantManager') }}">Restoranlarım</a></li>
                     <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
                     <li><a class="dropdown-item" href="{{ route('reservations') }}">Geçmiş Rezervasyonlarım</a></li>

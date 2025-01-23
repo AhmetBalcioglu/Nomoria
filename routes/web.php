@@ -35,6 +35,7 @@ Route::get('/search', [RestaurantController::class, 'search'])->name('search');
 Route::get('/search/history', [RestaurantController::class, 'getHistory']);
 Route::get('/filter', [RestaurantController::class, 'filter'])->name('filter');
 Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/profile', [LoginController::class, 'profile'])->name('profile')->middleware(AdminOrRestaurant::class);
 
 //Login Page and Forgot Password Route
 Route::get('/login', [LoginController::class, 'index']);
@@ -104,8 +105,8 @@ Route::prefix('RestaurantManager')->group(function () {
     Route::get('/', [RestaurantController::class, 'index'])->name('RestaurantManager');
     Route::get('/', [RestaurantController::class, 'getMyRestaurants'])->name('RestaurantManager');
     Route::post('/update/{restaurantID}', [RestaurantController::class, 'updateRestaurantOwner']);
-    Route::get('/analiz',function () {
-        return view('dashboard.restaurantManager.restaurantAnaliz'); 
+    Route::get('/analiz', function () {
+        return view('dashboard.restaurantManager.restaurantAnaliz');
     });
     Route::get('/analiz/{restaurantID}', [DashboardController::class, 'showAnaliz'])->name('restaurant.analiz');
     Route::get('/analiz/comments/{restaurantID}', [DashboardController::class, 'getComments'])->name('restaurant.analiz.comments');
