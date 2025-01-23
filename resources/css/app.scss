@@ -5,5 +5,5 @@
 @use './details/details';
 @use './darkMode/dark_mode.scss';
 
-@import "variables";
-@import "global";
+@use "variables";
+@use "global";

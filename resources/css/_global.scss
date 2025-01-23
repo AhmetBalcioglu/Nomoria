@@ -1,11 +1,15 @@
+$base-font-family: 'Roboto', Arial, sans-serif;
+$base-font-size: 16px;
+$base-line-height: 1.5;
 
 body, html {
-    font-family: $base-font-family;
+    font-family:$base-font-family;
     font-size: $base-font-size;
     line-height: $base-line-height;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 *,
@@ -13,3 +17,4 @@ body, html {
 *::after {
     box-sizing: inherit;
 }
+
