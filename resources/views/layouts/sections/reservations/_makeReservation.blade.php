@@ -12,10 +12,10 @@
                             <!-- Kimlik/IMG Kutusu -->
                             <div class="img col-md-2 me-3">
                                 <div class="border rounded">
-                                    
+
                                     @foreach ($restaurants as $restaurant)
                                         @if ($restaurant['restaurantID'] == request()->input('restaurantID'))
-                                        <img src="{{ asset($restaurant['image']) }}" alt="Kimlik" class="img-fluid">
+                                            <img src="{{ asset($restaurant['image']) }}" alt="Kimlik" class="img-fluid">
                                         @endif
                                     @endforeach
                                 </div>
@@ -90,7 +90,8 @@
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="date" class="form-control mb-3" id="rezervasyonTarihi"
-                                    name="reservationDate" required min="{{ \Carbon\Carbon::today()->toDateString() }}" max="2099-12-31">
+                                    name="reservationDate" required min="{{ \Carbon\Carbon::today()->toDateString() }}"
+                                    max="2099-12-31">
 
                                 <label for="rezervasyonSaati" class="formLabel">
                                     Rezervasyon Saati
@@ -260,9 +261,7 @@
             let date = $('#rezervasyonTarihi').val();
             let guestCount = $('#kisiSayisi').val();
             let checkbox = $('#checkbox').is(':checked') ? 1 : 0;
-            console.log(checkbox);
-            
-
+            $('#button').prop('disabled', true);
             $.ajax({
                 method: "POST",
                 url: `/makeReservation/${restaurantID}`,
@@ -282,6 +281,7 @@
                             title: 'Rezervasyon Yapıldı',
                             text: response.message
                         });
+                        $('#button').prop('disabled', false);
                     }
                 },
                 error: function (response) {
@@ -290,6 +290,7 @@
                         title: 'Rezervasyon Yapılamadı',
                         text: `${response.responseJSON.message}`
                     });
+                    $('#button').prop('disabled', false);
                 }
             });
 
