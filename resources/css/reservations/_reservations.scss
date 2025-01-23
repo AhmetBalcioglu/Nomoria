@@ -1,21 +1,51 @@
-.resBtn {
-    background-color: #bb4a21bb;
-
-    &:hover {
-        background-color: #e0805de1;
-        transition: all 0.3s ease;
-    }
+.restaurant-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.restaurantDiv {
-    &:hover {
-        cursor: pointer;
-    }
+.restaurant-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-.container {
-    .row {
-        margin-bottom: 25rem;
-    }
+.restaurantImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
 
+.restaurant-card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.restaurant-card-body h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.restaurant-card-body p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.btn.resBtn {
+    background-color: #ff6600; /* Turuncu tonları */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn.resBtn:hover {
+    background-color: #e65c00;
 }
