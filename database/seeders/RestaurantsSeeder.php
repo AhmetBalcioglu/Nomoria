@@ -19,160 +19,6 @@ class RestaurantsSeeder extends Seeder
             [
                 'guid' => Str::uuid()->toString(),
                 'userID' => 3,
-                'name' => 'Ahmet Restoran',
-                'description' => 'Açıklama',
-                'address' => 'Adres',
-                'phone' => '0555555555',
-                'email' => 'ahmet@gmail.com',
-                'capacity' => 10,
-                'citiesID' => 1,
-                'districtsID' => 6,
-                'cuisine_type' => 'Kore Mutfağı',
-                'view_type' => 'Deniz Manzarası',
-                'categoryID' => 3,
-                'image' => '/img/seederImages/is.jpg',
-                'created_at' => Carbon::now()
-
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 4,
-                'name' => 'Bektaş Restoran',
-                'description' => 'Açıklama 2',
-                'address' => 'Adres 2',
-                'phone' => '06666666666',
-                'email' => 'bektas@gmail.com',
-                'capacity' => 5,
-                'citiesID' => 1,
-                'districtsID' => 1,
-                'cuisine_type' => 'Kore Mutfağı',
-                'view_type' => 'Deniz Manzarası',
-                'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
-                'created_at' => Carbon::now()
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 4,
-                'name' => 'Ali Restoran',
-                'description' => 'Açıklama 3',
-                'address' => 'Adres 3',
-                'phone' => '03333333333',
-                'email' => 'ali@gmail.com',
-                'capacity' => 5,
-                'citiesID' => 1,
-                'districtsID' => 6,
-                'cuisine_type' => 'Japon Mutfağı',
-                'view_type' => 'Tarihi Mekan',
-                'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg',
-                'created_at' => Carbon::now()
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 3,
-                'name' => 'Pınar Restoran',
-                'description' => 'Açıklama 4',
-                'address' => 'Adres 4',
-                'phone' => '04444444444',
-                'email' => 'pinar@gmail.com',
-                'capacity' => 2,
-                'citiesID' => 1,
-                'districtsID' => 12,
-                'cuisine_type' => 'İtalyan Mutfağı',
-                'view_type' => 'Şehir Manzarası',
-                'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg',
-                'created_at' => Carbon::now()
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 4,
-                'name' => 'Sema Restoran',
-                'description' => 'Açıklama 5',
-                'address' => 'Adres 5',
-                'phone' => '06666666666',
-                'email' => 'sema@gmail.com',
-                'capacity' => 3,
-                'citiesID' => 1,
-                'districtsID' => 1,
-                'cuisine_type' => 'Meksika Mutfağı',
-                'view_type' => 'Doğanın İçinde',
-                'categoryID' => 4,
-                'image' => '/img/seederImages/ozel_gun.jpg',
-                'created_at' => Carbon::now()
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 3,
-                'name' => 'Furkan Restoran',
-                'description' => 'Açıklama 6',
-                'address' => 'Adres 6',
-                'phone' => '08888888888',
-                'email' => 'furkan@gmail.com',
-                'capacity' => 8,
-                'citiesID' => 1,
-                'districtsID' => 12,
-                'cuisine_type' => 'Türk Mutfağı',
-                'view_type' => 'Deniz Manzarası',
-                'categoryID' => 2,
-                'image' => '/img/seederImages/alkol.jpg',
-                'created_at' => Carbon::now()
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 4,
-                'name' => 'Tuğçe Restoran',
-                'description' => 'Açıklama 7',
-                'address' => 'Adres 7',
-                'phone' => '07777777777',
-                'email' => 'tugce@gmail.com',
-                'capacity' => 14,
-                'citiesID' => 1,
-                'districtsID' => 6,
-                'cuisine_type' => 'Japon Mutfağı',
-                'view_type' => 'Tarihi Mekan',
-                'categoryID' => 1,
-                'image' => '/img/seederImages/balik.jpg',
-                'created_at' => Carbon::now()
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 3,
-                'name' => 'Aylin Restoran',
-                'description' => 'Açıklama 8',
-                'address' => 'Adres 8',
-                'phone' => '02222222222',
-                'email' => 'aylin@gmail.com',
-                'capacity' => 7,
-                'citiesID' => 1,
-                'districtsID' => 10,
-                'cuisine_type' => 'Japon Mutfağı',
-                'view_type' => 'Tarihi Mekan',
-                'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg',
-                'created_at' => Carbon::now()
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 4,
-                'name' => 'Aysun Restoran',
-                'description' => 'Açıklama 9',
-                'address' => 'Adres 9',
-                'phone' => '03333333333',
-                'email' => 'aysun@gmail.com',
-                'capacity' => 11,
-                'citiesID' => 1,
-                'districtsID' => 8,
-                'cuisine_type' => 'Japon Mutfağı',
-                'view_type' => 'Şehir Manzarası',
-                'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg',
-                'created_at' => Carbon::now()
-            ],
-            [
-                'guid' => Str::uuid()->toString(),
-                'userID' => 3,
                 'name' => 'Tuzla Balıkçısı',
                 'description' => 'Açıklama 9',
                 'address' => 'Tuzla',
@@ -184,7 +30,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/tuzlaBalik/tuzlaBalik.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -201,7 +47,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/jazzCoffee/jazzCoffee.jpg',
                 'created_at' => Carbon::now(),
             ],
             [
@@ -218,7 +64,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg',
+                'image' => '/img/seederImages/mamaMia/mamaMia.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -269,7 +115,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/theNorth/theNorth.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -286,7 +132,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/fastfood.jpg',
+                'image' => '/img/seederImages/zeytin/zeytin.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -303,7 +149,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/fastfood.jpg',
+                'image' => '/img/seederImages/kebapTuzla/kebapTuzla.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -320,7 +166,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/fastfood.jpg',
+                'image' => '/img/seederImages/tiara/tiara.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -337,7 +183,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg',
+                'image' => '/img/seederImages/mimoza/mimoza.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -371,15 +217,15 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg',
+                'image' => '/img/seederImages/heyamola/heyamola.png',
                 'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
                 'userID' => 3,
-                'name' => 'Kutlama Restoran Adalar',
+                'name' => 'Secret Garden Restaurant',
                 'description' => 'Açıklama 9',
-                'address' => 'Adalar',
+                'address' => 'Büyükada',
                 'phone' => '03333333333',
                 'email' => 'kutlamarestoran@gmail.com',
                 'capacity' => 35,
@@ -388,7 +234,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/secretGarden/secretGarden.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -405,7 +251,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/palyaRestoran/palyaRestoran.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -422,7 +268,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/miraBalik/miraBalik.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -473,7 +319,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/is.jpg',
+                'image' => '/img/seederImages/madre/madre.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -524,7 +370,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg',
+                'image' => '/img/seederImages/nokta/nokta.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -541,7 +387,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg',
+                'image' => '/img/seederImages/foca/foca.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -558,7 +404,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/suslu/suslu.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -575,7 +421,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg',
+                'image' => '/img/seederImages/quick/quick.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -643,7 +489,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/is.jpg',
+                'image' => '/img/seederImages/sanat/sanat.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -660,7 +506,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg',
+                'image' => '/img/seederImages/veganista/veganista.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -677,7 +523,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/ozel_gun.jpg',
+                'image' => '/img/seederImages/grill/grill.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -728,7 +574,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/iskele/iskele.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -796,7 +642,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/mirac/mirac.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -813,7 +659,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'İtalyan Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/alkol.jpg',
+                'image' => '/img/seederImages/seraf/seraf.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -830,7 +676,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/karadenizBalik/karadenizBalik.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -847,7 +693,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Tarihi Mekan',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/sebat/sebat.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -864,7 +710,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/vegan.png',
+                'image' => '/img/seederImages/veganarsist/veganarsist.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -898,7 +744,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Meksika Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/is.jpg',
+                'image' => '/img/seederImages/yelken/yelken.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -915,7 +761,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/hanedan/hanedan.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -932,7 +778,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/golBalik/golBalik.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -949,7 +795,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/vegan.png',
+                'image' => '/img/seederImages/veganIstanbul/veganIstanbul.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -966,7 +812,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'İtalyan Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/dunya_mutfagi.jpg',
+                'image' => '/img/seederImages/seventeen/seventeen.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1000,7 +846,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/nusret/nusret.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1017,7 +863,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'İtalyan Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/fastfood.jpg',
+                'image' => '/img/seederImages/plant/plant.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1034,7 +880,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Kore Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/dunya_mutfagi.jpg',
+                'image' => '/img/seederImages/koreaHouse/koreaHouse.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1068,7 +914,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/tacBalik/tacBalik.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1085,7 +931,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/ozel_gun.jpg',
+                'image' => '/img/seederImages/bogaziciYakamoz/bogaziciYakamoz.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1119,7 +965,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/dunya_mutfagi.jpg',
+                'image' => '/img/seederImages/lotus/lotus.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1136,7 +982,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Meksika Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/vegan.png',
+                'image' => '/img/seederImages/vegvok/vegvok.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1170,7 +1016,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/zeyn/zeyn.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1187,7 +1033,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'DenizManzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/poyrazSahil/poyrazSahil.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1204,7 +1050,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/kasabım/kasabım.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1221,7 +1067,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/litera/litera.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1238,7 +1084,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/starBalik/starBalik.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1255,7 +1101,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/vegan.png',
+                'image' => '/img/seederImages/hunger/hunger.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1272,7 +1118,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/alkol.jpg',
+                'image' => '/img/seederImages/mastika/mastika.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1289,7 +1135,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/tarihiCatalca/tarihiCatalca.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1306,7 +1152,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/vegan.png',
+                'image' => '/img/seederImages/sakliKosk/sakliKosk.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1323,7 +1169,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/tunaRes/tunaRes.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1340,7 +1186,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/parkBalik/parkBalik.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1357,7 +1203,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/asim/asim.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1374,7 +1220,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'İtalyan Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/dunya_mutfagi.jpg',
+                'image' => '/img/seederImages/leonardo/leonardo.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1391,7 +1237,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Meksika Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/fastfood.jpg',
+                'image' => '/img/seederImages/shake/shake.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1408,7 +1254,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/rb/rb.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1431,7 +1277,7 @@ class RestaurantsSeeder extends Seeder
             [
                 'guid' => Str::uuid()->toString(),
                 'userID' => 3,
-                'name' => 'Esenler Saray Meydanı',
+                'name' => 'Saray Et Lokantası',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Esenler',
                 'phone' => '09299413121',
@@ -1442,7 +1288,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/sarayResto/sarayResto.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1459,7 +1305,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Meksika Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/is.jpg',
+                'image' => '/img/seederImages/golden/golden.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1476,7 +1322,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/is.jpg',
+                'image' => '/img/seederImages/hunkar/hunkar.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1493,7 +1339,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 3,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/ismailBalikci/ismailBalikci.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1510,7 +1356,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/vegan.png',
+                'image' => '/img/seederImages/zerde/zerde.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1527,7 +1373,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Tarihi Mekan',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/kervansaray/kervansaray.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1544,7 +1390,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/kuskonmaz/kuskonmaz.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1561,7 +1407,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/balikciSabahattin/balikciSabahattin.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1578,7 +1424,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/is.jpg',
+                'image' => '/img/seederImages/cinaralti/cinaralti.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1595,7 +1441,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Tarihi Mekan',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/eyupRes/eyupRes.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1612,7 +1458,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Tarihi Mekan',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/is.jpg',
+                'image' => '/img/seederImages/antikHan/antikHan.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1629,7 +1475,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/deraliye/deraliye.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1646,13 +1492,13 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/karakoy/karakoy.png',
                 'created_at' => Carbon::now()
             ],
             [
                 'guid' => Str::uuid()->toString(),
                 'userID' => 4,
-                'name' => 'Karaköy Meze',
+                'name' => 'Duble Meze Karaköy',
                 'description' => 'Lezzetli yemekler, keyifli sohbetler ve sıcak bir atmosferin buluşma noktası',
                 'address' => 'Fatih',
                 'phone' => '09999490000',
@@ -1663,7 +1509,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/alkol.jpg',
+                'image' => '/img/seederImages/dubleMeze/dubleMeze.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1680,7 +1526,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Tarihi Mekan',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/asim/asim.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1697,7 +1543,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/is.jpg',
+                'image' => '/img/seederImages/deliYengec/deliYengec.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1714,7 +1560,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 1,
-                'image' => '/img/seederImages/balik.jpg',
+                'image' => '/img/seederImages/asmaalti/asmaalti.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1731,7 +1577,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/ozel_gun.jpg',
+                'image' => '/img/seederImages/kebapciSahin/kebapciSahin.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1748,7 +1594,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/ozel_gun.jpg',
+                'image' => '/img/seederImages/sarayKebap/saray.jpg',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1765,7 +1611,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/kutlama.jpg',
+                'image' => '/img/seederImages/kebapciSahin/kebapciSahin.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1782,7 +1628,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Doğanın İçinde',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/fastfood.jpg',
+                'image' => '/img/seederImages/felicita/felicita.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1799,7 +1645,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 2,
-                'image' => '/img/seederImages/et.jpg',
+                'image' => '/img/seederImages/bagdat/bagdat.png',
                 'created_at' => Carbon::now()
             ],
             [
@@ -1833,7 +1679,7 @@ class RestaurantsSeeder extends Seeder
                 'cuisine_type' => 'İtalyan Mutfağı',
                 'view_type' => 'Şehir Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/peraRes/peraRes.jpg',
+                'image' => '/img/seederImages/peraRes/pera.jpg',
                 'created_at' => Carbon::now()
             ],
             [
