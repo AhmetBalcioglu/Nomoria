@@ -11,6 +11,28 @@
                 <button onclick="window.location.href = '/makeReservation?restaurantID={{ $restaurant->restaurantID }}'"
                     class="btn-reserve">
                     Rezervasyon Yap</button>
+                    <!-- Menü Butonu -->
+                <button type="button" class="btn btn-secondary openMenuModal"
+                        data-bs-toggle="modal"
+                        data-bs-target="#menuModal"
+                        data-restaurant-id="{{ $restaurant->id }}">
+                        Menü
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Menü Modal -->
+<div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menuModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="menuModalLabel">Menü Listesi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul id="menuList"></ul>
             </div>
         </div>
     </div>
