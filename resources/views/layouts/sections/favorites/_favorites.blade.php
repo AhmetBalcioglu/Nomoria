@@ -25,7 +25,7 @@
                                     <p>📍 {{ $favorite->restaurant->districts->name ?? 'Bilinmiyor' }},
                                         {{ $favorite->restaurant->districts->city->name ?? 'Şehir bilgisi mevcut değil.' }}
                                     </p>
-                                    <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                                    <a href="{{route('makeReservation', $favorite->restaurant->restaurantID)}}" class="btn btn-danger">Hemen Rezervasyon Yap</a>
                                 </div>
                             </div>
                         </div>
