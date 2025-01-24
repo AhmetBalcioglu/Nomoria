@@ -11,7 +11,8 @@
                         </option>
                     @endforeach
                 </select>
-                <div id="selected-district" class="mb-5"></div>
+                <br>
+          
             </div>
 
             {{-- Mekan --}}
@@ -68,6 +69,7 @@
             </div>
 
             <button id="filterButton" type="submit" class="btn">Filtrele</button>
+            <button id="deleteButton" type="reset" class="btn btn-danger">Temizle</button>
         </form>
     </div>
 

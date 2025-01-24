@@ -7,7 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description" content="@yield('page_description')">
-    <title>@yield('page_title')</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="">
+    <title>
+        
+        @yield('page_title')</title>
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
     @yield('page_head_css')
 </head>
