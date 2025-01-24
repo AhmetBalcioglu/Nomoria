@@ -2,7 +2,7 @@
 <div class="container mt-5">
 
 
-    @foreach ($categories->chunk(5) as $chunk)
+    @foreach ($categories->chunk(4) as $chunk)
 
         <div class="row mb-5">
             @foreach ($chunk as $category)

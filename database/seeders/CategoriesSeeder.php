@@ -33,7 +33,7 @@ class CategoriesSeeder extends Seeder
 
             ],
             [
-                'categoryName' => 'Tek Kişilik',
+                'categoryName' => 'Doğum Günü',
                 'image' => "/img/homepage_img/tek_kisi.jpg",
                 'created_at' => Carbon::now(),
 
