@@ -1,4 +1,4 @@
-<div class="restaurant-detail-container">
+{{-- <div class="restaurant-detail-container">
     <div class="restaurant-card">
         <div class="restaurant-image">
             <img src="{{ $restaurant->image }}" alt="{{ $restaurant->name }}">
@@ -100,4 +100,148 @@
             @endif
         </div>
     </div>
+</div> --}}
+
+
+
+ <!-- Restoran üst kısmı: Görsel, isim ve konum -->
+ <div class="restaurant-header">
+    <img src="/img/makeReservation/r3.jpg" alt="Restaurant Image">
+    <div class="overlay"></div>
+    <div class="overlay-text">
+        <h1>Restoran Adı</h1>
+        <p>Konum</p>
+        <button type="button" class="btn btn-danger">Danger</button>
+    </div>
 </div>
+
+<!-- Yönlendirme sekmeleri (Hakkında, Galeri, Menü, Yorumlar) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#about">Hakkında</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#gallery">Galeri</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#menu">Menü</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#reviews">Yorumlar</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hakkında Kısmı -->
+<section id="about" class="py-5">
+    <div class="container">
+        <h2>Hakkında</h2>
+        <p>restoran hakkında bilgiler</p>
+    </div>
+</section>
+
+<section id="gallery" class="py-5 bg-light">
+    <div class="container">
+        <h2>Galeri</h2>
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <!-- Slider İçeriği -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 1">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 2">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 3">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 4">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 5">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 6">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Kontroller -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Menü Kısmı -->
+<section id="menu" class="py-5">
+    <div class="container">
+        <h2>Menü</h2>
+       <button class="submit">Menüyü Görmek İçin Tıklayınız</button>
+    </div>
+</section>
+
+<section id="reviews" class="py-5 bg-light">
+    <div class="container">
+        <h2>Yorumlar</h2>
+        <div id="reviewList">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">John Doe</h5>
+                    <p class="card-text">Harika yemekler ve muhteşem atmosfer!</p>
+
+                </div>
+            </div>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Jane Smith</h5>
+                    <p class="card-text">Tatlı menüsünü şiddetle tavsiye ederim.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Düşüncelerinizi Paylaşabilirsiniz</h5>
+                <form id="reviewForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="reviewerName" placeholder="ismi veritabnından gelecek" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reviewText" class="form-label">Yorumunuz</label>
+                        <textarea class="form-control" id="reviewText" rows="3" placeholder="Yorumunuzu buraya yazın..." required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        
+                        <div id="ratingStars" class="d-flex align-items-center">
+                            <span class="star" data-value="1"><i class="bi bi-star-fill"></i></span>
+                            <span class="star" data-value="2"><i class="bi bi-star-fill"></i></span>
+                            <span class="star" data-value="3"><i class="bi bi-star-fill"></i></span>
+                            <span class="star" data-value="4"><i class="bi bi-star-fill"></i></span>
+                            <span class="star" data-value="5"><i class="bi bi-star-fill"></i></span>
+                            <span id="ratingValue" class="ms-3 text-muted">0/5</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn" style="background-color: #ed4f15;">Gönder</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
