@@ -36,12 +36,13 @@
 }
 
 .btn.resBtn {
-    background-color: #ff6600; /* Turuncu tonları */
+    background-color: #ff6600;
+    /* Turuncu tonları */
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 14px;
+    padding: 8px 10px;
+    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }

@@ -1,5 +1,5 @@
 <div class="container my-4">
-    <h2><b>Geçmiş Rezervasyonlarım</b></h2>
+    <h2 class="mb-5 mt-3" ><b>Geçmiş Rezervasyonlarım</b></h2> 
     <div class="row" style="margin-bottom: 46rem;">
         @if (count($pastReservations) > 0)
             @foreach ($pastReservations as $reservation)
@@ -15,7 +15,7 @@
                                 <p>📍 {{ $reservation['restaurant']['cities']['name'] }}
                                     {{  $reservation['restaurant']['districts']['name'] }}
                                 </p>
-                                <button class="btn resBtn">Rezervasyon Detayları</button>
+                                <button class="btn resBtn">Restoran Özellikleri</button>
 
                             </div>
                         </div>

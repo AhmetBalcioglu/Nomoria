@@ -1,5 +1,5 @@
 <div class="container my-4">
-    <h2>Rezervasyonlarım</h2>
+    <h2 class="mb-5 mt-3"><b>Rezervasyonlarım</b></h2>
     <div class="row">
         @foreach ($futureReservations as $reservation)
             <!-- Restoran Kartı 1 -->
@@ -13,9 +13,10 @@
                         <p>📍 {{ $reservation['restaurant']['cities']['name'] }}
                             {{  $reservation['restaurant']['districts']['name'] }}
                         </p>
-                        <button class="btn resBtn">Rezervasyon Detayları</button>
+                        <button class="btn resBtn">Rezervasyonu  Güncelle</button>
+                        <button class="btn btn-danger">İptal Et</button>
 
-                    </div>
+                    </div>  
                 </div>
             </div>
         @endforeach
