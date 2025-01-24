@@ -25,7 +25,8 @@
                                     <p>📍 {{ $favorite->restaurant->districts->name ?? 'Bilinmiyor' }},
                                         {{ $favorite->restaurant->districts->city->name ?? 'Şehir bilgisi mevcut değil.' }}
                                     </p>
-                                    <a href="{{route('makeReservation', $favorite->restaurant->restaurantID)}}" class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                                    <a href="{{route('makeReservation', ['restaurantID' => $favorite['restaurantID']])}}"
+                                        class="btn btn-danger">Hemen Rezervasyon Yap</a>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +45,8 @@
                     @if ($favorite->category)
                         <div class="col-md-2 col-sm-3 col-6 mb-3">
                             <div class="category_url" data-url="{{ $favorite->category->categoryName }}">
-                                <div class="card card-body text-center position-relative" style="transition: all 0.3s ease-in-out;">
+                                <div class="card card-body text-center position-relative"
+                                    style="transition: all 0.3s ease-in-out;">
                                     <p><b>{{ $favorite->category->categoryName }}</b></p>
                                     <img src="{{ asset($favorite->category->image) }}" width="50%" height="50%"
                                         class="d-block w-100 my-4" alt="" style="cursor: pointer;">
