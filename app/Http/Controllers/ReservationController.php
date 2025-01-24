@@ -16,7 +16,7 @@ class ReservationController extends Controller
     public function index()
     {
         $reservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
-        return view("historyRezervations.historyRezervations", compact('reservations'));
+        return view("reservations.reservations", compact('reservations'));
     }
     public function makeReservation()
     {
