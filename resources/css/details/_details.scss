@@ -138,9 +138,9 @@
 
 
   .btn {
-    background-color: #deba80;
+    background-color: #ed4f15;
     color: black;
-    width: 250px;
+    width: 80px;
 
     .dark-mode & {
       background-color: #ed4f15;
@@ -149,7 +149,22 @@
   }
 
   .btn:hover {
-    background-color: #555;
+    background-color: #ed4f15;
+    color: white;
+
+  }
+
+}
+
+.deleteButton {
+
+  background-color: #5e1e07;
+  color: black;
+  width: 150px;
+
+  .dark-mode & {
+    background-color: red;
+    color: white;
   }
 
 }

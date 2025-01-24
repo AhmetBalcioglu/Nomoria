@@ -18,7 +18,7 @@ class ReservationController extends Controller
         $reservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
         $futureReservations = [];
         foreach ($reservations as $reservation) {
-            if ($reservation['reservation_time'] > Carbon::now()->format('Y-m-d')) {
+            if ($reservation['reservation_time'] >= Carbon::now()->format('Y-m-d')) {
                 array_push($futureReservations, $reservation);
             }
         }
