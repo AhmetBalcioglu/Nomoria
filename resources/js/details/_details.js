@@ -40,35 +40,32 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 $(document).ready(function () {
-  // Favori restoranlar için tıklama olayı
-  $('.bi-heart').on('click', function () {
+  // Favori butonlarına tıklama olayını ata
+  $('.fav-icon').on('click', function () {
     const restaurantID = $(this).data('id'); // Tıklanan SVG'nin data-id değerini al
-    const svgElement = $(this); // Tıklanan SVG elementini seç
+    const svgElement = $(this); // SVG elementini seç
 
-    // AJAX isteği
     $.ajax({
       url: `/favorites/toggle/${restaurantID}`,
       method: 'POST',
       data: {
-        _token: $('meta[name="csrf-token"]').attr('content') // Dinamik CSRF token
+        _token: $('meta[name="csrf-token"]').attr('content') // CSRF tokeni al
       },
       success: function (response) {
         if (response.success) {
           if (response.added) {
-            svgElement.addClass('text-danger');
+            svgElement.attr('fill', 'red');  // SVG rengi kırmızı yap
+            svgElement.addClass('favorited');
             Swal.fire({
               icon: 'success',
               title: 'Favorilerinize eklendi.',
-            }).then(function () {
-              location.reload();
             });
           } else {
-            svgElement.removeClass('text-danger');
+            svgElement.attr('fill', 'black'); // SVG rengi siyah yap
+            svgElement.removeClass('favorited');
             Swal.fire({
               icon: 'success',
               title: 'Favorilerinizden kaldırıldı.',
-            }).then(function () {
-              location.reload();
             });
           }
         } else {
@@ -82,7 +79,7 @@ $(document).ready(function () {
       error: function (xhr) {
         Swal.fire({
           icon: 'error',
-          title: 'AJAX isteği başarısız.',
+          title: 'İşlem başarısız!',
           text: xhr.statusText,
         });
       }

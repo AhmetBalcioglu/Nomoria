@@ -88,25 +88,28 @@
                                 <div class="restaurant-card-body">
                                     <h5>{{ $restaurant['name'] }}</h5>
                                     <p>📍{{ $restaurant['cities']['name'] }} {{ $restaurant['districts']['name'] }}</p>
-                                    <a href="{{ route('makeReservation', ['restaurantID' => $restaurant['restaurantID']]) }}"
-                                        class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="{{ route('makeReservation', ['restaurantID' => $restaurant['restaurantID']]) }}"
+                                            class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                                        @if ($restaurant['favorites'] == null)
+                                            <svg style="margin-top:15px" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                class="bi bi-suit-heart-fill fav-icon" data-id="{{ $restaurant['restaurantID'] }}"
+                                                viewBox="0 0 16 16" fill="black">
+                                                <path
+                                                    d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
+                                            </svg>
+                                        @else
+                                            <svg style="margin-top:15px" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                class="bi bi-suit-heart-fill favorited fav-icon"
+                                                data-id="{{ $restaurant['restaurantID'] }}" viewBox="0 0 16 16"
+                                                fill="red">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                                            </svg>
+                                        @endif
+                                    </div>
                                 </div>
 
-                                @if ($restaurant['favorites'] == null)
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white"
-                                        data-id="{{ $restaurant['restaurantID'] }}"
-                                        class="bi bi-heart fav-icon position-absolute top-0 end-0 m-2" viewBox="0 0 16 16">
-                                        <path
-                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                                    </svg>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="red"
-                                        data-id="{{ $restaurant['restaurantID'] }}"
-                                        class="bi bi-heart fav-icon position-absolute top-0 end-0 m-2" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
-                                    </svg>
-                                @endif
                             </div>
                         </div>
                     @endforeach
