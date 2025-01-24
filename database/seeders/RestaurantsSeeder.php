@@ -325,18 +325,18 @@ class RestaurantsSeeder extends Seeder
             [
                 'guid' => Str::uuid()->toString(),
                 'userID' => 3,
-                'name' => 'Bi-Resto Arnavutköy',
+                'name' => 'Bonissimo Lounge',
                 'description' => 'Açıklama 9',
-                'address' => 'Arnavutköy',
+                'address' => 'Balat',
                 'phone' => '03333333333',
-                'email' => 'biresto@gmail.com',
+                'email' => 'bonissimo@gmail.com',
                 'capacity' => 35,
                 'citiesID' => 1,
                 'districtsID' => 2,
                 'cuisine_type' => 'Türk Mutfağı',
                 'view_type' => 'Deniz Manzarası',
                 'categoryID' => 4,
-                'image' => '/img/seederImages/tek_kisi.jpg',
+                'image' => '/img/seederImages/bonissimo/bonissimo.jpg',
                 'created_at' => Carbon::now()
             ],
             [
