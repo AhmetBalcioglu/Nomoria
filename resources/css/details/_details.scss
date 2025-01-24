@@ -214,3 +214,13 @@
 .restaurant-card-body .btn {
   margin-top: 10px;
 }
+
+/* Dark mode aktif olduğunda fav olmayan ikonların rengi beyaz olacak */
+.dark-mode .fav-icon {
+  fill: white;
+}
+
+/* Eğer favori ikon aktifse kırmızı olacak */
+.dark-mode .fav-icon.favorited {
+  fill: red;
+}
