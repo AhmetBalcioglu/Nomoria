@@ -156,3 +156,4 @@ Route::get('/logout', function () {
 
 // Geçmiş rezervasyonlarım
 Route::get('/historyRezervations', [ReservationController::class, 'index']);
+Route::get('/restaurants/{id}/menu', [RestaurantController::class, 'getMenu']);

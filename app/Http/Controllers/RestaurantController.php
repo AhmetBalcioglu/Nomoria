@@ -397,5 +397,27 @@ class RestaurantController extends Controller
         return view('dashboard.restaurantManager.restaurantManager', compact('restaurants'));
     }
 
-   
+    public function getMenu($id)
+    {
+        if (!$id) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Restaurant ID eksik!'
+            ], 400);
+        }
+
+        $menus = DB::table('menus')->where('restaurantID', $id)->get();
+
+        if ($menus->isEmpty()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Menü bulunamadı.'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $menus
+        ]);
+    }
 }
