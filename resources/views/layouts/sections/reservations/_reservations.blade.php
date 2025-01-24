@@ -1,7 +1,7 @@
 <div class="container my-4">
     <h2>Rezervasyonlarım</h2>
     <div class="row">
-        @foreach ($reservations as $reservation)
+        @foreach ($futureReservations as $reservation)
             <!-- Restoran Kartı 1 -->
             <div class="col-md-3 mb-5 restaurantDiv" data-id="{{$reservation['restaurant']['restaurantID']}}">
                 <div class="restaurant-card">

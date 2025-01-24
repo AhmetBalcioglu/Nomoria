@@ -16,8 +16,26 @@ class ReservationController extends Controller
     public function index()
     {
         $reservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
-        return view("reservations.reservations", compact('reservations'));
+        $futureReservations = [];
+        foreach ($reservations as $reservation) {
+            if ($reservation['reservation_time'] > Carbon::now()->format('Y-m-d')) {
+                array_push($futureReservations, $reservation);
+            }
+        }
+        return view("reservations.reservations", compact('futureReservations'));
     }
+    public function index2()
+    {
+        $reservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
+        $pastReservations = [];
+        foreach ($reservations as $reservation) {
+            if ($reservation['reservation_time'] < Carbon::now()->format('Y-m-d')) {
+                array_push($pastReservations, $reservation);
+            }
+        }
+        return view("historyRezervations.historyRezervations", compact('pastReservations'));
+    }
+
     public function makeReservation()
     {
         $restaurants = Restaurant::all()->toArray();
