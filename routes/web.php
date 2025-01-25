@@ -37,7 +37,9 @@ Route::get('/search/history', [RestaurantController::class, 'getHistory']);
 Route::get('/filter', [RestaurantController::class, 'filter'])->name('filter');
 Route::get('/contact', [ContactController::class, 'index']);
 Route::get('/profile', [LoginController::class, 'profile'])->name('profile');
-Route::post('/profile', [UserController::class, 'update'])->name('update');
+Route::post('/profile/update/{userID}', [UserController::class, 'update'])->name('update');
+Route::post('/profile/send-verification-code', [UserController::class, 'sendVerificationCode'])->name('sendVerificationCode');
+
 
 
 Route::get('/login', [LoginController::class, 'index'])->middleware(LoginRegisterUrl::class);

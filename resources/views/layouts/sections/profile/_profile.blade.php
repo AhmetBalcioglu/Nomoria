@@ -1,4 +1,3 @@
-
 <div class="container mt-5" style="margin-bottom: 30rem" id="profiles">
     <div class="row">
         <div class="col-md-12">
@@ -8,7 +7,8 @@
             <p class="information"><b>Cinsiyet:</b> {{ session()->get('gender') }}</p>
             <p class="information"><b>Rol:</b> {{ session()->get('role')}}</p>
             <p class="information"><b>E-posta:</b> {{ session()->get('email') }}</p>
-            <button id="updateProfile" type="submit" class="btn"  >Güncelle</button>
+            <button id="updateProfile" type="button" class="btn" data-bs-toggle="modal"
+                data-bs-target="#updateRestaurant">Güncelle</button>
         </div>
     </div>
 </div>
@@ -21,35 +21,42 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title fs-5" id="updateRestaurantLabel">Restorant Güncelle</h4>
+                <h4 class="modal-title fs-5" id="updateRestaurantLabel">Kullanıcı Bilgilerini Güncelle</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="updateRestaurantForm" method="POST" enctype="multipart/form-data">
-             @csrf
-            <div class="row">
-                <label for="newEmail">Yeni E-posta</label>
-                <input type="email" class="form-control" id="newEmail" name="newEmail">
-            </div>
-                <div class="row">
-                <label for="newPassword">Yeni Şifre:</label>
-                <input type="password" class="form-control" id="newPassword" name="newPassword">
+            <form id="updateUserForm" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <input type="hidden" name="userID" value="{{ session('userID') }}">
+                    <div class="mb-3">
+                        <label for="currentEmail" class="form-label">Mevcut E-posta</label>
+                        <input type="email" class="form-control" id="currentEmail" name="currentEmail"
+                            value="{{ session('email') }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newEmail" class="form-label">Yeni E-posta</label>
+                        <input type="email" class="form-control" id="newEmail" name="newEmail"
+                            placeholder="Yeni e-posta girin">
+                    </div>
+                    <button type="button" class="btn btn-info w-100" id="sendVerificationCodeBtn">Doğrulama Kodu
+                        Gönder</button>
 
-                <label for="confirmPassword">Yeni Şifre tekrarı:</label>
-                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
-
-                <script>
-                    document.getElementById('updateRestaurantForm').addEventListener('submit', function (event) {
-                        const newPassword = document.getElementById('newPassword').value;
-                        const confirmPassword = document.getElementById('confirmPassword').value;
-                        
-                        if (newPassword !== confirmPassword) {
-                            event.preventDefault();
-                            alert('Şifreler uyuşmuyor');
-                        }
-                    });
-                </script>
-            </div>
-
+                    <div class="mb-3 mt-3">
+                        <label for="verificationCode" class="form-label">Doğrulama Kodu</label>
+                        <input type="text" class="form-control" id="verificationCode" name="verificationCode"
+                            placeholder="Doğrulama kodunu girin" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Yeni Şifre</label>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword"
+                            placeholder="Yeni şifre girin">
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Yeni Şifre Tekrarı</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                            placeholder="Şifreyi tekrar girin">
+                    </div>
+                </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-danger w-100">Güncelle</button>
                 </div>
@@ -58,57 +65,119 @@
     </div>
 </div>
 
-
-{{-- güncelle ajax kısmı --}}
-
 <script>
-
     document.addEventListener('DOMContentLoaded', function () {
-        const updateRestaurantForm = document.getElementById('updateRestaurantForm');
+        const updateUserForm = document.getElementById('updateUserForm');
+        const verificationCodeField = document.getElementById('verificationCode');
+        const sendVerificationCodeBtn = document.getElementById('sendVerificationCodeBtn');
 
-        updateRestaurantForm.addEventListener('submit', function (event) {
-            event.preventDefault();
+        sendVerificationCodeBtn.addEventListener('click', function () {
+            const newEmail = document.getElementById('newEmail').value;
 
-            const formData = new FormData(updateRestaurantForm);
-            const restaurantName = formData.get('name');
+            if (!newEmail) {
+                Swal.fire('Hata', 'Lütfen yeni e-posta adresinizi girin.', 'error');
+                return;
+            }
 
-            Swal.fire({ // İşlemi yaparken uyarılıyoruz
-                title: 'Emin misiniz?',
-                text: "Restoran bilgileri güncellenecek!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Evet, Güncelle!',
-                cancelButtonText: 'Vazgeç'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // AJAX isteği
-                    $.ajax({
-                        url: '/restaurants/update/' + encodeURIComponent(restaurantName),
-                        method: 'POST',
-                        data: formData,
-                        processData: false,
-                        contentType: false,
-                        success: function (response) { //Backend işlemi başarılı ise sweetalert ile bilgilendiriliyoruz.
-                            if (response.success) {
-                                Swal.fire({
-                                    title: 'Başarılı',
-                                    text: 'Restoran güncellendi.',
-                                    icon: 'success'
-                                }).then(() => {
-                                    location.reload();
-                                });
-                            } else {
-                                Swal.fire('Hata', response.message || 'Bir hata oluştu.', 'error');
-                            }
-                        },
-                        error: function (xhr) {
-                            Swal.fire('Hata', 'Bir hata oluştu. Lütfen tekrar deneyin.', 'error');
-                        }
-                    });
+            $.ajax({
+                url: '{{ route('sendVerificationCode') }}',
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: {
+                    newEmail: newEmail
+                },
+                success: function (data) {
+                    if (data.success) {
+                        Swal.fire('Başarılı', 'Doğrulama kodu yeni e-posta adresinize gönderildi.', 'success');
+                        verificationCodeField.disabled = false;
+                    } else {
+                        Swal.fire('Hata', data.error || 'Bir hata oluştu.', 'error');
+                    }
+                },
+                error: function () {
+                    Swal.fire('Hata', 'Bir hata oluştu. Lütfen tekrar deneyin.', 'error');
                 }
             });
+        });
+    });
+    updateUserForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (newPassword !== confirmPassword) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata',
+                text: 'Şifreler uyuşmuyor.'
+            });
+            return;
+        }
+
+        const userID = $('#updateUserForm input[name="userID"]').val();
+
+        if (!userID) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata',
+                text: 'User ID bulunamadı.'
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Kullanıcı bilgileri güncellenecek!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet, Güncelle!',
+            cancelButtonText: 'Vazgeç'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // FormData kullanarak form verilerini toplayalım
+                var formData = new FormData(document.getElementById('updateUserForm'));
+
+                $.ajax({
+                    url: `/profile/update/${userID}`,
+                    method: 'POST',
+                    data: formData,
+                    processData: false, // formData kullanıldığında bu `false` olmalı
+                    contentType: false, // formData kullanıldığında bu `false` olmalı
+                    success: function (response) {
+                        if (response.success) {
+                            Swal.fire({
+                                title: 'Başarılı',
+                                text: 'Kullanıcı bilgileri güncellendi.',
+                                icon: 'success'
+                            }).then(() => {
+                                location.reload(); // Sayfayı yenileyerek değişiklikleri görebiliriz
+                            });
+                        }
+                    },
+                    error: function (xhr) {
+                        const errors = xhr.responseJSON.errors;
+                        let errorMessage = '';
+
+                        // Hata mesajlarını birleştirip göstermek için
+                        for (const field in errors) {
+                            if (errors.hasOwnProperty(field)) {
+                                errorMessage += `${errors[field].join('<br>')}<br>`;
+                            }
+                        }
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Hata',
+                            html: errorMessage || 'Bir hata oluştu.'
+                        });
+                    }
+                });
+            }
         });
     });
 

@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserCreateRequest;
 use Illuminate\Support\Str;
+use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Mail\VerificationCodeMail;
+
 
 class UserController extends Controller
 {
@@ -32,21 +36,62 @@ class UserController extends Controller
         }
     }
 
-    /*profil hesabı güncelleme apisi */
-
-    public function update(Request $request)
+    public function sendVerificationCode(Request $request)
     {
-        $user = Users::find(session('userID'));
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
+        // Yeni e-posta adresi
+        $newEmail = $request->input('newEmail');
+
+        // Yeni e-posta adresi kontrolü (boş olmamalı)
+        if (!$newEmail) {
+            return response()->json(['error' => 'Lütfen yeni e-posta adresini girin.'], 400);
+        }
+
+        // Doğrulama kodu oluşturuluyor
+        $verificationCode = Str::random(6); // 6 haneli rastgele kod
+
+        // Kodun oturumda saklanması
+        session(['verificationCode' => $verificationCode, 'newEmail' => $newEmail]);
+
+        // E-posta gönderimi
+        Mail::to($newEmail)->send(new VerificationCodeMail($verificationCode));
+
+        return response()->json(['success' => 'Doğrulama kodu yeni e-posta adresinize gönderildi.']);
+    }
+
+    public function update(Request $request, $userID)
+    {
+        // Kullanıcıyı $userID ile arıyoruz
+        $user = Users::find($userID);
+
+        // Kullanıcı bulunamazsa hata döndür
+        if (!$user) {
+            return response()->json(['error' => 'Kullanıcı bulunamadı.'], 404);
+        }
+
+        // Kullanıcı var ise güncelleme işlemleri devam eder...
+        if ($request->has('newEmail') && $request->input('newEmail') !== $user->email) {
+            $user->email = $request->input('newEmail');
+        }
+
+        if ($request->has('newPassword') && $request->input('newPassword') !== '') {
+            $newPassword = $request->input('newPassword');
+            $user->password = Hash::make($newPassword);
+        }
+
         $user->updated_at = Carbon::now()->format('Y-m-d H:i:s');
 
         if ($user->save()) {
-            return response()->json(['success' => 'Kullanıcı bilgileri güncellendi']);
+            session(['email' => $user->email]); // email session'ı güncellendi.
+            if ($request->has('newPassword')) {
+                session(['password' => $user->password]); // password session'ı güncellendi.
+            }
+
+            return response()->json(['success' => 'Kullanıcı bilgileri başarıyla güncellendi.']);
         } else {
-            return response()->json(['error' => 'Güncelleme başarısız!'], 400);
+            return response()->json(['error' => 'Güncelleme işlemi başarısız oldu.'], 400);
         }
     }
+
 
 
 
