@@ -1,150 +1,96 @@
 $(document).ready(function () {
-    // Favori restoranlar için tıklama olayı
-    $('.bi-heart').on('click', function () {
-        const restaurantID = $(this).data('id'); // Tıklanan SVG'nin data-id değerini al
-        const svgElement = $(this); // Tıklanan SVG elementini seç
+    // Kullanıcının giriş yapıp yapmadığını kontrol et
+    let isUserLoggedIn = $('meta[name="user-logged-in"]').attr('content') === 'true';
 
-        // AJAX isteği
+    if (!isUserLoggedIn) {
+        // Kullanıcı çıkış yaptıysa tüm favori ikonlarını temizle
+        $('.bi-heart, .favHearth-icon').removeClass('text-danger favorited').attr('fill', 'white');
+    }
+
+    // Favori ekleme/çıkarma işlemi
+    $('.bi-heart, .favHearth-icon').on('click', function () {
+        if (!isUserLoggedIn) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Giriş Yapmalısınız!',
+                text: 'Favorilere eklemek için giriş yapmalısınız.',
+            });
+            return;
+        }
+
+        const restaurantID = $(this).data('id'); 
+        const svgElement = $(this);
+
         $.ajax({
             url: `/favorites/toggle/${restaurantID}`,
             method: 'POST',
             data: {
-                _token: $('meta[name="csrf-token"]').attr('content') // Dinamik CSRF token
+                _token: $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
                 if (response.success) {
                     if (response.added) {
-                        svgElement.addClass('text-danger');
+                        svgElement.addClass('text-danger favorited').attr('fill', 'red');
                         Swal.fire({
                             icon: 'success',
-                            title: 'Favorilerinize eklendi.',
-                        }).then(function () {
-                            location.reload();
+                            title: 'Favorilere Eklendi!',
                         });
                     } else {
-                        svgElement.removeClass('text-danger');
+                        svgElement.removeClass('text-danger favorited').attr('fill', 'white');
                         Swal.fire({
                             icon: 'success',
-                            title: 'Favorilerinizden kaldırıldı.',
-                        }).then(function () {
-                            location.reload();
+                            title: 'Favorilerden Çıkarıldı!',
                         });
                     }
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Bir hata oluştu.',
-                        text: response.message,
-                    });
                 }
             },
             error: function (xhr) {
                 Swal.fire({
                     icon: 'error',
-                    title: 'AJAX isteği başarısız.',
+                    title: 'Hata!',
                     text: xhr.statusText,
                 });
             }
         });
     });
-});
 
-$(document).ready(function () {
-    $('.favHearth-icon').click(function () {
-        var categoryID = $(this).data('id'); // Tıklanan SVG'nin data-id değerini al
-        var icon = $(this); // Tıklanan SVG elementini seç
+    // Kategori yönlendirme işlemi
+    $('.category_url img').on('click', function (event) {
+        event.stopPropagation();
 
-        // AJAX isteği
-        $.ajax({
-            url: '/favorites/toggle/' + categoryID, // Favori ekleme/çıkarma URL'si
-            method: 'GET',
-            data: {
-                _token: '{{ csrf_token() }}', // CSRF token
-            },
-            success: function (response) {
-                if (response.success) {
-                    if (response.added) {
-                        icon.addClass('favorited').attr('fill', 'red'); // Favori sınıfını ekle ve rengi değiştir
-                        Swal.fire({
-                            title: 'Favorilere Eklendi!',
-                            text: 'Kategori favorilerinize eklendi.',
-                            icon: 'success',
-                            confirmButtonText: 'Tamam'
-                        }).then(function () {
-                            location.reload();
-                        });
-                    } else {
-                        icon.removeClass('favorited').attr('fill', 'white'); // Favori sınıfını kaldır ve rengi değiştir
-                        Swal.fire({
-                            title: 'Favorilerden Çıkarıldı!',
-                            text: 'Kategori favorilerinizden çıkarıldı.',
-                            icon: 'success',
-                            confirmButtonText: 'Tamam'
-                        }).then(function () {
-                            location.reload();
-                        });
-                    }
-                } else {
-                    Swal.fire({
-                        title: 'Bir hata oluştu!',
-                        text: 'Oturum açmamış olabilirsiniz, lütfen tekrar deneyiniz!',
-                        icon: 'error',
-                        confirmButtonText: 'Tamam'
-                    });
-                }
-            },
-            error: function () {
-                console.log('Bir hata oluştu.');
-            }
-        });
+        let categoryArray = {
+            "İş Yemekleri": 3,
+            "Kutlamalar": 2,
+            "Tek Kişilik": 4,
+            "Özel Günler": 1
+        };
+
+        let cuisineArray = [
+            "Türk Mutfağı",
+            "Kore Mutfağı",
+            "Meksika Mutfağı",
+            "Japon Mutfağı",
+            "İtalyan Mutfağı"
+        ];
+
+        let menuArray = [
+            "Et Yemekleri",
+            "Balık Yemekleri",
+            "Fast Food",
+            "Vegan Yemekleri",
+            "Alkol Servisi"
+        ];
+
+        let data = $(this).closest('.category_url').data('url');
+        let district = "all";
+        let viewType = "all";
+
+        let category = categoryArray[data] ?? 'all';
+        let couisineType = cuisineArray.includes(data) ? data.replaceAll(" ", "+") : 'all';
+        let menuType = menuArray.includes(data) ? data.replaceAll(" ", "+") : 'all';
+
+        let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
+        console.log("Redirecting to URL:", url);
+        window.location.href = url;
     });
-});
-
-$('.category_url img').on('click', function (event) {
-    event.stopPropagation(); // Tıklama olayının diğer üst elementlere bulaşmasını engeller
-
-    let categoryArray = {
-        "İş Yemekleri": 3,
-        "Kutlamalar": 2,
-        "Tek Kişilik": 4,
-        "Özel Günler": 1
-    };
-
-    let cuisineArray = [
-        "Türk Mutfağı",
-        "Kore Mutfağı",
-        "Meksika Mutfağı",
-        "Japon Mutfağı",
-        "İtalyan Mutfağı"
-    ];
-
-    let menuArray = [
-        "Et Yemekleri",
-        "Balık Yemekleri",
-        "Fast Food",
-        "Vegan Yemekleri",
-        "Alkol Servisi"
-    ];
-
-    // Resmin bulunduğu öğenin data-url değerini alıyoruz
-    let data = $(this).closest('.category_url').data('url');
-    let district = "all";
-    let viewType = "all";
-
-    // categoryArray ile eşleşen kategori ID'sini alıyoruz
-    let category = categoryArray[data] ?? 'all';
-
-    // cuisineArray ve menuArray içinde veri kontrolü yapıyoruz
-    let couisineType = cuisineArray.includes(data) ? data : 'all';
-    let menuType = menuArray.includes(data) ? data : 'all';
-
-    // Boşlukları "+" ile değiştiriyoruz
-    couisineType = couisineType.replaceAll(" ", "+");
-    menuType = menuType.replaceAll(" ", "+");
-
-    // URL oluşturuluyor
-    let url = `http://nomoria.local/filter?district=${district}&viewType=${viewType}&category=${category}&couisineType=${couisineType}&menuType=${menuType}`;
-    console.log("Redirecting to URL:", url); // URL'yi konsola yazdırıyoruz
-
-    window.location.href = url; // Yönlendirme işlemi
 });
