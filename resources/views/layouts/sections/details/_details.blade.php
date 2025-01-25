@@ -69,7 +69,9 @@
             </div>
 
             <button id="filterButton" type="submit" class="btn">Filtrele</button>
-            <button id="deleteButton" type="reset" class="btn btn-danger">Temizle</button>
+            <button id="deleteButton" type="reset" onclick="
+            window.location.href = '/filter?district=all&viewType=all&category=all&couisineType=all&menuType=all';
+            " class="btn btn-danger">Temizle</button>
         </form>
     </div>
 
