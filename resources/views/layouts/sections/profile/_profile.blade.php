@@ -38,7 +38,7 @@
                         <input type="email" class="form-control" id="newEmail" name="newEmail"
                             placeholder="Yeni e-posta girin">
                     </div>
-                    <button type="button" class="btn btn-info w-100" id="sendVerificationCodeBtn">Doğrulama Kodu
+                    <button type="button" class="btn btn-secondary w-100" id="sendVerificationCodeBtn">Doğrulama Kodu
                         Gönder</button>
 
                     <div class="mb-3 mt-3">
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger w-100">Güncelle</button>
+                    <button type="submit" class="btn btn-warning w-100">Güncelle</button>
                 </div>
             </form>
         </div>
