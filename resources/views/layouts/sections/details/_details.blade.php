@@ -76,7 +76,7 @@
     </div>
 
     <div class="detail-container container">
-        <div class="container my-4 d-flex justify-content-center">
+        <div class="container my-4">
             <div class="row" id="restaurant-cards">
                 @if (count($restaurants) == 0)
                     <div class="col-12 text-center">
