@@ -165,6 +165,70 @@ body.dark-mode {
 
     }
 
+    .forgotPassword-body {
+        background-color: $dark-mode-bg;
+        color: $dark-mode-color;
+
+        .forgotPassword-container {
+            background-color: $dark-mode-bg;
+            color: $dark-mode-color;
+            border-color: $dark-mode-border;
+            box-shadow: none;
+
+            h1 {
+                color: $dark-mode-color;
+            }
+
+            input {
+                background-color: #333;
+                color: $dark-mode-color;
+                border: 1px solid $dark-mode-border;
+            }
+
+            .forgotPassword-button {
+                background-color: $dark-mode-button-bg;
+                color: $dark-mode-color;
+            }
+
+            &:hover {
+                background-color: #444;
+            }
+
+        }
+    }
+
+    .newPassword-body {
+        background-color: $dark-mode-bg;
+        color: $dark-mode-color;
+
+        .newPassword-container {
+            background-color: $dark-mode-bg;
+            color: $dark-mode-color;
+            border-color: $dark-mode-border;
+            box-shadow: none;
+
+            h1 {
+                color: $dark-mode-color;
+            }
+
+            input {
+                background-color: #333;
+                color: $dark-mode-color;
+                border: 1px solid $dark-mode-border;
+            }
+
+            .newPassword-button {
+                background-color: $dark-mode-button-bg;
+                color: $dark-mode-color;
+            }
+
+            &:hover {
+                background-color: #444;
+            }
+
+        }
+    }
+
     label {
         color: $dark-mode-color; // Form üzerindeki etiketler için genel ayar
     }
@@ -175,3 +239,4 @@ body.dark-mode {
         color: rgba($dark-mode-color, 0.7); // Placeholder metin rengi
     }
 }
+

@@ -1,219 +1,180 @@
-<body>
-    <div class="hero">
-        <h1>Kampanyalı Restoranlar</h1>
-        <p>En özel fırsatları yakalayın ve hemen rezervasyon yapın!</p>
-        <p>En sevilen balık restoranları burada !</p>
-    </div>
+@if (session('role') == 'admin')
+    <form id="discountForm" method="POST">
+        @csrf
+        <div class="form-group">
+            <label for="restaurantName">Restaurant Name:</label>
+            <input type="text" id="restaurantName" name="restaurantName" class="form-control" required>
+        </div>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary mt-2" onclick="handleAddDiscount(event)">Add Discount</button>
+            <button type="submit" class="btn btn-danger mt-2" onclick="handleRemoveDiscount(event)">Remove Discount</button>
+        </div>
+    </form>
+@endif
 
-    <div class="container my-4">
+@if ($discountRestaurants->isNotEmpty())
+    <div class="container mb-5 mt-5">
         <div class="row">
-            <div class="campaign-card">
-                <img src="{{ asset('img/balik/b1.jpg') }}" id="deneme" alt="Restoran Resmi" class="restaurant-image">
-                <h2 class="restaurant-name">Restoran Adı</h2>
-                <p class="campaign-details">%20 indirim! 10 Ocak - 20 Ocak</p>
-            </div>
-
-            <!-- Modal (Büyütülen resim için) -->
-            <div id="imageModal" class="modal">
-                <div class="modal-content">
-                    <img id="zoomImage" src="" alt="Büyütülen Resim">
-                </div>
-            </div>
-
-
-
-
-        </div>
-
-
-
-
-        <div class="row">
-
-            <!-- Restoran Kartı 1 -->
-            <div class="col-md-3">
-                <div class="restaurant-card campaign-card">
-                    <img src="{{ asset('img/balik/b1.jpg') }}" id="img1" alt="Restoran" class="restaurant-image">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı</h5>
-                        <p>İki kişilik menüde %20 indirim!</p>
-
-                        <a href="rezervasyon.html" class="btn btn-outline-danger ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-journal-plus" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5" />
-                                <path
-                                    d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
-                                <path
-                                    d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
-                            </svg>
-
+            <h1>Kampanyalı Restoranlar</h1>
+            @foreach ($discountRestaurants as $discount)
+                <div class="col-md-3 mb-5">
+                    <div class="restaurant-card position-relative">
+                        <a href="{{ route('restaurants.show', $discount->restaurant->restaurantID) }}">
+                            <img src="{{ $discount->restaurant->image ?? 'default-image.jpg' }}"
+                                alt="{{ $discount->restaurant->name ?? 'Restoran' }}" class="img-fluid rounded">
                         </a>
-                        <a href="#" class=" btn btn-unline-danger " id="heart-icon"> <svg
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-heart" viewBox="0 0 16 16">
-                                <path
-                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                            </svg>
-                        </a>
+                        <div class="restaurant-card-body">
+                            <h5>{{ $discount->restaurant->name ?? 'Bilinmeyen Restoran' }}</h5>
+                            <p>📍{{ $discount->restaurant->cities->name ?? 'Şehir bilgisi mevcut değil.' }}
+                                {{ $discount->restaurant->districts->name ?? 'Bilinmiyor' }}
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ route('makeReservation', ['restaurantID' => $discount->restaurant->restaurantID]) }}"
+                                    class="btn btn-danger">Hemen Rezervasyon Yap</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Modal (Büyütülen resim için) -->
-                <div id="imageModal1" class="modal1">
-                    <div class="modal-content1">
-                        <img id="zoomImage1" src="" alt="Büyütülen Resim">
-                    </div>
-                </div>
-
-
-
-
-            </div>
-            <!-- Restoran Kartı 1 -->
-            <div class="col-md-3">
-                <div class="restaurant-card campaign-card">
-                    <img src="{{ asset('img/balik/b1.jpg') }}" id="img1" alt="Restoran" class="restaurant-image">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı</h5>
-                        <p>İki kişilik menüde %20 indirim!</p>
-
-                        <a href="rezervasyon.html" class="btn btn-outline-danger ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-journal-plus" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5" />
-                                <path
-                                    d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
-                                <path
-                                    d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
-                            </svg>
-
-                        </a>
-                        <a href="#" class=" btn btn-unline-danger " id="heart-icon"> <svg
-                                xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                class="bi bi-heart" viewBox="0 0 16 16">
-                                <path
-                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Modal (Büyütülen resim için) -->
-                <div id="imageModal1" class="modal1">
-                    <div class="modal-content1">
-                        <img id="zoomImage1" src="" alt="Büyütülen Resim">
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-            <!-- Restoran Kartı 2 -->
-            <div class="col-md-3">
-                <div class="restaurant-card">
-                    <img src="{{ asset('img/balik/b2.png') }}" alt="Restoran">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı 2</h5>
-                        <p>Pizza ve tatlı menüsünde %30 indirim!</p>
-                        <p>📍 Ankara, Türkiye</p>
-                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Restoran Kartı 3 -->
-            <div class="col-md-3">
-                <div class="restaurant-card">
-                    <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı 3</h5>
-                        <p>Üç kişilik menüde ücretsiz içecek!</p>
-                        <p>📍 İzmir, Türkiye</p>
-                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Restoran Kartı 4 -->
-            <div class="col-md-3">
-                <div class="restaurant-card">
-                    <img src="{{ asset('img/balik/b1.jpg') }}" alt="Restoran">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı 4</h5>
-                        <p>İki kişilik menüde %20 indirim!</p>
-                        <p>📍 İstanbul, Türkiye</p>
-                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </div>
+@else
+    <p>Kampanyalı restoran yok</p>
+@endif
 
 
 
-    <div class="container my-4">
-        <div class="row mt-4">
-            <!-- Restoran Kartı 5 -->
-            <div class="col-md-3">
-                <div class="restaurant-card">
-                    <img src="{{ asset('img/balik/b2.png') }}" alt="Restoran">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı 5</h5>
-                        <p>Pizza ve tatlı menüsünde %30 indirim!</p>
-                        <p>📍 Ankara, Türkiye</p>
-                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Restoran Kartı 6 -->
-            <div class="col-md-3">
-                <div class="restaurant-card">
-                    <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı 6</h5>
-                        <p>Üç kişilik menüde ücretsiz içecek!</p>
-                        <p>📍 İzmir, Türkiye</p>
-                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                    </div>
-                </div>
-            </div>
 
 
+<script>
+    // Kampanyaya restoran ekleme fonksiyonu
+    function handleAddDiscount(event) {
+        event.preventDefault();
 
-            <!-- Restoran Kartı 7 -->
-            <div class="col-md-3">
-                <div class="restaurant-card">
-                    <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı 7</h5>
-                        <p>Üç kişilik menüde ücretsiz içecek!</p>
-                        <p>📍 İzmir, Türkiye</p>
-                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Restoran Kartı 8 -->
-            <div class="col-md-3">
-                <div class="restaurant-card">
-                    <img src="{{ asset('img/balik/b3.jpg') }}" alt="Restoran">
-                    <div class="restaurant-card-body">
-                        <h5>Restoran Adı 8</h5>
-                        <p>Üç kişilik menüde ücretsiz içecek!</p>
-                        <p>📍 İzmir, Türkiye</p>
-                        <a href="rezervasyon.html" class="btn btn-danger">Hemen Rezervasyon Yap</a>
-                    </div>
-                </div>
-            </div>
+        let restaurantName = document.getElementById('restaurantName').value.trim();
 
-        </div>
-    </div>
+        if (restaurantName === '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata',
+                text: 'Lütfen bir restoran adı girin.'
+            });
+            return;
+        }
 
-</body>
+        let encodedName = encodeURIComponent(restaurantName);
+        let formAction = `/discount/create/${encodedName}`;
+
+        fetch(formAction, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ restaurantName: restaurantName })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'already_in_campaign') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Uyarı!',
+                        text: 'Bu restoran zaten kampanyalı restoranlarda mevcut!'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else if (data.message === 'Kampanyalı restoranlara eklendi') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Başarılı!',
+                        text: 'Restoran kampanyalı restoranlara eklendi.'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Başarısız!',
+                        text: 'Restoran kampanyalı restoranlara eklenemedi.'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Hata',
+                    text: 'Bir hata oluştu!'
+                }).then(() => {
+                    window.location.reload();
+                });
+            });
+    }
+
+    // Kampanyadan restoran silme fonksiyonu
+    function handleRemoveDiscount(event) {
+        event.preventDefault();
+
+        let restaurantName = document.getElementById('restaurantName').value.trim();
+        if (restaurantName === '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata',
+                text: 'Lütfen bir restoran adı girin.'
+            });
+            return;
+        }
+
+        let encodedName = encodeURIComponent(restaurantName);
+        let formAction = `/discount/delete/${encodedName}`;
+
+        fetch(formAction, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ restaurantName: restaurantName })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message == "Kampanyalı restorandan silindi") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Başarısız!',
+                        text: 'Restoran kampanyalı restoranlardan silindi.'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else if (data.message == "Restoran bulunamadı") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Başarısız!',
+                        text: 'Restoran bulunamadı.'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Başarısız!',
+                        text: 'Restoran bulunamadı.'
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Hata',
+                    text: 'Bir hata oluştu!'
+                }).then(() => {
+                    window.location.reload();
+                });
+            });
+    }
+</script>
