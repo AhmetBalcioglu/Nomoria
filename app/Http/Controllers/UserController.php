@@ -32,6 +32,24 @@ class UserController extends Controller
         }
     }
 
+    /*profil hesabı güncelleme apisi */
+
+    public function update(Request $request)
+    {
+        $user = Users::find(session('userID'));
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
+        $user->updated_at = Carbon::now()->format('Y-m-d H:i:s');
+
+        if ($user->save()) {
+            return response()->json(['success' => 'Kullanıcı bilgileri güncellendi']);
+        } else {
+            return response()->json(['error' => 'Güncelleme başarısız!'], 400);
+        }
+    }
+
+
+
     public function forgotPassword(Request $request)
     {
         $email = Users::where('email', $request->input('email'))->first();
