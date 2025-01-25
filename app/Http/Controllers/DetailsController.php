@@ -12,12 +12,19 @@ class DetailsController extends Controller
 {
     public function index()
     {
-        //Restoranlarım sayfasına gerekli bilgiler gönderiliyor
+        // Kullanıcı çıkış yaptıysa favori bilgilerini sıfırla
         $restaurants = Restaurant::with(['cities', 'districts', 'favorites'])
             ->where('deleted_at', '=', null)
             ->orderBy('name', 'asc')
             ->get()
             ->toArray();
+
+        if (!session()->has('userID')) {
+            foreach ($restaurants as &$restaurant) {
+                $restaurant['favorites'] = null;
+            }
+        }
+
         $cities = Cities::orderBy('name', 'asc')->get()->toArray();
         $districts = Districts::orderBy('name', 'asc')->get()->toArray();
 
@@ -27,4 +34,5 @@ class DetailsController extends Controller
             'districts',
         ));
     }
+
 }
