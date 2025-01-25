@@ -82,6 +82,10 @@ Route::post('/contact/send', [ContactController::class, 'sendMail'])->name('cont
 
 //discount Route
 Route::get('/discount', [DiscountController::class, 'discount']);
+Route::post('/discount/create/{name}', [DiscountController::class, 'create'])->name('discount.create');
+Route::post('/discount/delete/{name}', [DiscountController::class, 'delete'])->name('discount.delete');
+
+
 
 //Comments Route
 
