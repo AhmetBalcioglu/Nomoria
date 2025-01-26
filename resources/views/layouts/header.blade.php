@@ -113,7 +113,7 @@
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('profile') }}">Hesabım</a></li>
                     @if (session('role') == 'admin' || session('role') == 'restaurantOwner')
-                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Restoran İşlemleri(Dashboard)</a></li>
+                        <li><a class="dropdown-item" href="{{ route('controlPanel') }}">Restoran İşlemleri(Dashboard)</a></li>
                     @endif
                     <li><a class="dropdown-item" href="/favorites">Favorilerim</a></li>
                     <li><a class="dropdown-item" href="{{ route('reservations') }}">Rezervasyonlarım</a></li>

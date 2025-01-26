@@ -129,10 +129,10 @@
                 <a href="/restaurantPanel">Restaurant Owner Panel</a>
             @endif
 
-            <a href="#">Ana Sayfa</a>
-            <a href="/RestaurantManager">Restoranlar</a>
+
+
             <a href="#">Analizler</a>
-            <a href="#">Ayarlar</a>
+            <a href="{{route("controlPanel")}}">Kontrol Paneli</a>
             <a href="{{route("home")}}">Çıkış</a>
         </nav>
     </div>

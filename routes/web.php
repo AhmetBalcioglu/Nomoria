@@ -101,7 +101,7 @@ Route::prefix('comments')->group(function () {
 //Admin Panel Route
 Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
 });
 
 //Restaurant Panel Route
@@ -112,12 +112,10 @@ Route::middleware([RestaurantOwner::class])->group(function () {
 Route::prefix('RestaurantManager')->group(function () {
     Route::get('/', [RestaurantController::class, 'getMyRestaurants'])->name('RestaurantManager');
     Route::post('/update/{restaurantID}', [RestaurantController::class, 'updateRestaurantOwner']);
-    Route::get('/analiz', function () {
-        return view('dashboard.restaurantManager.restaurantAnaliz');
-    });
-    Route::get('/analiz/{restaurantID}', [DashboardController::class, 'showAnaliz'])->name('restaurant.analiz');
-    Route::get('/analiz/comments/{restaurantID}', [DashboardController::class, 'getComments'])->name('restaurant.analiz.comments');
+
 });
+
+Route::get('/controlPanel', [DashboardController::class, 'showControlPanel'])->name('controlPanel');
 
 
 
