@@ -110,7 +110,12 @@
     <div class="overlay"></div>
     <div class="overlay-text">
         <h1>{{ $restaurant->name }}</h1>
-        <p>{{ $restaurant->address }}</p>
+        <p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+              </svg>
+            {{ $restaurant->address }}
+        </p>
         <button onclick="window.location.href = '/makeReservation?restaurantID={{ $restaurant->restaurantID }}'"
             class="btn btn-danger">
             Rezervasyon Yap</button>
@@ -118,7 +123,7 @@
 </div>
 
 <!-- Yönlendirme sekmeleri (Hakkında, Galeri, Menü, Yorumlar) -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <div class="container">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
@@ -138,9 +143,9 @@
 <section id="menu" class="py-5">
     <div class="container">
         <h2>Menü</h2>
-        <button type="button" class="btn btn-secondary openMenuModal"
+        <button type="button" class="menuBtn openMenuModal"
             data-restaurant-id="{{ $restaurant->restaurantID }}">
-            Menü
+            Menüyü Görmek İçin Tıklayınız
         </button>
     </div>
 </section>
@@ -165,8 +170,8 @@
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
             <!-- Slider İçeriği -->
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="row">
+              <div class="carousel-item active">
+                     <div class="row">
                         <div class="col-md-4">
                             <img src="{{$restaurant->image}}" class="img-fluid rounded" alt="Gallery Image 1">
                         </div>
@@ -181,13 +186,13 @@
                 <div class="carousel-item">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 4">
+                            <img src="/img/seederImages/grill/grill2.jpg" class="img-fluid rounded" alt="Gallery Image 4">
                         </div>
                         <div class="col-md-4">
-                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 5">
+                            <img src="/img/seederImages/grill/grill1.jpg" class="img-fluid rounded" alt="Gallery Image 5">
                         </div>
                         <div class="col-md-4">
-                            <img src="/img/kampanya_gorsel/alcohol.png" class="img-fluid rounded" alt="Gallery Image 6">
+                            <img src="/img/seederImages/grill/grill5.jpg" class="img-fluid rounded" alt="Gallery Image 6">
                         </div>
                     </div>
                 </div>
@@ -210,31 +215,33 @@
         <h2>Yorumlar</h2>
         <div id="reviewList">
             @foreach($restaurant->comments as $comment)
-                <div class="card mb-3">
+                <div class="card col-md-8 mb-3">
                     <div class="card-body">
+                        <p class="text-muted">{{ $comment->created_at->format('d.m.Y H:i') }}</p>
                         <h5 class="card-title">{{ $comment->user_name }}</h5>
+                   
                         <p class="card-text">{{ $comment->comment ?? 'Yorum yok' }}</p>
                         <p>
                             @for ($i = 0; $i < 5; $i++)
                                 <span style="color: {{ $i < $comment->rating ? 'gold' : '#ccc' }}">&#9733;</span>
                             @endfor
                         </p>
-                        <p class="text-muted">{{ $comment->created_at->format('d.m.Y H:i') }}</p>
+                        
                         @if (Session::get('userID') === $comment->userID)
                             <div class="comment-actions">
                                 <form method="POST" action="{{ route('comments.update', $comment->id) }}">
                                     @csrf
                                     @method('PUT')
-                                    <button type="button" class="btn btn-warning comment-update-btn">Güncelle</button>
+                                    <button type="button" class="btn comment-update-btn">Yorumu Güncelle</button>
                                     <div class="comment-update-form d-none">
                                         <textarea name="content" required>{{ $comment->comment }}</textarea>
-                                        <button type="submit" class="btn btn-success">Güncelle</button>
+                                        <button type="submit" class="btn gonder-btn">Gönder</button>
                                     </div>
                                 </form>
                                 <form method="POST" action="{{ route('comments.destroy', $comment->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Sil</button>
+                                    <button type="submit" class="btn delete-btn">Yorumu Sil</button>
                                 </form>
                             </div>
                         @endif
@@ -253,19 +260,20 @@
                         <div class="mb-3">
                             <div id="ratingStars" class="d-flex align-items-center">
                                 @for ($i = 1; $i <= 5; $i++)
-                                    <input type="radio" name="rating" value="{{ $i }}" id="rate-{{ $i }}" required>
-                                    <label for="rate-{{ $i }}" data-rating="{{ $i }}">&#9733;</label>
+                                    <span class="star" data-value="{{ $i }}">&#9733;</span>
                                 @endfor
+                                <span id="ratingValue" class="ms-3 text-muted">0/5</span>
+                                <input type="hidden" name="rating" id="hiddenRating"> <!-- Gizli input -->
                             </div>
                         </div>
                         <div class="mb-3">
                             <textarea name="content" class="form-control" placeholder="Yorumunuzu yazın..."
                                 required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Gönder</button>
+                        <button type="submit" class="btn">Gönder</button>
                     </form>
                 @else
-                    <p>Yorum yapmak için <a href="{{ url('/login') }}">giriş yapın</a>.</p>
+                    <p>Yorum yapmak için <a href="{{ url('/login') }}" class="login">giriş yapmalısınız</a>.</p>
                 @endif
             </div>
         </div>
