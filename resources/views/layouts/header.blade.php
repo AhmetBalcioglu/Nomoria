@@ -49,6 +49,9 @@
                         Restoranlar</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link custom-link" href="{{ url('/discount') }}">Kampanyalı Restoranlar</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link custom-link" href="{{ url('/contact') }}">Yardım ve Destek</a>
                 </li>
             </ul>
