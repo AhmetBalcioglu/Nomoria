@@ -71,9 +71,10 @@ updateBtns.forEach((btn, index) => {
  });
 
 
-document.addEventListener('DOMContentLoaded', () => {
+ document.addEventListener('DOMContentLoaded', () => {
     const ratingStars = document.querySelectorAll('.star');
     const ratingValue = document.getElementById('ratingValue');
+    const hiddenRating = document.getElementById('hiddenRating');
     const reviewForm = document.getElementById('reviewForm');
     const reviewList = document.getElementById('reviewList');
     let selectedRating = 0;
@@ -87,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ratingStars[i].classList.add('selected');
             }
             ratingValue.textContent = `${selectedRating}/5`;
+            hiddenRating.value = selectedRating; // Gizli input'a değeri ekle
         });
     });
 
@@ -103,7 +105,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ratingStars.forEach(s => s.classList.remove('hovered'));
         });
     });
+});
 
+
+  
     // Form gönderim işlemi
     reviewForm.addEventListener('submit', (e) => {
         e.preventDefault(); // Sayfanın yeniden yüklenmesini engelle
@@ -138,4 +143,3 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Lütfen tüm alanları doldurun ve bir puan seçin.');
         }
     });
-});

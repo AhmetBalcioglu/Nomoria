@@ -2,13 +2,14 @@ $background-color: #f5f5f5;
 $text-color: #333;
 $card-bg-color: #fff;
 $border-color: #ddd;
-$button-bg-color: #df3c00;
-$button-hover-bg-color: #b3925a;
+$button-bg-color: #ed4f15;
+$button-hover-text-color: black;
 $primary-color: #4a90e2;
 $secondary-color: #50e3c2;
+$font-family: 'Merriweather', serif;
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-family: $font-family;
     margin: 0;
     padding: 0;
     background-color: $background-color;
@@ -117,9 +118,11 @@ body {
             transition: background-color 0.3s ease, transform 0.3s ease;
 
             &:hover {
-                background-color: $button-hover-bg-color;
                 transform: translateY(-2px);
+                background-color: $button-bg-color;
+                color: $button-hover-text-color;
             }
         }
+
     }
 }

@@ -1,5 +1,8 @@
+
+$font-family: 'Merriweather', serif;
 // Genel Stil
 body {
+  font-family: $font-family;
   background: url('/public/img/makeReservation/r3.jpg') no-repeat center center fixed;
   background-size: cover;
 }
@@ -142,17 +145,6 @@ body {
           }
 
 
-          input:focus,
-          textarea:focus,
-          select:focus,
-          button:focus {
-            outline: none;
-            /* Varsayılan mavi çerçeveyi kaldırır */
-            border: 2px solid #ed4f15;
-            /*sınır rengi */
-            box-shadow: 0 0 8px #f0a500;
-            /* gölge rengi */
-          }
         }
       }
     }

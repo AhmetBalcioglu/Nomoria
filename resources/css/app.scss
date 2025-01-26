@@ -7,3 +7,15 @@
 
 @use "variables";
 @use "global";
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none !important;
+  /* Varsayılan mavi çerçeveyi kaldırır */
+  border: 2px solid #ed4f15 !important; 
+  /*sınır rengi */
+  box-shadow: 0 0 8px #f0a500 !important;
+  /* gölge rengi */
+}

@@ -249,114 +249,178 @@
 
 
 
-       /* Şeffaflık efekti ve üst kısmı düzenleme */
-       .restaurant-header {
-        position: relative;
-        text-align: center;
-        color: white;
+body {
+    font-family: 'Merriweather', serif;
+  }
+  
+  // Şeffaflık efekti ve üst kısmı düzenleme
+  .restaurant-header {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      opacity: 0.7;
     }
-
-    .restaurant-header img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover;
+  
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(5px); // Blurlu arka plan
     }
-
-    .restaurant-header .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(216, 210, 210, 0.8);
+  
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center; // Yazıyı ortala
+    display: flex; // Flexbox ile hizalama
+    flex-direction: column; // Alt alta hizalama
+    justify-content: center; // Dikey ortalama
+    align-items: center; // Yatay ortalama
     }
-
-    .restaurant-header .overlay-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
+  
+    h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #222831;
     }
-
-    .restaurant-header h1 {
-        font-size: 3rem;
-        font-weight: bold;
-        color: #222831;
-       
-        box-shadow: 5px 10px 5px #ed4f15;
+  
+    p {
+      font-size: 1.5rem;
+      color: #222831;
+      margin-bottom: 3rem; // Buton ile metin arasına boşluk
     }
-
-    .restaurant-header p {
-        font-size: 1.5rem;
-        color: #222831;
+  }
+  
+  .nav-link {
+    font-weight: bold;
+    color: #ed4f15 !important;
+  
+    &:hover {
+      text-decoration: underline;
     }
-
-    .nav-link {
-        font-weight: bold;
-        color: #ed4f15 !important;
+  }
+  
+  section {
+    h2 {
+      color: #ed4f15;
     }
-
-    .nav-link:hover {
-        text-decoration: underline;
+  }
+  
+  .list-group-item {
+    border-color: #ed4f15;
+  
+    &:hover {
+      background-color: #ed4f15;
+      color: white;
     }
-
-    section h2 {
-        color: #ed4f15;
-    }
-
-    .list-group-item {
-        border-color: #ed4f15;
-    }
-
-    .list-group-item:hover {
-        background-color: #ed4f15;
-        color: white;
-    }
-
-    .card {
-        border-color: #ed4f15;
-    }
-
+  }
+  
+  .card {
+    border-color: #ed4f15;
+  
     .card-title {
-        color: #ed4f15;
+      color: #ed4f15;
     }
+    .login{
+        color: #ed4f15;
+        text-decoration: none;
 
-    .submit{
+        &:hover{
+            color: #222831;
+        }
+    }
+  }
+  
+  
+  .menuBtn{
+    
         border-color: #ed4f15;
         background-color: white;
         height: 5vh;
         border-radius: 10px;
-        color: #ed4f15;
+        color: #222831;
+        
+        &:hover{
+            color: #ed4f15;
+        }
+  }
+  
+  #gallery {
+    img {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+
+  .text-muted{
+    margin-left: 80%;
+  }
+
+  .comment-actions{
+    .comment-update-btn, .delete-btn{
+        background-color: #ed4f15;
+        color: white;
+        margin-bottom: 1rem;
+
+        &:hover{
+            background-color: white;
+            color: #ed4f15;
+        }
     }
 
-    .buton{
-        height: 50px;
+    .gonder-btn{
+        border-color: #ed4f15;
+        background-color: white;
+        height: 5vh;
+        border-radius: 10px;
+        color: #222831;
+        text-align: center;
+        
+        &:hover{
+            color: #ed4f15;
+        }
     }
 
-
-    #gallery img {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-
-.star i {
-    font-size: 2.5rem;
-    color: #ddd;
+  }
+  
+  .star {
+    font-size: 2.5rem; /* Varsayılan boyut */
+    color: #ddd; /* Varsayılan renk */  
     cursor: pointer;
-    transition: color 0.3s ease;
-}
+    transition: all 0.3s ease, transform 0.3s ease; /* Yumuşak geçiş efekti */
 
-.star:hover i,
-.star:hover ~ .star i {
-    color: rgba(237, 79, 21, 0.7); /* Hover rengi */
-}
+    &:hover {
+      transform: scale(1.2); /* Hover durumunda büyütme */
+      color: #ed4f15; /* Hover rengi */
+    }
 
-.star.selected i {
-    color: #ed4f15; /* Seçim rengi */
-}
+    &.selected {
+      color: #ed4f15; /* Seçim rengi */
+      transform: scale(1.2); /* Seçilen yıldızın büyüklüğü */
+    }
+   /* #ratingValue {
+        margin-left: 1rem;
+        font-size: 1.2rem;
+        color: #ff0000;
+      } */
+  }
+  
+ 
+  
+  
+
+
+  
