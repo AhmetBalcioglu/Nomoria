@@ -16,6 +16,7 @@ class Restaurant extends Model
     protected $fillable = [
         'guid',
         'image',
+        'detail_image_id',
         'name',
         'description',
         'address',
@@ -59,13 +60,20 @@ class Restaurant extends Model
         return $this->hasMany(Menu::class, 'restaurantID', 'restaurantID');
     }
 
+    public function detail_image()
+    {
+        return $this->belongsTo(DetailImage::class, 'detail_image_id', 'detail_image_id');
+    }
+
+
     // Tüm restoranları getir
     public static function getAllRestaurants()
     {
         return self::all();
     }
 
-    public function users(){
+    public function users()
+    {
         return $this->belongsTo(Users::class, 'userID', 'userID');
     }
 

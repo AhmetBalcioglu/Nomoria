@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     { {
             $this->call([
+                DetailImage::class, // Detay Resimleri olarak seeder
                 CitiesTableSeeder::class, // Şehirler için Seeder
                 DistrictsTableSeeder::class, // İlçeler için Seeder
                 UserSeeder::class, // Admin için seeder
