@@ -43,9 +43,6 @@ $(document).ready(function () {
         window.location.href = '/restaurants/' + id;
     });
 
-    $('.resBtn').on('click', function () {
-        var id = $(this).data('id');
-        window.location.href = '/restaurants/' + id;
-    });
+
 
 });
