@@ -137,6 +137,7 @@
 
 
             <a href="{{route("controlPanel")}}">Kontrol Paneli</a>
+            <a href="{{route("restaurantInsert")}}">Restoran Ekle</a>
             <a href="{{route("home")}}">Çıkış</a>
         </nav>
     </div>

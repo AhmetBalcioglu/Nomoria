@@ -17,7 +17,7 @@
             background-color: #f4f4f4;
         }
 
-        .container {
+        .container {        
             width: 100%;
             max-width: 1200px;
             background-color: white;
@@ -77,15 +77,27 @@
             width: 100%;
         }
 
+        #updateRestaurantButton{
+            background-color: #ed4f15;
+            color: white;
+
+        }
+
         .update-btn {
-            background-color: #ffc107;
+            background-color: #969696;
             color: white;
         }
 
         .delete-btn {
-            background-color: #dc3545;
+            background-color: #fb3c4f;
             color: white;
         }
+        .comments-btn{
+            background-color: #e59109;
+            color: rgb(12, 12, 12);
+            border: 4px #ed4f15;
+            border-radius: 10px;
+            }
 
         .analysis-panel {
             display: flex;
@@ -139,7 +151,9 @@
                                 data-email="{{ $restaurant->email }}" data-capacity="{{ $restaurant->capacity }}"
                                 >Restoranı
                                 Güncelle</button>
+                                <button class="comments-btn" data-restaurant-name="{{ $restaurant->name }}">Restoran Yorumları</button>
                             <button class="delete-btn" data-restaurant-name="{{ $restaurant->name }}">Restoranı Sil</button>
+
                         </div>
                     </div>
                 </div>
@@ -200,7 +214,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title fs-5" id="updateRestaurantLabel">Restorant Güncelle</h4>
+                        <h4 class="modal-title fs-5" id="updateRestaurantLabel">Restoran Güncelle</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form id="updateRestaurantForm" method="POST" enctype="multipart/form-data">
@@ -257,7 +271,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary w-100">Güncelle</button>
+                            <button type="submit" id="updateRestaurantButton" class="btn  w-100">Güncelle</button>
                         </div>
                     </form>
                 </div>

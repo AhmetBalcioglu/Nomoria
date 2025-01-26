@@ -1,15 +1,17 @@
 @if (session('role') == 'admin')
-    <form id="discountForm" method="POST">
-        @csrf
-        <div class="form-group">
-            <label for="restaurantName">Restaurant Name:</label>
-            <input type="text" id="restaurantName" name="restaurantName" class="form-control" required>
+    <div class="container" >
+        <form id="discountForm " method="POST">
+            @csrf
+            <div class="form-group " >
+                <label for="restaurantName">Restoran Adı:</label>
+                <input type="text" id="restaurantName" name="restaurantName" class="form-control" required>
+            </div>
+            <div class="d-flex gap-2">
+                <button type="submit" id="addDiscount" class="btn   mt-2" onclick="handleAddDiscount(event)">Ekle</button>
+                <button type="submit" class="btn btn-danger mt-2" onclick="handleRemoveDiscount(event)">Sil</button>
+            </div>
+        </form>
         </div>
-        <div class="d-flex gap-2">
-            <button type="submit" class="btn btn-primary mt-2" onclick="handleAddDiscount(event)">Add Discount</button>
-            <button type="submit" class="btn btn-danger mt-2" onclick="handleRemoveDiscount(event)">Remove Discount</button>
-        </div>
-    </form>
 @endif
 
 @if ($discountRestaurants->isNotEmpty())

@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\restaurantInsertController;
 use App\Http\Middleware\HandleLogin;
 use App\Http\Middleware\HandleLogout;
 use App\Http\Middleware\TimedExit;
@@ -25,6 +26,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\AdminOrRestaurant;
 use App\Http\Middleware\RestaurantOwner;
 use App\Http\Middleware\LoginRegisterUrl;
+
+
 
 Route::get('/dashboard', function () {
     return view('layouts.dashboard');
@@ -103,6 +106,11 @@ Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
 
 });
+
+// Restoran ekleme kısmı
+Route::get('/restaurantInsert', [restaurantInsertController::class, 'index'])->name('restaurantInsert');
+// Route::get('/restaurantInsert', [restaurantInsertController::class, 'index'])->name('dashboard');
+
 
 //Restaurant Panel Route
 Route::middleware([RestaurantOwner::class])->group(function () {
