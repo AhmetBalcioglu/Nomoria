@@ -77,7 +77,7 @@
         }
 
         .update-btn {
-            background-color: #007bff;
+            background-color: #ffc107;
             color: white;
         }
 
@@ -118,10 +118,6 @@
             cursor: pointer;
             text-align: center;
         }
-
-        .analysis-panel button:hover {
-            background-color: #218838;
-        }
     </style>
 </head>
 <body class="controlPanel-body">
@@ -146,7 +142,11 @@
                 <div class="chart-placeholder">
                     <canvas id="chart-{{ $restaurant->restaurantID }}" width="150" height="100"></canvas>
                 </div>
-                <button>Analizlere Git</button>
+
+                <button onclick="window.location.href='{{ route('analytics', ['restaurantID' => $restaurant->restaurantID]) }}'">
+                    Analiz Görüntüle
+                </button>
+
 
 
 

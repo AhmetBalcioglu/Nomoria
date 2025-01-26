@@ -37,10 +37,10 @@ class DashboardController extends Controller
 
     public function showAnaliz($restaurantID)
     {
-        // Restoran bilgilerini getir
+
         $restaurant = Restaurant::where('restaurantID', $restaurantID)->firstOrFail();
 
-        // Restoran analiz istatistiklerini çek
+
         $viewStats = Restaurant::where('restaurantID', $restaurantID)
             ->withCount([
                 'views as total_views',
@@ -67,6 +67,55 @@ class DashboardController extends Controller
         $comments = Comment::where('restaurantID', $restaurantID)->get();
         return view('dashboard.comments', compact('comments'));
     }
+
+    public function showAnalytics($restaurantID)
+    {
+        $restaurant = Restaurant::where('restaurantID', $restaurantID)->firstOrFail();
+
+        $viewStats = DB::table('viewed_restaurants')
+            ->selectRaw('
+            COUNT(*) as total_views,
+            COUNT(DISTINCT CASE WHEN viewed_at >= ? THEN COALESCE(userID, guestID) END) as daily_unique_users,
+            COUNT(DISTINCT CASE WHEN viewed_at >= ? THEN COALESCE(userID, guestID) END) as weekly_unique_users,
+            COUNT(DISTINCT CASE WHEN viewed_at >= ? THEN COALESCE(userID, guestID) END) as monthly_unique_users
+        ', [
+                now()->startOfDay(),
+                now()->subDays(7),
+                now()->subDays(30),
+            ])
+            ->where('restaurantID', $restaurantID)
+            ->first();
+
+        // Varsayılan değerler atanıyor, eğer $viewStats null ise
+        $viewStats = $viewStats ?? (object) [
+            'total_views' => 0,
+            'daily_unique_users' => 0,
+            'weekly_unique_users' => 0,
+            'monthly_unique_users' => 0,
+        ];
+
+        $dailyData = $this->getChartData($restaurantID, now()->startOfDay(), 'daily');
+        $weeklyData = $this->getChartData($restaurantID, now()->subDays(7), 'weekly');
+        $monthlyData = $this->getChartData($restaurantID, now()->subDays(30), 'monthly');
+
+        return view('dashboard.restaurantAnalytics.restaurantAnalytics', compact('restaurant', 'viewStats', 'restaurantID', 'dailyData', 'weeklyData', 'monthlyData'));
+    }
+
+
+    private function getChartData($restaurantID, $startDate, $period)
+    {
+        return DB::table('viewed_restaurants')
+            ->selectRaw('
+            DATE(viewed_at) as date,
+            COUNT(*) as views
+        ')
+            ->where('restaurantID', $restaurantID)
+            ->where('viewed_at', '>=', $startDate)
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get()->pluck('views', 'date');
+    }
+
 
     public function showControlPanel($restaurantID = null)
     {

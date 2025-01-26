@@ -119,19 +119,18 @@
     <div class="dashboard-header">
         <div class="logo">
             <img src="{{ asset('img/logo_light.png') }}" alt="Logo">
-            <h4>DASHBOARD</h4>
 
+            @if (session('role') === 'admin')
+                <h4>DASHBOARD admin </h4>
+            @else
+                <h4>DASHBOARD owner </h4>
+            @endif
         </div>
         <nav>
-            @if (session('role') === 'admin')
-                <a href="/adminPanel">Admin Panel</a>
-            @else
-                <a href="/restaurantPanel">Restaurant Owner Panel</a>
-            @endif
 
 
 
-            <a href="#">Analizler</a>
+
             <a href="{{route("controlPanel")}}">Kontrol Paneli</a>
             <a href="{{route("home")}}">Çıkış</a>
         </nav>
