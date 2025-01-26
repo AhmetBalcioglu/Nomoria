@@ -1,4 +1,7 @@
+
+<h1 class="main-title mt-2">Nomoria nasıl kullanılır ?</h1>
 <div class="contact-container mt-5 mb-5">
+   
     <div class="contact-info" style="position: relative; width: 100%; height: 0; padding-bottom: 40%;">
         <iframe class="embed-responsive-item" src="{{ asset('/img/nomoria.mp4') }}" frameborder="0" allowfullscreen
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>

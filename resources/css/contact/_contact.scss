@@ -16,6 +16,18 @@ body {
     color: $text-color;
 }
 
+.main-title {
+
+    text-align: center;
+    margin-top: 10rem;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: bold;
+    color: $button-bg-color;
+
+
+}
+
 .contact-container {
     display: flex;
     justify-content: center;
