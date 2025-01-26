@@ -10,7 +10,19 @@ class DiscountController extends Controller
 {
     public function discount()
     {
-        $discountRestaurants = DiscountRestaurants::with('restaurant')->get();
+        $userID = session('userID'); // Oturumdaki kullanıcı ID'sini al
+
+        $discountRestaurants = DiscountRestaurants::with(['restaurant.cities', 'restaurant.districts'])
+            ->with([
+                'restaurant' => function ($query) use ($userID) {
+                    $query->with([
+                        'favorites' => function ($q) use ($userID) {
+                            $q->where('userID', $userID);
+                        }
+                    ]);
+                }
+            ])
+            ->get();
 
         return view("discount.discount", compact('discountRestaurants'));
     }

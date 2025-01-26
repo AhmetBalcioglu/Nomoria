@@ -14,4 +14,9 @@ class DiscountRestaurants extends Model
     {
         return $this->belongsTo(Restaurant::class, 'restaurantID', 'restaurantID');
     }
+
+    public function favorites()
+    {
+        return $this->hasMany(DiscountRestaurants::class, 'restaurantID', 'restaurantID');
+    }
 }
