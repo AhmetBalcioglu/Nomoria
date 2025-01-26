@@ -116,6 +116,8 @@ Route::prefix('RestaurantManager')->group(function () {
 });
 
 Route::get('/controlPanel', [DashboardController::class, 'showControlPanel'])->name('controlPanel');
+Route::get('analiz/{restaurantID?}', [DashboardController::class, 'showAnalytics'])->name('analytics');
+
 
 
 

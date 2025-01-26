@@ -146,7 +146,11 @@
                 <div class="chart-placeholder">
                     <canvas id="chart-{{ $restaurant->restaurantID }}" width="150" height="100"></canvas>
                 </div>
-                <button>Analizlere Git</button>
+
+                <button onclick="window.location.href='{{ route('analytics', ['restaurantID' => $restaurant->restaurantID]) }}'" class="btn btn-success">
+                    Analiz Görüntüle
+                </button>
+
 
 
 
