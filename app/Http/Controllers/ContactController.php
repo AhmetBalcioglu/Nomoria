@@ -13,6 +13,8 @@ class ContactController extends Controller
     {
         return view('contact.contact');
     }
+
+    // Destek maili göndermek için kullanılır.
     public function sendMail(Request $request)
     {
         // Verileri doğrulama

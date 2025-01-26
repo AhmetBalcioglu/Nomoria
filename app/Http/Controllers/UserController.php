@@ -16,10 +16,12 @@ use App\Http\Controllers\Mail\VerificationCodeMail;
 
 class UserController extends Controller
 {
+    //Hesap oluşturmak için kullanılır.
     public function create(UserCreateRequest $request)
     {
         $user = new Users();
 
+        // Kullanıcı bilgilerini alıyoruz.
         $user->guid = substr(Str::uuid(), 0, 36);
         $user->name = mb_convert_case($request->input('name'), MB_CASE_TITLE, 'UTF-8');
         $user->surname = mb_strtoupper($request->input('surname'), 'UTF-8');
@@ -29,6 +31,7 @@ class UserController extends Controller
         $user->created_at = Carbon::now()->format('Y-m-d H:i:s');
         $user->role = $request->input('role');
 
+        // Kullanıcıyı veritabanına kaydediyoruz.
         if ($user->save()) {
             return response()->json(['success' => 'Kullanıcı oluşturuldu']);
         } else {
@@ -36,9 +39,10 @@ class UserController extends Controller
         }
     }
 
+    //Kullanıcı bilgilerini güncellerken yeni eposta kontrolü için kullanılır
     public function sendVerificationCode(Request $request)
     {
-        // Yeni e-posta adresi
+        // Yeni e-posta adresi alırız.
         $newEmail = $request->input('newEmail');
 
         // Yeni e-posta adresi kontrolü (boş olmamalı)
@@ -58,6 +62,7 @@ class UserController extends Controller
         return response()->json(['success' => 'Doğrulama kodu yeni e-posta adresinize gönderildi.']);
     }
 
+    //Kullanıcı bilgilerini güncellerken kullanılır
     public function update(Request $request, $userID)
     {
         // Kullanıcıyı $userID ile arıyoruz
@@ -80,6 +85,7 @@ class UserController extends Controller
 
         $user->updated_at = Carbon::now()->format('Y-m-d H:i:s');
 
+        // Kullanıcının yeni bilgilerini veritabanına kaydediyoruz.
         if ($user->save()) {
             session(['email' => $user->email]); // email session'ı güncellendi.
             if ($request->has('newPassword')) {
@@ -94,11 +100,13 @@ class UserController extends Controller
 
 
 
-
+    //Şifre yenileme işlemi için kullanılır.
     public function forgotPassword(Request $request)
     {
+        //Girilen email adresini veritabanında arıyoruz.
         $email = Users::where('email', $request->input('email'))->first();
 
+        //E-posta adresi varsa ve yoksa hata döndürülür.
         if ($email) {
             return redirect('/newPassword')->with('success', 'Sıfırlama kodu e-posta adresinize gonderildi');
         } else {

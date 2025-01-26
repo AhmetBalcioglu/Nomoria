@@ -14,11 +14,12 @@ use App\Http\Requests\PasswordResetPasswordRequest;
 
 class PasswordController extends Controller
 {
+    //Şifre sıfırlama kodu göndermek için kullanılır.
     public function sendResetCode(PasswordsendResetCodeRequest $request)
     {
         // ------------Şifre Sıfırlama Kodu Gönderme------------
-        $email = $request->input('email');
-        $resetCode = random_int(100000, 999999);
+        $email = $request->input('email'); // E-posta adresini alıyoruz.
+        $resetCode = random_int(100000, 999999); // Sıfırlama kodunu oluşturuyoruz.
 
         // Reset kodunu session'a kaydediyoruz
         Session::put('reset_code', $resetCode);
@@ -35,17 +36,19 @@ class PasswordController extends Controller
     }
 
 
-
+    //Şifre sıfırlama işlemi için kullanılır.
     public function resetPassword(PasswordResetPasswordRequest $request)
     {
-        // ------------Şifre Sıfırlama İşlemi------------
+        // ------------Şifre Sıfırlama İşlemi------------ (sessiondan yukarda gönderdiğimiz bilgileri alıyoruz.)
         $resetCode = Session::get('reset_code');
         $resetEmail = Session::get('reset_email');
 
+        //Değerler boş ise hata mesajı ver
         if (!$resetCode || !$resetEmail) {
             return back()->withErrors(['code' => 'Sıfırlama kodu süresi dolmuş.']);
         }
 
+        // Sıfırlama kodunu kontrol ediyoruz.
         if ($resetCode != $request->input('code')) {
             return back()->withErrors(['code' => 'Sıfırlama kodu hatalı.']);
         }
@@ -60,6 +63,7 @@ class PasswordController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
+        // Sıfırlama kodunu ve emaili sessiondan siliyoruz.
         Session::forget('reset_code');
         Session::forget('reset_email');
 

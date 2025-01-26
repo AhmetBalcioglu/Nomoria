@@ -14,14 +14,16 @@ use Illuminate\Support\Facades\DB;
 
 class FavoriteController extends Controller
 {
+    // Restoran favorileri sayfasını görüntüler.
     public function index()
     {
         return view('favorites.favorites');
     }
 
+    // Restoranlar ve kategorileri döndür.
     public function getFavoritesAndCategories()
     {
-        // Şehirleri, ilçeleri ve restoranları topla
+        // Şehirleri, ilçeleri ve restoranları toplama kısmı.
         $cities = Cities::orderBy('name', 'asc')->get();
         $districts = Districts::orderBy('name', 'asc')->get();
         $restaurants = Restaurant::with(['cities', 'districts'])->get();
@@ -29,7 +31,7 @@ class FavoriteController extends Controller
         // Kullanıcının ID'sini session'dan al
         $userID = session('userID');
 
-        // Eğer session'dan kullanıcı ID'si alınamazsa hata ver
+        // Eğer session'dan kullanıcı ID'si alınamazsa hata verir.
         if (!$userID) {
             return redirect()->route('login')->with('error', 'Lütfen giriş yapınız.');
         }
@@ -62,6 +64,7 @@ class FavoriteController extends Controller
         ));
     }
 
+    // Kullanıcının istediği kategoriyi favorilemesi ve favorilerden kaldırılması için kullanılır.
     public function toggleFavoriteCategory($categoryID)
     {
         // Kullanıcının oturumda olup olmadığını kontrol et
@@ -104,6 +107,7 @@ class FavoriteController extends Controller
         ]);
     }
 
+    // Kullanıcının istediği kategoriyi favorilemesi ve favorilerden kaldırılması için kullanılır.
     public function toggleFavorite($restaurantID)
     {
         // Kullanıcının oturumda olup olmadığını kontrol et

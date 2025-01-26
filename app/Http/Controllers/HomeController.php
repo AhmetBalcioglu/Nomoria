@@ -8,7 +8,8 @@ use App\Models\Favorites;
 
 
 class HomeController extends Controller
-{
+{   
+    //Home bladesini dönmek için ve tüm kategorileri almak için kullanılır.
     public function index()
     {
         // Tüm kategorileri al

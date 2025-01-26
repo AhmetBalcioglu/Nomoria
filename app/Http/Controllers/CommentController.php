@@ -13,17 +13,21 @@ use Illuminate\Support\Facades\Session;
 
 class CommentController extends Controller
 {
+    //Comment modelinden tüm bilgiler alınır ve comments sayfasına gonderilir ve comments döndürülür.
     public function index()
     {
         $comments = Comment::all();
         return view('comments', compact('comments'));
     }
 
+
+    //create blade döndürülür.
     public function create()
     {
         return view('comment.create');
     }
 
+    //Yorum oluşturulmak için kullanılır.
     public function store(Request $request)
     {
         // Veriyi doğrulama
@@ -35,6 +39,7 @@ class CommentController extends Controller
         // Kullanıcı oturumundan ID'yi alın
         $userID = Session::get('userID');
 
+        //Eğer oturum yoksa hata mesajı döndür
         if (!$userID) {
             return redirect('/login')->with('error', 'Yorum yapmak için giriş yapmalısınız.');
         }
@@ -62,6 +67,7 @@ class CommentController extends Controller
         return view('comment.edit', compact('comment'));
     }
 
+    //Yorum güncellenmek için kullanılır.
     public function update($comment_id, Request $request)
     {
         // Verileri doğrula
@@ -75,6 +81,7 @@ class CommentController extends Controller
         // Kullanıcı oturumundan ID'yi alın
         $userID = Session::get('userID');
 
+        //Eğer oturum yoksa hata mesajı döndür
         if (!$userID) {
             return redirect('/login')->with('error', 'Yorumu güncellemek için giriş yapmalısınız.');
         }
@@ -93,7 +100,7 @@ class CommentController extends Controller
         return back()->with('success', 'Yorumunuz güncellendi.');
     }
 
-
+    //Yorum silmek için kullanılır.
     public function destroy($comment_id)
     {
         // Yorum kaydını bul
@@ -102,6 +109,7 @@ class CommentController extends Controller
         // Kullanıcı oturumundan ID'yi alın
         $userID = Session::get('userID');
 
+        //Eğer oturum yoksa hata mesajı döndür
         if (!$userID) {
             return redirect('/login')->with('error', 'Yorumu silmek için giriş yapmalısınız.');
         }
