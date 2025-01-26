@@ -27,13 +27,24 @@ class ReservationController extends Controller
     public function index2()
     {
         $reservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
+        $allReservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->withTrashed()->get()->toArray();
+
         $pastReservations = [];
+        $cancelledReservations = [];
+
         foreach ($reservations as $reservation) {
             if ($reservation['reservation_time'] < Carbon::now()->format('Y-m-d')) {
                 array_push($pastReservations, $reservation);
             }
         }
-        return view("historyRezervations.historyRezervations", compact('pastReservations'));
+
+        foreach ($allReservations as $reservation) {
+            if ($reservation['deleted_at'] != null) {
+                array_push($cancelledReservations, $reservation);
+            }
+        }
+
+        return view("historyRezervations.historyRezervations", compact('pastReservations', 'cancelledReservations'));
     }
 
     public function makeReservation()
@@ -79,5 +90,51 @@ class ReservationController extends Controller
             return response()->json(['success' => false, 'message' => $errorMessage->getMessage()]);
         }
         //--------------------------------------------------------------------------
+    }
+
+    public function delete($id)
+    {
+        $reservation = Reservation::find($id);
+
+
+        if (!$reservation) {
+            return response()->json(['success' => false, 'message' => 'Rezervasyon bulunamadı.'], 404);
+        }
+
+        try {
+            $reservation->delete();
+            return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla silindi.']);
+        } catch (\Throwable $errorMessage) {
+            return response()->json(['success' => false, 'message' => $errorMessage->getMessage()]);
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        request()->validate([
+            'newReservationDate' => 'required|date_format:Y-m-d',
+            'newGuestCount' => 'required|integer',
+        ], [
+            'newReservationDate.required' => 'Rezervasyon tarihi zorunludur.',
+            'newReservationDate.date_format' => 'Lütfen geçerli bir tarih giriniz.',
+            'newGuestCount.required' => 'Misafir sayısı zorunludur.',
+            'newGuestCount.integer' => 'Lütfen geçerli bir misafir sayısı giriniz.',
+        ]);
+        $reservation = Reservation::find($id);
+
+        if (!$reservation) {
+            return response()->json(['success' => false, 'message' => 'Rezervasyon bulunamadı.'], 404);
+        }
+
+        $reservation->reservation_time = $request->input('newReservationDate');
+        $reservation->guest_count = $request->input('newGuestCount');
+        $reservation->updated_at = Carbon::now();
+
+        try {
+            $reservation->save();
+            return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla güncellendi.']);
+        } catch (\Throwable $errorMessage) {
+            return response()->json(['success' => false, 'message' => $errorMessage->getMessage()]);
+        }
     }
 }

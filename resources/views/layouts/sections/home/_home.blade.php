@@ -1,6 +1,4 @@
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <div class="container mt-5">
-
 
     @foreach ($categories->chunk(4) as $chunk)
 
@@ -10,9 +8,10 @@
                     data-url="{{ $category->categoryName }}">
                     <p class="text-center"><b>{{ $category->categoryName }}</b></p>
                     <img src="{{ asset($category->image) }}" width="50%" height="50%" class="d-block w-100 my-4" alt="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 hearth-icon
-                                           {{ in_array($category->categoryID, $favoritedCategories) ? 'favorited' : '' }}"
-                        data-id="{{ $category->categoryID }}" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        class="bi bi-suit-heart-fill position-absolute top-0 end-0 m-2 hearth-icon
+                                                           {{ in_array($category->categoryID, $favoritedCategories) ? 'favorited' : '' }}" data-id="{{ $category->categoryID }}"
+                        viewBox="0 0 16 16">
                         <path
                             d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1" />
                     </svg>
@@ -53,7 +52,7 @@
                             <p class="discount">20%</p>
 
                             <p class="campaign-text">Nomaria'ya özel</p>
-                            <a href="/discount" class="btn btn-campaign" >Restorana Git</a>
+                            <a href="/discount" class="btn btn-campaign">Restorana Git</a>
 
 
                         </div>
@@ -66,7 +65,7 @@
                             <p class="discount">15%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
 
-                            <a href="/discount" class="btn btn-campaign" >Restorana Git</a>
+                            <a href="/discount" class="btn btn-campaign">Restorana Git</a>
                         </div>
                     </div>
                 </div>
@@ -83,7 +82,7 @@
                             <p class="discount">10%</p>
                             <p class="campaign-text">Nomaria'ya özel</p>
 
-                            <a href="/discount" class="btn btn-campaign" >Restorana Git</a>
+                            <a href="/discount" class="btn btn-campaign">Restorana Git</a>
 
 
 
@@ -98,7 +97,7 @@
 
                             <p class="campaign-text">Nomaria'ya özel</p>
 
-                            <a href= "/discount" class="btn btn-campaign" >Restorana Git</a>
+                            <a href="/discount" class="btn btn-campaign">Restorana Git</a>
 
 
                         </div>

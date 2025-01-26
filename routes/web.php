@@ -61,7 +61,6 @@ Route::post('/makeReservation/{restaurantID}', [ReservationController::class, 'c
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
-    Route::get('/', [RestaurantController::class, 'index'])->name('restaurants.index');
     Route::get('/create', [RestaurantController::class, 'createPage'])->name('createPage');
     Route::post('/create', [RestaurantController::class, 'create'])->name('create');
     Route::post('/delete/{name}', [RestaurantController::class, 'delete'])->name('delete');
@@ -111,7 +110,6 @@ Route::middleware([RestaurantOwner::class])->group(function () {
 });
 
 Route::prefix('RestaurantManager')->group(function () {
-    Route::get('/', [RestaurantController::class, 'index'])->name('RestaurantManager');
     Route::get('/', [RestaurantController::class, 'getMyRestaurants'])->name('RestaurantManager');
     Route::post('/update/{restaurantID}', [RestaurantController::class, 'updateRestaurantOwner']);
     Route::get('/analiz', function () {
@@ -145,6 +143,9 @@ Route::middleware([TimedExit::class])->group(function () {
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations');
     Route::post('/comments', [CommentController::class, 'store']);
 });
+
+Route::delete('/reservation/delete/{id}', [ReservationController::class, 'delete'])->name('reservation.delete');
+Route::patch('/reservation/update/{id}', [ReservationController::class, 'update'])->name('reservation.update');
 
 // Favorite Routes
 Route::prefix('favorites')->group(function () {
