@@ -7,6 +7,7 @@ $light-bg: $white-color;
 $light-text: $text-color;
 $dark-bg: $text-color;
 $dark-text: $white-color;
+$font-family: 'Merriweather', serif;
 
 .header {
     position: sticky;
@@ -15,6 +16,8 @@ $dark-text: $white-color;
     background-color: $primary-color;
     color: $white-color;
     padding: 10px 15px;
+    font-family: $font-family;
+
 
     .logo {
         max-width: 150px;
@@ -32,7 +35,6 @@ $dark-text: $white-color;
         text-decoration: none;
         margin: 0 10px;
         font-size: 16px;
-        font-family: sans-serif;
         font-weight: bold;
 
         &:hover {
@@ -89,6 +91,7 @@ $dark-text: $white-color;
 #searchForm {
     margin-bottom: 5px;
 }
+
 
 /* Hamburger Menü İçeriği (Sola ve Altına Yerleştir) */
 #navbarToggleExternalContent {
