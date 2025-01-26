@@ -244,3 +244,27 @@ body{
 .dark-mode .fav-icon.favorited {
   fill: red;
 }
+
+#scrollToTop {
+  position: fixed;
+  bottom: 20px; /* Sayfanın altına 20px yukarı yerleştir */
+  left: 50%; /* Sol kenardan %50 yerleştir */
+  transform: translateX(-50%); /* X ekseninde merkeze taşı */
+  width: 60px; /* Buton genişliği */
+  height: 60px; /* Buton yüksekliği */
+  border-radius: 50%; /* Yuvarlak görünüm */
+  background-color: #ff5722; /* Arka plan rengi */
+  color: white; /* Simge rengi */
+  border: none; /* Kenar çerçevesini kaldır */
+  display: none; /* Başlangıçta gizli */
+  align-items: center; /* İçeriği ortala */
+  justify-content: center; /* İçeriği ortala */
+  font-size: 24px; /* Simge boyutu */
+  z-index: 1000; /* Üstte görünmesini sağlama */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Gölge efekti */
+  cursor: pointer; /* İmleç el şeklinde */
+}
+
+#scrollToTop:hover {
+  background-color: #e64a19; /* Hover efekti */
+}
