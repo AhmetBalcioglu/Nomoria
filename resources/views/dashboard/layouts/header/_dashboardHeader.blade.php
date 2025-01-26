@@ -70,7 +70,8 @@
     }
 
     .dashboard-header nav a:hover {
-        background-color: #0d6efd;
+        background-color: white;
+        color: #000;
         border-bottom: 1px solid black;
     }
 
