@@ -122,16 +122,15 @@ class DashboardController extends Controller
         $role = session('role');
         $userId = session('userID');
 
-        if (!$userId)
-        {
+        if (!$userId) {
 
             return redirect()->route('login')->with('error', 'Lütfen giriş yapın');
-
         }
 
         if ($role == 'restaurantOwner') {
 
             $restaurants = Restaurant::where('userID', $userId)
+                ->where('deleted_at', null)
 
                 ->withCount([
                     'views as total_views',
@@ -155,9 +154,7 @@ class DashboardController extends Controller
             }
 
             return view('dashboard.controlPanel.controlpanel', compact('restaurants'));
-        }
-
-        elseif ($role == 'admin') {
+        } elseif ($role == 'admin') {
 
 
             if ($restaurantID) {
@@ -165,47 +162,35 @@ class DashboardController extends Controller
                 $restaurant = Restaurant::where('restaurantID', $restaurantID)->firstOrFail();
 
                 return view('dashboard.controlPanel.controlpanel', compact('restaurant'));
+            } else {
 
-            }
+                $restaurants = Restaurant::where('deleted_at', null)
+                    ->withCount([
 
-            else
+                        'views as total_views',
+                        'views as daily_unique_users' => function ($query) {
+                            $query->select(DB::raw('COUNT(DISTINCT COALESCE(userID, guestID))'))
+                                ->where('viewed_at', '>=', now()->startOfDay());
+                        },
 
-            {
+                        'views as weekly_unique_users' => function ($query) {
+                            $query->select(DB::raw('COUNT(DISTINCT COALESCE(userID, guestID))'))
+                                ->where('viewed_at', '>=', now()->subDays(7));
+                        },
 
-                $restaurants = Restaurant::withCount([
+                        'views as monthly_unique_users' => function ($query) {
+                            $query->select(DB::raw('COUNT(DISTINCT COALESCE(userID, guestID))'))
+                                ->where('viewed_at', '>=', now()->subDays(30));
+                        }
 
-                    'views as total_views',
-                    'views as daily_unique_users' => function ($query) {
-                        $query->select(DB::raw('COUNT(DISTINCT COALESCE(userID, guestID))'))
-                            ->where('viewed_at', '>=', now()->startOfDay());
-                    },
-
-                    'views as weekly_unique_users' => function ($query) {
-                        $query->select(DB::raw('COUNT(DISTINCT COALESCE(userID, guestID))'))
-                            ->where('viewed_at', '>=', now()->subDays(7));
-                    },
-
-                    'views as monthly_unique_users' => function ($query) {
-                        $query->select(DB::raw('COUNT(DISTINCT COALESCE(userID, guestID))'))
-                            ->where('viewed_at', '>=', now()->subDays(30));
-                    }
-
-                ])->get();
+                    ])->get();
 
 
                 return view('dashboard.controlPanel.controlpanel', compact('restaurants'));
-
             }
-
-        }
-
-
-        else
-        {
+        } else {
 
             abort(403, 'Bu sayfaya erişim yetkiniz yok.');
-
         }
-
     }
 }

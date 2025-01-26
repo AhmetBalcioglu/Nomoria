@@ -112,6 +112,10 @@
         max-width: 100%;
         max-height: 200px;
     }
+
+    #logo:hover {
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -119,7 +123,7 @@
     <!-- Dashboard Header (Sol Menü) -->
     <div class="dashboard-header">
         <div class="logo">
-            <img src="{{ asset('img/logo_light.png') }}" alt="Logo">
+            <img id="logo" src="{{ asset('img/logo_light.png') }}" alt="Logo">
 
             @if (session('role') === 'admin')
                 <h4>DASHBOARD admin </h4>
@@ -136,3 +140,8 @@
             <a href="{{route("home")}}">Çıkış</a>
         </nav>
     </div>
+    <script>
+        document.getElementById("logo").addEventListener("click", function () {
+            window.location.href = "/";
+        });
+    </script>

@@ -175,9 +175,13 @@ class RestaurantController extends Controller
             return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.');
         }
 
-        $restaurants = Restaurant::where('name', 'like', '%' . $query . '%') //Arama sorgusu
-            ->orWhere('description', 'like', '%' . $query . '%')
-            ->orWhere('address', 'like', '%' . $query . '%')
+        $restaurants = Restaurant::query()
+            ->where('deleted_at', null)
+            ->where(function ($queryBuilder) use ($query) {
+                $queryBuilder->where('name', 'like', '%' . $query . '%')
+                    ->orWhere('description', 'like', '%' . $query . '%')
+                    ->orWhere('address', 'like', '%' . $query . '%');
+            })
             ->get();
 
         if ($restaurants->isEmpty()) {
