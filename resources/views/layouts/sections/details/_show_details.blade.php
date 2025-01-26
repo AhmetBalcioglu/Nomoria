@@ -17,13 +17,11 @@
     </div>
 </div>
 
+
 <!-- Yönlendirme sekmeleri (Hakkında, Galeri, Menü, Yorumlar) -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+<nav class="navbar navbar-expand-lg" id="showDetails">
     <div class="container">
         <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#menu">Menü</a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#gallery">Galeri</a>
             </li>
@@ -36,8 +34,7 @@
 
 <!-- Menü Kısmı -->
 <section id="menu" class="py-5">
-    <div class="container">
-        <h2>Menü</h2>
+    <div class="container d-flex justify-content-center">
         <button type="button" class="menuBtn openMenuModal" data-restaurant-id="{{ $restaurant->restaurantID }}">
             Menüyü Görmek İçin Tıklayınız
         </button>
@@ -58,8 +55,7 @@
     </div>
 </div>
 
-<!-- Galeri Kısmı -->
-<section id="gallery" class="py-5 bg-light">
+<section id="gallery" class="py-5">
     <div class="container">
         <h2>Galeri</h2>
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -111,8 +107,7 @@
     </div>
 </section>
 
-
-<section id="reviews" class="py-5 bg-light">
+<section id="reviews" class="py-5">
     <div class="container">
         <h2>Yorumlar</h2>
         <div id="reviewList">

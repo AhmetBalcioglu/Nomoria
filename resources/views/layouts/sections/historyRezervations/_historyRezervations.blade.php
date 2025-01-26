@@ -18,7 +18,7 @@
                                 <p>📍 {{ $reservation['restaurant']['cities']['name'] }}
                                     {{  $reservation['restaurant']['districts']['name'] }}
                                 </p>
-                                <button class="btn resBtn">Restoran Özellikleri</button>
+                                
 
                             </div>
                         </div>

@@ -253,6 +253,8 @@ body {
     font-family: 'Merriweather', serif;
   }
   
+
+
   // Şeffaflık efekti ve üst kısmı düzenleme
   .restaurant-header {
     width: 100%;
@@ -300,12 +302,18 @@ body {
     }
   }
   
-  .nav-link {
+
+  #showDetails {
     font-weight: bold;
-    color: #ed4f15 !important;
+    color: #ed4f15;
   
     &:hover {
       text-decoration: underline;
+      color: #ed4f15;
+      
+    }
+    .dark-mode &{
+      color: #ed4f15;
     }
   }
   
