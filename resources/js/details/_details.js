@@ -87,3 +87,13 @@ $(document).ready(function () {
   });
 });
 
+
+// Sayfa kaydırma olayını dinleme
+window.addEventListener('scroll', function () {
+  const scrollButton = document.getElementById('scrollToTop');
+  if (window.scrollY > 300) { // 300 pikselden fazla kaydırıldığında butonu göster
+      scrollButton.style.display = 'flex';
+  } else {
+      scrollButton.style.display = 'none';
+  }
+});
