@@ -1,5 +1,5 @@
 
-    <div class="container mt-5" >
+    <div class="container mt-5" style="margin-left: 15rem" >
         <h1>Restoran: {{ $restaurant->name }}</h1>
         <p>Toplam Görüntülenme: {{ $viewStats->total_views }}</p>
         <p>Günlük Benzersiz Kullanıcılar: {{ $viewStats->daily_unique_users }}</p>
