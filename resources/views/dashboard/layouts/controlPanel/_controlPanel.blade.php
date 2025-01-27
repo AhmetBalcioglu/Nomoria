@@ -13,12 +13,16 @@
                         <p>{{ $restaurant->address }}</p>
                         <div class="restaurant-buttons">
                             <button class="update-btn" data-restaurant-name="{{ $restaurant->name }}"
+                                data-restaurant-id="{{ $restaurant->restaurantID }}"
                                 data-description="{{ $restaurant->description }}"
                                 data-address="{{ $restaurant->address }}" data-phone="{{ $restaurant->phone }}"
                                 data-email="{{ $restaurant->email }}" data-capacity="{{ $restaurant->capacity }}"
                                 >Restoranı
                                 Güncelle</button>
-                                <button class="comments-btn" data-restaurant-name="{{ $restaurant->name }}">Restoran Yorumları</button>
+
+                                <button class="comments-btn restaurantCommentsBtn" data-restaurant-id="{{ $restaurant->restaurantID }}"
+                                data-restaurant-name="{{ $restaurant->name }}"
+                                >Restoran Yorumları</button>
                             <button class="delete-btn" data-restaurant-name="{{ $restaurant->name }}">Restoranı Sil</button>
 
                         </div>
@@ -239,6 +243,9 @@
                     }
                 });
             });
+            $('.restaurantCommentsBtn').on('click', function () {
+                window.location.href = '/restaurants/' + $(this).data('restaurant-id');
+            });
 
 
             // Update Restaurant AJAX
@@ -309,7 +316,9 @@
                 $('#removeRestaurant').modal('show');
             });
 
+
         });
+
     </script>
 </div>
 

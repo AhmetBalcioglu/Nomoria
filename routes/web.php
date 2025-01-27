@@ -8,7 +8,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RestaurantInsertController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
@@ -98,8 +97,6 @@ Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
 });
 
-// Restoran ekleme kısmı
-Route::get('/restaurantInsert', [RestaurantInsertController::class, 'index'])->name('restaurantInsert');
 
 //Restaurant Panel Route
 Route::middleware([RestaurantOwner::class])->group(function () {
