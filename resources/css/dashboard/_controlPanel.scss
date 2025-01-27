@@ -7,10 +7,12 @@ $btn-border-radius: 5px;
 .controlPanel-body {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-end;
+    min-width: 100vw;
     min-height: 100vh;
     padding: 20px;
     background-color: $bg-color;
+    margin-left: 7%;
 
 
 .container {
