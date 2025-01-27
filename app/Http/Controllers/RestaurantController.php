@@ -85,12 +85,7 @@ class RestaurantController extends Controller
             return response()->json(['success' => false, 'message' => 'Restoran bulunamadı.'], 404);
         }
 
-        // Eski resmi sil
         if ($request->hasFile('image')) {
-            // Eski resim dosyasını sil (eğer varsa)
-            if ($restaurant->image && file_exists(public_path($restaurant->image))) {
-                unlink(public_path($restaurant->image));
-            }
 
             // Yeni resmi kaydet
             $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -98,6 +93,7 @@ class RestaurantController extends Controller
             $restaurant->image = '/images/restaurantImages/' . $imageName;
         }
         $validated = $request->validated();
+        
         // Restoranı güncelle
         $restaurant->update([
             'name' => $validated['newName'],

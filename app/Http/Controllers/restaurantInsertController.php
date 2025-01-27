@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Cities;
 
 class restaurantInsertController extends Controller
 {
     public function index()
     {
-        return view('dashboard.restaurantInsert.restaurantInsert');
+        $cities = Cities::getAllCities();
+        $districts = Cities::getAllDistricts();
+        return view('dashboard.restaurantInsert.restaurantInsert', compact(
+            'districts',
+            'cities',
+        ));
     }
 }
