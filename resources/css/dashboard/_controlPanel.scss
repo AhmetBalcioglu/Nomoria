@@ -1,0 +1,126 @@
+// Değişkenler
+$bg-color: #f4f4f4;
+$white-color: #ffffff;
+$box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+$btn-border-radius: 5px;
+
+.controlPanel-body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: $bg-color;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background-color: $white-color;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: $box-shadow;
+}
+
+.restaurant-card {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    background-color: $white-color;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: $box-shadow;
+
+    .restaurant-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+
+        img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .restaurant-details {
+            flex: 1;
+
+            h2 {
+                font-size: 18px;
+                margin: 0 0 5px;
+            }
+
+            p {
+                font-size: 14px;
+                color: #666;
+                margin: 0 0 10px;
+            }
+
+            .restaurant-buttons {
+                button {
+                    font-size: 14px;
+                    padding: 8px 12px;
+                    margin-bottom: 5px;
+                    border: none;
+                    border-radius: $btn-border-radius;
+                    cursor: pointer;
+                    width: 100%;
+
+                    &.update-btn {
+                        background-color: #969696;
+                        color: $white-color;
+                    }
+
+                    &.delete-btn {
+                        background-color: #fb3c4f;
+                        color: $white-color;
+                    }
+
+                    &.comments-btn {
+                        background-color: #e59109;
+                        color: rgb(12, 12, 12);
+                        border: 4px #ed4f15;
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .analysis-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        border-left: 1px solid #ccc;
+        background-color: #f9f9f9;
+        border-radius: 0 10px 10px 0;
+
+        .chart-placeholder {
+            height: 100px;
+            background-color: $bg-color;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #ed4f15;
+            color: $white-color;
+            padding: 10px;
+            font-size: 14px;
+            border: none;
+            border-radius: $btn-border-radius;
+            cursor: pointer;
+            text-align: center;
+        }
+    }
+}

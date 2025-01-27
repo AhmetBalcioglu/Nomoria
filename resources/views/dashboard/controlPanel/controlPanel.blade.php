@@ -6,7 +6,7 @@
 
 @section('page_head_css')
 
-
+    @vite('resources/css/dashboard/_controlPanel.scss')
 
 @endsection
 

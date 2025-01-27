@@ -1,0 +1,118 @@
+$background-color: #f4f6f9;
+$primary-color: #ed4f15;
+$text-color: #333;
+$white: #fff;
+$box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+$card-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+
+body {
+    background-color: $background-color;
+    font-family: Arial, sans-serif;
+    margin-left: 250px;
+}
+
+.container {
+    width: calc(100vw - 200px);
+    padding: 20px;
+}
+
+.dashboard-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: $primary-color;
+    color: $white;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: $box-shadow;
+
+    .logo {
+        max-width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+
+        img {
+            max-width: 100%;
+            margin-right: 10px;
+        }
+    }
+
+    h2 {
+        font-size: 24px;
+        text-align: center;
+        margin: 0;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+
+        a {
+            color: $white;
+            text-decoration: none;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: $white;
+                color: $text-color;
+                border-bottom: 1px solid $text-color;
+            }
+        }
+    }
+
+    h4 {
+        text-align: end;
+        font-size: 12px;
+    }
+}
+
+.card-container {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: $text-color;
+    margin-bottom: 30px;
+}
+
+.card {
+    border-radius: 8px;
+    background-color: $white;
+    box-shadow: $card-shadow;
+    padding: 20px;
+    margin-bottom: 40px;
+    max-width: 250px;
+
+    .card-header {
+        background-color: $primary-color;
+        color: $white;
+        font-weight: bold;
+    }
+
+    .card-body {
+        max-width: 350px;
+    }
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 200px;
+}
+
+#logo {
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -6,7 +6,8 @@
 @use './contact/contact.scss';
 @use './details/details';
 @use './darkMode/dark_mode.scss';
-
+@use  './dashboard/_controlPanel.scss';
+@use './dashboard/dashboardHeader.scss';
 @use "variables";
 @use "global";
 
