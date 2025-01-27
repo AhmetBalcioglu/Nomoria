@@ -5,16 +5,7 @@ $white: #fff;
 $box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 $card-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 
-body {
-    background-color: $background-color;
-    font-family: Arial, sans-serif;
-    margin-left: 250px;
-}
 
-.container {
-    width: calc(100vw - 200px);
-    padding: 20px;
-}
 
 .dashboard-header {
     position: fixed;
@@ -72,7 +63,7 @@ body {
         text-align: end;
         font-size: 12px;
     }
-}
+
 
 .card-container {
     margin-top: 50px;
@@ -127,4 +118,5 @@ canvas {
     background-color: white;
     color: black;
     border: 1px solid black;
+}
 }
