@@ -90,10 +90,10 @@ class DashboardController extends Controller
                 ->get();
 
             if ($restaurants->isEmpty()) {
-                return view('dashboard.controlPanel.controlpanel')->with('message', 'Bu kullanıcıya ait restoran bulunamadı.');
+                return view('dashboard.controlPanel.controlPanel')->with('message', 'Bu kullanıcıya ait restoran bulunamadı.');
             }
 
-            return view('dashboard.controlPanel.controlpanel', compact('restaurants'));
+            return view('dashboard.controlPanel.controlPanel', compact('restaurants'));
         } elseif ($role == 'admin') {
 
 
@@ -101,7 +101,7 @@ class DashboardController extends Controller
 
                 $restaurant = Restaurant::where('restaurantID', $restaurantID)->firstOrFail();
 
-                return view('dashboard.controlPanel.controlpanel', compact('restaurant'));
+                return view('dashboard.controlPanel.controlPanel', compact('restaurant'));
             } else {
 
                 $restaurants = Restaurant::where('deleted_at', null)
@@ -126,7 +126,7 @@ class DashboardController extends Controller
                     ])->get();
 
 
-                return view('dashboard.controlPanel.controlpanel', compact('restaurants'));
+                return view('dashboard.controlPanel.controlPanel', compact('restaurants'));
             }
         } else {
 

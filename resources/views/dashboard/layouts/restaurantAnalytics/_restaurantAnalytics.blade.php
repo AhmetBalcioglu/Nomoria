@@ -1,7 +1,5 @@
 
-
-@section('content')
-    <div class="container mt-5">
+    <div class="container mt-5" >
         <h1>Restoran: {{ $restaurant->name }}</h1>
         <p>Toplam Görüntülenme: {{ $viewStats->total_views }}</p>
         <p>Günlük Benzersiz Kullanıcılar: {{ $viewStats->daily_unique_users }}</p>
@@ -9,62 +7,44 @@
         <p>Aylık Benzersiz Kullanıcılar: {{ $viewStats->monthly_unique_users }}</p>
 
 
-        <h3>Toplam Görüntülenmeler</h3>
-        <canvas id="totalChart" style="height: 400px;"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
+        <div class="stats d-flex p-5 m-4">
+            <div class="ms-4">
         <h3>Günlük Görüntülenmeler</h3>
         <canvas id="dailyChart" style="height: 200px;"></canvas>
+        </div>
+
+            <div class="ms-4">
 
 
         <h3>Haftalık Görüntülenmeler</h3>
         <canvas id="weeklyChart" style="height: 200px;"></canvas>
-
-
+        </div>
+        <div  class="ms-4">
         <h3>Aylık Görüntülenmeler</h3>
         <canvas id="monthlyChart" style="height: 200px;"></canvas>
+        </div>
 
+    </div>
         <a href="{{ route('analytics', ['restaurantID' => $restaurantID]) }}" class="btn btn-primary">
             Verileri Güncelle
         </a>
     </div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 
-        const totalData = @json($dailyData);
-        const ctxTotal = document.getElementById('totalChart').getContext('2d');
-        new Chart(ctxTotal, {
-            type: 'line',
-            data: {
-                labels: Object.keys(totalData),
-                datasets: [{
-                    label: 'Toplam Görüntülenmeler',
-                    data: Object.values(totalData),
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        beginAtZero: true
-                    },
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
+
+
+
+
 
 
         const dailyData = @json($dailyData);
         const ctxDaily = document.getElementById('dailyChart').getContext('2d');
+
+
         new Chart(ctxDaily, {
             type: 'line',
             data: {
@@ -79,7 +59,7 @@
                 }]
             },
             options: {
-                responsive: true,
+                responsive: false,
                 maintainAspectRatio: false,
                 scales: {
                     x: {
@@ -90,6 +70,7 @@
                     }
                 }
             }
+
         });
 
 
@@ -109,7 +90,7 @@
                 }]
             },
             options: {
-                responsive: true,
+                responsive: false,
                 maintainAspectRatio: false,
                 scales: {
                     x: {
@@ -139,7 +120,7 @@
                 }]
             },
             options: {
-                responsive: true,
+                responsive: false,
                 maintainAspectRatio: false,
                 scales: {
                     x: {
@@ -151,5 +132,6 @@
                 }
             }
         });
+
+
     </script>
-@endsection
