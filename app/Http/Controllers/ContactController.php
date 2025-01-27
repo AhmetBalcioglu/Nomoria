@@ -9,6 +9,7 @@ use App\Mail\ContactMail;
 
 class ContactController extends Controller
 {
+    // Yardım ve Destek Sayfası
     public function index()
     {
         return view('contact.contact');

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\Favorites;
 
 
 class HomeController extends Controller
-{   
+{
     //Home bladesini dönmek için ve tüm kategorileri almak için kullanılır.
     public function index()
     {
@@ -18,7 +17,7 @@ class HomeController extends Controller
         // Kullanıcının ID'sini session'dan al
         $userID = session('userID');
 
-        
+
 
         // Kullanıcının favori kategorilerini al
         $favoritedCategories = Favorites::where('userID', $userID)
@@ -29,5 +28,4 @@ class HomeController extends Controller
         // Verileri tek bir view'e gönder
         return view('home.home', compact('categories', 'favoritedCategories'));
     }
-
 }

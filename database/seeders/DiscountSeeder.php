@@ -15,6 +15,7 @@ class DiscountSeeder extends Seeder
      */
     public function run(): void
     {
+        // Veritabanına indirimli restoranlar ekleyen seeder
         DB::table('discount_restaurants')->insert([
             [
                 'restaurantID' => 20,

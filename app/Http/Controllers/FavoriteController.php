@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+
 use App\Models\Cities;
 use App\Models\Districts;
-use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Favorites;
-use Illuminate\Support\Facades\DB;
-
 
 
 class FavoriteController extends Controller

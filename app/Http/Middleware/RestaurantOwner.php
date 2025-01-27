@@ -14,6 +14,8 @@ class RestaurantOwner
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
+    // Restoran sahibi mi kontrol eden middleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!Session::has('role')) {

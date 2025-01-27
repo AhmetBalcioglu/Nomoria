@@ -14,6 +14,9 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        // Veritabanına kullanıcılar ekleyen seeder
+
+        // Admin: Özlem
         Users::create(
             [
                 'guid' => 'aa6c99c9-91f5-4bbc-b8ff-0db363572818',
@@ -29,6 +32,8 @@ class UserSeeder extends Seeder
             ],
 
         );
+
+        // Müşteri: Ahmet
         Users::create(
             [
                 'guid' => 'd219f9fc-2d1b-482e-add0-eb8d26f2a8db',
@@ -44,6 +49,8 @@ class UserSeeder extends Seeder
             ],
 
         );
+
+        // Restoran Sahibi: Ali
         Users::create(
             [
                 'guid' => '9ea92aa3-05c1-4cdf-8fe4-b74b20f7caf2',
@@ -59,6 +66,8 @@ class UserSeeder extends Seeder
             ],
 
         );
+
+        // Restoran Sahibi: Bektaş
         Users::create(
             [
                 'guid' => '04827042-208a-456c-a09b-a68f6b8e99a9',

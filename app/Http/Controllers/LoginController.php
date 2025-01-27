@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
-{   
+{
     //Login bladesini dönmek için kullanılır.
     public function index()
     {

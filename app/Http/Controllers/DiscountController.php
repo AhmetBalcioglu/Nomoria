@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\DiscountRestaurants;
 use App\Models\Restaurant;
-use Illuminate\Http\Request;
 
 class DiscountController extends Controller
 {
@@ -76,10 +75,4 @@ class DiscountController extends Controller
             return response()->json(['message' => 'Restoran Bulunamadı!'], 404);
         }
     }
-
-
-
 }
-
-
-

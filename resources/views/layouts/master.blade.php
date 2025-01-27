@@ -9,22 +9,24 @@
     <meta name="description" content="@yield('page_description')">
     <link rel="shortcut icon" href="img/favicon.png" type="">
     <title>
-        
+
         @yield('page_title')</title>
-    @vite(['resources/css/app.scss', 'resources/js/app.js'])
-    @yield('page_head_css')
+    @vite(['resources/css/app.scss', 'resources/js/app.js']) {{-- Bütün sayfalarda çağrılan SCSS ve JS'ler --}}
+
+    @yield('page_head_css') {{-- Sayfaya özel SCSS'ler --}}
+
 </head>
 
 <body>
-    
+
     <script src="{{ asset('jQuery.js') }}"></script>{{-- jQuery --}}
-    <script src="//code.jivosite.com/widget/IRUzibtaUY" async></script>
+    <script src="//code.jivosite.com/widget/IRUzibtaUY" async></script> {{-- Chatbot --}}
 
-
+    {{------------ Content ------------}}
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
-
+    {{-- ------------------------------}}
 
     <script>
         let successMessage = @json(session('success'));
@@ -33,7 +35,7 @@
 
 
 
-    @yield('page_body_js')
+    @yield('page_body_js') {{-- Sayfaya özel JS'ler --}}
 
 </body>
 

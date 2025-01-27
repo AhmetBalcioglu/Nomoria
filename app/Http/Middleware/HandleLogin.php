@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class HandleLogin
 {
+    // Giriş yaptıktan sonra kullanıcının bilgilerini sessiona kaydeden middleware
     public function handle(Request $request, Closure $next)
     {
         $request->validate([

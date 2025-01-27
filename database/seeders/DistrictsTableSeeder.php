@@ -13,9 +13,10 @@ class DistrictsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        // İstanbul'un citiesID'sini kontrol edin (örneğin 1)
-        $istanbulId = 1; // Burayı kontrol edin, eğer farklıysa doğru id'yi kullanın.
 
+        $istanbulId = 1; // Sadece istanbul olduğu için bunu kullandık eğer farklı bir ile eklemek istersek o ilin id'sini kullanmamız gerekiyor
+
+        // İstanbul'daki ilçeler seeder ile ekleniyor
         DB::table('districts')->insert([
             ['name' => 'Adalar', 'citiesID' => $istanbulId],
             ['name' => 'Arnavutköy', 'citiesID' => $istanbulId],
@@ -55,7 +56,6 @@ class DistrictsTableSeeder extends Seeder
             ['name' => 'Ümraniye', 'citiesID' => $istanbulId],
             ['name' => 'Üsküdar', 'citiesID' => $istanbulId],
             ['name' => 'Zeytinburnu', 'citiesID' => $istanbulId],
-            // İstanbul'un diğer ilçeleri
         ]);
     }
 }

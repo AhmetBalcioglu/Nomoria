@@ -14,6 +14,8 @@ class AdminOrRestaurant
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
+    // Admin panele erişim için admin veya restoran sahibi rolunu kontrol eden middleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!Session::has('role')) {

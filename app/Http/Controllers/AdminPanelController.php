@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cities;
-use Illuminate\Http\Request;
 
 class AdminPanelController extends Controller
 {

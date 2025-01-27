@@ -15,6 +15,7 @@ class RestaurantsSeeder extends Seeder
      */
     public function run(): void
     {
+        // Veritabanına restoranlar ekleyen seeder
         DB::table('restaurant')->insert([
             [
                 'guid' => Str::uuid()->toString(),

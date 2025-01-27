@@ -1,32 +1,31 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\restaurantInsertController;
-use App\Http\Middleware\HandleLogin;
-use App\Http\Middleware\HandleLogout;
-use App\Http\Middleware\TimedExit;
-use App\Http\Middleware\isCustomer;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestaurantInsertController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\DetailsController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\AddRestaurantController;
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\FavoriteController;
-use App\Http\Middleware\RestaurantView;
 use App\Http\Controllers\DashboardController;
+
+use App\Http\Middleware\HandleLogin;
+use App\Http\Middleware\HandleLogout;
+use App\Http\Middleware\TimedExit;
+use App\Http\Middleware\isCustomer;
+use App\Http\Middleware\RestaurantView;
 use App\Http\Middleware\AdminOrRestaurant;
 use App\Http\Middleware\RestaurantOwner;
 use App\Http\Middleware\LoginRegisterUrl;
-
 
 
 Route::get('/dashboard', function () {
@@ -54,7 +53,6 @@ Route::post('/forgotPassword', [UserController::class, 'forgotPassword'])->name(
 Route::get('/newPassword', [LoginController::class, 'newPassword']);
 Route::post('/newPassword', [PasswordController::class, 'resetPassword'])->name('reset-password.submit');
 Route::post('/send-reset-code', [PasswordController::class, 'sendResetCode'])->name('send-reset-code');
-// Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::middleware([isCustomer::class])->group(function () {
     Route::get('/makeReservation', [ReservationController::class, 'makeReservation'])->name('makeReservation');
 });
@@ -64,7 +62,7 @@ Route::post('/makeReservation/{restaurantID}', [ReservationController::class, 'c
 
 // Restaurant Routes
 Route::prefix('restaurants')->group(function () {
-    Route::get('/create', [RestaurantController::class, 'createPage'])->name('createPage');
+    Route::get('/create', [RestaurantController::class, 'redirectFromCreatePage'])->name('createPage');
     Route::post('/create', [RestaurantController::class, 'create'])->name('create');
     Route::post('/delete/{name}', [RestaurantController::class, 'delete'])->name('delete');
     Route::post('/update/{name}', [RestaurantController::class, 'update'])->name('update');
@@ -87,11 +85,7 @@ Route::get('/discount', [DiscountController::class, 'discount']);
 Route::post('/discount/create/{name}', [DiscountController::class, 'create'])->name('discount.create');
 Route::post('/discount/delete/{name}', [DiscountController::class, 'delete'])->name('discount.delete');
 
-
-
 //Comments Route
-
-
 Route::prefix('comments')->group(function () {
     Route::post('/', [CommentController::class, 'store'])->name('comments.store');
     Route::get('/{restaurant_id}', [CommentController::class, 'index']);
@@ -99,18 +93,13 @@ Route::prefix('comments')->group(function () {
     Route::put('/{comment_id}', [CommentController::class, 'update'])->name('comments.update');
 });
 
-
-
 //Admin Panel Route
 Route::middleware([AdminOrRestaurant::class])->group(function () {
     Route::get('/adminPanel', [AdminPanelController::class, 'index'])->name('adminPanel');
-
 });
 
 // Restoran ekleme kısmı
-Route::get('/restaurantInsert', [restaurantInsertController::class, 'index'])->name('restaurantInsert');
-// Route::get('/restaurantInsert', [restaurantInsertController::class, 'index'])->name('dashboard');
-
+Route::get('/restaurantInsert', [RestaurantInsertController::class, 'index'])->name('restaurantInsert');
 
 //Restaurant Panel Route
 Route::middleware([RestaurantOwner::class])->group(function () {
@@ -120,19 +109,10 @@ Route::middleware([RestaurantOwner::class])->group(function () {
 Route::prefix('RestaurantManager')->group(function () {
     Route::get('/', [RestaurantController::class, 'getMyRestaurants'])->name('RestaurantManager');
     Route::post('/update/{restaurantID}', [RestaurantController::class, 'updateRestaurantOwner']);
-
 });
 
 Route::get('/controlPanel', [DashboardController::class, 'showControlPanel'])->name('controlPanel');
 Route::get('analiz/{restaurantID?}', [DashboardController::class, 'showAnalytics'])->name('analytics');
-
-
-
-
-
-
-
-
 
 //Login Logout Middleware Route
 Route::middleware([HandleLogin::class, HandleLogout::class])->group(function () {
@@ -170,7 +150,7 @@ Route::get('/logout', function () {
 
 
 // Geçmiş rezervasyonlarım
-Route::get('/historyRezervations', [ReservationController::class, 'index2']);
+Route::get('/historyRezervations', [ReservationController::class, 'historyRezervations']);
 
 //menu
 Route::get('/restaurants/{id}/menu', [RestaurantController::class, 'getMenu']);

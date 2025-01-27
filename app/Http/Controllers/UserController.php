@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
-use Carbon\Carbon;
-use Exception;
+use App\Http\Controllers\Mail\VerificationCodeMail;
+use App\Http\Requests\UserCreateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\UserCreateRequest;
 use Illuminate\Support\Str;
-use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\Mail\VerificationCodeMail;
+use Carbon\Carbon;
 
 
 class UserController extends Controller
@@ -33,7 +31,7 @@ class UserController extends Controller
 
         // Kullanıcıyı veritabanına kaydediyoruz.
         if ($user->save()) {
-            return response()->json(['success' => 'Kullanıcı oluşturuldu']);
+            return response()->json(['success' => 'Kullanıcı oluşturuldu']); // ajax isteği atıldığı için json ile yanıt veriliyor
         } else {
             return response()->json(['error' => 'Kullanıcı oluşturulamadı!'], 400);
         }
@@ -59,7 +57,7 @@ class UserController extends Controller
         // E-posta gönderimi
         Mail::to($newEmail)->send(new VerificationCodeMail($verificationCode));
 
-        return response()->json(['success' => 'Doğrulama kodu yeni e-posta adresinize gönderildi.']);
+        return response()->json(['success' => 'Doğrulama kodu yeni e-posta adresinize gönderildi.']); // ajax isteği atıldıgı için json ile yanıt veriliyor
     }
 
     //Kullanıcı bilgilerini güncellerken kullanılır
@@ -92,13 +90,11 @@ class UserController extends Controller
                 session(['password' => $user->password]); // password session'ı güncellendi.
             }
 
-            return response()->json(['success' => 'Kullanıcı bilgileri başarıyla güncellendi.']);
+            return response()->json(['success' => 'Kullanıcı bilgileri başarıyla güncellendi.']); // ajax isteği atıldığı için json ile yanıt veriliyor
         } else {
             return response()->json(['error' => 'Güncelleme işlemi başarısız oldu.'], 400);
         }
     }
-
-
 
     //Şifre yenileme işlemi için kullanılır.
     public function forgotPassword(Request $request)

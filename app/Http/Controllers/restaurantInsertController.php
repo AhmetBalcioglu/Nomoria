@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Cities;
 
-class restaurantInsertController extends Controller
+class RestaurantInsertController extends Controller
 {
+    // Dashboarddaki restoran ekle sayfasını
     public function index()
     {
         $cities = Cities::getAllCities();

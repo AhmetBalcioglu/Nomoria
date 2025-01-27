@@ -4,32 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Cities;
 use App\Models\Districts;
-use GuzzleHttp\Client;
-use Illuminate\Http\Request;
+use App\Models\Menu;
+use App\Models\Restaurant;
+use App\Http\Controllers\Mail\RestaurantCreatedMail;
 use App\Http\Requests\RestaurantCreateRequest;
 use App\Http\Requests\RestaurantUpdateRequest;
-use App\Http\Requests\RestaurantStoreRequest;
-use App\Models\Favorites;
-use App\Models\Menu;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Restaurant;
 use Illuminate\Support\Facades\File;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Controllers\Mail\RestaurantCreatedMail;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 
 
 class RestaurantController extends Controller
 {
-
-    public function createPage()
+    // Restoran oluşturma sayfasına get isteği atılırsa anasayfaya yönlendirme işlemi
+    public function redirectFromCreatePage()
     {
         return redirect()->route('home');
     }
 
+    // Restoran oluşturma işlemi
     public function create(RestaurantCreateRequest $request)
     {
         // Görsel yükleme
@@ -70,13 +68,13 @@ class RestaurantController extends Controller
             }
 
 
-            return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']);
+            return response()->json(['success' => true, 'message' => 'Restoran başarıyla oluşturuldu.']); // ajax isteği atıldığı için json ile yanıt veriliyor
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => $e->getMessage()], 422);
         }
     }
 
-
+    // Admin için restoran güncelleme işlemi
     public function update(RestaurantUpdateRequest $request, $name)
     {
         $restaurant = Restaurant::where('name', $name)->first();
@@ -93,7 +91,7 @@ class RestaurantController extends Controller
             $restaurant->image = '/images/restaurantImages/' . $imageName;
         }
         $validated = $request->validated();
-        
+
         // Restoranı güncelle
         $restaurant->update([
             'name' => $validated['newName'],
@@ -105,9 +103,10 @@ class RestaurantController extends Controller
 
         ]);
 
-        return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
+        return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']); // ajax isteği atıldığı için json ile yanıt veriliyor
     }
 
+    // Restoran sahibi için restoran güncelleme işlemi
     public function updateRestaurantOwner(RestaurantUpdateRequest $request, $restaurantID)
     {
         $restaurant = Restaurant::where('restaurantID', $restaurantID)->first();
@@ -116,12 +115,7 @@ class RestaurantController extends Controller
             return response()->json(['success' => false, 'message' => 'Restoran bulunamadı.'], 404);
         }
 
-        // Eski resmi sil
         if ($request->hasFile('image')) {
-            // Eski resim dosyasını sil (eğer varsa)
-            if ($restaurant->image && file_exists(public_path($restaurant->image))) {
-                unlink(public_path($restaurant->image));
-            }
 
             // Yeni resmi kaydet
             $imageName = time() . '.' . $request->file('image')->getClientOriginalExtension();
@@ -139,11 +133,10 @@ class RestaurantController extends Controller
             'capacity' => $validated['capacity'],
         ]);
 
-        return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']);
+        return response()->json(['success' => true, 'message' => 'Restoran başarıyla güncellendi.']); // ajax isteği atıldığı için json ile yanıt veriliyor
     }
 
-
-
+    // Restoran silme işlemi
     public function delete(Request $request, $name)
     {
         $restaurant = Restaurant::where('name', $name)->first();
@@ -158,17 +151,18 @@ class RestaurantController extends Controller
         $restaurant->save();
 
         // Başarılı mesajı ile yanıt dön
-        return response()->json(['success' => true, 'message' => 'Restoran Silindi']);
+        return response()->json(['success' => true, 'message' => 'Restoran Silindi']); // ajax isteği atıldığı için json ile yanıt veriliyor
     }
 
-    public function search(Request $request) //Arama fonksiyonu
+    //Arama çubuğu işlemleri
+    public function search(Request $request)
     {
         $query = $request->input('searchBar'); //Arama kutusundan gelen veri
         $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
         $districts = Districts::orderBy('name', 'asc')->get()->toArray(); // İlçeleri diziye topla
 
         if (empty($query)) {
-            return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.');
+            return redirect()->back()->with('error', 'Arama Kutusu Boş Olamaz.'); //Arama kutusu boş ise hata mesajı döndür
         }
 
         $restaurants = Restaurant::query()
@@ -181,7 +175,7 @@ class RestaurantController extends Controller
             ->get();
 
         if ($restaurants->isEmpty()) {
-            return redirect()->back()->with('error', 'Arama Sonucu Bulunamadı.');
+            return redirect()->back()->with('error', 'Arama Sonucu Bulunamadı.'); //Arama sonucu bulunamazsa hata mesajı döndür
         }
 
         return view('details.details', compact(
@@ -192,6 +186,7 @@ class RestaurantController extends Controller
         )); //Arama sonucunu döndür
     }
 
+    // Sidebardaki filtreleme işlemleri
     public function filter(Request $request)
     {
         $cities = Cities::orderBy('name', 'asc')->get()->toArray(); // İlleri diziye topla
@@ -298,22 +293,8 @@ class RestaurantController extends Controller
         ));
     }
 
-    /**
-     * Bir restorana ait menüleri göster.
-     */
-    public function showMenus($restaurantID) //showMenus fonksiyonu belirli bir restorana ait menüleri göstermek için kullanılır
-    {
-        $restaurant = Restaurant::find($restaurantID); // Restoranı bul
 
-        if ($restaurant) {
-            $menus = $restaurant->menus; // İlişkili menüleri al
-            return view('restaurant.menus', compact('restaurant', 'menus')); //menus.blade.php sayfasına restaurant ve menus değişkenlerini gönder
-        } else {
-            return redirect()->route('home')->with('error', 'Restoran Bulunamadı'); // Restoran bulunamadı hatası göster
-        }
-    }
-
-
+    // Dashboard için gerekli işlemler
     public function show($restaurantID)
     {
 
@@ -349,7 +330,6 @@ class RestaurantController extends Controller
 
         return view('details.show_details', compact('restaurant'));
     }
-
 
     public function getMyRestaurants()
     {

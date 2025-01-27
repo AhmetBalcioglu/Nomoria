@@ -16,6 +16,8 @@ class RestaurantView
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
+    // Dashboarddaki analizler için restoran girişi kontrol eden middleware
     public function handle(Request $request, Closure $next): Response
     {
         $userId = session('userID');
@@ -42,6 +44,5 @@ class RestaurantView
 
 
         return $next($request);
-
     }
 }

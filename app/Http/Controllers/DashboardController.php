@@ -3,21 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
-use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
-
-
-
-    // Yorum getiriyor.
-    public function getComments($restaurantID)
-    {
-        $comments = Comment::where('restaurantID', $restaurantID)->get();
-        return view('dashboard.comments', compact('comments'));
-    }
-
+    // Dashboardda restoran analizlerinin görüntülenmesi işlemleri
     public function showAnalytics($restaurantID)
     {
         $restaurant = Restaurant::where('restaurantID', $restaurantID)->firstOrFail();
@@ -50,7 +40,6 @@ class DashboardController extends Controller
 
         return view('dashboard.restaurantAnalytics.restaurantAnalytics', compact('restaurant', 'viewStats', 'restaurantID', 'dailyData', 'weeklyData', 'monthlyData'));
     }
-
 
     private function getChartData($restaurantID, $startDate, $period)
     {

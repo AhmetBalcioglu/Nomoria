@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class HandleLogout
 {
+    // Çıkış yaptıktan sonra kullanıcının bilgilerini sessiondan silen middleware
     public function handle()
     {
         Session::flush();

@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
+
+    // Seederların otomatik olarak çalışması için buraya eklenmesi gerekiyor
     public function run(): void
     { {
             $this->call([

@@ -2,24 +2,6 @@ $('#addRestaurantBtn').on('click', function () {
     $('#addRestaurant').modal('show');
 });
 
-// $('#submitBtn').on('click', function (event) {
-//     event.preventDefault();
-//     const restaurantName = $('#name').val();
-//     const description = $('#description').val();
-//     const address = $('#address').val();
-//     const phone = $('#phone').val();
-//     const email = $('#email').val();
-//     const capacity = $('#capacity').val();
-//     const cuisineType = $('#cuisineType').val();
-//     const viewType = $('#viewType').val();
-//     const concept = $('#concept').val();
-//     const city = $('#city').val();
-//     const district = $('#district').val();
-
-//     console.log(restaurantName, description, address, phone, email, capacity, cuisineType, viewType, concept, city, district);
-
-// });
-
 // Add Restaurant AJAX
 document.addEventListener('DOMContentLoaded', function () {
     const addRestaurantForm = document.getElementById('addRestaurantForm');

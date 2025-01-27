@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reservation;
-use Illuminate\Http\Request;
-use App\Http\Requests\ReservationCreateRequest;
-use App\Models\Restaurant;
-use Carbon\Carbon;
 use App\Http\Controllers\Mail\ReservationCreatedMail;
+use App\Models\Reservation;
+use App\Models\Restaurant;
+use App\Http\Requests\ReservationCreateRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 
 class ReservationController extends Controller
 {
+    // Yapılan rezervasyonları gösterme işlemi
     public function index()
     {
         $reservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
@@ -24,7 +25,9 @@ class ReservationController extends Controller
         }
         return view("reservations.reservations", compact('futureReservations'));
     }
-    public function index2()
+
+    // Geçmiş rezervasyonları gösterme işlemi
+    public function historyRezervations()
     {
         $reservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->get()->toArray();
         $allReservations = Reservation::with('restaurant', 'restaurant.cities', 'restaurant.districts')->withTrashed()->get()->toArray();
@@ -47,11 +50,14 @@ class ReservationController extends Controller
         return view("historyRezervations.historyRezervations", compact('pastReservations', 'cancelledReservations'));
     }
 
+    // Rezervasyon oluşturma sayfasına yönlendirme işlemi
     public function makeReservation()
     {
         $restaurants = Restaurant::all()->toArray();
         return view("reservations.makeReservation", compact('restaurants'));
     }
+
+    // Rezervasyon oluşturma işlemi
     public function create(ReservationCreateRequest $request)
     {
         //-----------------------Rezervasyon oluşturma işlemi------------------------
@@ -85,13 +91,14 @@ class ReservationController extends Controller
             $reservation->save();
             Mail::to($userEmail)->send(new ReservationCreatedMail($reservation, $userName)); // Rezervasyon bilgileri kullanıcıya e-posta ile gönderiliyor
 
-            return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla oluşturuldu.']);
+            return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla oluşturuldu.']); // ajax isteği atıldığı için json ile yanıt veriliyor
         } catch (\Throwable $errorMessage) {
             return response()->json(['success' => false, 'message' => $errorMessage->getMessage()]);
         }
         //--------------------------------------------------------------------------
     }
 
+    // Rezervasyon silme işlemi
     public function delete($id)
     {
         $reservation = Reservation::find($id);
@@ -103,12 +110,13 @@ class ReservationController extends Controller
 
         try {
             $reservation->delete();
-            return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla silindi.']);
+            return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla silindi.']); // ajax isteği atıldığı için json ile yanıt veriliyor
         } catch (\Throwable $errorMessage) {
             return response()->json(['success' => false, 'message' => $errorMessage->getMessage()]);
         }
     }
 
+    // Rezervasyon güncelleme işlemi
     public function update(Request $request, $id)
     {
         request()->validate([
@@ -132,7 +140,7 @@ class ReservationController extends Controller
 
         try {
             $reservation->save();
-            return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla güncellendi.']);
+            return response()->json(['success' => true, 'message' => 'Rezervasyon başarıyla güncellendi.']); // ajax isteği atıldığı için json ile yanıt veriliyor
         } catch (\Throwable $errorMessage) {
             return response()->json(['success' => false, 'message' => $errorMessage->getMessage()]);
         }

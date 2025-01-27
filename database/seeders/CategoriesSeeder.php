@@ -12,6 +12,8 @@ class CategoriesSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+    // Veritabanına yemek konseptleri ekleyen seeder
     public function run(): void
     {
         DB::table('categories')->insert([

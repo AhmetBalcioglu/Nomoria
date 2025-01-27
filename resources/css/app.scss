@@ -1,3 +1,5 @@
+// Buraya yazılan SCSS'ler bütün projede çağrılır
+
 @use '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 @use './header/header';
 @use './footer/footer';
@@ -8,13 +10,15 @@
 @use "variables";
 @use "global";
 
+
+// Bütün projedeki inputlara fokus olununca border ve shadow eklenir
 input:focus,
 textarea:focus,
 select:focus,
 button:focus {
   outline: none !important;
   /* Varsayılan mavi çerçeveyi kaldırır */
-  border: 2px solid #ed4f15 !important; 
+  border: 2px solid #ed4f15 !important;
   /*sınır rengi */
   box-shadow: 0 0 8px #f0a500 !important;
   /* gölge rengi */

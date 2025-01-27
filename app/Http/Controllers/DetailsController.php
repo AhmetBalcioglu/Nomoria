@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cities;
 use App\Models\Districts;
-use Illuminate\Http\Request;
 use App\Models\Restaurant;
-use App\Models\Favorites;
 use App\Models\DetailImage;
 
 class DetailsController extends Controller

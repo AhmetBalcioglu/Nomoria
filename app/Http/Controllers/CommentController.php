@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
-use App\Http\Requests\CommentStoreRequest;
-use App\Http\Requests\CommentUpdateRequest;
-use App\Models\Restaurant;
 use Illuminate\Support\Facades\Session;
 
 
@@ -18,13 +15,6 @@ class CommentController extends Controller
     {
         $comments = Comment::all();
         return view('comments', compact('comments'));
-    }
-
-
-    //create blade döndürülür.
-    public function create()
-    {
-        return view('comment.create');
     }
 
     //Yorum oluşturulmak için kullanılır.
@@ -53,18 +43,8 @@ class CommentController extends Controller
             'comment' => $request->input('content') ?? '',  // 'comment' kullanmalısınız
         ]);
 
-
         // Yorum başarıyla kaydedildiyse geri dön
         return back()->with('success', 'Yorumunuz eklendi.');
-    }
-
-
-
-
-
-    public function edit(Comment $comment)
-    {
-        return view('comment.edit', compact('comment'));
     }
 
     //Yorum güncellenmek için kullanılır.
@@ -125,13 +105,4 @@ class CommentController extends Controller
         // Başarı mesajı ile geri dön
         return back()->with('success', 'Yorumunuz silindi.');
     }
-
-
-
 }
-
-
-
-
-
-
